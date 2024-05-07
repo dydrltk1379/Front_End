@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30" />
+    <title>Table(표) 관련 태그</title>
+</head>
+<body>
+    <h3>Table 태그 ★★★★★</h3>
+    <div>웹 문서에서 table 형태로 자료를 정리하기 위해 사용되는 태그</div>
+    <div>행과 열로 구성되어 있으며, 만나는 지점을 셀이라 한다.</div>
+    <div>table 태그 : 테이블을 지칭하는 태그로 가장 밖에 선언된다.</div>
+    <div>tr 태그 : 한개의 행(row)을 나타내는 태그</div>
+    <div>td 태그 : 한개의 열을 나타내는 태그</div>
+
+    <h3>테이블 태그</h3>
+    <table>
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>31</td>
+        </tr>
+        <tr>
+            <td>최길동</td>
+            <td>35</td>
+        </tr>
+    </table>
+    <hr><br>
+
+    <h3>border 속성 : 테이블의 테두리 굵기를 조절하는 속성, html4 문법으로 사용하면 안됨</h3>
+    <table border="1">
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+            <td>전화번호</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>25</td>
+            <td>010-1234-56789</td>
+        </tr>
+        <tr>
+            <td>최길동</td>
+            <td>35</td>
+            <td>010-3541-8456ㄴ</td>
+        </tr>
+    </table>
+    <hr><br>
+
+    <h3>caption 태그 : 테이블의 제목을 다는 태그</h3>
+    <table border="1">
+        <caption>회원 정보</caption>
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>최길동</td>
+            <td>35</td>
+        </tr>
+    </table>
+    <hr><br>
+
+    <h3>th 태그 : 테이블 제목 셀을 지정하는 태그</h3>
+    <table border="1">
+        <caption>회원 정보</caption>
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+        </tr>
+        <tr>
+            <th>홍길동</th>
+            <th>25</th>
+        </tr>
+        <tr>
+            <th>최길동</th>
+            <th>35</th>
+        </tr>
+    </table>
+    <hr><br>
+
+    <h3>colspan : 열을 병합하는 속성 (가로 병합)</h3>
+    <table border="1">
+        <caption>회원 정보</caption>
+        <tr>
+            <td colspan="2">A1</td>
+            <!--<td>A2</td>-->
+            <td>A3</td>
+        </tr>
+        <tr>
+            <td>B1</td>
+            <td>B2</td>
+            <td>B3</td>
+        </tr>
+    </table>
+    <hr><br>
+
+    <table border="1">
+        <tr>
+            <td colspan="3">A1</td>
+            <!--<td>A2</td>-
+            <td>A3</td>-->
+        </tr>
+        <tr>
+            <td>B1</td>
+            <td>B2</td>
+            <td>B3</td>
+        </tr>
+    </table>
+    <hr><br>
+
+    <h3>rowspan : 행을 병합하는 속성 (세로 병합)</h3>
+    <table border="1">
+        <tr>
+            <td rowspan="3">A1</td>
+            <td>A2</td>
+            <td>A3</td>
+        </tr>
+        <tr>
+            <!--<td>B1</td>-->
+            <td>B2</td>
+            <td>B3</td>
+        </tr>
+        <tr>
+            <!--<td>C1</td>-->
+            <td>C2</td>
+            <td>C3</td>
+        </tr>
+    </table>
+    <hr><br>
+
+    <h3>thead, tbody, tfoot : 테이블의 영역을 나누는 태그, 선언하지 않은 경우 tbody</h3>
+    <table border="1">
+        <thead>
+            <th>이름</th>
+            <th>나이</th>
+        </thead>
+        <thead>
+            <tr>
+                <th>홍길동</th>
+                <th>32</th>
+            </tr>
+            <tr>
+                <th>최길동</th>
+                <th>34</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="2">총 2명</td>
+            </tr>
+        </tfoot>
+    </table>
+    <hr><br>
+
+    <h3>align : 테이블을 전체 정렬시켜주는 속성, html4에서 사용하던 문법이라 사용 금지됨.</h3>
+    <table border="1" align="center">
+        <caption>회원정보</caption>
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>전화번호</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>21</td>
+            <td>010-1234-5678</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>21</td>
+            <td>010-1234-5678</td>
+        </tr>
+    </table>
+    <hr><br>
+
+    <h3>style 활용하여 table 꾸미는 방법 예시</h3>
+    <div>style 속성 : css를 태그에 적용 시키는 방법</div>
+    <div>height : 높이 속성</div>
+    <div>text-align : 테이블 내용을 정렬하는 속성</div>
+    <div>border : 테두리 속성</div>
+    <table border="1" style="width: 400px; height: 120px; text-align: center; border: 1px solid black;">
+        <caption>회원정보</caption>
+        <tr>
+            <th style="height:50px; width:200px; border: 1px solid black; color:blue;">이름</th>
+            <th>나이</th>
+            <th>전화번호</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>21</td>
+            <td>010-1234-5678</td>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>21</td>
+            <td>010-1234-5678</td>
+        </tr>
+    </table>
+    <hr><br>
+</body>
+</html>

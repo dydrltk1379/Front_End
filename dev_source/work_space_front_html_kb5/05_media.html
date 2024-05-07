@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어 관련태그</title>
+</head>
+<body>
+    <h1>미디어 관련 태그</h1>
+    <hr>
+
+    <h3>이미지 태그 (img)</h3>
+    <div> - 웹페이지에서 사진이나 이미지를 삽입할때 사용하는 태그, 인라인 태그</div>
+    <div> - 링크(주소)를 통해 이미지 파일을 별도로 가져와서 표시하는 기능</div>
+    <hr><br>
+
+    <h3>이미지 첨부1 - 다른 사이트에서 이미지 가져오기</h3>
+    <div>주의점 : 'http' 'https'를 포함한 주소지가 필요!</div>
+    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" >
+    <br>
+    <!--아래 코드 동작 안함! -->
+    <img src="www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="http 없는거!" >
+    <hr><br>
+
+    <h3>이미지 첨부2 - 내부 파일(서버)로 부터 가져오는 방법 - 상대경로로 가져오는 방법★★★★★</h3>
+    <div>주의점1 : /로 시작하면 안된다!</div>
+    <div>주의점2 : ./로 시작하면 되는데, 일반적으로 생략하는 표현을 더 많이 쓴다.</div>
+    <img src="resources/image/flower2.PNG" alt="">
+    <br>
+    <img src="/resources/image/flower2.PNG" alt="/로 시작하면 안된다!">
+    <br>
+    <img src="./resources/image/flower2.PNG" alt="">
+    <hr><br>
+    
+    <h3>이미지 첨부3 - 절대경로로 가져오는 방법, 절대 쓰지말것!!! -> 서버일때는 안보인다.</h3>
+    <img src="C:\dev_source\work_space_html_multi1030\resources\image\flower3.PNG" alt="절대 사용금지!">
+    <img src="resources\image\flower3.PNG" alt="">
+    <hr><br>
+
+    <h3>이미지 첨부4 - alt 이미지가 안보일때의 text문구 추가하기</h3>
+    <img src="잘못된 경로">
+    <br>
+    <img src="잘못된 경로" alt="alt 설명문이 보인다.">
+    <br>
+
+    <h3>이미지 첨부5 - 이미지 크기 조정하기</h3>
+    <div>주의점 : width, height를 임의로 지정하는 경우 사이즈가 깨질수 있다!</div>
+    <img src="resources\image\flower5.PNG" width="200px" height="200px">
+
+    <div>비율을 유지하기 위해선, width, height중 하나만 걸어준다.</div>
+    <img src="resources\image\flower5.PNG" width="200px"><br>
+    <img src="resources\image\flower5.PNG" height="200px">
+    <hr><br>
+
+    
+    <h3>map 태그</h3>
+    <div> - 이미지 구역을 분리하여 링크를 걸어주는 태그</div>
+    <p> map : 이미지 구역을 생성하는 태그</p>
+    <p> area : map 내부에서 이미지 구역을 지정하는 태그</p>
+    <img src="resources\image\flower2.PNG" width="400px" height="400px" usemap="#testmap" >
+    <map name="testmap">
+        <area shape="circle" coords="0,0,200,200" href="http://www.naver.com" >
+        <area shape="rect" coords="200,200,400,400" href="http://www.google.com" >
+    </map>
+    <hr><br>
+
+    <h3>오디오 태그 (audio)</h3>
+    <div> - 웹브라우저에서 별도의 플러그인 없이 음악을 재생시켜주는 태그</div>
+    <audio src="resources\audio\NonJeNeRegretteRien.mp3" controls autoplay loop>
+        웹브라우저에서 오디오 태그를 지원하지 않을때 컨텐츠 자리        
+    </audio>
+    <hr><br>
+
+    <h3>비디오 태그(video)</h3>
+    <div> - 웹 브라우저에서 플러그인 없이 미디어를 재생시켜주는 태그</div>
+    <h3>동영상 재생 - 컨트롤 표시 (controls)</h3>
+    <video src="resources\video\matrix_sample.mp4" controls>
+        웹브라우저에서 비디오 태그 지원 안할때 컨텐츠 자리
+    </video>
+
+
+    <h3>동영상 재생 - 재생 전 출력할 이미지 지정(poster), 크기 지정</h3>
+    <video src="resources\video\matrix_sample.mp4" controls poster="resources\image\tower1.PNG" width="300px">
+        웹브라우저에서 비디오 태그 지원 안할때 컨텐츠 자리
+    </video>
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

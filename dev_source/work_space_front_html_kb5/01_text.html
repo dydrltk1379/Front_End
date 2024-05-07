@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome">
+    <title>금지관련 태그</title>
+</head>
+
+<!-- body : 실제 컨텐츠(Element)가 들어가는 영역 -->
+<body>
+    <h3>hr 태그 : 가로 라인을 만들어주는 태그, inline 태그이다.</h3>
+    <hr>
+    <h3>br 태그 : 문장의 계행(줄바꿈)을 지원하는 태그, inline 태그이다.</h3>
+    <h3>inline 태그 : 시작과 끝이 존재하지 않는 단일 태그를 말한다.</h3>
+    <hr><br>
+    개행 테스트 입니다. 
+    개행을 하지 않는 경우 문자열이 붙습니다"><br>
+    개행이 필요한 경누는 중간이라도 <br>  개행을 쓰면 계행이 가능합니다
+    <hr><br>
+
+    <h3>h1~h6 태그 : 제목을 정읳나는 태그로, 고유 크기의 굵기를 가짐, 숫자가 작으면 크다.</h3>
+
+    <h1>제목 태그 h1입니다.</h1>
+    <h2>제목 태그 h2입니다.</h2>
+    <h3>제목 태그 h3입니다.</h3>
+    <h4>제목 태그 h4입니다.</h4>
+    <h5>제목 태그 h5입니다.</h5>
+    <h6>제목 태그 h6입니다.</h6>
+    <h7>제목 태그 h7입니다. 존재하지 않습니다.</h7>
+    <hr><br>
+
+    <b>b 태그 : bold의 약자로 글자의 굵기를 조절하는 태그, 개행 되지 않는 inline 태그</b>
+    <b>b 태그 적용라인</b>적용하지 않는 라인 
+
+    <h3>strong 태그 : 글씨를 강조하는 태그로 b태그 동일한 기능, 개행되지 않는 inline 태그</h3>
+    <strong>strong태그 적용 라인</strong> strong태그 적용하지 않은 라인 <br>
+    <hr><br>
+
+    <h3>mark : 글씨를 형광펜을 처리하는 코드, 개행되지 않는 inline 태그</h3>
+    <mark>mark 적용 코드</mark> mark 미적용 <br>
+    <hr><br>
+
+    <h3>em / i 태그 : 이텔릭체로 글씨가 기울어지는 태그</h3>
+    <em>em 적용 라인</em> em 적용하지 않은 라인 <br>
+    <br>
+
+    <i>i 적용 라인</i> i 적용하지 않은 라인 <br>
+    <hr><br>
+
+    <h3> q 태그 : 인용 태그 (외부 문자가져 올때 사용)</h3>
+    <q>q태그 적용 라인</q> 일반 문장
+    <hr><br>
+
+    <h3>blockquote : 태그 : 인용 태그 (외부 문자가져 올때 사용)  </h3>
+    <blockquote>blockquote태그 적용 라인 <br> 개행지원</blockquote> 일반 문장
+    <hr><br>
+
+    <h3> code 태그 : 코드를 삽입할때 사용하는 태그</h3>
+    <code>
+        class test {sysout("test")};<br>
+        class test {sysout("test")};<br>
+    </code>
+    <hr><br>
+
+
+    <h3>번외) 태그나 특수기호를 웹으로 출력하는 방법 ★★★★★</h3>
+    <div> 방법 : 특수문자에 해당되는 문자표를 찾아 교체한다. -> javascript에서는 자동변환 존재</div>
+
+    <!-- https://aneok.tistory.com/86
+    공백 : &nbsp; 
+    & : &amp;
+    -->
+    <code>
+        &lt;html&gt;&lt;/html&gt;
+        &#60;html&#62;&#60;/html&#62;
+        공                   백은 일반적으로 한글자만 출력된다.<br>
+        공&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;백(Non-breaking Spcae)은 여러 공백이 출력한다.
+    </code>
+</body>
+
+</html>

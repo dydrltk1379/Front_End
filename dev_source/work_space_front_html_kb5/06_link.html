@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하이퍼링크 태그</title>
+</head>
+<body>
+    <h1>하이퍼링크 태그</h1>
+    <hr>
+
+    <h3>a태그 (anchor)</h3>
+    <div> - 페이지에서 a태그가 감싼 영역을 클릭하면 지정된 페이지로 이동하는 태그</div>
+    <div> - 외부 사이트 / 내부 사이트 / 현재 문서의 특정 위치로 이동 가능</div>
+    <hr><br>
+
+    <h3>외부 사이트 링크 만들</h3>
+    <div> ※주의 : 'http://' 'https://' 생략하면 안된다!!  </div>
+    <a href="www.naver.com">네이버로 이동(안되는 방법)</a><br>
+    <a href="http://www.naver.com">네이버로 이동</a><br>
+    -> href="www.naver.com"의 의미는 상대경로의 www.naver.com 주소를 찾으라는 의미로 내부 링크로 가는 방법 <br>
+    <a href="http://google.com">구글로 이동</a>    
+    <hr><br>
+
+    <h3>내부 사이트(내부 파일) 링크 만들기</h3>
+    <a href="05_media.html">미디어 예제로 이동</a>
+    <hr><br>
+
+    <h3>target 옵션 활용</h3>
+    <a href="05_media.html" target="_self">현재 창에서 여는 옵션</a><br>
+    <a href="05_media.html" target="_blank">신규창(신규 탭)에서 여는 옵션</a><br>
+
+    <h3>이미지 링크 만들기</h3>
+    <a href="05_media.html">
+        <img src="resources/image/flower1.PNG" alt="" height="100px">
+    </a>
+
+    <h3>문서 내부 이동(특정영역으로 이동)</h3>
+    <a href="#top">최상단 탑으로 이동하기(top id가 없어도 top으로 이동가능!)</a><br>
+    <a href="#bottom">최하단으로 가기</a><br>
+    <!-- <a href=".bottomClass">최하단으로 가기 - Class 안된다!!</a><br> -->
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <div id="bottom" class="bottomClass">최하단</div>
+    <img src="resources/image/flower2.PNG" alt="" height="200px">
+</body>
+</html>

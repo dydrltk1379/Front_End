@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역 관련 태그</title>
+</head>
+<body>
+    <h1>영역 관련 태그</h1>
+    <hr>
+
+    <h3>div태그 ★★★★★ (Division)</h3>
+    <div> - html문서에서 부분 또는 색션을 정의하기 위해 블록요소로 활용되는 태그</div>
+    <div> - 주로 다른 태그를 감싸는 컨테이너(요소안에 요소가 있는 형태)로 활용됨</div>
+    <div> - 대표적인 블록태그로 감싸면 한줄이 자동으로 개행 되는 효과 발생 (br)</div>
+    <div> - 디자인적인 요소는 거의 없는 무색무취 같은 태그 -> css를 적용하는 것이 일반적</div>
+    <div> - 주로 CSS나 javascript에서 조작하는 단위로 활용됨 -> id를 부여해서</div>
+    <hr><br>
+
+    <h3>div 실습</h3>
+    <div>div1영역1</div>
+    <div>div1영역2</div>
+    <hr><br>
+
+    <h3>div 응용1</h3>
+    <div style="border: 1px solid black;">블록 영역입니다.</div>
+
+    <h3>div 응용2 - 높이/너비 지정</h3>
+    <div style="border: 1px solid black; height: 100px; width: 300px;">블록 영역입니다.</div>
+
+    <h3>div 응용3 - 가운데 정렬</h3>
+    <div style="border: 1px solid black; height: 100px; width: 300px; text-align: center;">블록 영역입니다.</div>
+    <div style="border: 1px solid black; height: 100px; width: 300px; text-align: right;">블록 영역입니다.</div>
+
+    
+    <h3>div 응용4 - 색상 지정</h3>
+    <div style="border: 1px solid black; height: 100px; width: 300px; text-align: center; color: aqua;">블록 영역입니다.</div>
+
+    <h3>span 태그 ★★★★★</h3>
+    <div> - 문서의 인라인 요소를 그룹화하는데 사용하는 대표적인 inline 태그</div>
+    <div> - 단일 목적으로는 사용되지 않는 태그로 반드시 그룹화할때만 사용할것 -> 단일 요소로는 쓸모가 없다.</div>
+    <div> - 용도로는 주로 inline 영역에 css로 지정하거나 그룹핑 할때만 사용된다.</div>
+    <div> - inline요소임으로 개행이 되지 않고 수평으로 확장할때 사용된다.</div>
+    <hr><br>
+
+    <h3>span 태그 사용 예시</h3>
+    일반영역과  <span>스펜 영역은</span> 구분되지 않습니다.
+    <hr><br>
+
+    <h3>span 응용1</h3>
+    <span style="border : 1px solid black;">스펜은 인라인 요소입니다.</span> 이 텍스트는 일반 영역입니다.
+    <hr><br>
+
+    
+    <h3>span 응용2 - 높이/너비 지정해보기, 결론 : 절대 안된다.</h3>
+    <span style="width: 100px; height: 100px;">스펜은 인라인 요소입니다.</span> 이 텍스트는 일반 영역입니다.
+    <hr><br>
+
+    <h3>span 응용3 - 높이/너비 지정해보기, 방법</h3>
+    <div> - disply 옵션을 통해 태그의 영역을 inline과 block 그리고 inline-block 등으로 변경할 수 있다.</div>
+    <div> - inline-block 옵션은 인라인 요소인데, 너비나 높이가 지정 가능한 태그로 변경한다.</div>
+    <span style="border : 1px solid black;  width: 300px; height: 100px; display: inline-block;">스펜은 인라인 요소입니다.</span> 이 텍스트는 일반 영역입니다.
+    <hr><br>
+
+    <h3>div-span 응용 3x3 영역 만들기</h3>
+    <div>
+        <span style="width:300px; height: 100px; display: inline-block; background:red;">영역1</span>
+        <span style="width:300px; height: 100px; display: inline-block; background:blue;">영역2</span>
+        <span style="width:300px; height: 100px; display: inline-block; background:green;">영역3</span>
+    </div>
+    <div>
+        <span style="width:300px; height: 100px; display: inline-block; background:rgba(134, 195, 54, 0.839);">영역1</span>
+        <span style="width:300px; height: 100px; display: inline-block; background:rgb(31, 157, 84);">영역2</span>
+        <span style="width:300px; height: 100px; display: inline-block; background:rgb(0, 23, 128);">영역3</span>
+    </div>
+    <div>
+        <span style="width:300px; height: 100px; display: inline-block; background:rgb(164, 202, 11);">영역1</span>
+        <span style="width:300px; height: 100px; display: inline-block; background:blue;">영역2</span>
+        <span style="width:300px; height: 100px; display: inline-block; background:green;">영역3</span>
+    </div>
+    </div>
+    <hr><br>
+
+    
+</body>
+</html>
