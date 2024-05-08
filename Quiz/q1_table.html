@@ -6,36 +6,51 @@
     <title>Q1_table</title>
 </head>
 <body>
-    <table border="1" style="width:100%; height:100px; text-align: center; border:1px;">
-        <thead>
-            <th>항목</th>
-            <th>입력</th>
-        </thead>
-        <thead>
+    <!--배경 빨강, 글자는 센터-->
+    <table border="1" bgcolor="red" align="center">
+        <!--항목, 입력 모두 바탕은 lime, width 100 300 크기-->
+        <tr bgcolor="lime">
+            <th width="100">항목</th>
+            <th width="300">입력</th>
+        </tr>
+        <!--번호 bg : white, content bg : pink-->
+        <tr>
+            <th bgcolor="white">번호</th>
+            <th bgcolor="pink"></th>
+        </tr>
+        <!--제목, content bg : white, content: text-->
+        <tr>
+            <th bgcolor="white">제목</th>
+            <th bgcolor="yellow">
+                <input type="text" size="40">
+            </th>
+        </tr>
+        <!--내용 bg : white, content bg : yellow and textarea-->
+        <tr>
+            <th bgcolor="white">내용</th>
+            <th bgcolor="yellow">
+                <textarea cols="39" rows="9"></textarea>
+            </th>
+        </tr>
+        <!--작성자 bg: white, content : yellow and type=text-->
+        <tr>
             <tr>
-                <th>번호</th>
-                <th></th>
+                <th bgcolor="white">작성자</th>
+                <th bgcolor="yellow">
+                    <input type="text" width="500" size="40">      
+                </th>
             </tr>
-            <tr>
-                <th>제목</th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>내용</th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>작성자</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <td colspan="2">
-                    <font color="red"><b><i>글쓰기 완료</i></b></font>
-                </td>
-            </tr> 
-        </tfoot>
+        </tr>
+        <!--bg : yello and colspan=2, button bg : white, font color : red-->
+        <tr align="center">
+            <td bgcolor="yellow" colspan="2">
+                <button bgcolor="white">
+                    <font color="red">
+                        <b><i>글쓰기 완료</i></b>
+                    </font>
+                </button>     
+            </td>
+        </tr>
     </table>
 </body>
 </html>

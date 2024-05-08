@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프레임 관련 태그</title>
+</head>
+<body>
+    <h1>프레임 관련 태그</h1>
+    <hr>
+
+    <!--iframe 잘 안 씀, -Youtube 영상, SlideShare의 슬라이드쇼, 
+        구글의 지도 또는 광고용 콘텐츠를 삽입하는 등 다양한 이유로 iframe을 사용합니다. 
+        사용자가 문서를 다운로드할 필요가 없는 PDF를 삽입할 때에도 iframe을 사용할 수 있어요-->
+    <h2>iframe 태그</h2>
+    <div> - HTML 문서 내 또 다른 HTML 문서를 삽입하는 태그</div>
+    <div> - 외부 페이지를 내부에 가져오는 태그로 주로 배너광고, 일부 페이지를 따올 때</div>
+    <div> - 서버와 다른 서버 페이지를 연동해야할때 사용, ex) 스프링 + django</div>
+
+    <h3>경로를 직접 지정해서 불러오는 방법</h3>
+    <iframe src="05_media.html" width="100%"></iframe>
+
+    <h3>a링크를 통해서 프레임을 선택하는 방법</h3>
+    <a href="08_form1.html" target="f1">폼1</a>
+    <a href="08_form2_input.html" target="f1">폼1</a>
+    <iframe name="f1" width="100%"></iframe>
+
+    <h3>프레임의 크기 및 스타일 속성</h3>
+    <iframe src="05_media.html" width="100%" height="500px" style="border: none;"></iframe>
+
+</body>
+</html>
