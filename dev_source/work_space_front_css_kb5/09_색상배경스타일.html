@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>색상/배경 스타일</title>
+</head>
+<body>
+    <h1>색상 및 배경 스타일</h1>
+    <hr>
+
+    <h3>1. 색성 지정 하는 방법</h3>
+    <div> - color 속성을 통해 색상을 지정할수 있음</div>
+    <div> - 방법1) 16진수 값, 2) rgb() rgba() 함수, 3) 텍스트 표기, 4)hsla 채도, 명도, 색상</div>
+    <div> - vscode 플러그인으로 색성 조절 자유롭게 가능</div>
+    <div> - W3School Color 페이지 참고 바람 - https://www.w3schools.com/colors/default.asp </div>
+
+    <style>
+        .color1{
+            color: blue;
+            background-color: indianred;
+        }
+
+        .color2{
+            color:#0088119e;
+            background-color:#8e0066;
+            /*16진수 표현법 2가지
+                1. #RRGGBB - 3byte 표현법
+                2. #RRGGBBAA - 4byte 표현법, AA=투명도, RGBA불리는 표현방법
+            */
+        }
+
+        .color3{
+            color: rgb(244,140,0);
+            background-color: rgba(19, 52, 152, 0.5);
+        }
+
+        .color4{
+            color: hsla(172, 90%, 50%, 0.64);
+            background-color: hsla(21, 100%, 57%, 0.819);
+        }
+    </style>
+
+    <div class="color1">컬러 1입니다. 블루</div>
+    <div class="color2">컬러 2입니다. 그린</div>
+    <div class="color3">컬러 3입니다. 주황</div>
+    <div class="color4">컬러 4입니다. 푸루딩딩</div>
+    <hr><br>
+    
+    
+    <h3>2. 배경스타일</h3>
+    <div> - 배경 색상, 테두리, 마진, 패딩 등의 옵션을 설정할수 있는 방법</div>
+    <style>
+        body{
+            background-color:#202028;
+            color: aliceblue;
+        }
+
+        .background1{
+            height:100px;
+            width: 100px;
+            border: 20px dashed white;
+            padding: 60px;
+            margin: 100px;
+            background:cadetblue;
+        }
+    </style>
+    <div class="background1">테스트 영역</div>
+    <hr><br>
+
+    <h3>3. background-clip 옵션</h3>
+    <p>border-box : 박스모델의 테두리까지 적용</p>
+    <p>padding-box : 패딩범위까지 적용</p>
+    <p>content-box : 패딩을 제외한 컨텐츠만 적용</p>
+    <style>
+        .clip1{
+            background-clip: border-box;
+        }
+        .clip2{
+            background-clip: padding-box;
+        }
+        .clip3{
+            background-clip: content-box;
+        }
+    </style>
+    <!-- class 2개 중첩시키는 방법 -->
+    <div class="background1 clip1">background-clip: border-box</div>
+    <div class="background1 clip2">background-clip: padding-box</div>
+    <div class="background1 clip3">background-clip: content-box</div>
+    <hr><br>
+
+    <h3>4. 배경이미지 스타일</h3>
+    <div> - 배경의 이미지와 이미지의 반복, 이미지의 채움을 설정할수 있는 옵션들</div>
+    <style>
+        .background_image1 {
+            height: 800px;
+            margin: 10px;
+            border: black solid 1px;
+            background-image: url(resources/image/bgsample.PNG);
+            /* 이미지 반복 방법 지정 */
+            /* 가로 세로 모두 반복(기본값) */
+            /* background-repeat: repeat; */
+            /* 가로만 반복 */
+            /* background-repeat: repeat-x; */
+            /* 세로만 반복 */
+            /* background-repeat: repeat-y; */
+            /* 반복 안함 */
+            background-repeat: no-repeat;
+            /* 이미지 크기 지정 */
+            /* 원래 크기(기본값) */
+            /* background-size: auto; */
+            /* 요소 크기에 맞게 이미지 확대/축소(비율유지) */
+            /* background-size: contain; */
+            /* 요소 크기에 맞게 이미지 확대/축소(비율유지하지 않음) */
+            /* background-size: cover; */
+            /* 가로세로 크기 직접 지정(고정 크기) */
+            /* background-size: 150px 100px; */
+            /* 가로세로 크기 직접 지정(가변 크기) */
+            /* background-size: 80% 50%; */
+            /* 이미지 위치 지정 */
+            /* background-position: left top; */
+            background-position: right top;
+            /* background-position: center top; */
+            /* background-position: center bottom; */
+            /* background-position: center center; */
+            /* background-position: 10px 50px; */
+            /* background-position: 50% 20%; */
+            /* 이미지 스크롤 여부 지정 */
+            background-attachment: scroll;
+            /* background-attachment: fixed; */
+        }
+    </style>
+
+    <div class="background_image1">
+        텍스트
+    </div>
+
+</body>
+</html>

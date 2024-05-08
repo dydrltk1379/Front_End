@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 기본</title>
+</head>
+<body>
+    <h1>레이아웃1 - 기본요소</h1>
+    <hr><br>
+
+    <h3>1. 높이/너비(height/weight)</h3>
+    <div>- 요소의 너비와 높이를 설정하는 속성</div>
+    <br>
+
+    <style>
+        .test1{
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .test2{
+            width: 30%;
+            height: 5em;
+            border: 1px solid black;
+        }
+        .test3{
+            width: auto;
+            height: auto;
+            border: 1px solid black;
+        }
+
+    </style>
+
+    <div class="test1">test1 영역</div>
+    <div class="test2">test2 영역</div>
+    <div class="test3">test3 영역</div>
+
+    <h3>2. 기본적인 레이아웃 배치(고전=block, inline, inline-block, none) ★★★★★ </h3>
+    <div> - display 속성 : lnline / block / inline-block / flex / grid 값을 통해 레이아웃을 배치할때 활용되는 중요 속성!★★★★★ </div>
+    <div> - block, inline, inline-block, none를 고전적으로 많이 사용됬고, flex, grid는 css3 나오면서 추가된 문장(IE에서 지원 안했음!)</div>
+    <div> - Tip : block요소 = div태그 / inline요소 = span태그로 감싸서 활용 할 것!</div>
+    <hr>
+
+    <h3>display 주요 속성(고전)</h3>
+    <ul>
+        <li>block : 블록(한줄 또는 영역)으로 지정하는 요소로 세로 레이아웃을 만들때 사용</li>
+        <li>inline : line(한줄)에서 일부 태그를 감쌀때 사용하는 태그로 영역을 가질수 없음</li>
+        <li>inline-block : inline 요소를 옆으로 block 처럼 쌓아 가로 영역을 확보할때 사용</li>
+        <li>none : 태그 요소를 페이지에서 안 보이도록 변경하는 속성(가장 표준적인 문법!!) ★★★★★</li>
+    </ul>
+    <br>
+
+    <style>
+        .area{
+            width: 100px;
+            height: 100px;
+            background-color: darkcyan;
+            color: white;
+            border: 1px solid black;
+        }
+        .block-test1{
+            display: inline;
+        }
+        
+        .block-test2{
+            display: inline-block;
+        }
+        .block-test3{
+            display: block;
+        }
+        .block-test3{
+            display: none;
+        }
+    </style>
+
+    <div class="area">일반 div 영역</div>
+    <div class="area block-test1">div 영역 + inline</div>
+    <br>
+    <div class="area block-test2">div 영역 + inline-block</div>
+    <div class="area block-test2">div 영역 + inline-block</div>
+    <div class="area block-test2">div 영역 + inline-block</div>
+    <div class="area block-test3">div 영역 + block</div>
+    <div class="area block-test4">div 영역 + none</div>
+    <span class="area">일반 span 영역</span>
+    <span class="area block-test1">span 영역 + inline</span><br>
+    <span class="area block-test2">span 영역 + inline-block</span>
+    <span class="area block-test2">span 영역 + inline-block</span>
+    <span class="area block-test2">span 영역 + inline-block</span>
+    <span class="area block-test3">span 영역 + block</span>
+    <span class="area block-test4">span 영역 + none</span>
+    <hr><br>
+
+    <h3>3. 레이아웃 활용 예시</h3>
+    <div> - div, span을 중심으로 레이아웃을 구성하고 컨텐츠를 내부에 구성한다.</div>
+    <style>
+        .container{
+            width: 600px;
+            border: 1px solid black;
+            margin: 10px;
+            text-align: center;
+        }
+        .item{
+            display: inline-block;
+            width: 150px;
+            height: 100px;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <div class="container">
+        <span class="item">
+            영역1
+        </span>
+        <span class="item">
+            영역2
+        </span>
+        <span class="item">
+            영역3
+        </span>
+    </div>
+    <div class="container">
+        <span class="item">
+            영역4
+        </span>
+        <span class="item">
+            영역5
+        </span>
+        <span class="item">
+            영역6
+        </span>
+    </div>
+    <hr><br>
+</body>
+</html>

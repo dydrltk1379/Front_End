@@ -1,0 +1,19 @@
+/* 이곳은 css 문법만 적용 가능하는 범위 */
+
+/* 전체 선택자 = '*' */
+* {
+    font-weight: bold;
+}
+
+
+/* id 선택자 = '#'  */
+#id1{
+    color: coral;
+    background-color: cadetblue;
+}
+
+/* class 선택자 = '.' */
+.class2, .class3{
+    color:azure;
+    background-color:black;
+}

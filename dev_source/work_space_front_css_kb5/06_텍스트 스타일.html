@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 스타일</title>
+</head>
+<body>
+    <h1>텍스트 스타일</h1>
+    <hr><br>
+
+    <h3>1. 텍스트 방향 지정하기</h3>
+    <div> - 아랍권 사용자를 위해 글씨를 오왼순으로 정렬해주는 기능</div>
+    <style>
+        .direction1 {
+            direction: ltr;
+        }
+        
+        .direction2 {
+            direction: rtl;
+        }
+    </style>
+    <div class="direction1">왼쪽에서 오른쪽으로 가는 서구 스타일</div>
+    <div class="direction2">오른쪽에서 왼쪽으로 가는 아랍 스타일</div>
+    <div class="direction2">일타스랍아 는가 로으쪽왼 서에쪽른오</div>
+    <hr><br>
+
+    
+    <h3>2. 글꼴 색상 지정하는 방법</h3>
+    <div> - color 속성을 통해 글자색 지정 가능</div>
+    <div> - 방법1) 16진수 3byte or 4byte RGB값, ex) #FF00AA</div>
+    <div> - 방법2) rgb / rgba 함수 사용 ex) rgb(255, 0, 200);</div>
+    <div> - 방법3) 이미 표준화된 색상 텍스트로 정의 ex) red, blue</div>
+    <div> - VSCODE에서는 색상 플러그인을 통해 자유롭게 색상 조절 가능하다!</div>
+
+    <style>
+        .colorBack{
+            /* background:black; */
+            background:#000000;
+            color:#ffffff;
+        }
+
+        .color1{
+            /* color: #ff00aa; */
+            color: #f900a6c4;
+        }
+
+        .color2{
+            color: rgb(48, 200, 10);
+            background-color:rgba(207, 79, 79, 0.675);
+        }
+        .color3{
+            color:blue;
+        }
+        .color4{
+            color:#1428A0;
+        }
+    </style>
+    <div class="colorBack">
+        <div class="color1">color1입니다. 마젠타 계열 투명색입니다.</div>
+        <div class="color2">color2입니다. 그린 계열입니다.</div>
+        <div class="color3">color3입니다. 블루입니다.</div>
+        <div class="color4">color4입니다. 삼성블루입니다.</div>
+    </div>
+    <hr><br>
+
+    <h3>3. 텍스트 밑줄, 취소선 등의 선 표시하는 방법</h3>
+    <div> - text-decoration 속성을 통해 활용</div>
+    <br>
+    <style>
+        .text_deco1{
+            text-decoration: none;
+            color:black;
+        }
+        .text_deco2 {
+            text-decoration: underline;
+        }
+        
+        .text_deco3 {
+            text-decoration: line-through;
+        }
+        
+        .text_deco4 {
+            text-decoration: overline;
+        }
+    </style>
+
+    <div class="text_deco1">밑줄이 없는 태그 (일반적인 상태)</div>
+    <a href="00_css01.html">일반 a태그</a><br>
+    <a href="00_css01.html" class="text_deco1">밑줄이 없고 색상도 블랙인 a태그 ★★★★★</a><br>
+    <div class="text_deco2">아래에 밑줄 - 강조때 사용</div>
+    <div class="text_deco3">가운데 줄 - 취소선</div>
+    <div class="text_deco4">윗 줄 - ?????</div>
+    <hr><br>
+
+    <h3>3. 영문 대문자를 변경하는 옵션</h3>
+    <div> - text-transform 옵션을 활용</div>
+    <style>
+        .text_trans1 {
+            text-transform: none;
+        }
+        
+        .text_trans2 {
+            text-transform: capitalize;
+        }
+        
+        .text_trans3 {
+            text-transform: uppercase;
+        }
+        
+        .text_trans4 {
+            text-transform: lowercase;
+        }
+    </style>
+    <div class="text_trans1">I am a ironMAN. none.</div>
+    <div class="text_trans2">I am a ironMAN. capitalize.</div>
+    <div class="text_trans3">I am a ironMAN. uppercase.</div>
+    <div class="text_trans4">I am a ironMAN. lowercase.</div>
+    <hr><br>
+
+    <h3>4. 그림자 옵션</h3>
+    <div> - text-shadow를 활용하여 그림자 셋팅 가능</div>
+    <style>
+        .bg {
+            background-color: black;
+            margin: 30px;
+            padding: 50px;
+            width: 100%;
+            height: 500px;
+        }
+        
+        .text_shadow1 {
+            color: orangered;
+            text-shadow: 5px 5px orange;
+            font: 30pt bold;
+        }
+        
+        .text_shadow2 {
+            color: rgb(255, 178, 178);
+            text-shadow: 0px 1px 20px #fff;
+            line-height: 30pt;
+            font: 30pt bold;
+        }
+        
+        .text_shadow3 {
+            color: white;
+            text-shadow: 5px 5px 20px turquoise;
+            line-height: 30pt;
+            font: 30pt bold;
+        }
+        
+        .text_shadow4 {
+            color: rgb(44, 33, 33);
+            line-height: 30pt;
+            font: 30pt bold;
+            text-shadow: 0px 0px 4px #ccc, 0px -5px 4px #ff3, 2px -10px 6px #fd3, -2px -15px 11px #f80, 2px -19px 18px #f20;
+        }
+    </style>
+
+    <div class="bg">
+        <p class="text_shadow1">그림자 있는 글꼴입니다. 5px 5px orange</p>
+        <p class="text_shadow2">그림자 있는 글꼴입니다. 0px 1px 20px white</p>
+        <p class="text_shadow3">그림자 있는 글꼴입니다. 5px 5px 20px turquoise</p>
+        <p class="text_shadow4">그림자 있는 글꼴입니다. 복합적으로 줄수 있답니다.</p>
+    </div>
+
+</body>
+</html>

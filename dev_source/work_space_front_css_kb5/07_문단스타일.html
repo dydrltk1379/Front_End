@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문단스타일</h1>
+    <hr><br>
+
+    <h3>1. Align 정렬하기 기능 ★★★★★</h3>
+    <div> - 글씨나 컨텐츠를 정렬 할때 사용하는 기능, 가장 강력한 정렬 기능</div>
+
+    <style>
+        .align1{
+            text-align: left;
+        }
+        .align2{
+            text-align: right;
+        }
+        .align3{
+            text-align: center;
+        }
+        .align4{
+            text-align: justify;
+        }
+    </style>
+    <div class="align1"> 정렬기능 사용, 기준 : left</div>
+    <div class="align2"> 정렬기능 사용, 기준 : right</div>
+    <div class="align3"> 정렬기능 사용, 기준 : center</div>
+    <div class="align4"> 정렬기능 사용, 기준 : justify 텍스트 채우고 늘리기 텍스트 채우고 늘리기 텍스트 채우고 늘리기</div>
+    <hr><br>
+
+    <h3>2. 들여쓰기 text-indent</h3>
+    <style>
+        .text_indent {
+            text-indent: 50pt;
+        }
+    </style>
+    <div>들여쓰기 없는거</div>
+    <div class="text_indent">들여쓰기 있는거</div>
+    <hr><br>
+
+
+    <h3>3. 줄 간격 조정하기 (line-height)</h3>
+    <style>
+        .line_height1 {
+            line-height: normal;
+        }
+        
+        .line_height2 {
+            line-height: 50px;
+        }
+        
+        .line_height3 {
+            line-height: 2em;
+        }
+        
+        .line_height4 {
+            line-height: 300%;
+        }
+    </style>
+    <hr>
+    <p class="line_height1">별 헤는 밤 윤동주 계절이 지나가는 하늘에는 가을로 가득 차 있습니다. 나는 아무 걱정도 없이 가을 속의 별들을 다 헬 듯합니다. 가슴 속에 하나 둘 새겨지는 별을 이제 다 못 헤는 것은 쉬이 아침이 오는 까닭이요, 내일 밤이 남은 까닭이요, 아직 나의 청춘이 다하지 않은 까닭입니다.
+    </p>
+    <hr>
+    <p class="line_height2">별 헤는 밤 윤동주 계절이 지나가는 하늘에는 가을로 가득 차 있습니다. 나는 아무 걱정도 없이 가을 속의 별들을 다 헬 듯합니다. 가슴 속에 하나 둘 새겨지는 별을 이제 다 못 헤는 것은 쉬이 아침이 오는 까닭이요, 내일 밤이 남은 까닭이요, 아직 나의 청춘이 다하지 않은 까닭입니다.
+    </p>
+    <hr>
+    <p class="line_height3">별 헤는 밤 윤동주 계절이 지나가는 하늘에는 가을로 가득 차 있습니다. 나는 아무 걱정도 없이 가을 속의 별들을 다 헬 듯합니다. 가슴 속에 하나 둘 새겨지는 별을 이제 다 못 헤는 것은 쉬이 아침이 오는 까닭이요, 내일 밤이 남은 까닭이요, 아직 나의 청춘이 다하지 않은 까닭입니다.
+    </p>
+    <hr>
+    <p class="line_height4">별 헤는 밤 윤동주 계절이 지나가는 하늘에는 가을로 가득 차 있습니다. 나는 아무 걱정도 없이 가을 속의 별들을 다 헬 듯합니다. 가슴 속에 하나 둘 새겨지는 별을 이제 다 못 헤는 것은 쉬이 아침이 오는 까닭이요, 내일 밤이 남은 까닭이요, 아직 나의 청춘이 다하지 않은 까닭입니다.
+    </p>
+    <hr><br>
+
+    <h3>4. text-overflow (벗어난 영역 정리) ★★★★★</h3>
+    <div> - 게시판이나 UI레벨에서 텍스트가 원래 크기보다 벗어난 상태에서 처리하는 기법</div>    
+    <style>
+        .bg{
+            width:300px;
+            border:1px solid black;
+            white-space: nowrap;
+            overflow: hidden;
+            /* 주어진 크기만큼 자르는 옵션 */
+            /* text-overflow: clip; */
+            /* ...으로 표기 */
+            text-overflow: ellipsis;
+        }
+    </style>
+    <br>
+    <div class="bg">
+        별 헤는 밤 윤동주, 계절이 지나가는 하늘에는 가을로 가득 차 있습니다.
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

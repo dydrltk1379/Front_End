@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 기초</title>
+    <!--외부 css 가져오는 법-->
+    <link rel="stylesheet" href="00_css00.css">
+</head>
+<body>
+    <h1>CSS(Cascading Style Sheet)</h1>
+    <div> - HTML 문서의 스타일(디자인)을 정의하기 위한 언어, tag 스타일(폰트, 크기, 위치 등)을 지정하는 문법을 제공</div>
+    <div> - 또한 영역을 지정하고, 화면/프레임을 분할 위해 사용되기도 함</div>
+    <hr><br>
+
+    <h3>CSS 사용법 1. 인라인 스타일</h3>
+    <div> - 각 태그 속성에 style 속성값을 선언하여 인라인으로 적용하는 방법</div>
+    <br>
+    <div style="color:red; background-color:aqua;">
+        인라인 적용 라인
+    </div>
+    <hr><br>
+
+    <h3>CSS 사용법 2. 내부 스타일 시트</h3>
+    <div>- HTML 문서 안에 &lt;style&gt; 태그로 선언하는 방법</div>
+    <div>- 가급적 헤더에 있는 것이 원칙이나 body 존재하는 경우도 있다.</div>
+    <br>
+    <style>
+        /* css 영역*/
+        .class1 {
+            color: blue;
+            background-color: bisque;
+        }
+    </style>
+    <div class="class1">
+        class를 통해 내부 스타일시트를 적용한 범위
+    </div>
+    <div class="class6">
+        class6가 없어 스타일시트가 적용되지 않는 범위 
+    </div>
+    <hr><br>
+
+    <h3>CSS 사용법 3. 외부 스타일 시트 - 표준적인 방법 ★★★★★</h3>
+    <div> - 별도의 css 확장 파일을 통해 import 하여 사용하는 방법</div>
+    <div> - head에 link 태그를 통해 참조를 선언해야 활용 가능</div>
+    <br>
+    <!-- <link rel="stylesheet" href="00_css00.css"> -->
+    <div id="id1">
+        id1의 외부 스타일 시트 적용영역입니다.
+    </div>
+    <div class="class2">
+        class2의 외부 스타일 시트 적용영역입니다.
+    </div>
+    <div class="class3">
+        class3의 외부 스타일 시트 적용영역입니다.
+    </div>
+    <hr><br>
+    
+
+</body>
+</html>
