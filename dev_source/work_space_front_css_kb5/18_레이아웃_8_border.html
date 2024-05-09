@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Border 스타일</title>
+</head>
+<body>
+    <h1>Boarder 스타일</h1>
+    <hr><br>
+
+    <style>
+        .basic {
+            width: 200px;
+            height: 40px;
+            margin: 10px;
+            padding-top: 10px;
+            text-align: center;
+        }
+
+          /* 없앨때 사용(default) */
+        .border-test1{
+            border-style: none;
+        }
+
+        .border-test2{
+            border-style: dotted;
+        }
+
+        /* 직선★★★★★ */
+        .border-test3{
+            border-style: solid;
+        }
+
+        .border-test4{
+            border-style: double;
+        }
+
+        .border-test5{
+            border-style: dashed;
+        }
+
+        .border-test6{
+            border-style: solid;
+            border-width: 5px;
+        }
+
+        .border-test7{
+            border-style: solid;
+            border-color: blue;
+        }
+
+        .border-test8{
+            border-style: solid;
+            border-color: red;
+        }
+
+        .border-test9{
+            border-style: solid;
+            border-radius: 10px;
+        }
+
+        .border-test10{
+            border-style: solid;
+            border-top-left-radius: 30px;
+        }
+        
+        .border-test11{
+            border-style: solid;
+            border-top-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        /* 그림자 ★★★★★ */
+        .border-test12{
+            border-style: solid;
+            box-shadow: 3px 3px 2px 1px gray;
+        }
+
+        .border-test13{
+            border-width: 5px;
+            border-style: solid;
+            border-color: grey;
+            background-color:lemonchiffon;
+            border-top-left-radius: 20px;
+            box-shadow: 3px 3px 2px 1px lightslategrey;
+        }
+
+        .border-test14{
+            border: 5px solid gray;
+            background-color:lemonchiffon;
+            border-top-left-radius: 20px;
+            box-shadow: 3px 3px 2px 1px lightslategrey;
+        }
+
+    </style>
+
+    <div class="basic border-test1">1. none 옵션</div>
+    <div class="basic border-test2">2. dotted 옵션</div>
+    <div class="basic border-test3">3. solid 옵션</div>
+    <div class="basic border-test4">4. double 옵션</div>
+    <div class="basic border-test5">5. dashed 옵션</div>
+    <div class="basic border-test6">6. solid 5px 옵션</div>
+    <div class="basic border-test7">7. solid blue 옵션</div>
+    <div class="basic border-test8">8. solid red 옵션</div>
+    <div class="basic border-test9">9. solid radius 10px 옵션</div>
+    <div class="basic border-test10">10. solid radius TL 30px 옵션</div>
+    <div class="basic border-test11">11. solid radius TL BR 30px 옵션</div>
+    <div class="basic border-test12">12. solid shadow</div>
+    <div class="basic border-test13">13. composite1 </div>
+    <div class="basic border-test14">14. composite2 </div>
+    
+</body>
+</html>

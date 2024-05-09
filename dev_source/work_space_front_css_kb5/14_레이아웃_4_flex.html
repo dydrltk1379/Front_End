@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 - flex</title>
+</head>
+<body>
+    <h1>레이아웃 - flex</h1>
+    <hr><br>
+
+    <h3>0. display - flex 속성 (flex=유연하다. 알아서 한다는 느낌)</h3>
+    <div> - 참고 자료 : https://studiomeal.com/archives/197</div>
+    <div> - css3(2014년)에서 추가된 속성으로 1차원 영역으로 수평과 수직영역을 분리하는 속성</div>
+    <div> - 고전 layout은 고정 크기로 설계 하였지만, 모바일 등 유연한 반응형 레이아웃을 설계하기 위해 추가된 속성</div>
+    <div> - container(외부 레이아웃)에 맞춰 알아서 크기를 변경하도록 설계가 가능하다.  </div>
+    <div> - ex) 6열 -> 가로 크기를 작게 변경 -> 3열 x 2단 </div>
+
+    <h3>flex container 주요 속성</h3>
+    <ul>
+        <li>flex-direction : 컨테이너가 Flex 항목을 쌓을 방향을 정의하는 속성 </li>
+        <li>flex-wrap : 플렉스 항목의 가로가 래핑되어야 하는지 여부를 지정 </li>
+        <li>flex-flow : flex-flow 모두 설정하기 위한 약식 속성  </li>
+        <li>justify-content : Flex 항목을 가로로 정렬하는 데 사용 </li>
+        <li>align-items :  Flex 항목을 세로로 정렬하는 데 사용 </li>
+        <li>align-self :  아이템의 교차축 정렬 정하는 속성 </li>
+        <li>align-content : 세로 기준으로 item의 배치와 정렬을 결정하는 속성 </li>
+    </ul>
+    <hr><br>
+
+    <h3>1. flex-direction 주요 속성 활용</h3>
+    <li> 컨테이너가 Flex 항목을 쌓을 방향을 정의하는 속성 </li>
+    <ul>
+        <li>row : 왼쪽에서 오른쪽으로 </li>
+        <li>row-reverse : 오른쪽에서 왼쪽으로 </li>
+        <li>column : 위에서 아래로</li>
+        <li>column-reverse : 아래에서 위로 </li>
+    </ul>
+
+    <style>
+        .container{
+            width: 800px;
+            background-color: white;
+            border: 1px solid black;
+            margin-bottom: 10px;
+            /*플렉스 컨테이너 지정*/
+            display: flex;
+        }
+        .box {
+            padding: 5px 40px;
+            margin: 5px;
+            width: 70px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+        }
+
+        /*왼쪽에서 오른쪽으로 */
+        #opt1 {
+            flex-direction:row;
+        }
+
+        /*오른쪽에서 왼쪽으로 */
+        #opt2 {
+            flex-direction:row-reverse;
+        }
+
+        /* 위에서 아래로 */
+        #opt3 {
+            flex-direction:column;
+        }
+
+        /* 위에서 아래로 */
+        #opt4 {
+            flex-direction:column-reverse;
+        }
+    </style>
+    
+    <div class="container" id="opt1">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+    <div class="container" id="opt2">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+    <div class="container" id="opt3">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+
+    <div class="container" id="opt4">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+    </div>
+    <hr><br>
+
+
+    <h3>2. flex-wrap 주요 속성 활용</h3>
+    <li> - 플렉스 항목의 가로가 래핑되어야 하는지 여부를 지정 </li>
+    <ul>
+        <li>nowrap : 한 줄에 표시 </li>
+        <li>wrap : 여러 줄에 표시 </li>
+        <li>wrap-reverse : 시작점과 끝점 바꿔 여러 줄에 표시</li>
+        <li>row wrap : 왼쪽에서 오른쪽, 여러 줄 </li>
+        <li>row nowrap : 왼쪽에서 오른쪽, 한 줄 </li>
+    </ul>
+
+    <style>
+        .container {
+            /* 플렉스 컨테이너 지정 */
+            display: flex;
+            background-color: #eee;
+            border: 1px solid #222;
+            margin-bottom: 30px;
+        }
+
+        .box {
+            padding: 5px 45px;
+            margin: 5px;
+            width: 50px;
+            background-color: #222;
+        }
+
+        /* 한줄에 표시 */
+        #opt5 {
+            flex-wrap: nowrap;
+        }
+        
+        /* 여러 줄에 표시 */
+        #opt6 {
+            flex-wrap: wrap;
+        }
+
+        /* 시작점과 끝점을 바꿔 여러줄에 표시 */
+        #opt7 {
+            flex-wrap: wrap-reverse;
+        }
+
+        /* 왼쪽에서 오른쪽, 여러 줄 */
+        #opt8 {
+            flex-flow: row wrap;
+        }
+
+        /* 왼쪽에서 오른쪽, 한줄로 */
+        #opt8 {
+            flex-flow: row nowrap;
+        }
+
+    </style>
+
+    <div class="container" id="opt5">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+    <div class="container" id="opt6">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+    <div class="container" id="opt7">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+    <div class="container" id="opt8">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+    <div class="container" id="opt9">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>3. flex-flow 주요 속성 활용</h3>
+    <li> - flex-flow 모두 설정하기 위한 약식 속성  </li>
+    <ul>
+        <li>row wrap : 왼쪽에서 오른쪽, 여러 줄 </li>
+        <li>row-reverse nowrap; : 오른쪽에서 왼쪽으로, 한 줄  </li>
+    </ul>
+    <style>
+        .container {
+            /* 플렉스 컨테이너 지정 */
+            display: flex;
+            background-color: #eee;
+            border: 1px solid #222;
+            margin-bottom: 30px;
+        }
+    
+        .box {
+            padding: 5px 45px;
+            margin: 5px;
+            width: 50px;
+            background-color: #222;
+        }
+    
+        /* 왼쪽에서 오른쪽, 여러 줄 */
+        #opt10 {
+            flex-flow: row wrap;
+        }
+        
+        /* 왼쪽에서 오른쪽, 한 줄 */
+        #opt11 {
+            flex-flow: row-reverse nowrap;
+        }
+    </style>
+    <div class="container" id="opt10">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+
+    <div class="container" id="opt11">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>4. justify-content 주요 속성 활용</h3>
+    <li> - Flex 항목을 가로로 정렬하는 데 사용 </li>
+    <ul>
+        <li>flex-start : 시작점 기준으로 정렬  </li>
+        <li>flex-end : 끝점 기준으로 정렬  </li>
+        <li>center : 주축 중앙 기준으로 정렬 </li>
+        <li>space-between : 시작점과 끝점 배치 후 중간 항목은 같은 간격으로 정렬  </li>
+        <li>space-around :  전체 항목을 같은 간격으로 정렬 </li>
+    </ul>
+    <style>
+        .container {
+            /* 플렉스 컨테이너 지정 */
+            display: flex;
+            background-color: #eee;
+            border: 1px solid #222;
+            margin-bottom: 30px;
+        }
+    
+        .box {
+            padding: 5px 45px;
+            margin: 5px;
+            width: 50px;
+            background-color: #222;
+        }
+    
+        /* 주축 시작점 기준으로 배치 */
+        #opt12 {
+            justify-content: flex-start;
+        }
+    
+        /* 주축 끝점 기준으로 배치 */
+        #opt13 {
+            justify-content: flex-end;
+        }
+    
+        /* 주축 중앙 기준으로 배치 */
+        #opt14 {
+            justify-content: center;
+        }
+    
+        /* 시작점과 끝점 배치 후 중간 항목은 같은 간격으로 배치 */
+        #opt15 {
+            justify-content: space-between;
+        }
+        
+        /* 전체 항목을 같은 간격으로 배치 */
+        #opt16 {
+            justify-content: space-around;
+        }
+    </style>
+
+    <div class="container" id="opt12">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+
+    <div class="container" id="opt13">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container" id="opt14">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container" id="opt15">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container" id="opt16">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>5. align-items 주요 속성 활용</h3>
+    <ul>
+        <li>flex-start : 주축 시작점 기준으로 배치 </li>
+        <li>flex-end : 주축 끝점 기준으로 배치 </li>
+        <li>center : 주축 중앙 기준으로 배치 </li>
+        <li>baseline : 시작점과 끝점 배치 후 중간 항목은 같은 간격으로 배치 </li>
+        <li>stretch : 전체 항목을 같은 간격으로 배치 </li>
+    </ul>
+    <style>
+        .container1 {
+            /* 플렉스 컨테이너 지정 */
+            display: flex;
+            width:100%;
+            height:100px;
+            background-color: #eee;
+            border: 1px solid #222;
+            margin-bottom: 30px;
+        }
+    
+        .box {
+            padding: 5px 45px;
+            margin: 5px;
+            width: 50px;
+            background-color: #222;
+        }
+    
+        /* 교차축 시작점 기준으로 배치 */
+        #opt17 {
+            align-items: flex-start;
+        }
+    
+        /* 교차축 끝점 기준으로 배치 */
+        #opt18 {
+            align-items: flex-end;
+        }
+    
+        /* 교차축 중앙 기준으로 배치 */
+        #opt19 {
+            align-items: center;
+        }
+    
+        /* 문자 기준선에 맞춰 배치 */
+        #opt20 {
+            align-items: baseline;
+        }
+        
+        /* 항목을 늘려 교차축에 가득차게 배치 */
+        #opt21 {
+            align-items: stretch;
+        }
+    </style>
+
+    <div class="container1" id="opt17">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+
+    <div class="container1" id="opt18">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container1" id="opt19">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container1" id="opt20">
+        <div class="box">1</div>
+        <div class="box" style="font-size:30px;">2</div>
+        <div class="box" style="font-size:20px;">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container1" id="opt21">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>6. align-self 주요 속성 활용</h3>
+    <li>- 아이템의 교차축 정렬 정하는 속성</li>
+    <ul>
+        <li>flex-start : 교차축의 시작점에 배치  </li>
+        <li>stretch : 교차축에 가득 차게 늘림 </li>
+    </ul>
+    <style>
+        .container2 {
+            width:450px;
+            height:150px;
+            display:flex;         /* 플렉스 컨테이너 지정 */
+            align-items: center;  /* 교차축의 중앙에 배치 */
+            background-color: #eee;
+            border: 1px solid #222;
+            margin-bottom: 30px;
+        }
+    
+        .box {
+            padding: 5px 45px;
+            margin: 5px;
+            width: 50px;
+            background-color: #222;
+        }
+        #opt22 {
+            align-self: flex-start;  /* 교차축의 시작점에 배치 */
+        }
+        #opt23 {
+            align-self:stretch;   /* 교차축에 가득 차게 늘림 */
+        }
+    </style>
+    <div class="container2">
+        <div class="box" id="opt22">1</div>
+        <div class="box">2</div>
+        <div class="box" id="opt23">3</div>
+        <div class="box">4</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>7. align-content 주요 속성 활용</h3>
+    <li>세로 기준으로 item의 배치와 정렬을 결정하는 속성</li>
+    <ul>
+        <li>flex-start : 주축 시작점 기준으로 배치 </li>
+        <li>flex-end : 주축 끝점 기준으로 배치 </li>
+        <li>center : 주축 중앙 기준으로 배치 </li>
+        <li>space-between : 시작점과 끝점 배치 후 중간 항목은 같은 간격으로 배치 </li>
+        <li>space-around : 전체 항목을 같은 간격으로 배치 </li>
+        <li>stretch : 항목을 늘려 교차축에 가득 차게 배치 </li>
+    </ul>
+    <style>
+        .container3 {
+            float:left;
+            width:200px;
+            height:300px;
+            display:flex;          /* 플렉스 컨테이너 지정 */
+            flex-flow: row wrap;   /* 왼쪽에서 오른쪽, 여러 줄 표시 */
+            background-color: #eee;
+            border: 1px solid #222;
+            margin-bottom: 30px;
+            margin-left: 10PX;
+        }
+    
+        .box {
+            padding: 5px 45px;
+            margin: 5px;
+            width: 80px;
+            background-color: #222;
+        }
+    
+        #opt24 {
+            align-content: flex-start;
+            /* 교차축 시작점 기준 */
+        }
+    
+        #opt25 {
+            align-content: flex-end;
+            /* 교차축 끝점 기준 */
+        }
+    
+        #opt26 {
+            align-content: center;
+            /* 교차축 중앙 기준 */
+        }
+    
+        #opt27 {
+            align-content: space-between;
+            /* 시작점과 끝점 배치 후 중간 항목은 같은 간격으로 배치 */
+        }
+    
+        #opt28 {
+            align-content: space-around;
+            /* 전체 항목을 같은 간격으로 배치 */
+        }
+    
+        #opt29 {
+            align-content: stretch;
+            /* 항목을 늘려 교차축에 가득 차게 배치 */
+        }
+    </style>
+    <div class="container3" id="opt24">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container3" id="opt25">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container3" id="opt26">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container3" id="opt27">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container3" id="opt28">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div class="container3" id="opt29">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <hr><br>
+
+
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+</body>
+</html>

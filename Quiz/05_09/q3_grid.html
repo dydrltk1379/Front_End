@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q3_grid</title>
+    <style>
+        #wrapper{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: minmax(100px, auto);
+            grid-gap: 20px 30px;
+        }
+        #item{
+            border: 1px solid black;
+            padding: 15px;
+        }
+        .item1{
+            grid-row: 1/4;
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+        .item2{
+            grid-row: 1/4;
+            grid-column-start: 3;
+        }
+        .item3{
+            grid-row: 2/4;
+            grid-column-start: 1;
+        }
+        .item4{
+            grid-row: 2/4;
+            grid-column-start: 2;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="item1" id="item">오늘의 할인 메뉴는?</div>
+        <div class="item2" id="item"><img src="img/burger.PNG" alt=""></div>
+        <div class="item3" id="item">3</div>
+        <div class="item4" id="item">4</div>
+    </div>
+</body>
+</html>

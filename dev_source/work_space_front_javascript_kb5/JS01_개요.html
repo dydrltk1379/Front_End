@@ -1,0 +1,105 @@
+<!-- <script>
+    document.write('Hello Javascript Wolrd!!');
+</script> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Basic</title>
+    <!-- <script>
+        document.write('Hello Javascript Wolrd!!');
+    </script> -->
+</head>
+<body>
+    <h1>자바 스크립트(Javascript)의 개요</h1>
+    <div> - 'script' 특성상 빠르게 코드를 작성할수 있어 문법이 굉장히 관대하여 쉬우면서도 '매우 어렵다.'<div>
+    <div> - 웹 브라우저에서 HTML문서(DOM)에 대한 동적 로직 처리가 가능한 인터프리터 방식의 언어</div>
+    <div> - 객체지향 문법을 지원하고, 실질적으로는 절차지향으로도 프로그래밍이 가능한 언어</div>
+    <div> - 실제 동작하는 방식은 브라우저에 존재하는 웹 엔진(Chrome V8 engine)을 통해 파싱 및 실행 가능</div>
+    <div> - V8을 기반으로 한 Node.js에서도 실행 가능하다. -> 결국은 브라우저와 같은 방식 </div>
+    <br>
+
+    <h3>자바 스크립트의 선언방법</h3>
+    <div> - HTML 파일 내에 script 태그를 활용하여 Javascript 영역을 생성함</div>
+    <div> - type="text/javascript"를 포함 해야 하지만 default가 js라 생략 가능</div>
+    <br>
+
+    <!-- HTML영역에서 js 사용 방법 -->
+    <!-- <script> -->
+    <script type="text/javascript">
+        // <h3>태그 가능?</h3> // 이곳에 태그나 css 작성하면 안된다!
+        document.write('자바 스크립트 영역<br>');
+    </script>
+    <hr><br>
+    
+    <h3>자바스크립트 코드의 위치</h3>
+    <div> - JS코드의 위치는 html 어디서든 있을수 있고, 상황에 따라 실제 배치 위치가 달라질수 밖에 없다.</div>
+    <div> - 단순 import를 위해서는 head에 선언하지만, 컴포넌트 요소의 조작을 위해서 하단에도 배치한다.</div>
+    <hr><br>
+    
+    <h2>자바스크립트 작성 유형</h2>
+    <hr>
+
+    <h3>1. internal(내부) 방식</h3>
+    <div> - 일반적으로 html 내부에 작성하는 방식</div>
+    <script type="text/javascript">
+        document.write('이것이 Internal 방식 입니다.');
+    </script>
+    <hr><br>
+
+    <h3>2. inline 방식</h3>
+    <div> - html 태그의 특정 속성(on~~~) 중 이벤트 핸들러 영역에 js를 직접 작성하는 방법</div>
+
+    <h3>예시1 : 인라인 방식으로 HTML 속성 내부에 짧게 작성하는 방법</h3>
+    <div>-> 아주 짧게 쓰는 것을 권장하고 주로 함수 호출을 통해 문자을 늘려서 활용</div>
+    <button onclick="javascript:alert('인라인 방식1');">버튼</button>
+    <button onclick="alert('인라인 방식2');">버튼</button>
+    <hr>
+
+    <h3>예시2 : 미리 선언한 함수를 통해 호출하는 방법 ★★★★★</h3>
+    <!-- 아래 예시처럼 onclick라인에서 길게 사용하는 것은 권장하지 않는다. -->
+    <!-- <button onclick="var value = 3; value  += 3; alert(value);">버튼3</button> -->
+    <!-- 여기서의 this는 button 태그 자신이 된다. -->
+    <button onclick="test(this);">버튼3</button>
+    <script>
+        function test(element){
+            alert('test로 호출된 인라인 방식의 함수입니다. ' + element.innerHTML);
+            element.innerHTML = '버튼4';
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. External(외부)에서 호출하는 방법 ★★★★★</h3>
+    <div> - 자바스크립트 코드를 외부에서 작성하여 로드하는 방식으로 가장 정석적!</div>
+    <div> - 단, js 코드 특성상 외부에서만 로드하는 것은 불가능하여 섞어서 사용한다.</div>
+    <div> - 파일 확장자는 주로 .js로 끝남 단, .js가 아니어도 로드는 가능하다.</div>
+
+    <h3>사용법</h3>
+    <script src="JS01_JSexternal.js">
+        // document.write('외부에서 불러온 파일 입니다.');
+
+        // function externalTest(){
+        //     alert('외부에서 불러온 externalTest 입니다.');
+        // }
+    </script>
+    <br>
+    <button onclick="externalTest();">외부 함수 호출</button>
+    <hr><br>
+
+    
+    <h3>자바스크립트를 지원하지 않는 경우</h3>
+    <p> noscript를 통해 표현</p>
+    <noscript>
+        해당 브라우저는 스크립트를 지원하지 않습니다!
+    </noscript>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
+
+<!-- <script>
+    document.write('Hello Javascript Wolrd!!');
+</script> -->

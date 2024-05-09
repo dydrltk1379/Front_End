@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3차원 변형</title>
+</head>
+
+<body>
+
+    <h1>3차원 변형</h1>
+
+    <style>
+        img {
+            width: 250px;
+            border: solid black 1px;
+        }
+        
+        .trans1:hover {
+            transform: perspective(300px) translate3d(100px, 50px, 100px);
+            transition: 2s all;
+        }
+        
+        .trans2:hover {
+            transform: perspective(300px) translateZ(30px);
+            transition: 2s all;
+        }
+        
+        .trans3:hover {
+            transform: perspective(300px) rotateX(30deg);
+        }
+        
+        .trans4:hover {
+            transform: perspective(300px) rotateY(45deg);
+        }
+        
+        .trans5:hover {
+            transform: perspective(300px) rotateZ(-45deg);
+        }
+        
+        .trans6:hover {
+            transform: perspective(300px) rotate3d(2.5, 1.5, -1.5, 30deg);
+            transition: 2s all;
+        }
+        
+        .trans7:hover {
+            transform: rotateZ(25deg);
+            transform-origin: left top;
+            transition: 2s all;
+        }
+    </style>
+
+    <h3>1. translate3d</h3>
+    <img class="trans1" src="resources/image/flower1.PNG">
+    <hr><br>
+    <h3>2. translateZ</h3>
+    <img class="trans2" src="resources/image/flower2.PNG">
+    <hr><br>
+    <h3>3. rotateX</h3>
+    <img class="trans3" src="resources/image/flower3.PNG">
+    <hr><br>
+    <h3>4. rotateY</h3>
+    <img class="trans4" src="resources/image/flower4.PNG">
+    <hr><br>
+    <h3>5. rotateZ</h3>
+    <img class="trans5" src="resources/image/flower5.PNG">
+    <hr><br>
+    <h3>6. rotate3d</h3>
+    <img class="trans6" src="resources/image/flower1.PNG">
+    <hr><br>
+    <h3>7. rotateZ</h3>
+    <img class="trans7" src="resources/image/flower2.PNG">
+    <hr><br>
+
+</body>
+
+</html>

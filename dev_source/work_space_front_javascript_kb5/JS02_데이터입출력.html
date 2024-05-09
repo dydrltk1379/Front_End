@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 입출력 방법</title>
+    <style>
+        .divclass {
+            width: 500px;
+            height: 200px;
+            background-color: blanchedalmond;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>데이터 입출력 방법</h1>
+    <div> - JS를 통해 HTML이나 콘솔로 데이터를 입출력하는 방법</div>
+    <hr><br>
+
+    <h2>데이터 출력법</h2>
+    <hr>
+
+    <h3>1. document.write() 활용</h3>
+    <div> - 브라우저(html문서)로 출력하는 가장 기본적인 방법</div>
+    <script>
+        document.write('<h3>기본적인 출력문 태그도 출력 가능!</h3>');
+    </script>
+    <br>
+
+    <h3>2.window.alert('메세지')</h3>
+    <div> - 브라우저 메세지창으로 출력하는 방법, window 생략 가능!</div>
+    <div> - 사용성 측면에서 좋지않아 주로 학습이나 디버깅 용로도 활용된다.</div>
+    <script>
+        // window.alert('alert 출력 방법입니다.');
+        // alert('window 생략 가능, alert 출력 방법입니다.');
+        </script>
+    <hr><br>
+    
+    <h3>3. innerHTML, innerText ★★★★★</h3>
+    <div> - html로 작성된 태그를 찾아 객체 내부에 html이나 text를 출력하는 방법 </div>
+    <div> - 일반적으로 id를 찾아 태그를 조작하는 것이 표준적이다. </div>
+    <br>
+    
+    <div id="div1" class="divclass">
+        기본 문장
+    </div>
+    
+    <button onclick="btnClick();">버튼</button>
+    <script>
+        // innerText 사용시에는 tag 문자열이 그대로 노출된다.
+        // document.getElementById('div1').innerText = '<h3>script를 통해 div text 추가하는 방법</h3>';
+        // innerHTML 사용시에는 태그가 정상적으로 생성된다.
+        document.getElementById('div1').innerHTML = '<h3>script를 통해 div text 추가하는 방법</h3>';
+
+        var count = 0;
+        function btnClick(){
+            count++;
+            document.getElementById('div1').innerHTML += '버튼이 ' + count + '번 클릭되었습니다. <br>';
+        }
+    </script>
+    <hr><br>
+
+    <h3>4. console.log()</h3>
+    <div> - 개발자 도구 화면 콘솔로 출력하는 방법</div>
+    <div> - 일반 사용자에게는 보이지 않지만, 개발이 끝나면 정리하는 것이 바람직!</div>
+    <div> - 특징은 객체의 모든 상태를 상세히 볼수 있어 디버깅이 유용하다!</div>
+    <script>
+        console.log('콘솔로 출력하는 되는 문장입니다. 디버깅 용도로 활용가능');        
+        var element = document.getElementById('div1'); // element 객체 = 태그가 dom(메모리)에 올라온 상태      
+        console.log(element); // 콘솔에서 element 상태 보는 방법
+        console.log(document); 
+        console.log(window); 
+        console.error('에러가 보이는 방법, 빨간색'); 
+        console.warn('워닝이 보이는 방법, 노란색'); 
+    </script>
+    <hr><br>
+
+    <h2>데이터 입력법</h2>
+    <hr>
+
+    <h3>1. HTML 태그에서 데이터(value)를 추출하는 방법 ★★★★★</h3>
+    <div> - html 태그중 input이 가능한 태그에서 사용자 입력값을 가져오는 방법</div>
+    <div> - 주로 서버로 전송하기 이전에 사용자 입력값을 체크하는 용도로 많이 활용</div>
+    입력창 : <input type="text" id="input1"> <button onclick="btnClick2();">전송</button>
+    <br>
+    <form action="#" method="get" name="myForm">
+        form : <input type="text" name="testText" id="testText" placeholder="입력해주세요.">
+        <button onclick="btnClick3()">전송</button>
+    </form>
+    <br>
+    <script>
+        function btnClick2(){
+            var inputValue = document.getElementById('input1');
+            alert(inputValue.value);
+        }
+
+        function btnClick3(){
+            // id로도 가져올수 있지만, form은 name으로 쉽게 접근이 가능하다.
+            // var inputValue = document.getElementById('testText');
+            var inputStr = myForm.testText.value;
+            if(inputStr.length < 4){
+                alert('입력값이 너무 짧습니다.');
+                return false;
+            } else {
+                alert('입력값 : ' + inputStr);
+                return true;
+            }
+        }
+    </script>
+    <hr><br>
+    
+    <h3>2. window.confirm()</h3>
+    <div> - 메세지 창을 통해 true/false으로 확인하는 방법, 사용성 이슈로 잘 쓰이지 않는다.</div>
+    <button onclick="btnClick4()">버튼</button>
+    <script>
+        function btnClick4(){
+            var result = confirm('사용자 확인이 필요합니다.');
+            alert('입력값 : ' + result);
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. window.prompt()</h3>
+    <div> - 사용자에게 텍스트를 입력받는 방법, 사용성 이슈로 잘 쓰이지 않는다. 2</div>
+    <button onclick="btnClick5()">버튼</button>
+    <script>
+        function btnClick5(){
+            var result = prompt('원하는 데이터를 입력해주세요.');
+            alert('입력값 : ' + result);
+        }
+    </script>
+    <hr><br>
+
+    <br><br><br><br><br><br><br><br>    
+    <br><br><br><br><br><br><br><br>
+</body>
+</html>

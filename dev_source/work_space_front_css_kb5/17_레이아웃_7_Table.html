@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table 레이아웃</title>
+</head>
+
+<body>
+    <style>
+        .table1 {
+            width: 300px;
+            height: 300px;
+            /* 테두리를 설정하는 방법 */
+            border: 1px solid black;
+            /*테두리를 하나로 합치는 방법 border="1px" 이 존재할때 적용됨*/
+            /* border-collapse: collapse; */
+            /* 테두리를 두개로 분리하는 방법 */
+            border-collapse: separate;
+            /* 셀간의 간격 조정 */
+            border-spacing: 5px 5px;
+            /* 빈칸 표시하지 않기 */
+            empty-cells: hide;
+            /* 셀크기 고정 */
+            /* table-layout: fixed; */
+            /* 셀 내용 가두기 */
+            /* word-break: break-all; */
+        }
+        
+        .table1 td {
+            height: 50px;
+            /* 테이블 셀의 굵기 */
+            border: 1px solid blue;
+            /* 테이블 셀의 배경 색 */
+            background-color: honeydew;
+            /* 테이블 셀의 가로정렬 */
+            text-align: center;
+            /* 테이블 셀의 세로정렬 */
+            vertical-align: middle;
+        }
+    </style>
+
+    <table class="table1">
+        <caption>성적표</caption>
+        <tr>
+            <th>구분</th>
+            <th>점수</th>
+        </tr>
+        <tr>
+            <td>국어</td>
+            <td>70</td>
+        </tr>
+        <tr>
+            <td>수학</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>영어</td>
+            <td>90</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                수학 점수가 높고 국어 점수가 낮습니다.
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <div style="height:100px; overflow:scroll">
+                    비고 : 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div style="height:20px; overflow:hidden; text-overflow:ellipsis;">
+                    비고 : 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다. 전형적인 이과 스타일입니다.
+                </div>
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>

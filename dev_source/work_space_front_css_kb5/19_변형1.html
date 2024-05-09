@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform (변형)</title>
+</head>
+<body>
+    <h1>2차원 변형 Style</h1>
+    <hr><br>
+    <style>
+        img{
+            width:250px;
+            border: 1px solid black;
+        }
+
+        .trans1:hover{
+            /* html5 표준 스타일*/
+            transform: translateX(100px);
+
+            /* 크롬 계열 */
+            -webkit-transform: translateX(100px);
+
+            /*ms 익스플로러 계열 */
+            -ms-transform: translateX(100px);
+        }
+
+        .trans2:hover{
+            transform: translateY(100px);
+        }
+
+        .trans3:hover{
+            transform: translate(100px, -100px);
+        }
+
+        .trans4:hover{
+            transform: scaleX(2);
+        }
+
+        .trans5:hover{
+            transform: scaleY(0.5);
+        }
+
+        .trans6:hover{
+            transform: scale(3, 3);
+        }
+
+        .trans7:hover{
+            transform: rotate(-45deg);
+            transition: all 1s;
+        }
+
+        .trans7:active{
+            transform: rotate(45deg);
+            transition: all 1s;
+        }
+
+        .trans8:hover{
+            transform: skewX(-45deg);
+        }
+
+        .trans9:hover{
+            transform: skewY(-45deg);
+        }
+
+        .trans10:hover{
+            transform: skew(30deg,30deg);
+            transition: all 1s;
+        }
+    </style>
+    
+    <h3>1. translateX</h3>
+    <img class="trans1" src="resources/image/flower1.PNG">
+    <h3>2. translateY</h3>
+    <img class="trans2" src="resources/image/flower2.PNG">
+    <h3>3. translate</h3>
+    <img class="trans3" src="resources/image/flower3.PNG">
+    <h3>4. scaleX</h3>
+    <img class="trans4" src="resources/image/flower4.PNG">
+    <h3>5. scaleY</h3>
+    <img class="trans5" src="resources/image/flower5.PNG">
+    <h3>6. scale</h3>
+    <img class="trans6" src="resources/image/flower1.PNG">
+    <h3>7. rotate</h3>
+    <img class="trans7" src="resources/image/flower2.PNG">
+    <h3>8. skewX</h3>
+    <img class="trans8" src="resources/image/flower3.PNG">
+    <h3>9. skewY</h3>
+    <img class="trans9" src="resources/image/flower4.PNG">
+    <h3>10. skew</h3>
+    <img class="trans10" src="resources/image/flower5.PNG">
+
+</body>
+</html>

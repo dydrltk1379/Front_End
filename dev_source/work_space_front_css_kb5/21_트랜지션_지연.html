@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <style>
+        img,
+        div {
+            width: 200px;
+            height: 150px;
+            background-color: crimson;
+            border: 1px solid black;
+        }
+        
+        .trans1:hover {
+            transform: rotate(45deg);
+            /* transition-duration: 2s; */
+            transition: 2s all;
+        }
+        
+        .trans1:active {
+            transform: rotate(-45deg);
+            /* transition-duration: 2s; */
+            transition: 2s all;
+        }
+        
+        .trans2:hover {
+            width: 300px;
+            height: 300px;
+            transform: rotateZ(200deg);
+            background-color: chartreuse;
+            transition-property: background-color, transform, height, width;
+            transition-duration: 5s, 10s, 1s, 100ms;
+        }
+        
+        .trans2:active {
+            width: 100px;
+            height: 100px;
+            transform: rotateZ(-200deg);
+            background-color: rgb(0, 255, 234);
+            transition: all 2s;
+        }
+        
+        .trans3:hover {
+            transform: rotate(45deg);
+            transition-duration: 3s;
+            transition-delay: 2s;
+        }
+    </style>
+
+    <h3>1. transition-duration</h3>
+    <img class="trans1" src="resources/image/flower3.PNG">
+    <hr><br>
+    <h3>2. transition-property - rotateZ</h3>
+    <div class="trans2"></div>
+    <hr><br>
+    <h3>3. transition-duration & delay</h3>
+    <img class="trans3" src="resources/image/flower2.PNG">
+    <hr><br>
+
+</body>
+
+</html>

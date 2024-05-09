@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div,
+        section,
+        header,
+        aside,
+        footer {
+            padding: 10px;
+            margin: auto;
+        }
+
+        .container {
+            background-color: aliceblue;
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: lightgray;
+            height: 100px;
+        }
+
+        .header_text {
+            margin-top: -5px;
+            color: white;
+            font-size: 25pt;
+        }
+
+        .menu {
+            margin-top: -5px;
+            float: right;
+        }
+
+        .menu li {
+            list-style: none;
+            float: left;
+        }
+
+        .menu li>a {
+            text-decoration: none;
+            color: black;
+            padding: 0 10px;
+            font-weight: bold;
+            font-size: 14pt;
+        }
+
+        .menu li>a:hover {
+            color: white;
+            transition: all 300ms;
+        }
+
+        .main {
+            height: 500px;
+            width: 70%;
+            display: inline-block;
+            vertical-align: top;
+            background-color: beige;
+        }
+
+        .main h3 {
+            margin-top: 10px;
+            margin-bottom: -3px;
+        }
+
+        aside {
+            height: 500px;
+            width: 25%;
+            display: inline-block;
+            background-color: paleturquoise;
+            vertical-align: top;
+        }
+
+        footer {
+            background-color: khaki;
+            height: 100px;
+            clear: both;
+            text-align: center;
+            padding-bottom: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h2 class="header_text">Header 영역</h2>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">Home </a> </li>
+                    <li><a href="#">HTML5 </a> </li>
+                    <li><a href="#">CSS3 </a> </li>
+                    <li><a href="#">Javascript </a> </li>
+                    <li><a href="#">JQuery </a> </li>
+                    <li><a href="#">Java </a> </li>
+                    <li><a href="#">게시판 </a> </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="main">
+            <article>
+                <h3>Article 1</h3>
+                <div>항해사 자격을 얻기 위해 먼 바다에 나간 일이 있었다. 부산의 국립기관에서 몇 달간의 연수를 받고, 다시 실습선에 올라 근해를 항해한 뒤의 일이었다. 자동차운반선을 타고 나간 그
+                    먼 바닷길에서 나는 말라카와 수에즈, 지중해와 지브롤터, 도버 등을 지났고, 때로는 아프리카 남단을 돌아 비스케이만을 거쳐 북해에 이르렀다. 오십 개가 훌쩍 넘는 항구에 들러 각
+                    나라의 고유한 풍경과 문화를 만나기도 했다.</div>
+            </article>
+            <article>
+                <h3>Article 2</h3>
+                <div>항해사 자격을 얻기 위해 먼 바다에 나간 일이 있었다. 부산의 국립기관에서 몇 달간의 연수를 받고, 다시 실습선에 올라 근해를 항해한 뒤의 일이었다. 자동차운반선을 타고 나간 그
+                    먼 바닷길에서 나는 말라카와 수에즈, 지중해와 지브롤터, 도버 등을 지났고, 때로는 아프리카 남단을 돌아 비스케이만을 거쳐 북해에 이르렀다. 오십 개가 훌쩍 넘는 항구에 들러 각
+                    나라의 고유한 풍경과 문화를 만나기도 했다.</div>
+            </article>
+            <article>
+                <h3>Article 3</h3>
+                <div>항해사 자격을 얻기 위해 먼 바다에 나간 일이 있었다. 부산의 국립기관에서 몇 달간의 연수를 받고, 다시 실습선에 올라 근해를 항해한 뒤의 일이었다. 자동차운반선을 타고 나간 그
+                    먼 바닷길에서 나는 말라카와 수에즈, 지중해와 지브롤터, 도버 등을 지났고, 때로는 아프리카 남단을 돌아 비스케이만을 거쳐 북해에 이르렀다. 오십 개가 훌쩍 넘는 항구에 들러 각
+                    나라의 고유한 풍경과 문화를 만나기도 했다.</div>
+            </article>
+        </section>
+
+        <aside>
+            <h3>Aside</h3>
+            <p>오늘 날씨 맑음</p>
+        </aside>
+
+        <footer>
+            <h3>Footer</h3>
+            <p>ⓒCopyrigt 2023, <strong>Multicampus</strong> ☎ 02-1234-5679</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -2,50 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q3_product</title>
     <link rel="stylesheet" href="out.css">
 </head>
-<body>
-    <div class="container">
-        <nav>
-            <ul id="menu">
+<body style="background-image: url(img/flower.jpeg); background-size: contain;">
+    <div id="total">
+        <div id="menu">
+            <ul>
                 <li><a href="member.html">회원가입</a></li>
                 <li><a href="product.html">제품정보</a></li>
                 <li><a href="bbs.html">게시판</a></li>
                 <li><a href="basket.html">장바구니</a></li>
             </ul>
-        </nav>
+        </div>
+    
+        <div id="basket">
+            장 바구니 : 2개
+        </div>
+        <br>
+    
+        <div id="center">
+            <table align="center">
+                <tr>
+                    <td id="col1">제품번호</td>
+                    <td id="col2">100</td>
+                </tr>
+                <tr>
+                    <td id="col1">제품이름</td>
+                    <td id="col2"><a href="product?no=100">shoes1</a></td>
+                </tr>
+                <tr>
+                    <td id="col1">제품설명</td>
+                    <td id="col2">fun shoes1</td>
+                </tr>
+                <tr>
+                    <td id="col1">제품가격</td>
+                    <td id="col2">1000</td>
+                </tr>
+                <tr>
+                    <td id="col1">제품회사</td>
+                    <td id="col2">c100</td>
+                </tr>
+                <tr>
+                    <td id="col1">제품이미지</td>
+                    <td id="col2"><img src="img/product.jpeg" width="100px" height="100px"></td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <br>
-
-    <div>
-        <table class="shoes" align="center">
-            <tr>
-                <td id="col1">제품번호</td>
-                <td id="col2">100</td>
-            </tr>
-            <tr>
-                <td id="col1">제품이름</td>
-                <td id="col2"><a href="">shoes1</a></td>
-            </tr>
-            <tr>
-                <td id="col1">제품설명</td>
-                <td id="col2">fun shoes1</td>
-            </tr>
-            <tr>
-                <td id="col1">제품가격</td>
-                <td id="col2">1000</td>
-            </tr>
-            <tr>
-                <td id="col1">제품회사</td>
-                <td id="col2">c100</td>
-            </tr>
-            <tr>
-                <td id="col1">제품이미지</td>
-                <td id="col2"><img src="" alt=""></td>
-            </tr>
-        </table>
-    </div>
+    
 </body>
 </html>

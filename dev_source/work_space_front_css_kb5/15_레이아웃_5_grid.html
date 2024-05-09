@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>레이아웃 - grid</h1>
+    <hr><br>
+
+    <h3>0. display - grid 속성</h3>
+    <div> - 참고 자료 : https://studiomeal.com/archives/533</div>
+    <div> - css3(2014년)에서 추가된 속성으로 2차원 영역에서 가로 세로로 레이아웃을 정하는 스타일</div>
+    <div> - container(외부 레이아웃)에 맞춰 알아서 크기를 변경하도록 설계가 가능하다. </div>
+    <br>
+    
+    <h3>grid 주요 속성</h3>
+    <ul>
+        <li>grid-template-columns : 그리드 레이아웃의 열의 갯수를 정의하고 열의 너비를 정하는 속성 </li>
+        <li>grid-template-rows : 그리드 레이아웃의 세로의 갯수를 정의하고 세로의 너비를 정하는 속성 </li>
+    </ul>
+    <hr><br>
+
+
+    <h3>1. 기본적인 배치 방법</h3>
+    <li> - grid-template-columns 사용시 열의 갯수를 표현하고, grid-template-rows로 높이를 정하는 방법 </li>
+    <br>
+
+    <style>
+        #wrapper1{
+            display:grid;
+            /* 3개 열, 200px 200px 200px로 배치하는 명령*/
+            grid-template-columns: 200px 200px 200px;
+            /* 행의 높이는 100px, 생략시 auto*/
+            grid-template-rows:100px;
+        }
+        #wrapper2{
+            display:grid;
+            /* 4개의 열을 적당한 크기로 배치하라 = just 하게 맞춰진다.*/
+            grid-template-columns: auto  auto  auto  auto ;
+            grid-template-rows: auto;
+        }
+
+        .items {
+            padding: 10px;
+            background-color: #eee;
+        }
+
+        .items:nth-child(odd) {
+            background-color: #bbb;
+        }
+    </style>
+
+    
+    <div id="wrapper1">
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, reprehenderit.Lorem ipsumdolor, sit amet consectetur adipisicing elit. </div>
+        <div class="items">Lorem ipsum dolor, sit amet consectetur adipisicing elit.Lorem ipsum dolor, sit ametconsectetur adipisicing elit</div>
+        <div class="items">Lorem ipsum dolor sit amet.Lorem ipsum dolor, sit amet consectetur adipisicing elit</div>
+        <div class="items">Lorem ipsum dolor sit.Lorem ipsum dolor, sit amet consectetur adipisicing elit</div>
+        <div class="items">Lorem, ipsum dolor.</div>
+    </div>
+    <br>
+
+    <div id="wrapper2">
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, reprehenderit.Lorem ipsumdolor, sit amet consectetur adipisicing elit. </div>
+        <div class="items">Lorem ipsum dolor, sit amet consectetur adipisicing elit.Lorem ipsum dolor, sit amet consectetur adipisicing elit</div>
+        <div class="items">Lorem ipsum dolor sit amet.Lorem ipsum dolor, sit amet consectetur adipisicing elit</div>
+        <div class="items">Lorem ipsum dolor sit.Lorem ipsum dolor, sit amet consectetur adipisicing elit</div>
+        <div class="items">Lorem, ipsum dolor.</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>2. 함수 사용하기</h3>
+    <li> - repeat : 반복된 값을 넣는 함수, repeat(반복횟수, 반복할 인자) </li>
+    <div>- fr : 유연한 크기를 갖는 단위, 남는 자유 공간을 fr로 정해진 단위로 쪼개서 배치</div>
+    <div>- ex) 100px 2fr 1fr : 100px를 할당하고 남는 공간중 2/3을 2fr로, 1/3을 1fr로 쪼개서 배치</div>
+    <br>
+    
+    <style>
+        #wrapper3{
+            width: 600px;
+            display: grid;
+            /* 그리드 컨테이너 지정 */
+            grid-template-columns: repeat(3, 1fr);
+            /* grid-template-columns: 1fr 1fr 1fr;  repeat(3, 1fr)를 해석  */
+            /* 너비가 같은 컬럼 3개 */
+            grid-template-rows: minmax(100px, auto);
+            /*줄 높이는 최소 100px, max는 auto*/
+        }
+
+        .items {
+            padding: 10px;
+            background-color: #eee;
+        }
+
+        .items:nth-child(odd) {
+            background-color: #bbb;
+        }
+    </style>
+
+    <div id="wrapper3">
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, reprehenderit.Lorem ipsum
+            dolor, sit amet consectetur adipisicing elit. </div>
+        <div class="items">Lorem ipsum dolor, sit amet consectetur adipisicing elit.Lorem ipsum dolor, sit amet
+            consectetur adipisicing elit</div>
+        <div class="items">Lorem ipsum dolor sit amet.Lorem ipsum dolor, sit amet consectetur adipisicing elit</div>
+        <div class="items">Lorem ipsum dolor sit.Lorem ipsum dolor, sit amet consectetur adipisicing elit</div>
+        <div class="items">Lorem, ipsum dolor.</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>3. auto-fit,auto-fill</h3>
+    <style>
+        #wrapper4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* 화면을 꽉 채울만큼 칼럼 너비를 늘려서 표시 */
+            margin-bottom: 20px;
+        }
+
+        #wrapper5 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            /* 칼럼 최소 너비만큼 채워서 표시 */
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .items {
+            padding: 15px;
+            background-color: #eee;
+        }
+
+        .items:nth-child(odd) {
+            background-color: #bbb;
+        }
+    </style>
+
+    <h1>auto-fit일 때</h1>
+    <div id="wrapper4">
+        <div class="items">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nesciunt magnivoluptatem.
+        </div>
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <div class="items">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nulla corrupti porro!</div>
+        <div class="items">Lorem ipsum dolor sit.</div>
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, quos!</div>
+        <div class="items">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro odit quam sit.</div>
+    </div>
+
+    <h1>auto-fill일 때</h1>
+    <div id="wrapper5">
+        <div class="items">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nesciunt magnivoluptatem.
+        </div>
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <div class="items">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nulla corrupti porro!</div>
+        <div class="items">Lorem ipsum dolor sit.</div>
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, quos!</div>
+        <div class="items">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro odit quam sit.</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>4. gap : 간격 사용</h3>
+    <style>
+        #wrapper6 {
+            display: grid;
+            grid-template-columns: repeat(3, 200px);
+            /* 너비 200px인 칼럼 3개 */
+            grid-template-rows: minmax(100px, auto);
+            grid-gap: 20px 30px;
+            /* 칼럼 간격 30px, 줄 간격 20px  */
+            /* grid-column-gap:30px; */
+            /* grid-row-gap:20px; */
+        }
+
+        .items {
+            padding: 15px;
+            background-color: #eee;
+        }
+
+        .items:nth-child(odd) {
+            background-color: #bbb;
+        }
+    </style>
+
+    <div id="wrapper6">
+        <div class="items">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta nesciunt magnivoluptatem.</div>
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <div class="items">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius nulla corrupti porro!</div>
+        <div class="items">Lorem ipsum dolor sit.</div>
+        <div class="items">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, quos!</div>
+        <div class="items">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Porro odit quam sit.</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>5. grid-column, grid-row</h3>
+    <style>
+        #wrapper7{
+            width: 700px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 100px);
+        }
+
+        .item {
+            padding: 15px;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .item1 {
+            background-color: #3689ff;
+            grid-column: 1/4;
+        }
+
+        .item2 {
+            background-color: #00cf12;
+            grid-row: 2/4;
+            /* grid-column:1/2; */
+            grid-column-start: 1;
+        }
+
+        .item3 {
+            background-color: #ff9019;
+            grid-column: 2/4;
+            /* grid-row:2/3; */
+            grid-row-start: 2;
+        }
+
+        .item4 {
+            background-color: #ffd000;
+            grid-column-start: 3;
+            grid-row-start: 3;
+        }
+    </style>
+
+    <div id="wrapper7">
+        <div class="item item1">item1</div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+    </div>
+    <hr><br>
+
+    
+    <h3>5. grid-template-areas</h3>
+    <style>
+        #wrapper8{
+            width: 700px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 100px);
+            grid-template-areas:
+                "box1 box1 box1"
+                "box2 box3 box3"
+                "box2 .    box4";
+        }
+
+        .box {
+            padding: 15px;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .box1 {
+            background-color: #3689ff;
+            grid-area: box1;
+        }
+
+        .box2 {
+            background-color: #00cf12;
+            grid-area: box2;
+        }
+
+        .box3 {
+            background-color: #ff9019;
+            grid-area: box3;
+        }
+
+        .box4 {
+            background-color: #ffd000;
+            grid-area: box4;
+        }
+    </style>
+
+    <div id="wrapper8">
+        <div class="box box1">box1</div>
+        <div class="box box2">box2</div>
+        <div class="box box3">box3</div>
+        <div class="box box4">box4</div>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

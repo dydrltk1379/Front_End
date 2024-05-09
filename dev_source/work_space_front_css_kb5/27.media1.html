@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어 쿼리</title>
+    
+    <style>
+        body{
+            background-color:blue;
+            background-size: cover;
+        }
+
+        *{
+            color: white;
+        }
+
+        @media screen and (max-width:1200px) {
+            body{
+                background-color:green;
+            }
+        }
+        @media screen and (max-width:1000px) {
+            body{
+                background-color:tan;
+            }
+        }
+        @media screen and (max-width:600px) {
+            body{
+                background-color:black;
+            }
+        }
+
+    </style>
+
+    <script>
+        window.onload = function () {
+            document.getElementById('id1').innerText = '스크린 크기 : ' + window.innerWidth;
+        }
+        window.addEventListener("resize", function () {
+            document.getElementById('id1').innerText = '스크린 크기 : ' + window.innerWidth;
+        });
+    </script>
+</head>
+<body>
+    <div id='id1' style="font-size: 30pt;"></div>
+
+    <hr><br>
+    <h3>미디어 쿼리란?</h3>
+    <div>CSS2에 도입된 규칙으로 @media을 사용하면 다양한 미디어 유형에 대해 다양한 스타일 규칙을 정의가 가능한 문법</div>
+    <div>반응형 웹을 만들기 위한 필수 기술!</div>
+    <hr><br>
+
+    <h3>기본 형식</h3>
+    <div>@media [not|only] 미디어유형 and (조건1) and (조건2-생략가능) {CSS-Code;}</div>
+    <ul>
+        <li> only : 미디어 쿼리를 지원하지 않는 웹 브라우저를 무시하는 옵션</li>
+        <li> not : 다음에 지정하는 미디어 유형을 제외하는 방법 (ex : print)</li>
+        <li> and : 조건을 여러개를 추가할수 있음. 최소 한개만 필요</li>
+    </ul>
+    <br>
+
+    <h3>미디어 유형(참고)</h3>
+    <ul>
+        <li>all : 모든 미디어 유형에서 사용할 css 정의</li>
+        <li>print : 인쇄장치에서 사용할 css</li>
+        <li>screen : 컴퓨터 스크린에서 사용할 css, 태블릿, 스마트폰도 여기에 포함 ★일반적으로 이것을 사용</li>
+        <li>tv : 음성과 영상이 동시에 사용되는 tv</li>
+    </ul>
+
+</body>
+</html>
