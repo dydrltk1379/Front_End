@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제어문</title>
+</head>
+
+<body>
+    <h1>제어문</h1>
+    <hr><br>
+
+    <h3>1. 조건문 - if() - else if() - else, (c, java랑 일치)</h3>
+    <input type="text" id="inputValue" value="">
+    <button onclick="test1();">제출</button>
+    <script>
+        function test1(){
+            let value = document.getElementById('inputValue').value; // inputValue 값 가져오기
+
+            if(isNaN(value) == true){
+                alert('숫자가 아닙니다!');
+                return;
+            }
+
+            if(value > 0){
+                alert('양수 입니다.');
+            } else if(value == 0){
+                alert('0입니다.');
+            } else{
+                alert('음수 입니다.');
+            }
+        }
+    </script>
+    <hr><br>
+
+    <h3>2. 조건문 - swtich문</h3>
+    <input type="text" id="inputValue2" value="">
+    <button onclick="test2();">제출</button>
+    <script>
+        function test2(){
+            let value = document.getElementById('inputValue2').value;
+
+            switch(value){
+                case '1' : 
+                case '2' :
+                case '3' :
+                    alert('1 ~ 3입니다.');
+                    break;
+                case '10' :
+                    alert('10 입니다.');
+                    break;
+                default:
+                    alert('모르는 값입니다.');
+                    break;
+            }
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. 반복문 - while</h3>
+    <input type="text" id="inputValue5" placeholder="시작">
+    <input type="text" id="inputValue6" placeholder="종료">
+    <button onclick="test4();">제출</button>
+    <script>
+        function test4(){
+            // 기본 문법
+            let i = 0;
+            while(i < 10){
+                console.log(i++);
+            }
+            
+            let start = document.getElementById('inputValue5').value;
+            let end = document.getElementById('inputValue6').value;
+
+            // 시작과 끝값 sum구하기
+            let sum = 0;
+            i = Number(start);
+            while(i <= end){
+                sum += i;
+                i++;
+            }
+            alert('sum : ' + sum);
+        }
+    </script>
+    <hr><br>
+
+    <h3>4. 반복문 - for</h3>
+    <input type="text" id="inputValue3" placeholder="시작">
+    <input type="text" id="inputValue4" placeholder="종료">
+    <button onclick="test3();">제출</button>
+    <script>
+         function test3(){
+            // 기본 문법
+            for(let i = 0; i < 10; i++){
+                console.log(i);
+            }
+
+            let start = document.getElementById('inputValue3').value;
+            let end = document.getElementById('inputValue4').value;
+
+            // 시작, 끝 값 sum하기
+            let sum = 0;
+            for(let i = start; i <= end; i++){ // i가 문자열인데 돌아는 간다.(?)
+                sum += Number(i);
+            }
+            alert('sum : ' + sum);
+        }
+    </script>
+    <hr><br>
+
+    <h3>5. 반복문 - for..of (ES6) -> 배열을 쉽게 반복하는 문법</h3>
+    <input type="text" name="valueGroup" value="1"><br>
+    <input type="text" name="valueGroup" value="2"><br>
+    <input type="text" name="valueGroup" value="3"><br>
+    <input type="text" name="valueGroup" value="4"><br>
+    <input type="text" name="valueGroup" value="5"><br>
+    <button onclick="test5()">버튼</button>
+    <script>
+        function test5(){
+            // 기초 문법
+            let array1 = [1, 2, 3, 4, 5];
+
+            for(let v of array1){
+                console.log(v);
+            }
+
+            // 응용
+            let array = document.getElementsByName('valueGroup');
+            let sum = 0;
+            for(let element of array){
+                sum += Number(element.value);
+            }
+            alert('sum : ' + sum);
+        }
+    </script>
+    <hr><br>
+
+    <h3>6. 반복문 - for..in (ES6) - Map이나 Object 탐색할때 사용</h3>
+    <button onclick="test6()">버튼</button>
+    <div id="div3"></div>
+    <script>
+        function test6(){
+            let member = {name:'홍길동', age:25, hobby:['축구', '야구', '농구',]}; // js 객체 표현법, json
+            let text = '';
+
+            // name과 value 출력하는 코드
+            for(let name in member){ // name = key로 이해할것
+                text += name + ' : ' + member[name] + '<br>'; // key-value
+            }
+            document.getElementById('div3').innerHTML = text;
+        }
+    </script>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+
+</body>
+
+</html>

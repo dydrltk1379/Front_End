@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript 기본 문법</title>
+</head>
+<body>
+    <h1>Javascript 기본 문법</h1>
+    <hr><br>
+
+    <h3>변수(Variable)</h3>
+    <div> - JS에서 데이터를 담을수 있는 공간, client 브라우저 메모리에 생성되고 활용 됨</div>
+    <div> - 변수의 Type은 처음에는 정해져 있지 않고, 값이 실제 asign(=) 될때 변수의 Type이 결정됨(동적바인딩)</div>
+    <div> - 전역변수 사용시 특정한 키워드 없이 선언하면 된다. ex) value = 10;</div>
+    <div> - var : 변수선언 키워드로 프로퍼티가 변경되지 않는 특성을 가짐, 사실상 전역 ex) var value = 10;</div>
+    <div> - let(ES6) : 블록 스코프를 가지는 변수로 완벽한 지역변수 ex) let value = 10;</div>
+    <div> - const(ES6) : 상수로 선언시 활용, 값이 한번 정해지면 변경 불가! (에러 발생!)</div>
+    <hr><br>
+    <script>
+        // num0; // Uncaught ReferenceError: num0 is not define, 전역변수가 변수가 초기화 되지 않은 경우 프로그램이 죽는다!
+        // document.write('num0 : ' + num0 + '<br>');
+        num1 = 10; // 전역사용
+        var num2 = 20; // var 변수 선언, 고전에서는 이 방법을 권장했다. 사실상 전역
+        var num3 = num1 + num2;
+        var num4; // null이 아닌 undefined 상태, null 체크시 undefined도 같이 체킹됨으로 null로 필터링
+
+        document.write('num1 : ' + num1 + '<br>'); // js에서는 문자열의 '+'을 하면 합쳐진다.
+        document.write('num2 : ' + num2 + '<br>');
+        document.write('num3 : ' + num3 + '<br>');
+        document.write('num4 : ' + num4 + '<br><br>'); // undefined 출력, null과 같은 취급
+
+        // 문자열 선언법
+        str1 = 'Hello '; // 싱글 쿼테이션을 추천! 이유 : html에서 ""을 사용하기 때문
+        var str2 = "javascript "; 
+        var str3 = str1 + str2 + "world!";
+        document.write('str1 : ' + str1 + '<br>');
+        document.write('str2 : ' + str2 + '<br>');
+        document.write('str3 : ' + str3 + '<br><br>');
+
+        // 문자열 + 숫자 = 문자, 문자/숫자 혼합되는 경우 우선순위 이슈가 발생함! -> 괄호 사용!
+        document.write(str1 + num1 + 1000 + '<br>'); // Hello 101000
+        document.write(str1 + (num1 + 1000) + '<br><br>'); // Hello 1010 
+
+        let val1 = 10; // let, ES6에서 추가된 문법, 익스플로러에서는 호환되지 않은 문법(11버전 미만)
+        val2 = 20;
+        const con1 = 30; // const, ES6문법, 상수 사용 방법
+        document.write('val1 : ' + val1 + '<br>');
+        document.write('val2 : ' + val2 + '<br>');
+        document.write('con1 : ' + con1 + '<br>');
+
+        // 변수는 type 정해져도 바뀔수 있다. 
+        val1 = '안녕하세요?'; // number -> string
+        val2 = '하이'; // number -> string
+        // con1 = '안녕하세요?'; // 상수라 변경되지 않음! TypeError: Assignment to constant variable.
+
+        document.write('val1 : ' + val1 + '<br>');
+        document.write('val2 : ' + val2 + '<br>');
+        document.write('con1 : ' + con1 + '<br><br>');
+
+        // let 범위 테스트, 
+        let letValue = 10;
+        var varValue = 20;
+        document.write('letValue : ' + letValue + '<br>'); // 10 
+        document.write('varValue : ' + varValue + '<br>'); // 20
+
+        // 현재 이 영역은 전역영역이다.
+
+        {   // 블록 영역 생성
+            let letValue; // undefined
+            var varValue; // undefined? -> 20, 전역처럼 동작
+            document.write('letValue : ' + letValue + '<br>'); // undefined 
+            document.write('varValue : ' + varValue + '<br>'); // 20
+
+            letValue = 30;
+            varValue = 40; 
+        }
+        document.write('letValue : ' + letValue + '<br>'); // 10 -> 초기 블록값으로 출력 
+        document.write('varValue : ' + varValue + '<br>'); // 40 -> 블록 내에서 변경된 값으로 출력
+    </script>
+    <h3>script 태그가 끊어진 영역, 다시 script를 여는 경우 위에서 생성했던 변수를 재사용 할수 있다.</h3>
+    <script>
+         // script 시작 블록은 global 영역으로 활용됨
+        document.write('val1 : ' + val1 + '<br>');
+        document.write('val2 : ' + val2 + '<br>');
+        document.write('con1 : ' + con1 + '<br>');
+        document.write('letValue : ' + letValue + '<br>'); 
+        document.write('varValue : ' + varValue + '<br>'); 
+    </script>
+    <hr><br>
+
+
+    
+
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+</body>
+</html>
