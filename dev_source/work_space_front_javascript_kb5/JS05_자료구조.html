@@ -117,8 +117,389 @@
     </script>
     <hr><br>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
-    
+    <h3>includes() : 배열에서 특정 값이 있는지 확인하는 함수</h3>
+    <h3>indexOf() : 배열에서 요소가 위치한 index를 찾아서 반환, 값이 없으면 -1(음수)</h3>
+    <h3>lastIndexOf() : 배열에서 요소가 위치한 마지막 index를 찾아서 반환, 값이 없으면 -1(음수)</h3>
+    <script>
+        var array1 = ['사과', '딸기', '바나나', '키위', '파인애플', '사과'];
+        document.write('바나나가 있는지? : ' + array1.includes('바나나') + '<br>'); // true
+        document.write('바나나 위치 : ' + array1.indexOf('바나나') + '<br>');
+        document.write('바나나 텍스트 : ' + array1[array1.indexOf('바나나')] + '<br>');
+        document.write('키위 위치 : ' + array1.indexOf('키위') + '<br>');
+        document.write('오이가 있는지?(없는 값) : ' + array1.includes('오이') + '<br>'); // false
+        document.write('오이 위치(없는 값) : ' + array1.indexOf('오이') + '<br>'); // -1
+        document.write('오이 텍스트(없는 값) : ' + array1[array1.indexOf('오이')] + '<br>'); // undefined
+        document.write('사과 첫 위치 : ' + array1.indexOf('사과') + '<br>');
+        document.write('사과 마지막 위치 : ' + array1.lastIndexOf('사과') + '<br>');
+    </script>
+    <hr><br>
+
+    <h3> concat() : 두개 또는 세개의 배열을 결합</h3>
+    <script>
+        var array1 = ['사과', '바나나', '키위'];
+        var array2 = ['키위', '수박', '파인애플'];
+        var array3 = array1.concat(array2);
+        var array4 = array2.concat(array1);
+        // var array4 = array2.concat(array1).concat(array2); // concat cocat 가능!
+        var array5 = array1 + array2; // 문자열간 결합! 결과는 문자열이고 배열이 아니다!
+
+        document.write('array1 : ' + array1 + '<br>');
+        document.write('array2 : ' + array2 + '<br>');
+        document.write('array1 + array2, concat : ' + array3 + '<br>');
+        document.write('array2 + array1, concat : ' + array4 + '<br>');
+        document.write('array2 + array1, concat : ' + array4.length + '<br>');
+        document.write('array2 + array1, concat - typeof : ' + typeof(array4) + '<br>'); // object
+        document.write('array1 + array2, + : ' + array5 + '<br>');
+        document.write('array1 + array2 - typeof, + : ' + typeof(array5) + '<br>'); // string
+    </script>
+    <hr><br>
+
+    <h3>join() : 배열을 결합하여 문자열로 반환, 인자로 합칠 문자열을 받는다.</h3>
+    <script>
+        var array1 = ['사과', '바나나', '키위'];
+        var str1 = array1.join();
+        var str2 = array1.join('/');
+        var str3 = '' + array1; // 같은 결과가 나온다!
+        document.write('str1 : ' + str1 + '<br>');
+        document.write('str2 : ' + str2 + '<br>');
+        document.write('str1 : ' + typeof(str1) + '<br>');
+        document.write('str2 : ' + typeof(str2) + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>reverse() : 배열의 순서를 뒤집는 메소드</h3>
+    <script>
+        var array1 = [1,2,3,4,5];
+        document.write(array1 + '<br>');
+        document.write(array1.reverse() + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>sort() : 배열의 값을 내림차순, 오름차순으로 정렬하는 메소드 ★★★★★</h3>
+    <div> - default는 오름차순, 사용자가 내림차순으로 정렬 지정 가능</div>
+    <div> - ※ 주의점 : 기본 sort는 문자열 기준으로 정렬됨, 숫자는 제대로 정렬되지 않음!</div>
+    <br>
+    <script>
+        var arr1 = [10, 492, 20, 3212, 12, 322, 4, 262, 800];
+        var arr2 = ['홍길동', '박길동', '김동길', '차길동', '김길동', '홍동길', '최길동', '팍길동', '이길동'];
+
+        // 숫자 오름차순 정렬
+        var sortNumACS = function(x, y){
+            return x - y; // 크면 양수, 작으면 음수, 같으면 0
+        }
+
+        // 숫자 내림차순 정렬
+        var sortNumDESC = function(x, y){
+            return y - x; // 크면 양수, 작으면 음수, 같으면 0
+        }
+
+        // 숫자 정렬 출력 - ※ 기본 정렬을 쓰면 문자열 기준으로 정렬됨으로 주의 필요
+        document.write('원래 차순 : ' + arr1 +'<br>');
+        document.write('기본 정렬 (틀린 값!-사전순) : ' + arr1.sort() +'<br>');
+        document.write('오름 차순 : ' + arr1.sort(sortNumACS) +'<br>');
+        document.write('내림 차순 : ' + arr1.sort(sortNumDESC) +'<br>');
+        document.write('내림 차순(reverse) : ' + arr1.sort(sortNumACS).reverse() +'<br>');
+        document.write('오름 차순(익명함수) : ' + arr1.sort(function(x, y){return x - y;}) +'<br>');
+        document.write('오름 차순(람다) : ' + arr1.sort((x, y) => x - y) +'<br><br>'); // 람다식 표현
+        
+        // 문자열 정렬 - 사전순임으로 그냥 쓰면 된다.
+        var arr2 = ['홍길동', '박길동', '김동길', '차길동', '김길동', '홍동길', '최길동', '팍길동', '이길동'];
+        
+        //문자열 오름차순
+        var sortStrASC = function(x, y){
+            /*
+            if(x > y){ // 문자열 간 대소비교 가능하다.
+                return 1;
+            }else if(x < y){
+                return -1;
+            }else{
+                return 0;
+            }
+            */
+           return x.localeCompare(y); // 문자열 대소비교
+        }
+
+        //문자열 내림차순
+        var sortStrDESC = function(x, y){
+            /*
+            if(x > y){ // 문자열 간 대소비교 가능하다.
+                return 1;
+            }else if(x < y){
+                return -1;
+            }else{
+                return 0;
+            }
+            */
+           return y.localeCompare(x); // 문자열 대소비교
+        }
+        document.write('원래 차순 : ' + arr2 +'<br>');
+        document.write('기본 정렬 : ' + arr2.sort() +'<br>');
+        document.write('기본 정렬(오름) : ' + arr2.sort().reverse() +'<br>');
+        document.write('오름 차순 : ' + arr2.sort(sortStrASC) +'<br>');
+        document.write('내림 차순 : ' + arr2.sort(sortStrDESC) +'<br>');
+        document.write('오름 차순(익명함수) : ' + arr2.sort(function(x, y){return x.localeCompare(y)}) +'<br>');
+        document.write('오름 차순(람다함수) : ' + arr2.sort((x, y) => x.localeCompare(y)) +'<br><br>');
+
+        // 2중 정렬
+        let members = [ // 객체 리터럴
+            {name: "홍길동", age: 13},
+            {name: "김길동", age: 23},
+            {name: "최길동", age: 25},
+            {name: "박길동", age: 32},
+            {name: "박길동", age: 43},
+            {name: "박길동", age: 64},
+            {name: "김길동", age: 42},
+        ];
+        document.write('2중 정렬 이름 - 나이순 정렬<br>')
+        let sortMembers = members.sort((x, y) => x.name.localeCompare(y.name) || x.age - y.age);
+        sortMembers.forEach(m => document.write('name : ' + m.name + ', age : ' + m.age + '<br>'));
+
+        document.write('2중 정렬 나이 - 이름순 정렬<br>')
+        let sortMembers2 = members.sort((x, y) => x.age - y.age || x.name.localeCompare(y.name));
+        sortMembers2.forEach(m => document.write('name : ' + m.name + ', age : ' + m.age + '<br>'));
+    </script>
+    <hr><br>
+
+    <h3>slice() : 배열의 요소를 잘라내는 메소드 원본배열 복사해서 사용, 원본손상 없음!</h3>
+    <h3>splice() : 배열의 요소를 잘라내는 메소드, 원본에 적용된다. (delete, remove 대체하는 기능)</h3>
+    <br>
+    <script>
+        // slice
+        var array1 = ['사과', '딸기', '바나나', '키위', '파인애플'];
+        var array2 = array1.slice(2, 4); // 시작점, 끝점(index 기준)
+        document.write('array1(원본) : ' + array1 + '<br>');
+        document.write('array2(slice) : ' + array2 + '<br><br>');
+
+        // splice : ui상에서 제거된 html element 다른쪽으로 추가하려고 할 때
+        var array1 = ['사과', '딸기', '바나나', '키위', '파인애플'];
+        document.write('array1(원본) : ' + array1 + '<br>');
+        var array2 = array1.splice(2, 4); // 시작점, 삭제할 데이터 갯수
+        document.write('array1(splice) : ' + array1 + '<br>');
+        document.write('array2(splice) : ' + array2 + '<br><br>');
+
+        // splice - 응용 특정 index 지우기
+        var array1 = ['사과', '딸기', '바나나', '키위', '파인애플'];
+        document.write('2번째 인덱스만 삭제하는 방법<br>');
+        document.write('array1(원본) : ' + array1 + '<br>');
+
+        // 2번째 인덱스만 삭제할때
+        array1.splice(2, 1); // 시작점, 삭제할 데이터 갯수
+        document.write('array1(splice) : ' + array1 + '<br><br>');
+
+        // splice - 응용 특정 index부터 모두 지우기
+        var array1 = ['사과', '딸기', '바나나', '키위', '파인애플'];
+        document.write('2번째부터 모든 인덱스 삭제 법<br>');
+        document.write('array1(원본) : ' + array1 + '<br>');
+
+        // 2번째 인덱스만 삭제할때
+        array1.splice(2); // 시작점만 두고 끝점까지 모두 삭제
+        document.write('array1(splice) : ' + array1 + '<br><br>');
+
+        // splice - 데이터를 지우고 특정 데이터로 메꾸기1
+        var array1 = ['사과', '딸기', '바나나', '키위', '파인애플'];
+        document.write('데이터를 지우고 특정 데이터로 메꾸기<br>');
+        document.write('array1(원본) : ' + array1 + '<br>');
+
+        // 2번째 인덱스만 삭제할때
+        array1.splice(2, 2, '배'); // 시작점, 삭제할 데이터 갯수, 메꿀 데이터(나열로..)
+        document.write('array1(splice) : ' + array1 + '<br><br>');
+
+        // splice - 데이터를 지우고 특정 데이터로 메꾸기2
+        var array1 = ['사과', '딸기', '바나나', '키위', '파인애플'];
+        document.write('데이터를 지우고 특정 데이터로 메꾸기<br>');
+        document.write('array1(원본) : ' + array1 + '<br>');
+
+        // 2번째 인덱스만 삭제할때
+        array1.splice(2, 2, '배', '토마토','오이'); // 시작점, 삭제할 데이터 갯수, 메꿀 데이터(나열로..)
+        // array1.splice(2, 2, ['배','토마토', '오이']); // 잘못된 문법, 배열이 1개 데이터 영역으로 삽입됨
+        document.write('array1(splice) : ' + array1 + '<br>');
+        document.write('array1(splice) : ' + array1.length + '<br><br>');
+    </script>
+    <hr><br>
+
+    <h3>toString() : 배열을 문자열로 반환</h3>
+    <script>
+        var arr1 = ['사과', '키위', '토마토', '블루베리', '파인애플'];
+        document.write('원본 : ' + arr1 + '<br>');
+        document.write('원본 : ' + arr1.toString() + '<br>');
+    </script>
+    <hr><br>
+    <h3>forEach() : 배열을 순회하는 메소드로 callback 함수가 필요 (ES6, callback함수 필요)</h3>
+    <script>
+        var arr1 = ['사과', '키위', '토마토', '블루베리', '파인애플'];
+        array1.forEach((val) => document.write('배열 값 : ' + val + '<br>'));
+    </script>
+    <hr><br>
+
+    <h3>map() : 배열을 순회하면서 새로운 배열을 만들때 활용 (ES6, callback함수 필요)
+        <br>-> front 계열에서 정말 중요한 메소드로 반복되는 리스트 ui 구현시 활용 가능 ★★★★★
+    </h3>
+    <script>
+        // var arr1 = [1,3,4,5,7,9];
+        // var arr2 = arr1.map(x => x * 10);
+        // document.write('arr1 : ' + arr1 +'<br>');
+        // document.write('arr1 : ' + arr2 +'<br>');
+        // var menu = ['회원가입', '로그인', '비밀번호 변경', '회원 탈퇴'];
+        // // 템플릿 문자열 = `(백틱) 사용
+        // var arr3 = menu.map(str =>`<li><a href="http://test/${str}">${str}</a></li>`);
+        // document.write('<ul>');
+        // arr3.forEach(v => document.write(v));
+        // document.write('</ul>');
+        var arr1 = [1,3,4,5,7,9];
+        var arr2 = arr1.map(x => x * 10);
+        document.write('arr1 : ' + arr1 + '<br>');
+        document.write('arr2 : ' + arr2 + '<br>');
+
+        var menu = ['회원가입', '로그인', '비밀번호 변경', '회원 탈퇴'];
+        // 탬플릿 문자열 = `(백틱) 사용
+        var arr3 = menu.map(str => `<li><a href="http://test/${str}">${str}</a></li>`);
+
+        document.write('<ul>');
+        arr3.forEach(e => document.write(e));
+        document.write('</ul>');
+
+    </script>
+    <hr><br>
+    <h3>flat() : 다차원 배열을 1차원으로 변환하는 메소드 (ES6, callback함수 필요)</h3>
+    <script>
+        var arr1 = [[1,2,3], [4,5,6], [7,8,9]];
+        document.write('원본 : ' + arr1 + '<br>');
+        document.write('원본 : ' + arr1[0] + '<br>');
+        document.write('원본 : ' + arr1.flat() + '<br>');
+        document.write('원본 : ' + arr1.flat()[0] + '<br>');
+    </script>
+    <hr><br>
+    <h3>find() : 조건을 찾아서 한개의 값만 반환하는 함수 (ES6, callback함수 필요)</h3>
+    <div>형제 : find(), findLast(), findIndex(), findLastIndex()</div>
+    <script>
+        const ages = [3, 10, 12, 14, 16, 18, 20];
+        function checkAge(age){
+            if(age > 15){
+                return age;
+            }
+        }
+        var value = ages.find(checkAge);
+        document.write('ages : ' + ages +'<br>');
+        document.write('value : ' + value +'<br>');
+        document.write('value : ' + typeof(value) +'<br>');
+        // 찾을수 없는 경우는 undefined
+        var value = ages.find((age) => {
+            if(age == 15)
+                return age;
+        });
+        document.write('value : ' + value +'<br>');
+    </script>
+    <hr><br>
+    <h3>filter() : 조건을 찾아서 배열로 반환하는 함수(ES6, callback함수)</h3>
+    <script>
+        const ages2 = [3, 10, 12, 14, 16, 18, 20];
+        function checkAge(age) {
+            if (age > 15) {
+                return age;
+            }
+        }
+        var arr1 = ages2.filter(checkAge);
+        var arr2 = ages2.filter((age) => {
+            if (age > 15){
+                return age;
+            }
+        });
+        document.write('ages : ' + ages + '<br>');
+        document.write('arr1 : ' + arr1 + '<br>');
+        document.write('arr2 : ' + arr1 + '<br>');
+    </script>
+    <hr><br><br>
+    <h3>reduce() : 일부 조건만 찾아서 반환하는 함수  (ES6)</h3>
+    <script>
+        const ages3 =  [3, 10, 12, 14, 16, 18, 20];
+        // 15살 이상만 sum 구하기
+        function reduceFunc(acc, cur, index, array){ // acc 계산값, cur 현재값, index, array
+            if(cur > 15){
+                return acc + cur;
+            }
+            return acc;
+        }
+        var sumValue = ages3.reduce(reduceFunc);
+        document.write('sum : ' + sumValue + '<br>');
+        var sumValue = ages3.reduce((acc, cur) => cur > 15 ? acc + cur : acc);
+        document.write('sum : ' + sumValue + '<br>');
+    </script>
+    <hr><br><br>
+
+    <h2>자료구조 - Set(ES6)</h2>
+    <div> - type과 상관 없이 중복없이 데이터 저장하는 자료구조</div>
+    <div> - Iterable 구조로 array에서 사용하던 method와 호환된다.</div>
+    <hr><br>
+    <script>
+        var set1 = new Set(['a','a','b','b','c','c','c',]);
+        set1.add('d'); // add를 통해 데이터 추가 가능
+        set1.add('d');
+        document.write('크기 : ' + set1.size + '<br>');
+        document.write('전체 데이터 : ');
+        // 순회하는 방법
+        // set1.forEach(function(v){
+        //     document.write(v + ', ');
+        // });
+        set1.forEach((v) => document.write(v + ', '));
+        document.write('<br>');
+        // 순회하는 방법2
+        document.write('전체 데이터 : ');
+        for(var v of set1){
+            document.write(v + ', ');
+        }
+        document.write('<br>');
+        // 초기화 방법2
+        var set2 = new Set([1, 2, 3, 1, 2, 3]);
+        document.write('크기 : ' + set2.size + '<br>');
+        document.write('전체 데이터 : ');
+        set2.forEach((v) => document.write(v + ', '));
+        document.write('<br>');
+        // Set -> Array로 변환 방법
+        var array = Array.from(set2);
+        document.write('array : ' + array);
+        var array2 = [... set2];
+        document.write('<br>');
+        document.write('array2 : ' + array2);
+        document.write('<br>');
+        // iterator 돌리는 방법
+        var iter = set2.values();
+        var i = 0;
+        while (i < set2.size) {
+            document.write(iter.next().value + ' ');
+            i++;
+        }
+        document.write('<br>');
+    </script>
+    <hr><br>
+    <h2>자료구조 - Map(ES6)</h2>
+    <div> - Key-Value를 통해 데이터를 관리하는 자료구조, Object 보다 빠르다는 장점이 존재 (Hashcode 활용)</div>
+    <hr><br>
+    <script>
+        var map1 = new Map();
+        map1.set('name','홍길동');
+        map1.set('age',25);
+        map1.set('hobby',['축구', '야구']);
+        document.write('크기 : ' + map1.size +'<br>');
+        document.write('전체 데이터 : ' + map1 +'<br>');
+        console.log(map1);
+        document.write('전체 데이터 : ' );
+        // 순회하는 방법
+        map1.forEach((key, value) => document.write('['+key + ' : ' + value + '],'));
+        document.write('<br>');
+        document.write('이름이 있는지? ' + map1.has('name') +'<br>'); // true
+        document.write('주소이 있는지? ' + map1.has('address') +'<br>'); // false
+        document.write('이름값 : ' + map1.get('name') +'<br>'); // 홍길동
+        document.write('주소값 :  ' + map1.get('address') +'<br>'); // undefined
+        document.write('이름 : ' + map1.get('name') + '<br>');
+        document.write('나이 : ' + map1.get('age') + '<br>');
+        document.write('취미 : ' + map1.get('hobby') + '<br>');
+        document.write('<br>');
+        map1.delete('age');
+        for (var entry of map1.entries()) {
+            document.write(entry + '<br>');
+        }
+    </script>
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
 </body>
 </html>

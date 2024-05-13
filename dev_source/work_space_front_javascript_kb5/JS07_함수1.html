@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+    <style>
+        div {
+            border: 1px black solid;
+            width: 400px;
+            height: 100px;
+            background-color: rgb(241, 241, 241);
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>함수(Function)</h1>
+    <p> - 함수란? 입력(매개변수)과 출력(return or 직접출력)을 통해 특정 기능을 구현하기 위한 문법</p>
+    <p> - JS에서의 함수는 매우 범용적으로 활용되는데, 고전적으로는 함수를 통해 객체를 생성 하였다.</p>
+    <p>   -> 문법이 굉장히 혼란스러워 ES6에서 Class를 통해 객체가 생성되는 문법이 추가 되었다. </p>
+    <hr>
+
+    <h3>1. 함수의 선언법</h3>
+    <p> - function functionName([parameters]) {처리 코드; [return]}</p>
+    <div id="div1"></div>
+    <button onclick="test1()">버튼</button>
+    <script>
+        function test1(){
+            document.getElementById('div1').innerHTML += '함수 실행 확인!';
+        }
+    </script>
+    <hr><br>
+
+    <h3>2. 익명함수 선언법</h3>
+    <p> - var functionName = function[functionName2]([parameters]) {처리 코드; [return]}</p>
+    <p> - 기능적으로는 일반함수와 다르지 않다.</p>
+    <p> - 표현법의 차이지만, 주로 이벤트 핸들러, 함수가 인자로 들어갈때, 임시적인 함수 선언시 활용 </p>
+    <div id="div2"></div>
+    <button onclick="test2();">버튼</button>
+    <script>
+        var test2 = function(){
+            document.getElementById('div2').innerHTML += '익명 함수 실행 확인!';
+        }
+        // 함수의 이름도 별도로 가질수도 있다(?)
+        // var test2 = function f1(){
+        //     document.getElementById('div2').innerHTML += '익명 함수 실행 확인!';
+        // }
+    </script>
+    <hr><br>
+
+    <h3>3. 스스로 실행하는 익명함수 = 사용하지 않는다!</h3>
+    <p> - (function(parameters){ 처리코드 })();</p>
+    <div id="div3"></div>
+    <script>
+        (function(){
+            document.getElementById('div3').innerHTML = '스스로 동작하는 익명함수';
+        })();
+        // document.getElementById('div3').innerHTML = '스스로 동작하는 익명함수';
+    </script>
+    <hr><br>
+
+    <h3>4. 다양한 함수형태 정리</h3>
+    <hr>
+
+    <h3>4.1 전달인자와 매개변수가 있는 함수</h3>
+    <button id="btn1" onclick="test3('div4', 'div4 텍스트 입니다.');" >버튼 1</button>
+    <div id="div4"></div>
+    <button id="btn2">버튼 2</button>
+    <div id="div5"></div>
+
+    <script>
+        function test3(id, text){ // 호출하는 곳에서 넣어줄 인자
+            document.getElementById(id).innerHTML = text;
+        }
+
+        // 버튼 태그(btn2)의 onclick 인자를 익명함수로 이어주는 방법
+        document.getElementById('btn2').onclick = function(){
+            test3('div5', 'btn2의 onclick에서 호출된 값입니다.');
+        }
+        console.log(document.getElementById('btn2'));
+        // var obj = document.getElementById('btn2');
+        // for(var name in obj){
+        //     console.log(obj[name]);
+        // }
+    </script>
+    <hr><br>
+
+    <h3>4.2 리턴값이 있는 함수</h3>
+    <button onclick="test4()">버튼</button>
+    <div id="div6"></div>
+    <script>
+        function test4(){
+            var div6 = document.getElementById('div6');
+            div6.innerHTML += getRandomValue() +', ';
+        }
+
+        function getRandomValue(){
+            return Math.floor(Math.random() * 100 + 1) // 1 ~ 100 랜덤값
+        }
+    </script>
+    <hr><br>
+
+    <h3>4.3 가변인자(arguments)를 가지는 함수 (고전)</h3>
+    <button onclick="test5()">버튼</button>
+    <div id="div7"></div>
+
+    <script>
+        function test5(){
+            var sum = sumAll(1,2,3,4,5, getRandomValue());
+            var div7 = document.getElementById('div7');
+            div7.innerHTML += 'sum : ' + sum + '<br>';
+        }
+
+        function sumAll(){ // (...arg)
+            var sumValue = 0;
+            for(let i = 0; i < arguments.length; i++){
+                sumValue += Number(arguments[i]); 
+            }
+            return sumValue;
+        }
+    </script>
+    <hr><br>
+
+    <h3>4.4 매개변수를 함수로 처리하는 방법 (Call-back 함수)</h3>
+    <button onclick="test6(getRandom1)">버튼1</button> <!--함수 안 함수-->
+    <button onclick="test6(getRandom2)">버튼2</button>
+    <button onclick="test6('getRandom1')">버튼3</button>
+    <div id="div8"></div>
+
+    <script>
+        function test6(func){
+            if(typeof(func) != 'function'){
+                var value = eval(func + '()'); // eval(고수가 잘 쓰는 방법) : 자바스크립트 돌리는 
+                alert('함수가 아닙니다! ' + value);
+                return;
+            }
+
+            var div8 = document.getElementById('div8');
+            div8.innerHTML += 'random : ' + func() + '<br>';
+        }
+
+        function getRandom1(){
+            return Math.floor(Math.random() * 100 + 1); // 1 ~ 100 랜덤값
+        }
+
+        function getRandom2(){
+            return Math.floor(Math.random() * 1000 + 1); // 1 ~ 1000 랜덤값
+        }
+    </script>
+    <hr><br>
+
+    <h3>5. 람다 표기법 (함수형 프로그램) - ES6문법</h3>
+    <p> - ES6부터 람다 표기법이 등장하여 '=>' 로 함수를 선언하고 호출 할 수 있다.</p>
+    <p> - 현재는 기존의 문법 혼용되어 사용되고 있으나 Java와 다르게 JS 에서는 점차 표준화되는 중</p>
+    <button onclick="lambdaFunc1()">함수1</button>
+    <button onclick="alert(lambdaFunc2(5,7))">함수2</button>
+    <button onclick="alert(lambdaFunc3(5,7))">함수3</button>
+    <button onclick="alert(lambdaFunc4(5))">함수4</button>
+    <script>
+        // 익명함수 표기법
+        var testFunc1 = function(){
+            alert('testFunc1!');
+        }
+
+        // 람다식 표현법 
+        var lambdaFunc1 = ()=>{
+            alert('lambdaFunc1!');
+        }
+
+        // 익명함수 - 인자 있는
+        var testFunc2 = function(a, b){
+            return a + b;
+        }
+
+        // 람다함수 - 인자 있는
+        var lambdaFunc2 = (a, b) =>{
+            return a + b;
+        }
+
+        // 더 단축된 표현, {} return 생략 가능
+        var lambdaFunc3 = (a, b) => a + b;
+
+        // 인자 하나의 경우는 괄호도 생략 가능!
+        var lambdaFunc4 = a => a + 1;
+    </script>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

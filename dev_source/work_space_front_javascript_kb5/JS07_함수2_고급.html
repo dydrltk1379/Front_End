@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수2</title>
+    <style>
+        div {
+            border: 1px black solid;
+            width: 400px;
+            height: 100px;
+            background-color: rgb(241, 241, 241);
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>함수(Function) - 고급 문법</h1>
+     - JS에서의 함수는 매우 범용적으로 활용되는데, (1)고전적으로 함수를 통해 객체를 생성 하였다. <br>
+     - (2)함수의 Type은 function으로 ES6 이전에는 객체로 활용되는 가장 기본적인 객체 type이었다. <br>
+      -> 문법이 굉장히 혼란스러워 ES6에서 Class를 통해 객체를 생성하는 문법이 추가 되었다.<br>
+    <hr>
+
+    <h3>1. 함수 Type</h3>
+     - func의 Type은 function이고, object으로 이미 일부 멤버 변수 및 메소드를 가지고있다. <br>
+    <script>
+        // func1 == func2
+        function func1(value){
+            document.write('func1 실행 확인<br>');
+        }
+        func2 = function (value1, value2){
+            document.write('func2 실행 확인<br>');
+        }
+        document.write('func1 type : ' + typeof(func1) + '<br>');
+        document.write('func2 type : ' + typeof(func2) + '<br>');
+        document.write('func1 name : ' + func1.name + '<br>');
+        document.write('func2 name : ' + func2.name + '<br>');
+        document.write('func1 파라미터 갯수  : ' + func1.length + '<br>');
+        document.write('func2 파라미터 갯수 : ' + func2.length + '<br>');
+        // 함수 실행 call()
+        func1.call();
+        func2.call();
+    </script>
+    <hr><br><br>
+
+    <h3>2. 함수를 통한 객체 생성</h3>
+     - ES6 이전에는 함수를 통해서 객체를 생성하는 문법을 표준적으로 활용하였다.<br>
+     - 멤버 메소드의 경우 prototype을 통해 생성하면 메모리를 절약 할 수 있다.<br>
+     - 멤버 변수의 경우 prototype을 선언하면 단 하나의 멤버 변수만 가진다. -> static 변수  <br>
+     <hr><br>
+
+    <script>
+        // 객체 표현법(대문자 = 클래스, 객체)
+        function Member(name, age, address){
+            // Member 변수 = 로컬 변수
+            this.name = name;
+            this.age = age;
+            this.address = address;
+            
+            // 단일(prototype) - static처럼
+            if(Member.prototype.MEMBER_NUMBER == undefined){
+                Member.prototype.MEMBER_NUMBER = 0;
+            }
+            Member.prototype.MEMBER_NUMBER++;
+            
+            // 아래와 같이 함수를 생성하는 경우 Member 별로 아래 함수를 문자열로 모두 가지고있다.
+            // this.info = function(){
+            //     return this.name + ', ' + this.age + ', ' + this.address;
+            // } // 메모리 낭비 발생
+
+            // prototype을 활용하는 경우 Member가 여러개 생성되어도 하나의 메소드를 유지할수있다.
+            // prototype 
+            Member.prototype.info = function(){
+                return this.name + ', ' + this.age + ', ' + this.address;
+            } // (고전) 하나만 생성되므로 메모리 낭비 x
+        }
+
+        // 객체 생성
+        var m1 = new Member('홍길동', 31, '서울시 강남구 역삼동');
+        var m2 = new Member('최길동', 41, '서울시 강남구 삼성동');
+        document.write(m1.name + ', ' + m1.age +', ' + m1.address + '<br>');
+        document.write(m1.info() + '<br>');
+        document.write(m2.info() + '<br>');
+        document.write(Member.prototype.MEMBER_NUMBER + '<br>'); // 2
+        console.log(m1);
+        console.log(m2);
+    </script>
+    <hr><br>
+
+
+    <h3>3. (고전) Closures를 활용한 객체 생성 및 활용</h3>
+     - Closure는 JS에서 활용하는 문법으로 내부 변수를 은닉하기 위해 폐쇄 영역(Closure)을 만드는 방법이다. <br>
+     - 주로 외부에서 접근할수 없는 보안 영역 만들때 활용되는 방법으로 ES6 이전에는 유일한 문법이었다. <br>
+     - 일반적인(현재) 객체지향 문법에서는 private + getter + setter의 표현법이다. <br>
+     <!-- 해시코드를 통해 객체를 확인, 보안향상 -->
+    <hr>
+    <script>
+        // 1, initMember 클래스 아님 팩토리
+        function initMember(){
+            var name = undefined;
+            var age = undefined;
+
+            return { // return {} : 메소드를 가진 객체  ==  Closure
+                setName : function(_name){
+                    name = _name;
+                },
+                getName : function(){
+                    return name;
+                },
+                setAge : function(_age){
+                    age = _age;
+                },
+                info : function(){
+                    return name + ', ' + age;
+                }
+            }
+        }
+        
+        var m3 = initMember();
+        m3.setName('홍길동');
+        m3.setAge(21);
+        var m4 = initMember();
+        m4.setName('최길동');
+        m4.setAge(31);
+        document.write(m3.name + ', ' + m3.age +',' + '<br>'); // m3. : 스코프로 인하여 변수에 직접 접근 불가능! : undifined
+        document.write(m3.info() + '<br>'); // 내부 함수나 getter로만 접근 가능
+        document.write(m3.getName() + '<br>'); // 내부 함수나 getter로만 접근 가능
+        document.write(m4.info() + '<br>');
+        document.write(m4.getName() + '<br>');
+    </script>
+    <hr><br>
+
+    <br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

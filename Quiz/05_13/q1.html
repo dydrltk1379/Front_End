@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q1</title>
+</head>
+<body>
+    <script>
+        function test1(){
+            var id=document.getElementById('input1').value;
+            if(id=='root'){
+                div1.innerHTML = '아이디 성공<br>';
+            }
+        }
+        function test2(){
+            var id=document.getElementById('input2').value;
+            location.href="https://kin.naver.com/" + id;
+
+        }
+        function test3(){
+            var id=document.getElementById('input3').value;
+            location.href="https://comic.naver.com/index/"+id;
+        }
+    </script>
+    <h3>아이디</h3>
+    <input type="text" id="input1"><br>
+    <button onclick="test1()">아이디 체크</button>
+    <div id="div1"></div>
+    
+    <hr><br>
+
+    <h3>지식인 검색어</h3>
+    <input type="text" id="input2"><br>
+    <button  onclick="test2()">지식인 검색</button>
+    <hr><br>
+
+    <h3>보고 싶은 웹툰 입력</h3>
+    <input type="text" id="input3"><br>
+    <button  onclick="test3()">웹툰 검색</button>
+</body>
+</html>

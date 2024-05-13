@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 응용 예제</title>
+    <style>
+        div {
+            border: 1px black solid;
+            width: 500px;
+            height: 200px;
+            background-color: rgb(241, 241, 241);
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML 응용 예제</h1>
+    <hr><br>
+
+    <h2>CSS 속성 변경하기</h2>
+
+    <h3>1. 속성 값으로 변경하는 방법</h3>
+    <p> - CSS 속성값 변경을 통해 CSS를 적용할수 있지만 CSS 용어와 완벽하게 호환되지는 않는다.</p>
+    <p> - 가급적 JS를 통해 CSS를 조작하는 것보단 미리 정의된 CSS를 적용하는 것이 바람직</p>
+
+    <button onclick="changeCSS();">버튼</button>
+    <div id="div1"></div>
+    <script>
+        var count = 0;
+        // 클래스 생성
+        function changeCSS() {
+            var div1 = document.getElementById('div1');
+            var index = count % 3;
+
+            // 속성 
+            if (index == 0) {
+                div1.style.backgroundColor = 'red';
+            } else if (index == 1) {
+                div1.style.backgroundColor = 'blue';
+            } else {
+                div1.style.backgroundColor = 'green';
+            }
+
+            div1.style.width = (100 * count) + 100 + 'px';
+            div1.style.height = (50 * count) + 50 + 'px';
+            div1.style.border = count + 'px solid black';
+            count++;
+        }
+    </script>
+    <hr><br>
+
+    <h3>2. class를 통해 변경하는 방법 ★★★★★ </h3>
+    <p>- JS로는 일반적으로 CSS를 변경하지 않고, 상태 별로 CSS를 작성하여 class로 변경한다.</p>
+    <button onclick="printClass();">버튼</button>
+    <br>
+    <style>
+        .display {
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .item_plain {
+            background-color: rgb(223, 60, 255);
+            border: 1px solid black;
+        }
+
+        .item_plain:hover {
+            background-color: rgb(101, 197, 197);
+            border: 1px solid black;
+        }
+
+        .item_selected {
+            border: 3px solid red;
+            background-color: greenyellow;
+        }
+    </style>
+    커스텀 Checkbox 예시 :
+    <button class="display item_plain" onclick="toggleClass(this)">사과</button>
+    <button class="display item_plain" onclick="toggleClass2(this)">바나나</button>
+    <button class="display item_plain" onclick="toggleClass2(this)">포도</button>
+    <div id="div2" style="height:150px;"></div>
+
+    <script>
+        // element.className : class의 정보를 문자열로 가지고 있는 속성
+        // element.classList : class의 정보를 배열(DOMTokenList)로 가지고 있는 속성
+
+        function toggleClass(element) {
+            // 방법1 - if문으로 추가, 삭제한다.
+            // alert(element.className);
+            if (element.className.indexOf('item_plain') > 0) { // 있는 경우
+                element.classList.remove('item_plain');
+                element.classList.add('item_selected');
+            } else { // 없는 경우
+                element.classList.remove('item_selected');
+                element.classList.add('item_plain');
+            }
+        }
+
+        // 방법1보단 방법2 사용
+        function toggleClass2(element) {
+            // 방법2 - list의 toggle 메소드 사용
+            // - 두 상태에서 알아서 반대 상태로 만들어주는 메소드
+            element.classList.toggle('item_selected');
+            element.classList.toggle('item_plain');
+        }
+
+        function printClass() {
+            var array = document.getElementsByClassName('display');
+            var str = '';
+            for (var i = 0; i < array.length; i++) {
+                str += array[i].innerHTML + '(className) : ' + array[i].className + ' / ' + typeof (array[i].className) + '<br>';
+                str += array[i].innerHTML + '(classList) : ' + array[i].classList + ' / ' + typeof (array[i].classList) + '<br>';
+            }
+            document.getElementById('div2').innerHTML = str;
+        }
+    </script>
+    <hr><br><br>
+
+
+    <h2>태그의 속성 변경하기</h2>
+    <p> - 태그의 모든 속성값(property=value, type ... )를 변경 할수 있다.</p>
+    입력 : <input type="text" id="inputName" name="inputName" value="홍길동" placeholder="이름">
+    <button onclick="test1()">출력</button>
+    <button onclick="test2()">속성 변경</button>
+    <div id="div3"></div>
+    <script>
+        function test1() {
+            // 속성값 접근하는 방법 예제 - 댓글
+            var inputName = document.getElementById('inputName');
+            var div3 = document.getElementById('div3');
+            var str = inputName.value; // value 속성값 가져오기
+            inputName.value = null; // value 초기화 문장 없애려고
+            // inputName.value = ''; // value 초기화 문장
+            div3.innerHTML += str + '<br>';
+        }
+        function test2() {
+            var inputName = document.getElementById('inputName');
+            inputName.type = 'password';
+            inputName.placeholder = '비밀번호 입력';
+            inputName.value = '1234';
+            inputName.myValue = '나만의 참조 값!'; // (유용) 개발자 임의에 특수한 속성도 만들수 있다!
+        }
+    </script>
+    <hr><br>
+
+    <h2>Form 응용예제</h2>
+    <hr>
+    <!-- https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_expressions -->
+    <!-- https://hamait.tistory.com/342 -->
+
+    <h3>1. 정규식을 통한 특정 foramt 체크하는 방법</h3>
+    <p> - stringutil의 정규식을 활용하거나 fn_inputKey함수를 통해 포멧 체크 가능 </p>
+    <p> - 아래 예제는 정해진 형식 외의 입력값을 허용하지 않는 방법</p>
+    <script src="JS17_stringutil.js"></script>
+
+    <!-- onkeyup : 키보드 이벤트, 특수문자 제거, 이걸 많은 씀-->
+    <label for="">이메일 형식 확인 : </label>
+    <input type="text" onkeyup="fn_inputKey(9, this);">
+    <br><br>
+    <label for="">전화번호 형식 확인 : </label>
+    <input type="text" onkeyup="fn_inputKey(6, this);">
+    <br><br>
+    <label for="">영문(ID) 형식 확인 : </label>
+    <input type="text" onkeyup="fn_inputKey(5, this);">
+    <br><br>
+    <label for="">한글(이름) 형식 확인 : </label>
+    <input type="text" onkeyup="fn_inputKey(2, this);">
+    <br><br>
+
+    <h3>2. 회원가입 유효성 검사 방법</h3>
+    <p> - 일반적으로 form을 보낼때 한번만 체크하는 방법으로 활용됨</p>
+    <fieldset>
+        <legend>회원 가입</legend>
+        <form name="form1" action="#" method="get">
+            <label for="id">아이디</label>
+            <input type="text" id="id" name="id" placeholder="4글자 이상, 20글자 미만"><br>
+            <label for="id">이름</label>
+            <input type="text" id="name" name="name" placeholder="한글만 입력 가능"><br>
+            <label for="id">비밀번호</label>
+            <input type="password" id="password1" name="password" placeholder="4자리 이상 영문만"><br>
+            <label for="id">비밀번호 확인</label>
+            <input type="password" id="password2" placeholder="같은 비밀번호를 입력하세요."><br>
+            <label for="id">전화번호</label>
+            <input type="text" id="tel" name="tel" placeholder="-를 포함하여 전화번호 입력하세요."><br>
+            <button type="button" onclick="checkForm();">가입 요청</button>
+            <!-- checkForm함수 호출 -> formResult -> 정규식 -->
+        </form>
+    </fieldset>
+    <div id="formResult"></div>
+    <script>
+        function checkForm() {
+            var div = document.getElementById('formResult');
+
+            // id 양식 체크, 4~20글자까지
+            regExp = /^[a-z]+[a-z0-9_-]{3,19}$/g;
+            if (form1.id.value.length < 4 || regExp.test(form1.id.value) == false) {
+                div.innerHTML = '아이디를 다시 입력해주세요.<br>';
+                form1.id.select(); // id객체를 포커싱 한다.
+                return;
+            }
+
+            // 이름 양식 확인, 한글만 허용
+            regExp = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s]/g;
+            if (form1.name.value.length < 2 || regExp.test(form1.name.value) == false) {
+                div.innerHTML = '이름을 다시 입력해주세요.<br>';
+                form1.name.select();
+                return;
+            }
+
+            // pw 유효성 체크, 첫번째랑 두번째랑 같은지만 확인 
+            if (form1.password1.value.length < 4 || form1.password1.value != form1.password2.value) {
+                div.innerHTML = '비밀번호를 다시 입력해주세요.<br>';
+                form1.password1.select();
+                form1.password1.value = '';
+                form1.password2.value = '';
+                return;
+            }
+
+            // 전화번호 형식으로 확인
+            if (fn_regExp('tel').test(form1.tel.value) == false) {
+                div.innerHTML += '전화번호를 다시 입력하세요. <br>';
+                form1.tel.select();
+                return;
+            }
+
+            alert('회원가입에 성공하였습니다.');
+            form1.submit(); // 실제 서버로 전달되는 부분
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. 체크박스 버튼 응용</h3>
+    <b>취미란 : </b>
+    <input type="checkbox" name="hobby" value="game" id="game"> <label for="game">게임</label>
+    <input type="checkbox" name="hobby" value="music" id="music" checked> <label for="music">음악감상</label>
+    <input type="checkbox" name="hobby" value="movie" id="movie" checked> <label for="movie">영화보기</label>
+    <br>
+    <button onclick="test4();">제출</button>
+    <div id="div4"></div>
+    <script>
+        function test4() {
+            var hobbyArray = document.getElementsByName('hobby');
+            var div = document.getElementById('div4');
+            var str = '';
+
+            for (var i = 0; i < hobbyArray.length; i++) {
+                if (hobbyArray[i].checked == true) {
+                    str += '체크 된 값 : ' + hobbyArray[i].value + '<br>';
+                    hobbyArray[i].checked = false; // 체크 풀어주는 코드
+                }
+            }
+            div.innerHTML = str;
+        }
+    </script>
+    <hr><br>
+
+
+    <h3>5. 라디오버튼 버튼 응용</h3>
+    <!-- name만 같고 value만 달라야 함.-->
+    <b>취미란 : </b>
+    <input type="radio" name="hobby2" value="" id="none" checked> <label for="none">선택 없음</label>
+    <input type="radio" name="hobby2" value="game" id="game2"> <label for="game2">게임</label>
+    <input type="radio" name="hobby2" value="music" id="music2"> <label for="music2">음악감상</label>
+    <input type="radio" name="hobby2" value="movie" id="movie2"> <label for="movie2">영화보기</label>
+    <br>
+    <button onclick="test5();">제출</button>
+    <div id="div5"></div>
+    <script>
+        function test5() {
+            var hobbyArray = document.getElementsByName('hobby2');
+            var div = document.getElementById('div5');
+            var str = '';
+            for (var i = 0; i < hobbyArray.length; i++) {
+                if (hobbyArray[i].checked == true) {
+                    str += '체크 된 값 : ' + hobbyArray[i].value + '<br>';
+                }
+            }
+            hobbyArray[0].checked = true;
+            div.innerHTML = str;
+        }
+    </script>
+    <hr><br>
+
+    <!-- 중요 -->
+    <h3>6. 2단 Select 활용</h3>
+    <p> - 대표적으로 주소 검색시의 시군구를 선택할때 활용한다.</p>
+    <select name="sido1" id="sido1">
+        <!--option에 value가 없으면 표현 값이 value로 결정된다.-->
+        <option>서울시</option>
+        <!--selected : 초기 선택값-->
+        <option selected>경기도</option>
+        <option>강원도</option>
+    </select>
+    <select name="gugun1" id="gugun1">
+        <!-- 만일 표현 값과 value값이 달라야하는 경우는 value에 서버로 보낼 값을 채운다. -->
+        <option value="code01">강남구</option>
+        <option value="code02">강동구</option>
+        <option value="code03">강북구</option>
+    </select>
+    <button onclick="print();">출력</button>
+    <div id="div6"></div>
+    <br>
+
+    <script>
+        // 0 : sido1 / 1~16 : gugun1
+        var area0 = ["시/도 선택", "서울특별시", "인천광역시", "대전광역시", "광주광역시", "대구광역시", "울산광역시", "부산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"];
+        var area1 = ["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"];
+        var area2 = ["계양구", "남구", "남동구", "동구", "부평구", "서구", "연수구", "중구", "강화군", "옹진군"];
+        var area3 = ["대덕구", "동구", "서구", "유성구", "중구"];
+        var area4 = ["광산구", "남구", "동구", "북구", "서구"];
+        var area5 = ["남구", "달서구", "동구", "북구", "서구", "수성구", "중구", "달성군"];
+        var area6 = ["남구", "동구", "북구", "중구", "울주군"];
+        var area7 = ["강서구", "금정구", "남구", "동구", "동래구", "부산진구", "북구", "사상구", "사하구", "서구", "수영구", "연제구", "영도구", "중구", "해운대구", "기장군"];
+        var area8 = ["고양시", "과천시", "광명시", "광주시", "구리시", "군포시", "김포시", "남양주시", "동두천시", "부천시", "성남시", "수원시", "시흥시", "안산시", "안성시", "안양시", "양주시", "오산시", "용인시", "의왕시", "의정부시", "이천시", "파주시", "평택시", "포천시", "하남시", "화성시", "가평군", "양평군", "여주군", "연천군"];
+        var area9 = ["강릉시", "동해시", "삼척시", "속초시", "원주시", "춘천시", "태백시", "고성군", "양구군", "양양군", "영월군", "인제군", "정선군", "철원군", "평창군", "홍천군", "화천군", "횡성군"];
+        var area10 = ["제천시", "청주시", "충주시", "괴산군", "단양군", "보은군", "영동군", "옥천군", "음성군", "증평군", "진천군", "청원군"];
+        var area11 = ["계룡시", "공주시", "논산시", "보령시", "서산시", "아산시", "천안시", "금산군", "당진군", "부여군", "서천군", "연기군", "예산군", "청양군", "태안군", "홍성군"];
+        var area12 = ["군산시", "김제시", "남원시", "익산시", "전주시", "정읍시", "고창군", "무주군", "부안군", "순창군", "완주군", "임실군", "장수군", "진안군"];
+        var area13 = ["광양시", "나주시", "목포시", "순천시", "여수시", "강진군", "고흥군", "곡성군", "구례군", "담양군", "무안군", "보성군", "신안군", "영광군", "영암군", "완도군", "장성군", "장흥군", "진도군", "함평군", "해남군", "화순군"];
+        var area14 = ["경산시", "경주시", "구미시", "김천시", "문경시", "상주시", "안동시", "영주시", "영천시", "포항시", "고령군", "군위군", "봉화군", "성주군", "영덕군", "영양군", "예천군", "울릉군", "울진군", "의성군", "청도군", "청송군", "칠곡군"];
+        var area15 = ["거제시", "김해시", "마산시", "밀양시", "사천시", "양산시", "진주시", "진해시", "창원시", "통영시", "거창군", "고성군", "남해군", "산청군", "의령군", "창녕군", "하동군", "함안군", "함양군", "합천군"];
+        var area16 = ["서귀포시", "제주시", "남제주군", "북제주군"];
+
+        // 0. select 완전 초기화
+        var sido1 = document.getElementById('sido1');
+        var gugun1 = document.getElementById('gugun1');
+        sido1.innerHTML = ''; // option 초기화 코드
+        gugun1.innerHTML = ''; // option 초기화 코드
+
+        // 1. 일반 초기화
+        for (var i = 0; i < area0.length; i++) {
+            // sido1.innerHTML += '<option> ' + area0[i] + '</option>'; 
+            sido1.innerHTML += `<option> ${area0[i]} </option>`;  // js 표현식, 옵션 추가
+        }
+        gugun1.innerHTML = '<option>시/군/구 선택</option>';
+
+        // 2. event 처리코드 : sido1 클릭 이벤트 실행 후 상태 
+        sido1.onchange = function (e) {
+            var sido1 = document.getElementById('sido1');
+            var gugun1 = document.getElementById('gugun1');
+            var areaName = 'area' + sido1.selectedIndex;  // selectedIndex : 선택된 index를 가져오는 방법
+            var area = eval(areaName); // eval area1~16을 그대로 가져옴
+            gugun1.innerHTML = ''; // 초기화
+            for (var i = 0; i < area.length; i++) {
+                gugun1.innerHTML += `<option> ${area[i]} </option>`;
+            }
+        }
+
+        function print() { // selected
+            var sido1 = document.getElementById('sido1');
+            var gugun1 = document.getElementById('gugun1');
+            var div = document.getElementById('div6');
+
+            var str = '';
+            // str += area0[sido1.selectedIndex]; // 배열로 가져오기
+            str += '선택된 시도 : ' + sido1.options[sido1.selectedIndex].value + '<br>';
+            str += '선택된 시구군 : ' + gugun1.options[gugun1.selectedIndex].value + '<br>';
+
+            div.innerHTML = str;
+        }
+    </script>
+    <hr><br>
+
+    <h3>7. 쿠키(Cookie) </h3>
+    <!-- 프론트에 저장됨 -->
+    - cookie는 HTTP 프로토콜의 일부로 Server-Client구조에서 Client에서 저장되는 저장공간이다. <br>
+    - cookie는 일반적으로 서버의 URL에 따라 관리 되는 저장 공간으로 서버에서도 접근하여 관리한다. <br>
+    - 또한 경우에 따라 JS(Client)에서도 접근 가능하여 활용할수 있다. <br>
+    - ※주의 : Server와 통신하는 프로토콜임으로 live server에서 실행 필요 <br><br>
+    <button onclick="test6();">실행</button>
+    <div id="div7" style="height: 300px;"></div>
+    <script>
+        function test6() {
+            var div = document.getElementById('div7');
+            var str = '쿠키 예제 <br>';
+
+            // 1. 쿠키값 쓰기
+            document.cookie = 'name=vlaue';
+
+            // 2. 쿠키값 읽어오기
+            str += '처음 읽은 값 : ' + document.cookie + '<br>';
+
+            // 3. 공백/한글 인코딩하여 저장하기
+            // -> 쿠키는 공백,특수문자을 허용하지 않고, 한글도 허용 안되고, 영문으로 encoding이 필요 
+            var name = 'name';
+            var value = '김 길동';
+            document.cookie = encodeURIComponent(name) + '=' + encodeURIComponent(value);
+            str += '다음 읽은 값 : ' + document.cookie + '<br>';
+            str += '다음 읽은 값 : ' + decodeURIComponent(document.cookie) + '<br>';
+
+            // 4. 여러값 넣어보기
+            var member = { name: '김길동', age: 21, text: 'test value' };
+            var cookieStr = '';
+            for (var key in member) {
+                document.cookie = encodeURIComponent(key) + '=' + encodeURIComponent(member[key]) + '; '
+            }
+            str += '원본 : ' + document.cookie + '<br>';
+            str += '디코드값 : ' + decodeURIComponent(document.cookie) + '<br>';
+            str += '<br>';
+
+            // 5. 파싱
+            var parseStr = decodeURIComponent(document.cookie);
+            for (var temp of parseStr.split(';')) {
+                temp = temp.trim();
+                var key = temp.split('=')[0];
+                var val = temp.split('=')[1];
+                str += key + ' : ' + val + '<br>';
+            }
+            div.innerHTML = str;
+
+            // 6. 쿠키 삭제하기
+            // max-age : client에서 쿠키가 저장되는 시간
+            // document.cookie = "name=value; max-age=30"; // 30초주기
+            document.cookie = "name=value; max-age=0";
+            document.cookie = "age=value; max-age=0";
+            document.cookie = "text=value; max-age=0";
+        }
+    </script>
+    <hr><br>
+
+    <h3>8. 무한 스크롤 해보기</h3>
+    <section id="section">
+        <div class="box">
+            <p>
+                1번째 블록
+            </p>
+        </div>
+        <div class="box">
+            <p>
+                2번째 블록
+            </p>
+        </div>
+    </section>
+
+    <script>
+        var count = 2;
+        window.onscroll = function(e){
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                setTimeout(function(){
+                    var addContent = document.createElement('div');
+                    addContent.classList.add('box');
+                    addContent.innerHTML = `<p> ${count++} 번째 블록<p/>`; // 백팁 스크립트 표현법
+                    document.getElementById('section').appendChild(addContent);
+                },1000); // 업데이트 1초 주기 + ui 프리징 방지
+            }
+        }
+    </script>
+
+    <br><br><br>
+</body>
+
+</html>

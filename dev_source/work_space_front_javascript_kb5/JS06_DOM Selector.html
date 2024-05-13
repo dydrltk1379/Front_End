@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 태그(DOM) 접근 방법</title>
+    <style>
+        div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px black solid;
+        }
+
+        .testClass {
+            border: 10px black solid;
+            background-color:aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML 태그(DOM) 접근법</h1>
+    <hr><br>
+
+    <h3>접근용 태그 = 객체 or DOM</h3>
+    <div id="div1" name="div">
+        <h2 id="div1_h2" class="div1_class">div 영역1 - h2 입니다.</h2>
+        <p id="div1_p1" class="div1_class"><b>div 영역1 - P 태그 안입니다.</b></p>
+    </div>
+
+    <div id="div2" name="div">
+        <h2 id="div2_h2" name="div2_h2_name">div 영역2 - h2 입니다.</h2>
+        <p id="div2_p1" name="div2_p1_name"><b>div 영역2 - P 태그 안입니다.</b></p>
+    </div>
+    <hr><br>
+
+    <h3>1. getElementById()★★★★★</h3>
+        - id인자를 통해 태그 객체를 가져오는 방법, JavaScript 보편적으로 활용됨! <br>
+        - 기본적으로 html에서는 id는 태그 하나당 단일 식별자로 존재해야함 <br>
+        <br>
+    <script>
+        var div1 = document.getElementById('div1');
+        var div1_h2 = document.getElementById('div1_h2');
+        var div1_p1 = document.getElementById('div1_p1');
+        console.log(div1);
+        console.log(div1_h2);
+        console.log(div1_p1);
+
+        // document.write('div1 : ' + div1.innerHTML + '<br>'); // 안에 있는 html 요소를 가져오는 방법
+        document.write('div1 : ' + div1 + '<br>'); 
+        document.write('div1_h2 : ' + div1_h2.innerHTML + '<br>');  // tag요소를 포함한 내용
+        document.write('div1_p1 : ' + div1_p1.innerText + '<br>');  // tag요소를 제외한 순수 text
+    </script>
+    <hr><br>
+
+    <h3>2. getElementsByName() : 이름으로 가져오기</h3>
+     - name을 통해서 태그 객체'들'을 가져오는 방법 (Element's'가 붙으면 배열로 가져온다.)<br>
+     - name은 중복해서 사용가능한 요소, 주로 라디오박스나 체크박스 류에서 name을 통일한다.<br>
+     - name은 대부분 input태그에서 활용되고 서버에서 파라메터의 식별자로 활용한다.<br>
+     <br>
+    <script>
+        var array = document.getElementsByName('div');
+        var h2 = document.getElementsByName('div2_h2_name');
+        var p1 = document.getElementsByName('div2_p1_name');
+
+        document.write('div1 : '+ array[0] +'<br>');
+        document.write('div2 : '+ array[1] +'<br>');
+        document.write('div3 : '+ array[2] +'<br>');
+        document.write('h2 : '+ h2[0] +'<br>');
+        document.write('p1 : '+ p1[0] +'<br>');
+
+        // 반복문으로 내용 확인하기
+        for(let i = 0; i <array.length; i++){
+            document.write('div : '+ array[i].innerText +'<br>');
+        }
+        for(let e of array){
+            document.write('div : '+ e.innerText +'<br>');
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. getElementsByTagName</h3>
+     - 태그 이름을 통해 객체를 가져오는 방법<br><br>
+    <script>
+        var h2Array = document.getElementsByTagName('h2');
+        console.log(h2Array);
+
+        for(let i = 0; i < h2Array.length; i++){
+            document.write('h2 : ' + h2Array[i].innerText + '<br>');
+            h2Array[i].style.color = '#0000ff'; // css 속성을 바꿀수도 있다.
+        }
+    </script>
+    <hr><br>
+
+    <h3>4. getElementsByClassName</h3>
+    <p> - class의 이름으로 객체를 찾아오는 방법</p>
+    <script>
+        var divArray = document.getElementsByClassName('div1_class');
+        console.log(divArray);
+
+        for(let i = 0 ; i < divArray.length; i++){
+            document.write('div1_class : ' + divArray[i].innerText + '<br>');
+        }
+    </script>
+    <hr><br>
+
+    
+    <h3>5. querySelector </h3>
+     - css query를 통해 객체를 가져오는 방법 <br>
+     - querySelector는 처음 찾는 단일 객체만 가져온다! <br>
+    <script>
+        var div1 = document.querySelector('.div1_class');
+        console.log('div1 : ' + div1)
+        document.write('div1 : ' + div1.innerHTML + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>6. querySelectorAll ★★★★★ -> jQuery에서 가장 자주 활용됨</h3>
+     - css query를 통해 객체를 가져오는 방법 <br>
+     - querySelectorAll의 리턴값을 무조건 array로 다수의 객체를 찾아올수 있다. <br>
+     <br>
+
+    <script>
+        var divArray = document.querySelectorAll('.div1_class');
+        console.log(divArray);
+        divArray.forEach((e) => document.write('text : ' + e.innerHTML + '<br>'));
+        document.write('<br>');
+        
+        var divArray2 = document.querySelectorAll('div *');
+        console.log(divArray2);
+        for(let i = 0; i < divArray2.length; i++){
+            document.write('divArray2['+i+'] : ' + divArray2[i].innerText + '<br>')
+        }
+    </script>
+    <hr><br>
+
+
+    <h3>7. form의 이름이나 ID로 가져오는 방법 ★★★</h3>
+     - form의 경우는 name이나 id로 가져올수 있음 -> form만 특수하게 취급해준다.<br>
+     <br>
+    <form action="#" name="myForm" id="formId">
+        <input type="text" name="inputID" id="inputID"  value="test1"><br>
+        <input type="text" name="inputName" id="inputName"  value="홍길동"><br>
+        <input type="submit" value="제출">
+    </form>
+    <div id="testDiv" name="testDiv">test</div>
+    <hr>
+
+    <script>
+        // form id로 input value 가져오기
+        document.write('inputID 값 : ' + document.forms.formId.inputID.value + '<br>');
+        document.write('inputName 값 : ' + document.forms.formId.inputName.value + '<br>');
+
+        // form name로 input value 가져오기
+        document.write('inputID 값 : ' + document.forms.myForm.inputID.value + '<br>');
+        document.write('inputName 값 : ' + document.forms.myForm.inputName.value + '<br>');
+
+        // document.forms을 생략할수 있다! ★★★★★
+        document.write('inputID 값 : ' + myForm.inputID.value + '<br>');
+        document.write('inputName 값 : ' + myForm.inputName.value + '<br>');
+        document.write('inputID 값 : ' + formId.inputID.value + '<br>');
+        document.write('inputName 값 : ' + formId.inputName.value + '<br>');
+
+        // 일반 input도 name이나 id로 가져오기 -> form안에 있기때문에만 가능
+        document.write('inputID 값 : ' + inputID.value + '<br>');
+        document.write('inputName 값 : ' + inputName.value + '<br>');
+
+        // form에 없는 일반 html은 그냥 id나 name으로 가져올수 없다!!! ★★★★★
+        document.write('testDiv 값 : ' + testDiv.value + '<br>'); // undefined
+
+        // form이 특수취급 받는 이유? summit 처리를 위해 가능하다.
+        // myForm.submit();
+    </script>
+    <hr><br>
+
+    <h3>7. element 접근 및 수정하기</h3>
+     -  element의 모든 속성 값을 추가, 삭제, 수정이 가능하다. <br>
+     -  element가 js에서는 사실상 객체로 원하는 속성값과 메소드 추가가 가능하다. <br>
+    <br>
+    <div id="test1">
+        기존 내용
+        <!-- <h3 style="color:red;">추가한 HTML1</h3>
+        <h3 style="color:blue;">추가한 HTML2</h3> -->
+    </div>
+    <div id="test2" class="tempClass"></div>
+    <script>
+        var test1 = document.getElementById('test1');
+        // element 내용에 새로운 태그를 추가하는 가장 간단한 방법 ★★★★★
+        // test1.innerHTML = '<h3 style="color:red;">추가한 HTML1</h3><h3 style="color:blue;">추가한 HTML2</h3>';
+        // 기존 내용을 유지하면서 태그를 추가하는 방법 ★★★★★
+        test1.innerHTML += '<h3 style="color:red;">추가한 HTML1</h3><h3 style="color:blue;">추가한 HTML2</h3>';
+
+        var test2 = document.getElementById('test2');
+        // 텍스트만 추가하는 방법
+        test2.innerText = '텍스트 추가하는 방법';
+
+        // style(css) 수정하기 -> 하드코딩에 가까워서 추천하지 않는 방법
+        test2.style.color = 'red';
+        test2.style.backgroundColor = '#116611';
+
+        // https://hianna.tistory.com/469
+        // class 이름 수정하기 -> 이 방법을 통해 css 속성 바꾸는걸 권장
+        test2.className ='testClass';
+        // test2.className +='testClass'; // 기존 class 네임에 추가하는 방법
+
+        // 현재 적용된 class들 확인하기
+        document.write('test2.classList : ' + test2.classList + '<br>')
+        // test2.classList.add('testClass');
+
+        // 태그에 없던 다른 고유 속성 변경하기 <- 잘 쓰임 : 사용자 공간
+        test2.value = '2'; // 평점
+        test2.userName = '홍길동';
+
+        // 고유 변수로 조작하는 예시
+        for(let i = 0; i < test2.value; i++){
+            test2.innerText += '★'; 
+        }
+    </script>
+    
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

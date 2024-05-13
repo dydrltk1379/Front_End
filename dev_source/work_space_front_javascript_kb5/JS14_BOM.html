@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+    <style>
+        div {
+            height: 300px;
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>BOM (Browser Obejct Model)</h1>
+    <!-- Open with Live Server로 돌릴 것 -->
+    <hr>
+
+    <h3>Screen 객체</h3>
+    <!-- 모니터 길이 -->
+    <p> - 웹 브라우저 화면이 아닌 운영체제 화면의 속성을 가지는 객체</p>
+    <div id="div1"></div>
+    <script>
+        var div1 = document.getElementById('div1');
+
+        div1.innerHTML += '화면높이 : ' + screen.height + '<br>'
+        div1.innerHTML += '화면너비 : ' + screen.width + '<br>'
+        div1.innerHTML += '실제 가용 가능 화면 높이 : ' + screen.availHeight + '<br>'
+        div1.innerHTML += '실제 가용 가능 화면 너비 : ' + screen.availWidth + '<br>'
+        div1.innerHTML += '사용 가능한 색상 수 : ' + screen.colorDepth + '<br>'
+        div1.innerHTML += '한 픽셀당 비트수 : ' + screen.pixelDepth + '<br>'
+    </script>
+    <hr><br>
+
+    <h3>loaction 객체</h3>
+    <!-- location.href : 특정 url  -->
+    <p> - 브라우저 주소 표시줄과 관련된 객체</p>
+    <div id="div2"></div>
+    <script>
+        var div2 = document.getElementById('div2');
+
+        for(let key in location){
+            div2.innerHTML += key + ' : ' + location[key] + '<br>';
+        }
+    </script>
+    <hr><br>
+
+    <h3>location 객체 응용</h3>
+    <p> - 페이지 이동법 : location = '주소';</p>
+    <button onclick="location = 'http://www.naver.com';">네이버</button>
+    <button onclick="location.href = 'http://www.google.com';">구글</button>
+    <hr><br>
+    
+    <h3>새로고침 - 스크롤 유지X, 맨 위로</h3>
+    <button onclick="location = location">새로고침1</button>
+    <button onclick="location.href = location.href">새로고침2</button>
+    <button onclick="location = location.href">새로고침3</button>
+    <hr><br>
+
+    <h3>새로고침 - 스크롤 유지O(reload), 새로고침라인까지</h3>
+    <button onclick="location.reload();">새로고침 reload함수</button>
+    <hr><br>
+
+    <h3>새로운 페이지 이동 함수 = assign (location이나 같은 방법)</h3>
+    <button onclick="location.assign('http://www.naver.com')">네이버 이동</button>
+    <hr><br>
+
+    <h3>새로운 페이지 이동 함수 = replace (히스토리 남지 않는다. = 뒤로가기 안됨!)</h3>
+    <button onclick="location.replace('http://www.naver.com')">네이버 이동</button>
+    <hr><br>
+
+    
+    <h3>히스토리 객체</h3>
+    <p> - 브라우저 이전 페이지 이동 정보를 가진 객체</p>
+    <div id="div3"></div>
+    <script>
+        var div3 = document.getElementById('div3');
+
+        for (key in history) {
+            div3.innerHTML += key + ' : ' + history[key] + '<br>';
+        }
+    </script>
+    <hr>
+
+    <h3>이전 페이지 이동</h3>
+    <button onclick="history.go(-1)">이전 페이지 이동</button>
+    <button onclick="history.back()">이전 페이지 이동</button>
+    <hr>
+    
+    <h3>다음 페이지 이동</h3>
+    <button onclick="history.go(1)">다음 페이지 이동</button>
+    <button onclick="history.forward()">다음 페이지 이동</button>
+    <hr>
+
+    <h3>navigator 객체</h3>
+    <!-- laguage, platform 보는 정도 -->
+    <p> - 웹페이지를 실행하는 브라우저의 정보를 가진 객체</p>
+    <div id="div4" style="height: auto;"></div>
+    <script>
+        var div4 = document.getElementById('div4');
+
+        for (key in navigator) {
+            div4.innerHTML += key + ' : ' + navigator[key] + '<br>';
+            console.log(navigator[key]);
+        }
+    </script>
+    <hr><br>
+
+    <br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

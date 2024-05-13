@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <style>
+        div {
+            height: 300px;
+            background-color: lightgray;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트란?</h1>
+    <p> - 사용자나 운영체제(브라우저)로 부터 특정한 입력값을 전달받아 발생하는 메커니즘</p>
+    <p> - 이벤트를 처리하기 위해 Call-back함수(핸들러, 리스너)를 구현하여 이벤트 로직을 처리</p>
+    <hr><br>
+
+    <!-- 다 알고 있어야 한다. -->
+    <h2>이벤트 속성</h2>
+    
+    <b>input(입력창) 태그관련 이벤트</b><br>
+    focus : input태그에 focus되었을때 발생 * 주의 blur가 같이 처리됨 -> 무한루프가 됨<br>
+    blur : input태그의 focus가 사라졌을때 발생<br>
+    change : input태그의 value속성의 값이 변경됐을때 발생 * select태그 이벤트에 많이 사용<br>
+    submit : form태그에서 submit타입을 클릭했을때 발생 form태그로 데이터전송시 발생<br>
+    reset : form태그에서 reset타입을 클릭했을때 발생<br>
+    <hr><br>
+
+    <b>mouse관련 이벤트</b><br>
+    click : 마우스 좌클릭했을때 발생<br>
+    dbclick : 마우스 더블클릭했을때 발생<br>
+    mouseenter : 지정한 영역안에 마우스가 들어왔을때 발생<br>
+    mouseleave : 지정한 영역안에서 마우스가 나갔을때 발생<br>
+    <hr><br>
+
+    <b>key관련 이벤트</b><br>
+    keyup : 키가 올라왔을때 발생<br>
+    keydown : 키가 내려갔을때 발생<br>
+    keypress : 키가 눌렸을때 발생<br>
+    <hr><br>
+
+    <b>윈도우창 관련 이벤트</b><br>
+    load : 페이지의 태그들이 다 로드됐을때 발생 * 페이지관련 이벤트<br> <!-- (중요) onload -->
+    resize : 윈도우 크기가 조정됐을때 발생<br>
+    scroll : 창에서 스크롤이 조정됐을때 발생<br>
+    <hr><br>
+
+    <h1>이벤트 등록방식 </h1>
+    <h3>1. 고전 이벤트 ★★★ </h3>
+    <p> - 자바스크립트의 고유 함수를 활용하는 기법</p>
+    <button id="btn1">버튼1</button>
+    <button id="btn2">버튼2</button>
+    <div id="div1"></div>
+    
+    <script>
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var div1 = document.getElementById('div1');
+
+        btn1.onclick = function(){
+            div1.innerHTML += 'btn1 클릭됨 <br>';
+        };
+        
+        btn2.onclick = function(event){ // 여기에 event를 추가할수 있다.
+            div1.innerHTML += 'btn2 클릭됨 <br>';
+            // btn2.onclick = null; // 이벤트를 해제하는 방법
+            this.onclick = null; // 여기서 this는 해당 이벤트가 작동한 객체 = btn2 - 해제
+            this.innerText = '해제됨';
+            console.log(event);
+            event.target.innerText ='해제'; // target : 이벤트가 걸릴 객체의 정보를 가져옴
+            div1.innerHTML += 'btn onclick 이벤트가 해제됨 <br>';
+        };
+    </script>
+    <hr><br>
+
+    <h3>2. 인라인 이벤트 방식 ★★★★</h3>
+    <p> - HTML 태그에 인라인으로 이벤트를 등록하는 방법</p>
+    <button id="btn3" onclick="test3()">버튼3</button>
+    <!-- <button id="btn4" onclick="test4(this)">버튼3</button> -->
+    <button id="btn4" onclick="test4(this, '버튼4')">버튼4</button>
+    <!-- <button id="btn5" onclick="test4(this, '버튼5')">버튼5</button> 
+    <button id="btn6" onclick="test4(this, '버튼6')">버튼6</button> 
+        댓글 삭제할 때 응용(ajax)
+    -->
+    <div id="div2"></div>
+
+    <script>
+        var div2 = document.getElementById('div2');
+        var count = 0;
+
+        function test3(){
+            div2.innerHTML += '' + count++ +'번 클릭됨 <br>'; 
+        }
+
+        function test4(element, str){
+            element.onclick = null;
+            // this.onclick = null; button btn3 그 자체
+            div2.innerHTML += str + ' 이벤트가 해제됨 <br>'; 
+        }
+    </script>
+    <hr><br>
+
+    
+    <!-- https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener -->
+    <h3>3. 표준 이벤트 모델</h3>
+    <!-- 브라우저가 달라도 먹히게 해주는 이벤트, 단어 하나하나 알아야 하기에 비호-->
+    <p> - w3c에서 지정한 표준적인 이벤트 등록방식</p>
+    <p> - 여러개의 이벤트를 등록할수 있다. (강사는 비추함)</p>
+    <button id="btn5">버튼5</button>
+    <button id="btn6">버튼6</button>
+    <div id="div3"></div>
+    <script>
+        var btn5 = document.getElementById('btn5');
+        var btn6 = document.getElementById('btn6');
+        var div3 = document.getElementById('div3');
+
+        // 첫번째 인자 : 이벤트의 문자열 이름, 두번째는 Listener함수 
+        btn5.addEventListener('click', function(e){
+            div3.innerHTML += '익명함수로 호출하는 방법1 <br>';
+            console.log(e);
+        });
+
+        var clickEvent = function(e){
+            div3.innerHTML += '익명함수로 호출하는 방법2<br>';
+            // e.target.removeEventListener('click', clickEvent, false); // 이게 정석인 문장
+            // e.target.onclick = null; // 다른 이벤트 제거 방식으로 하면 안된다!!
+            div3.innerHTML += '이벤트가 해제되었습니다.<br>';
+        }
+
+        btn6.addEventListener('click', clickEvent);
+    </script>
+    <hr><br>
+
+
+    <h4>버블링</h4>
+    <div onclick="alert('div에 할당한 핸들러!')">
+        <em><code>EM</code>을 클릭했는데도 <code>DIV</code>에 할당한 핸들러가 동작합니다.</em>
+    </div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

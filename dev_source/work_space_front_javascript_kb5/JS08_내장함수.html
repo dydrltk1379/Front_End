@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장함수</title>
+</head>
+<body>
+    <h1>내장함수</h1>
+    <hr>
+
+    <!-- 인코딩 escape() : (중요) 특수문자로 인자를 받을 때 막힘, 보안 용도 -->
+    <h3>escape(), unescape()</h3>
+     - 알파벳 대소문자, 0~9숫자, @*-_+./를 제외한 모든 문자열 인코딩/디코딩 함수<br>
+     - 사용처 : 보안용도로 사용자가 특수문자를 사용하지 못하도록 막을 때 사용. <br>
+     <br>
+    <input type="text" id="input1"><br>
+    <button onclick="test1();">버튼</button>
+    <div id="div1">결과 값</div>
+    <script>
+        function test1(){
+            var inputValue = document.getElementById('input1').value;
+            var encodingValue = escape(inputValue);
+            var decodingValue = unescape(encodingValue);
+
+            var div1 = document.getElementById('div1');
+            div1.innerHTML = '원본 : ' + inputValue + '<br>';
+            div1.innerHTML += '인코딩 : ' + encodingValue + '<br>';
+            div1.innerHTML += '디코딩 : ' + decodingValue + '<br>';
+        }
+    </script>
+    <hr><br>
+
+    <h3>encodeURI(), decodeURI()</h3>
+     - 인터넷 주소에서 - : ; / = ? &를 제외하고 인코딩 하는 기법<br>
+     - 사용처 : 영어가 아닌 다국어(한국어) 포함하여 uri를 요청할때 활용<br>
+    <input type="text" id="input2"><br>
+    <button onclick="test2();">버튼</button>
+    <div id="div2">결과 값</div>
+    <script>
+        function test2() {
+            var inputValue = document.getElementById('input2').value;
+            var encodingValue = encodeURI(inputValue);
+            var decodingvalue = decodeURI(encodingValue);
+
+            var div2 = document.getElementById('div2');
+            div2.innerHTML = '원본 : ' + inputValue + '<br>';
+            div2.innerHTML += '인코딩 : ' + encodingValue + '<br>';
+            div2.innerHTML += '디코딩 : ' + decodingvalue + '<br>';
+        }
+    </script>
+    <hr><br>
+
+    <!-- (중요, 고급 문법) 1. 변수 선언시 문자로 자바스크립트를 외부로 쓰일 때 : 배열을 쓰기 위해-->
+    <h3>eval()</h3>
+     - 문자열을 자바스크립트 코드로 변환해서 실행하는 함수<br>
+     - javascript 고급 문법으로 활용도가 무궁무진하다.<br>
+
+    <button onclick="test3();">실행 결과</button>
+    <div id="div3"></div>
+    <script>
+        function test3() {
+            var str = 'var num1 = 10; var num2 = 20;';
+            str += "document.getElementById('div3').innerHTML = num1 + num2;";
+            eval(str);
+        }
+    </script>
+    <hr><br>
+
+    <h3>isFinite(), isNaN()</h3>
+    isFinite() : number형 데이터가 맞는지 확인, 맞으면 true 리턴<br>
+    isNaN() : (숫자가 아니지?) number형 데이터가 맞는지 확인, 숫자 type이 맞으면 false 리턴<br>
+    ※ 주의 : type이 아닌 아스키 코드로 숫자범위인지 확인하는 함수들<br>
+    <input type="text" id="input4"> <br>
+    <button onclick="test4()">실행 결과</button>
+    <div id="div4"></div>
+    <script>
+        function test4() {
+            var value1 = document.getElementById('input4').value;
+            var value2 = parseInt(value1);
+            var div4 = document.getElementById('div4');
+            
+            div4.innerHTML = 'value1 -> isFinite() : ' + isFinite(value1) + '<br>';
+            div4.innerHTML += 'value1 -> isNaN() : ' + isNaN(value1) + '<br>';
+            div4.innerHTML += 'value2 -> isFinite() : ' + isFinite(value2) + '<br>';
+            div4.innerHTML += 'value2 -> isNaN() : ' + isNaN(value2) + '<br>';
+            div4.innerHTML += 'value1 type : ' + typeof(value1) + '<br>';
+            div4.innerHTML += 'value2 type : ' + typeof(value2) + '<br>';
+            div4.innerHTML += 'value2 type : ' + value2 + '<br>';
+        }
+    </script>
+    <br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

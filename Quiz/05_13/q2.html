@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q2</title>
+</head>
+<body>
+    <script>
+        function test(){
+            id=document.getElementById('ID').value;
+            password=document.getElementById('password').value;
+            check=document.getElementById('passwordCheck').value;
+            if(id.length<5){
+                alert('5미만입니다. 다시 입력해주세요.');
+            }else{
+                if(password==check){
+                    div1.innerHTML = '일치!!';
+                }else{
+                    div1.innerHTML = '불일치!!';
+                }
+            }
+        }
+    </script>
+    <h3>아이디 입력 : </h3>
+    <input type="text" id="ID">
+    <hr><br>
+    <h3>패스워드 : </h3>
+    <input type="text" name="" id="password">
+    <br>
+    <h3>패스워드 확인 : </h3>
+    <input type="text" name="" id="passwordCheck">
+    <br>
+    <button onclick="test()">확인</button>
+    <br>
+    <div id="div1"></div>
+</body>
+</html>

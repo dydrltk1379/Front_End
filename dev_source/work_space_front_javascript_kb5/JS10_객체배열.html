@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체배열</title>
+</head>
+
+<body>
+    <h1>객체 배열 = JSON 표준적인 활용법 </h1>
+
+    <h3>기본객체 배열 (구형 스타일)</h3>
+    <label for="name">이름 순 정렬</label><input type="checkbox" name="name" id="name"><br>
+    <label for="age">나이 순 정렬</label><input type="checkbox" name="age" id="age"><br>
+    <button onclick="test1()"> 실행 </button>
+    <div id="div1"></div>
+
+    <script>
+        function test1() {
+            var member1 = {
+                name: '홍길동',
+                age: 30,
+                tel: '010-1234-5678'
+            };
+            var member2 = {
+                name: '최길동',
+                age: 21,
+                tel: '010-1234-5678',
+                hobby: '게임',
+            };
+            var member3 = {
+                name: '김길동',
+                age: 33,
+                tel: '010-1234-5678',
+                address: '서울 강남구 어딘가'
+            };
+            var member4 = {
+                name: '김길동',
+                age: 21,
+                tel: '010-1234-5678',
+                address: '서울 강남구 어딘가'
+            };
+
+            var memberArray = [];
+            memberArray.push(member1);
+            memberArray.push(member2);
+            memberArray.push(member3);
+            memberArray.push(member4);
+
+            var isCheckName = document.getElementById('name').checked;
+            var isCheckAge = document.getElementById('age').checked;
+
+            // 이름순 정렬하기
+            if (isCheckName) {
+                memberArray = memberArray.sort((x, y) => {
+                    return x.name.localeCompare(y.name);
+                });
+            }
+
+            // 나이순 정렬하기
+            if (isCheckAge) {
+                memberArray = memberArray.sort((x, y) => {
+                    return x.age - y.age;
+                });
+            }
+
+            // 이름 - 나이순 정렬하는 방법
+            if (isCheckName == true && isCheckAge == true) {
+                memberArray = memberArray.sort((x, y) => {
+                    var result = x.name.localeCompare(y.name);
+                    if (result == 0) {
+                        result = x.age - y.age;
+                    }
+                    return result;
+                });
+            }
+
+            // 객체배열 순회하기
+            var str = ''; // 출력할 결과 저장할 문자열
+            for (var member of memberArray) {
+                for (var key in member) {
+                    str += key + ' : ' + member[key] + '<br>';
+                }
+                str += '<hr>';
+            }
+
+            // json 출력
+            var jsonText = JSON.stringify(memberArray);
+            str += 'JSON Text <br>';
+            str += jsonText;
+            str += '<hr>';
+
+            // json 파싱
+            var jsonArray = JSON.parse(jsonText);
+            str += 'JSON Obj <br>';
+            str += jsonArray[0]['name'] + '<br>';
+            str += jsonArray[0]['age'] + '<br>';
+            str += jsonArray[0]['tel'] + '<br>';
+
+            document.getElementById('div1').innerHTML = str;
+        }
+    </script>
+    <hr><br>
+
+
+    <h2>함수를 활용하여 객체를 생성하는 방법</h2>
+    <fieldset>
+        <legend>회원 정보 입력</legend>
+        <label for="name">이름 : </label>
+        <input type="text" name="mname" id="mname"><br>
+        <label for="age">나이 : </label>
+        <input type="text" name="mage" id="mage"><br>
+        <label for="tel">전화번호 : </label>
+        <input type="text" name="mtel" id="mtel"><br><br>
+        <button onclick="input();">데이터 입력</button>
+        <button onclick="print();">데이터 출력</button>
+    </fieldset>
+    <div id="div2"></div>
+
+    <script>
+        memberArray = [];
+
+        function input(){
+            var member = {
+                mname, mage, mtel
+            };
+
+            for(var key in member){
+                var e = document.getElementById(key);
+                member[key] = e.value;
+                e.value = ''; // input창을 초기화 하는 방법
+            }
+
+            memberArray.push(member);
+            alert('입력 완료');
+        }
+
+        function print(){
+            var str = '';
+            for(var i = 0; i < memberArray.length; i++){
+                for(var key in memberArray[i]){
+                    str += key + ' : ' + memberArray[i][key] + '<br>';
+                }
+                str += '<br>';
+            }
+            document.getElementById('div2').innerHTML = str;
+        }
+    </script>
+
+
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+
+
+
+</body>
+
+</html>
