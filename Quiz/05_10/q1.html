@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제어문</title>
+</head>
+<body>
+    <script>
+        //1
+        let stars='';
+        for(let i=0; i<10; i++){
+            stars+='*';
+        }
+        alert('별을 10개 찍어보세요.'+stars);
+
+        //2
+        let sign = prompt('원하는 기호를 넣으세요>>');
+        let cnt = prompt('원하는 숫자를 넣으세요>>');
+        let text='';
+        for(let i=0; i<cnt; i++){
+            text+=sign;
+        }
+        alert(text + '(' + sign + '를 반복)');
+
+        //3
+        let cnt2=0;
+        while(1){
+            let num=prompt('1)증가, 2)감소, 3)종료를 선택해주세요.>>');
+            if(Number(num)==1){
+                cnt2++;
+            }else if(Number(num)==2){
+                cnt2--;
+            }else if(Number(num)==3){
+                break;
+            }
+            alert('카운트 : ' + cnt2 + '<br>');
+        }
+        alert('시스템을 종료합니다. 현재까지의 카운트는 ' + cnt2);
+
+        //4-1
+        let year=new Date().getFullYear();
+        let millennial = year+'년 ';
+        if(Number(year)>=2000){
+            millennial+='밀레니엄 세대시군요.';
+        }else{
+            millennial+='밀레니엄 세대가 아니시군요.';
+        }
+        document.write(millennial +'<br>');
+
+        //4-2
+        let week=new Date().getDay();
+        let study=''
+        if(String(week)=='토' || String(week)=='일'){
+            study+='5>> 쉬~~~~~~~~자';
+        }else{
+            study+='5>> 열~심히 공부하자';
+        }
+        document.write(study +'<br>');
+
+        //4-3
+        let month=new Date().getMonth()+1;
+        let day='5>> ';
+        if(Number(month)==2){
+            day+='28일까지';
+        }else if(Number(month)==4||Number(month)==6||
+            Number(month)==9||Number(month)==11){
+                day+='30일까지';
+        }else{
+            day+='31일까지';
+        }
+        document.write(day +'<br>');
+    </script>
+    
+
+</body>
+</html>

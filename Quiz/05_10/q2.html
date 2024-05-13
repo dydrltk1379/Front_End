@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+</head>
+<body>
+    <script>
+        let seat=[];
+        for(let i=0; i<14; i++){
+            seat[i]=0;
+        }
+        while(1){
+            let choice=prompt('좌석번호 선택(1~14), 종료 : 0');
+            if(Number(choice)==0){
+                alert('예약 시스템을 종료합니다.');
+                break;
+            }else if(seat[Number(choice)]==1){
+                alert('이미 예약된 자리입니다.');
+            }else{
+                seat[Number(choice)]=1
+            }
+        }
+        document.write('예약된 좌석번호는 ');
+        let num='';
+        let cnt=0;
+        for(let i=0; i<14; i++){
+            if(seat[i]==1){
+                num+=i+' ';
+                cnt++;
+            }
+        }
+        document.write(num + '<br>');
+        document.write('예매 금액은 '+ cnt*5000 + '원');
+    </script>
+</body>
+</html>
