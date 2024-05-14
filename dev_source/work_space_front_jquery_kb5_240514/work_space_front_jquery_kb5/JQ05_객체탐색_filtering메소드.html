@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 탐색1</title>
+    <script src="js/jquery-3.7.1.js"></script>
+</head>
+
+<body>
+    <h1>객체 탐색 - filtering 메소드</h1>
+    <hr>
+    <h3 class="test">test-1</h3>
+    <h3 class="test">test-2</h3>
+    <h3 class="test">test-3</h3>
+    <h3 class="test">test-4</h3>
+    <h3>test-5</h3>
+    <h3 class="test">test-6</h3>
+
+    <script>
+        // index 시작은 0부터
+        // h3 태그중 짝수 인덱스만 선택자로 지정하는 법
+        $('h3:even').css('background-color', 'yellow');
+
+        // h3 태그중 홀수 인덱스만 filter 함수로 지정하는 법
+        $('h3').filter(':odd').css('background-color', 'green');
+
+        // 선택된 요소 중에 제일 처음만 선택하는 방법
+        $('h3').first().css('font-size', '30pt');
+
+        // 선택된 요소 중에 제일 마지막 선택하는 방법
+        $('h3').last().css('font-size', '20pt');
+
+        // 인덱스 번호와 일치
+        $('h3').eq(3).text('eq(3)과 일치하는 번호');
+
+        // 인덱스 번호와 일치
+        $('h3').not('.test').text('.test가 아닌 번호');
+
+        // 함수로 필터링 하는 방법
+        $('h3').filter(function(index, item) {
+            return index % 2 == 1; // true 일 경우만 필터링되어 선택됨!
+        }).css({
+            'background-color': 'yellowgreen',
+            'color': 'white'
+        });
+
+        // 실무에서 급할때 쓰는 방법? = class만 지정한다.
+        $('.test').css('font-weight', '100');
+    </script>
+
+</body>
+
+</html>

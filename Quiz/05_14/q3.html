@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q3</title>
+</head>
+<body>
+    <script>
+        /* 1
+        const test1 = function(a, b){
+            return a+b;
+        }
+        */
+        const test1 = (a, b)=>{
+            return a+b;
+        }
+
+        /* 2
+        function test2(params){
+            console.log(params+"님 환영합니다.!");
+        }
+        */
+        test2 = (params)=>{
+            document.write(params+'님 환영합니다.!<br>');
+            //console.log(params+'님 환영합니다.!');
+        }
+
+        /*
+        function test3(){
+            return 'ok';
+        }
+        */
+        test3 = ()=>{
+            return 'ok';
+        }
+        document.write(test1(100,200)+'<br>');
+        test2('hong');
+        document.write(test3());
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q1</title>
+</head>
+<body>
+    <script>
+       function addContact(name, phone, home, address, email, ...favoritesFoods){
+            document.write('name >>> ' + name + '<br>');
+            document.write('home >>> ' + home + '<br>');
+            document.write('address >>> ' + address + '<br>');
+            document.write('email >>> ' + email + '<br>');
+            document.write('favoritesFoods >>> ' + favoritesFoods + '<br>');
+            document.write('-------<br>');
+       }
+       addContact('홍길동', '010-222-3331', '없음', '없음', '없음', '없음');
+       addContact('이몽룡', '010-222-3331', '02-3422-9900', '서울시', '없음', '없음');
+       addContact('이몽룡', '010-222-3331', '02-3422-9900', '서울시', 'hero@email.com', '감자', '고구마');
+     </script>
+</body>
+</html>

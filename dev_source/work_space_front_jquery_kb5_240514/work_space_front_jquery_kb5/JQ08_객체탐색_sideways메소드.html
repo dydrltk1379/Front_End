@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.7.1.js"></script>
+    <style>
+        .wrap,
+        .wrap * {
+            border: 1px solid lightgray;
+            display: block;
+            padding: 5px;
+            margin: 15px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>객체 탐색 - sideways 메소드</h1>
+    <p>같은 레벨에 있는 요소(형제)를 선택할 수 있는 메소드</p>
+    <hr>
+    <div class="wrap">
+        div (parent)
+        <p>p1</p>
+        <span>span</span>
+        <h2>h2</h2>
+        <h3>h3</h3>
+        <p>p2</p>
+    </div>
+
+    <script>
+        // 선택된 요소 중에서 같은 레벨에 있는 요소 리턴
+        $('h2').siblings().css({
+            'color': 'red',
+            'border': '2px solid red'
+        });
+
+        // 선택된 요소 중에서 같은 레벨에 있는 요소중 P태그만 리턴
+        $('h2').siblings('p').css({
+            'background-color': 'lightgray'
+        });
+
+        // 선택된 요소의 같은 레벨의 형제중 다음 요소 한개만 선택
+        $('h2').next().css('background-color', 'yellow');
+
+        // 선택된 요소의 같은 레벨의 형제중 다음 모두 선택
+        $('h2').nextAll().css('font-size', '30pt');
+
+        // 선택된 요소의 같은 레벨의 형제중 특정 인자까지 가져오는 법
+        $('span').nextUntil('h3').css('background', 'green');
+
+        // 선택된 요소의 같은 레벨의 형제들 중 선택된 요소 이전 한 개의 요소 리턴
+        $('h2').prev().css('font-size', '0.5em');
+
+        // 선택된 요소의 같은 레벨의 형제들 중 선택된 요소 이전 모든 요소 리턴
+        $('h2').prevAll().css('border', 'dashed');
+
+        // 선택된 요소부터 인자 범위까지 같은 레벨의 모든 요소 리턴(이전 요소들)
+        $('h2').prevUntil('p').css('background', 'yellow');
+    </script>
+</body>
+
+</html>

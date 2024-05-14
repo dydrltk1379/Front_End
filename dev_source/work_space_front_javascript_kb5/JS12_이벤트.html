@@ -135,10 +135,39 @@
     <hr><br>
 
 
-    <h4>버블링</h4>
-    <div onclick="alert('div에 할당한 핸들러!')">
-        <em><code>EM</code>을 클릭했는데도 <code>DIV</code>에 할당한 핸들러가 동작합니다.</em>
-    </div>
+     <!-- https://ko.javascript.info/bubbling-and-capturing 캡처링 : 버블링의 반대 참고 -->
+     <h3>버블링(bubbling) 이슈</h3>
+     - element를 겹쳐서 구성하는 경우 자식-부모(조상) 간에 이벤트가 전파 되는 현상 <br>  
+     - 일반적으로 버블링은 자연스러운 현상으로 기능상 문제가 되지 않는한 신경쓰지 않아도 된다.<br>
+     - 만일 문제가 되는 경우 event.stopPropagation()을 활용하여 전파를 막는다. <br><br>
+     <!-- 드래그같은 특수한 이벤트일 경우-->
+     <style>
+         form, form * {
+             margin: 10px;
+             border: 1px solid blue;
+         }
+     </style>
+ 
+     <h3>버블링 발생 영역</h3>
+     <form onclick="alert('form');">FORM
+         <h3 onclick="alert('h3');">H3
+             <p onclick="alert('p');">P</p>
+         </h3>
+     </form>
+     <hr><br>
+     
+     <h3>버블링 해결 방법 - event.stopPropagation() 활용</h3>
+     <form onclick="alert('form')">FORM
+         <h3 onclick="onClick1(event);">H3
+             <p onclick="alert('p');">P</p>
+         </h3>
+     </form>
+     <script>
+         function onClick1(event){
+             alert('h3, form으로는 전달되지 않는다.');
+             event.stopPropagation(); // 이후(form)로는 이벤트가 전파되지 않는다. 
+         }
+     </script>
 
 
     <br><br><br><br><br><br><br><br><br><br><br>

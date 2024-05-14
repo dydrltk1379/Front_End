@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체탐색3</title>
+    <script src="js/jquery-3.7.1.js"></script>
+    <style>
+        .wrap * {
+            border: 1px solid lightgray;
+            display: block;
+            padding: 5px;
+            margin: 15px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>객체 탐색 - descendants메소드</h1>
+    <p>선택된 요소의 하위 요소들을 선택할 수 있는 메소드</p>
+    <hr>
+    <div class="wrap">
+        div (wrap)
+        <div style="width:500px">
+            div(great-grandparent)
+            <ul>
+                ul(grandparent)
+                <li>
+                    li(direct parent)
+                    <span>span</span>
+                </li>
+            </ul>
+        </div>
+        <div style="width:500px">
+            div(grandparent)
+            <p>
+                p(direct parent)
+                <span>span</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 선택된 요소의 자식 객체를 리턴
+        $('.wrap').children().css({
+            'border': '2px solid red',
+            'color': 'red',
+        });
+
+        // 선택된 요소의 자식 객체의 자식 객체인데, p 태그인 객체 리턴
+        $('.wrap').children().children('p').css({
+            'border': '2px solid green',
+        });
+
+        // 후손 중에 인자와 일치하는 객체만 리턴
+        $('.wrap').find('span').css({
+            'border': '2px solid pink',
+            'color': 'pink'
+        });
+    </script>
+</body>
+
+</html>

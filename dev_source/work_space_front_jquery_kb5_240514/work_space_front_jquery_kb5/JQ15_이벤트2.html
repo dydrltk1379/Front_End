@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트2 - 연결메소드</title>
+    <script src="js/jquery-3.7.1.js"></script>
+    <style>
+        .outer {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            padding: 50px;
+        }
+        
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트 연결 메소드</h1>
+    <hr><br>
+    <h2>mouseenter, mouseleave, mouseover</h2>
+    <p> mouseenter() : 마우스가 요소에 들어올때 발생하는 이벤트</p>
+    <p> mouseleave() : 마우스가 요소를 떠날때 발생하는 이벤트</p>
+    <p> mouseover() : 마우스가 요소 위에 있을때</p>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        $('.outer').mouseenter(function(e){
+            $('#result').css('background','red').text('mouseenter');
+            console.log('mouseenter!!!!!!!!!!!!!!!!!!!!');
+            
+        });
+        $('.outer').mouseleave(function(e){
+            $('#result').css('background','blue').text('mouseleave');
+            console.log('mouseleave@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+            
+        });
+        $('.outer').mouseover(function(e){
+            $('#result').css('background','green').text('mouseover');
+            console.log('mouseover##############################################');
+            // e.stopPropagation();
+        });
+    </script>
+    <hr><br>
+    
+    <h2>hover() 메소드</h2>
+    <p>mouseenter와 mouseleave를 동시에 사용하는 효과</p>
+    <h1 id="test1">hover 테스트</h1>
+
+    <script>
+        $('#test1').hover(
+            // mouseenter
+            function(e){
+                $(this).css({
+                    'background': 'black',
+                    'color': 'white',
+                    'font-weight': '700'
+                });
+            },
+            // mouseleave
+            function(e){
+                $(this).css({
+                    'background': 'white',
+                    'color': 'black',
+                    'font-weight': '100'
+                });
+            }
+        );
+    </script>
+
+
+    
+</body>
+</html>

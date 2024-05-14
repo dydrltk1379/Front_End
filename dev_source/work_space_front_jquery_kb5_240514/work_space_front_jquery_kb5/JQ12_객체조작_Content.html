@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체조작3</title>
+    <script src="js/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>객체조작 - Content 메소드</h1>
+    <hr>
+
+    <h2>html() 메소드</h2>
+    <div id="div1"><a>네이버로 이동</a></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    
+    <script>
+        $(function(){
+            // 요소 내 html을 가져오는 방법
+            var html = $('#div1').html();
+            $('#div2').html(html);
+            
+            // 요소 내 html을 가져오고 속성도 변경하여 넣는 방법
+            $('#div3').html(html);
+            // $('#div3').children('a').attr('href','http://www.naver.com');
+            $('#div3 > a').attr('href','http://www.naver.com');
+
+            // 요소 내 html을 하드코딩해서 넣는 방법
+            var tag = '<a href="http://www.naver.com">네이버로 이동 </a>';
+            $('#div4').html(tag);
+        });
+    </script>
+    <hr><br>
+
+    <div class="class1">class 1입니다.</div>
+    <div class="class1">class 1입니다.</div>
+    <div class="class1">class 1입니다.</div>
+    <button onclick="test1()">실행 확인</button>
+    <script>
+        function test1(){
+            // 다수의 요소값을 통해 조작하는 방법
+            $('.class1').html('test입니다.');
+
+            // foreach문을 통해 html을 조작하는 방법
+            $('.class1').html(function(index, element){
+                $(this).html(`<h3> 테스트 문구 입니다. ${index} </h3>`);
+            });
+        }
+    </script>
+    <hr><br>
+
+    <h2>text() 메소드</h2>
+    <div id="div5">
+        <a href="http://www.google.com"> 구글로 이동</a>
+    </div>
+    <div id="div6"></div>
+    <button onclick="test2()">실행</button>
+
+    <script>
+        function test2(){
+            // text 가져오기
+            var text = $('#div5').text();
+
+            // text 넣기
+            $('#div6').text(text);
+        }
+    </script>    
+
+    <br><br><br><br><br><br>
+    <br><br><br><br><br><br>
+
+</body>
+</html>

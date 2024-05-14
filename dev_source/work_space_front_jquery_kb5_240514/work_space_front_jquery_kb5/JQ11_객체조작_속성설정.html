@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체조작2</title>
+    <script src="js/jquery-3.7.1.js"></script>
+    <style>
+        .first {
+            color: red;
+        }
+        
+        .second {
+            color: blue;
+        }
+        
+        .third {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체 조작 - 속성설정</h1>
+    <hr>
+    <h2>attr() 메소드</h2>
+    <p> - HTML 태그에서 특정 속성값을 알아내거나 속성을 추가할 때 사용</p>
+    <img id="img1"  src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" 
+                        width="200px" height="80px">
+    <br>
+    <button onclick="test1();">실행확인</button>
+    <div id="div1"></div>
+    <script>
+        function test1(){
+            // $(function(){}); // onready가 있으면 정상 동작하지 않음!!
+            
+            // 속성값 가져오기
+            var srcText = $('#img1').attr('src');
+
+            // div1에 출력하기
+            var html = $('#div1').html(); // get하는 방법
+            $('#div1').html(html + 'srcText : ' + srcText + '<br>'); // 기존 html에 추가하는 방법
+
+            // src 속성값 바꾸기
+            $('#img1').attr('src', 'https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png');
+
+            // 속성값을 foreach문으로 돌리는 방법
+            $('#img1').attr('src', function(index, value){
+                let div1 = document.getElementById('div1');
+                div1.innerHTML += 'index : ' + index + '<br>'
+                div1.innerHTML += 'value : ' + value + '<br>'
+            });  
+
+            // 여러 속성을 한번에 변경, 추가하는 방법
+            $('#img1').attr({
+                'width': '100px',
+                'height': '50px',
+            });
+
+            // 속성 삭제
+            // $('#img1').removeAttr('src');
+         }
+    </script>
+    <hr><br>
+
+    <h2>css() 메소드</h2>
+    <p> - 문서 객체의 스타일을 검사하거나 변경할 때 사용</p>
+    <h3 class="first">test-0</h3>
+    <h3 class="second">test-1</h3>
+    <h3 class="third">test-2</h3>
+    <button onclick="test2()">실행확인</button>
+    <div id="div2"></div>
+    
+    <script>
+        function test2(){
+            // $(function(){ }); -> 이거 쓰면 안된다!
+            var div2 = document.getElementById('div2');
+
+            // 속성 가져오기
+            var color1 = $('.first').css('color');
+            div2.innerHTML += 'color1 : ' + color1 +'<br>';
+
+            // css 하나의 속성 변경하기
+            $('.first').css('color', 'green')
+
+            // 여러 속성을 한번에 변경하는 방법
+            $('.second').css({
+                'color' : 'white',
+                'background' : 'orange',
+            });
+
+            // css 삭제하는 방법 
+            $('.third').css('color', 'inherit');
+        }
+    </script>
+    <hr><br>
+
+</body>
+</html>

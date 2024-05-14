@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력양식 필터 선택자2</title>
+    <script src="js/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>입력양식 필터 선택자2</h1>
+    <hr><br>
+
+    <h3>Checkbox의 상태에 대한 선택자</h3>
+    <form action="#">
+        <fieldset>
+            <legend>취미</legend>
+            <input type="checkbox" name="hobby" value="game" id="game">
+            <label for="game">게임</label>
+
+            <input type="checkbox" name="hobby" value="movie" id="movie">
+            <label for="movie">영화</label>
+
+            <input type="checkbox" name="hobby" value="music" id="music">
+            <label for="music">음악</label>
+        </fieldset>
+    </form>
+
+    <script>
+        $(function(){
+            // jQuery 버전
+            $('input:checkbox').change(function(){
+                var value = $(this).val(); 
+                alert('선택 값 : ' + value);
+                var checked = $(this).prop('checked'); // 체크 여부
+                if(checked == true){
+                    $(this).css({
+                        'width' : '50px',
+                        'height' : '50px',
+                    });
+                } else{
+                    $(this).css({
+                        'width' : '20px',
+                        'height' : '20px',
+                    });
+                }
+            });
+
+            // javascript 버전
+            // var checkArray = document.getElementsByName('hobby');
+            // for(let i = 0; i < checkArray.length; i++){
+            //     checkArray[i].onchange = function(event){
+            //         var element = event.target;
+            //         alert('선택값 : ' + element.value);
+
+            //         if(element.checked == true){
+            //             element.style.width = '50px';
+            //             element.style.height = '50px';
+            //         }else{
+            //             element.style.width = '20px';
+            //             element.style.height = '20px';
+            //         }
+            //     }
+            // }
+        });
+    </script>
+    <hr><br>
+
+    <h2>select - option 태그의 상태에 대한 선택자</h2>
+    <select id="national">
+        <option value="한국">한국</option>
+        <option value="미국" selected>미국</option>
+        <option value="중국">중국</option>
+        <option value="일본">일본</option>
+    </select>
+    <label>선택한 나라 : </label><input type="text" id="result">
+    <script>
+        $(function(){
+            // 초기화 값?
+            var value = $('#national > option:selected').val();
+            $('#result').val(value);
+
+            $('#national').change(function(){
+                var value = $('#national > option:selected').val();
+                $('#result').val(value);
+            });
+        });
+    </script>
+    <hr><br>
+
+
+    <h3>input 상태에 대한 선택자</h3>
+    <div id="test">
+        텍스트 상자 : <input type="text"> <br>
+        비활성화 텍스트 상자 : <input type="text" disabled> <br>
+        <input type="button" value="활성화"> 
+        <input type="button" value="비활성화" disabled> <br>
+    </div>
+
+    <script>
+        $(function(){
+            $('#test > input:enabled').css('background-color', 'yellow');
+            $('#test > input:disabled').css('background-color', 'red');
+        });
+    </script>
+    <hr><br>
+
+
+    
+    <h2>필터 선택자</h2>
+    <table id="t1" border="1">
+        <tr>
+            <th>이름</th>
+            <th>혈액형</th>
+            <th>지역</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>A형</td>
+            <td>인천</td>
+        </tr>
+        <tr>
+            <td>이길동</td>
+            <td>O형</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>최길동</td>
+            <td>AB형</td>
+            <td>경기도</td>
+        </tr>
+        <tr>
+            <td>박길동</td>
+            <td>B형</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>정길동</td>
+            <td>A형</td>
+            <td>강원도</td>
+        </tr>
+        <tr>
+            <td>하길동</td>
+            <td>O형</td>
+            <td>경상도</td>
+        </tr>
+        <tr>
+            <td colspan="2">총원</td>
+            <td>6명</td>
+        </tr>
+    </table>
+
+    <script>
+        $(function(){
+            // 전체 tr
+            $('#t1 tr').css('font-weight', 'bold');
+            
+            // 홀수번째 (인덱스의 시작은 0부터 시작) 
+            $('#t1 tr:odd').css('background-color', 'lightgray');
+            $('#t1 tr').css('font-weight', 'bold');
+            
+            // 짝수번째 (인덱스의 시작은 0부터 시작) 
+            $('#t1 tr:even').css('background-color', 'yellow');
+            
+            // 첫번째
+            $('#t1 tr:first').css('background-color', 'black').css('color' ,'white');
+            
+            // 마지막
+            $('#t1 tr:last').css('background-color', 'orange').css('color' ,'white');
+        });
+    </script>
+    <hr><br>
+
+
+    <hr>
+    <h2>함수 형태의 필터 선택자</h2>
+    <table id="t2" border="1">
+        <tr>
+            <th>이름</th>
+            <th>혈액형</th>
+            <th>지역</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>A형</td>
+            <td>인천</td>
+        </tr>
+        <tr>
+            <td>이길동</td>
+            <td>O형</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>최길동</td>
+            <td>AB형</td>
+            <td>경기도</td>
+        </tr>
+        <tr>
+            <td>박길동</td>
+            <td>B형</td>
+            <td>서울</td>
+        </tr>
+        <tr>
+            <td>정길동</td>
+            <td>A형</td>
+            <td>강원도</td>
+        </tr>
+        <tr>
+            <td>하길동</td>
+            <td>O형</td>
+            <td>경상도</td>
+        </tr>
+        <tr>
+            <td colspan="2">총원</td>
+            <td>6명</td>
+        </tr>
+    </table>
+    <hr><br>
+    <script>
+        $(function () {
+            // eq(n) : n번째 해당하는 객체 선택
+            $('#t2 tr:eq(0)').css({
+                'background-color': 'blue',
+                'color': 'white',
+            });
+
+            // nth-child(n) : 수열번째 위치하는 객체 선택
+            $('#t2 tr:nth-child(2n)').css('background-color', 'yellow');
+            $('#t2 tr:nth-child(3n)').css('background-color', 'red');
+
+            // gt(n) : n번째 초과하는 객체 선택
+            $('#t2 tr:gt(4)').css('font-size', '20pt');
+
+            // lt(n) : n번째 이하 객체 선택
+            $('#t2 tr:lt(4)').css('font-size', '11pt');
+
+            // contains('문자열') : 특정 키워드를 포함하는 객체 선택
+            // $('#t2 td:contains("홍길")').css('font-family', '궁서');
+            // $('#t2 td:contains("홍길동")').css('font-family', '궁서');
+            $('#t2 td:contains("길동")').css('font-family', '궁서');
+
+            // not(선택자) : 선택자와 일치하지 않는 객체 선택
+            $('#t2 td:not(:contains("길동"))').css('font-style', 'italic');
+        });
+    </script>
+    <hr><br>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+</body>
+</html>

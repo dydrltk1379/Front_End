@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력양식 필터 선택자1</title>
+    <script src="js/jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>입력양식 필터 선택자</h1>
+    <p> - input 태그의 type 속성에 따라 dom 객체를 선택하는 방법</p>
+    <p> - name이나 id로 찾는 방법도 있지만, 입력 양식 전체에 이벤트를 걸때 사용됨</p>
+    
+    <div id="test" class="test_class">
+        텍스트 상자1 : <input type="text" name="inputId" value="test"> <br>
+        텍스트 상자2 : <input type="text" name="inputName" id="inputName"  value="홍길동">
+    </div>
+    <div class="test_class">
+        버튼 : <input type="button" value="버튼">
+    </div>
+    <div class="test_class">
+        체크 박스 : <input type="checkbox">
+    </div>
+    <div class="test_class">
+        파일 : <input type="file">
+    </div>
+    <div class="test_class">
+        이미지 : <input type="image"
+            src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png">
+    </div>
+    <div class="test_class">
+        패스워드 : <input type="password">
+    </div>
+    <div class="test_class">
+        라디오 : <input type="radio">
+    </div>
+    <div class="test_class">
+        리셋버튼 : <input type="reset">
+    </div>
+    <div class="test_class">
+        submit : <input type="submit">
+    </div>
+
+    <style>
+        .test_class {
+            margin-bottom: 20px;
+        }
+
+        .test1 {
+            color: blue;
+            background-color: brown;
+            transition: all 1s;
+        }
+
+        .test2 {
+            color: blueviolet;
+            background-color: tan;
+            transition: all 1s;
+        }
+    </style>
+
+    <script>
+        $(function(){   
+            // input:type을 통해 찾아서 선택한다. 
+
+            // text 찾아오기
+            $('input:text').css('background-color', 'red');
+
+            // 이름으로 찾아오는 방법 
+            $('input[name=inputName]').css('color','blue');
+
+            // text로 mouse 이벤트 걸기
+            $('input:text').mousedown(function(){
+                // class 변경법 1 - 속성값을 변경하는 방법
+                // $('#test').attr('class', 'test1'); 
+                
+                // class 변경법 2 - addClass 사용, 기존 class 값이 유지되는 특징
+                $('#test').addClass('test1');
+            });
+
+            $('input:text').mouseup(function(){
+                $('#test').removeClass('test1');
+            });
+
+            // 버튼
+            $('input:button').mousedown(function(){
+                $('input:button').attr('value','왕버튼').css('width','300px').css('height','100px');
+            });
+
+            // checkbox
+            $('input:checkbox').attr('checked',true);
+            $('input:checkbox').css({
+                'width': '50px',
+                'height': '50px',
+            }); // css를 json으로 설정하는 방법
+
+            // image
+            $('input:image').mouseenter(function () {
+                $(this).attr('src', 'https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png')
+            });
+
+            $('input:image').mouseout(function () {
+                $(this).attr('src', 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png')
+            });
+
+            // password
+            $('input:password').css('background-color', 'red');
+
+            // radio
+            $('input:radio').attr('checked', true);
+
+            // 리셋
+            $('input:reset').on('click', function () {
+                $('body').css('background-color', 'red');
+            });
+
+            // 서밋
+            $('input:submit').mousedown(function () {
+                $('body').css('background-color', 'blue');
+            });
+        });
+    </script>
+</body>
+</html>

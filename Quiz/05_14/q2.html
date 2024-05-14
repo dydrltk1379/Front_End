@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q2</title>
+</head>
+<body>
+    <script>
+
+        function addContact3(contact){
+            if(!contact.email){
+                contact.email="이메일 없음";
+            }
+            if(!contact.next_age){
+                contact.next_age=0;
+            }else{
+                contact.next_age+=1;
+            }
+            /*
+            for(let key in contact){
+                document.write(`${key}>> `+ contact[key]+ '<br>')
+            }
+            */
+        }
+        addContact3({name : '지수', phone : '010-222-3333', email : 'hera', next_age : 100});
+        document.write('---------------------------<br>');
+        let{name2, tel, contact_email, next_age} = addContact3('지수', 'SKT 010-222-3333', 'hera', 100);
+    </script>
+</body>
+</html>

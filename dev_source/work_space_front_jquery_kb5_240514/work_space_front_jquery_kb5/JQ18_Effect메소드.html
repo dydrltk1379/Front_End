@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effect</title>
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+
+    <style>
+        #test1 {
+            width: 200px;
+            height: 200px;
+            background: orangered;
+        }
+        
+        #wrap div {
+            width: 200px;
+            line-height: 30px;
+            background: orange;
+            text-align: center;
+        }
+        
+        #wrap p {
+            width: 200px;
+            height: 100px;
+            border: 1px solid gray;
+            margin: 0px;
+        }
+        
+        body {
+            background-color: rgb(219, 222, 126);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Effect (애니메이션 효과)</h1>
+    <p> - 페이지에 애니메이션 효과를 만들기 위한 메소드의 집합</p>
+    <hr>
+
+    <h2>animate() 메소드</h2>
+    <p> - 현재의 css 속성을 설정한 값으로 차츰 변경되는 효과를 주는 메소드</p>
+    <div id="test1"></div>
+    <button id="btn1">animate 적용</button>
+
+    <script>
+        $(function() {
+            $('#btn1').click(function() {
+                $('#test1').animate({
+                    'width': '500px',
+                    'background-color': 'blue',
+                }, 3000, function() {
+                    $(this).text('애니메이션 종료!');
+                });
+            });
+        });
+    </script>
+    <hr><br>
+
+    <h3>show(), hide(), toggle() 메소드</h3>
+    <p> - 문서 객체를 크게 보여주거 작게 사라지게 하는 메소드</p>
+    <button id="show">보여주기</button>
+    <button id="hide">숨기기</button>
+    <button id="toggle">토글하기</button>
+    <br>
+    <img id="img1" src="resources/image/river2.PNG">
+    <script>
+        $('#show').click(function() {
+            $('#img1').show(1000);
+        });
+        $('#hide').click(function() {
+            $('#img1').hide(1000);
+        });
+        $('#toggle').click(function() {
+            $('#img1').toggle(1000);
+        });
+    </script>
+    <hr><br>
+
+    <h3>fadeIn(), fadeOut(), fadeToggle() 메소드</h3>
+    <p> - 객체를 '점점' 진하게 보여주거나, '점점' 희미하게 사라지게 하는 효과</p>
+    <button id="fadeIn">보여주기</button>
+    <button id="fadeOut">숨기기</button>
+    <button id="fadeToggle">토글하기</button>
+    <br>
+    <img id="img2" src="resources/image/flower2.PNG">
+    <script>
+        $('#fadeIn').click(function() {
+            $('#img2').fadeIn(5000);
+        });
+        $('#fadeOut').click(function() {
+            $('#img2').fadeOut(500);
+        });
+        $('#fadeToggle').click(function() {
+            $('#img2').fadeToggle();
+        });
+    </script>
+    <hr><br>
+
+
+    <h3>slideDown(), slideUp() SlideToggle() 메소드</h3>
+    <p> 선택된 요소 위치에서 내려가거나 요소를 밀고 올라가서 숨는 효과</p>
+
+    <div id="wrap">
+        <div>첫 번째 메뉴</div>
+        <p>첫번째 내용</p>
+        <div>두 번째 메뉴</div>
+        <p>두번째 내용</p>
+        <div>세 번재 메뉴</div>
+        <p>세번째 내용</p>
+    </div>
+    <button id="testBtn">up</button>
+
+    <script>
+        $('#testBtn').click(function() {
+            $('#wrap p').slideUp();
+        });
+        $('#wrap div').click(function() {
+            // $(this).next('p').slideDown();
+            $(this).next('p').slideToggle();
+        });
+    </script>
+    <hr><br>
+
+</body>
+
+</html>

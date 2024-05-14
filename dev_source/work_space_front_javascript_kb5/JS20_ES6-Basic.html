@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Vue(React)에서 자주 사용하는 JavaScript ES6 + 8 문법 정리</h2>
+    <br>
+
+    <h3>1. let, const 키워드 추가</h3>
+    <div> - 기존 var 키워드가 존재 하였지만, 호이스팅 이슈로 지역변수가 아닌 전역변수 처럼 활용됨</div>
+    <div> - 이를 블록(함수, 제어문) 단위의 scope 내에서 지역 변수를 사용하기 위해 let이 추가됨</div>
+    <div> - 또한 상수의 키워드인 const가 추가됨. JS에서도 보안적인 처리가 가능해짐!</div>
+    <br>
+    <script>
+        var varValue = 1;
+        let letValue = 5;
+        const constValue = 10;
+        if(true){ // 블록 범위
+            var varValue = 10;
+            let letValue = 50;
+            // constValue = 50; // 죽는 코드! // Uncaught TypeError: Assignment to constant variable.
+            document.write('block in var : ' + varValue + '<br>');
+            document.write('block in let : ' + letValue + '<br>');
+        }
+        document.write('block out var : ' + varValue + '<br>');
+        document.write('block out let : ' + letValue + '<br>');
+
+        // 변수 선언시 ES6 이후로는 축약기법을 통해 여러개의 변수를 선언할수 있다.
+        // -> java에서는 권장되지 않지만, script에서는 자주 활용된다.
+        let x = 5, y = 10, z = 15;
+        // document.write('x,y,z : ' + x + ', ' + y + ', ' + z + '<br>');
+        document.write(`x,y,z : ${x}, ${y}, ${z} <br>`);
+    </script>
+    <hr><br>
+
+    <h3>2. Class</h3>
+    <div> - ES6에서 JavaScript에서 Calss 표현이 가능하다. </div>
+    <div> - Class를 생성하는 경우 new 키워드가 필요하다. </div>
+    <div> - this는 자신 영역을 지정하고, super는 부모 영역을 지정한다. </div>
+    <div> - static 표현법이 있으며, 공통 된 변수 및 공통 메소드가 설계가 가능하다. </div>
+    <div> - private를 통해 캡슐화 및 은닉이 가능하며, 키워드는 '#'이다. </div>
+    <div> - private으로 선언한 변수는 getter, setter를 활용 할수 있다. </div>
+    <br>
+    <script>
+        class Member{
+            static count = 0; // static
+            #name; // private 선언법
+            #age;
+
+            constructor(name, age, phone){
+                // this.#name = name; // private name으로 초기화
+                this.name = name; // setter 활용
+                this.#age = age; // #age 직접 접근!
+                this.phone = phone; // public 변수로
+                Member.count++; // static count 접근
+            }
+
+            // setter 만드는 방법
+            set name(name){
+                this.#name = name + '님'; 
+            }
+
+            // getter 만드는 방법
+            get name(){
+                return this.#name + '@@@';
+            }
+
+            // age는 setter만 생성
+            set age(age){
+                this.#age = age;
+            }
+
+            // 일반 메소드 오버라이딩
+            toString(){
+                return this.#name + ', ' + this.#age + ', ' + this.phone;
+            }
+            
+            show(){
+                let text = ''; 
+                text += '이름 : ' + this.name +'<br>'; // getter 불러온다.
+                // text += '나이 : ' + this.age +'<br>'; // getter가 없음으로 age로 접근 불가!
+                text += '나이 : ' + this.#age +'<br>'; // getter가 없음으로 #로 직접접근
+                text += '전번 : ' + this.phone +'<br>';
+                text += '등록 된 Member 수 : ' + Member.count +'<br>';
+                return text;
+            }
+        }
+
+        let member1 = new Member('홍길동', 21, '010-1234-5678');
+        document.write(member1.show() + '<br>')
+        let member2 = new Member('최길동', 24, '010-4321-5678');
+        document.write(member2.show() + '<br>')
+
+        
+        // 상속 예제
+        // 부모
+        class Car{
+            constructor(name){
+                // Class에서 사용할 멤버 변수
+                this.name = name;
+            }
+
+            // 멤버 메소드
+            print(){
+                return 'name : ' + this.name;
+            }
+        }
+
+        class Model extends Car{
+            constructor(name, model){
+                super(name);
+                // super.name = name;
+                this.model = model; 
+            }
+            show(){
+                return this.print() + ', model : ' + this.model;
+            }
+        }
+        
+        const bmw = new Model('BMW', 'BMW i5');
+        document.write(bmw.show() + '<br>');
+        
+        const hyundai = new Model('현대', '소나타');
+        document.write(hyundai.show() + '<br>');
+    </script>
+    <hr><br>
+
+
+    <h3>3. Arrow Functions</h3>
+    <div> - 함수형 프로그래밍을 지원하기 위해 기존 function보다 더 간단한 문법이 추가 되었다.  </div>
+    <div> - function name(){}에서 ()=>{}로 단축 표현이 가능하다. </div>
+    <br>
+    <button onClick="test1()">test1</button>
+    <button onClick="test2()">test2</button>
+    <button onClick="test3()">test3</button>
+    <button onClick="test4('인자')">test4</button>   
+    <button onClick="alert(test5('test'))">test5</button>   
+    <script>
+        function test1(){
+            alert('test1');
+        }
+        test2 = function(){
+            alert('test2');
+        }
+        test3 = ()=>{
+            alert('test3');
+        }
+        test4 = (str)=>{
+            alert('test4  인자 : ' + str);
+        }
+        test5 = str => str + ', ' + str;
+    </script>
+    <hr><br>
+
+    <h3>4. Array Methods</h3>
+    <div> - ES6에서는 함수형 프로그래밍이 가능한 Array 문법이 추가 되었다. </div>
+    <div> - forEach, map, find, filter가 대표적이다.</div>
+    <div> - 이중 forEach와 map은 front에서 list형을 표현하기 자주 사용된다. </div>
+    <br>   
+    <script>
+        const myArray = ['apple', 'banana', 'orange'];
+        // value : 배열의 값, index : index정보..., array : 반복될 array
+        // map은 반복되는 인자를 return 받아 새로운 배열로 채워주는 메소드
+        const myList1 = myArray.map((value, index, array)=>{return `<li>${index} - ${value}</li>`});
+        const myList2 = myArray.map(value => `<li>${value}</li>`); // 단축된 표현
+
+        myList1.forEach((value, index, array) =>{
+            document.write(value);
+        });
+        document.write('<br>');
+
+        myList2.forEach(value => document.write(value));
+        document.write('<br>');
+    </script>
+    <hr><br>
+
+    <h3>5. Destructing Assignment (구조분할 할당)</h3>
+    <div> - 구조분할 할당을 사용하면 배열에서 필요한 요소만 쉽게 뽑아서 사용할수 있다.</div>
+    <div> - 객체에서도 활용할수 있다. -> 이때 문법은 객체 선언의 역순으로 해야한다.</div>
+    <br>
+    <script>
+        // 기존 방법
+        const fruits1 = ['apple', 'banana', 'pineapple'];
+        const fruit1 = fruits1[0];
+        const fruit2 = fruits1[1];
+        const fruit3 = fruits1[2];
+        document.write(fruit1 + ', ' + fruit2 + ', ' + fruit3 + '<br>');
+        // eval...? 가급적 사용하지 말 것!
+
+        // 구조분할 할당
+        const fruits2 = ['apple', 'banana', 'pineapple'];
+        const [f1, f2, f3] = fruits2; // 일치하면 모두 들어가고,
+        const [f5, /*빈공간*/ , f6, f7] = fruits2; // 일치하지 않아도 알아서 채워진다.
+        document.write(f1 + ', ' + f2 + ', ' + f3 + '<br>');
+        document.write(f5 + ', ' + f6 + ', ' + f7 + '<br>');
+
+        // 객체에서도 활용 가능, 객체 구조분할 할당은 역으로 선언해야한다.
+        const member = {name:'홍길동', age:21, hobby:['축구','야구','농구']};
+        const {name:mname, age:mage, hobby:mhobby} = member;
+        document.write(mname + ', ' + mage + ', ' + mhobby + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>6. Spread Operator(스프레드 연산자)</h3>
+    <div> - '...'를 사용하면 배열에서 전체 값 또는 일부 값을 다른 배열로 쉽게 복사할수 있다. </div>
+    <div> - 또한 객체에서도 적용 가능한데, 덮어쓰기 형태로 합쳐질수 있다. -> 매우 유용하게 활용 </div>
+    <div> - 함수 인자로 사용하는 경우, 가변 파라메터로 활용할수 있다. </div>
+    <br>
+    <script>
+        // 배열 활용법
+        const numbers1 = [1, 2, 3];
+        const numbers2 = [4, 5, 6];
+        // const numbers3 = numbers1.concat(numbers2); // es6 이전
+        const numbers3 = [...numbers1, ...numbers2]
+        document.write('numbers1 : ' + numbers1 + ', length : ' + numbers1.length + '<br>');
+        document.write('numbers2 : ' + numbers2 + ', length : ' + numbers2.length + '<br>');
+        document.write('numbers3 : ' + numbers3 + ', length : ' + numbers3.length + '<br><br>');
+
+        // 객체 활용법, 개체로 활용하는 경우 멤버변수 값을 덮어쓰기가 가능함으로 유용하다!
+        const myCar = {
+            brand:'BMW',
+            model:'BMW i5',
+            color:'blue',
+        }
+        const updateCar = {
+            type:'car',
+            year:2024,
+            color:'red',
+        }
+
+        // myCar -> updateCar순으로 적용됨으로 최종적으로는 updateCar 정보가 덮어쓰기 됨
+        const myUpdatedCar = {...myCar, ...updateCar};
+        document.write('myCar = ');
+        for(let key in myCar){
+            document.write(key + ':'+myCar[key] + ', ');
+        }
+        document.write('<br>');
+        
+        document.write('updateCar = ');
+        for(let key in updateCar){
+            document.write(key + ':'+updateCar[key] + ', ');
+        }
+        document.write('<br>');
+        
+        document.write('myUpdatedCar = ');
+        for(let key in myUpdatedCar){
+            document.write(key + ':'+myUpdatedCar[key] + ', ');
+        }
+        document.write('<br>');
+    </script>
+    <hr><br>
+    
+    <h3>7. Ternary Operator(삼항연산자)</h3>
+    <div>- JS에서 삼항연산자는 ES6부터 사용가능했다. </div>
+    <div>- Front 계열에서 삼항연산자는 자주 사용되는 문법이라 자주 활용된다.</div>
+    <div>- Syntax: condition ? expression if true : expression if false</div>
+    <br>
+    <script>
+        let name = '홍길동';
+        if(name == '홍길동'){
+            document.write('<div>홍길동이 맞습니다. </div>');
+        } else {
+            document.write('<div>홍길동이 아닙니다. </div>');
+        }
+
+        // 한줄로 출력하기 위해 변환
+        document.write(name == '홍길동' ? '<div>홍길동이 맞습니다. </div>' : '<div>홍길동이 아닙니다. </div>');
+        // 템플릿 리털로 변환
+        document.write(name == '홍길동' ? `<div>${name}은 홍길동입니다.</div>` : `<div>${name}은 홍길동이 아닙니다.</div>`);
+    </script>
+    <hr><br>
+
+    <h3>8. Short-circuit Evaluation </h3>
+    <div> - 논리식 문법으로 추가되었으나 특정값이 null 일 경우 defult 값을 할당할수 있는 방법으로 활용</div>
+    <div> - front 표현식에서 삼항연산자를 더 짧게 사용할수 있는 문법으로 최근 자주 사용 ★★★  </div>
+    <script>
+        let val1;
+        let val2 = val1 || '';  // Short-circuit 문법
+        document.write('val2 : ' + val2 + '<br>'); // ''
+        document.write('val2 : ' + (val2 === '') + '<br>'); // true
+
+        val1 = 'test';
+        val2 = val1 || '';  // Short-circuit 문법
+        document.write('val2 : ' + val2 + '<br>'); // 'test'
+        document.write('val2 : ' + (val2 === '') + '<br>'); // false
+
+        // color;
+        color = null;
+        document.write(`<div style="color:${color || 'blue'}">CSS 값이 없는 경우 default(blue) 지정</div>`);
+        color = 'red';
+        document.write(`<div style="color:${color || 'blue'}">CSS 값이 있는 경우는 그 색상을 지정</div>`);
+    </script>
+    <hr><br>
+
+    <h3>9. ??(Nullish coalescing operator, nullish 병합 연산자)</h3>
+    <h3>??=(Nullish coalescing assignment, nullish 병합 할당 )</h3>
+    <div> - 특정값이 null 일 경우 defult 값을 할당할수 있는 연산자 또는 할당 값 </div>
+    <div> - front 표현식에서 삼항연산자를 더 짧게 사용할수 있는 문법으로 최근 자주 사용 ★★★  </div>
+    <br>
+    <script>
+        let str = null ?? 'default string';
+        document.write(str + '<br>');
+
+        str = null;
+        document.write(str ??= 'default string' + '<br>');
+
+        color = null;
+        document.write(`<div style="color:${color ??= 'blue'}">CSS 값이 없는 경우는 defult 값 지정</div>`);
+
+        color = 'red';
+        document.write(`<div style="color:${color ??= 'blue'}">CSS 값이 있는 경우는 그대로 적용 </div>`);
+    </script>
+    <hr><br>
+
+    <h3>10. 템플릿 리터럴(Template literals)</h3>
+    <div> - JS 표현식으로 `${~}`을 통해 표현식을 활용할수 있다.</div>
+    <div> - `(백틱, backtick)을 통하여 태그를 포함할 표현식을 정의하고 ${~}로 변수를 대입한다. </div>
+    <div> - 기존 문자열의 결합으로 구성하였던 태그 방식보다 간편하게 사용할수 있다. </div>
+    <div> - Spring의 템플릿 엔진(jsp, Thymeleaf)와 결합되는 경우는 사용할수 없다! </div>
+    <div> - 문자열과 다르게 multi-line으로 활용할수 있다.</div>
+    <br>
+    <script>
+        let backgroundcolor = 'green';
+        let content = '안녕하세요?';
+
+        // 템플릿 리터럴을 사용하는 경우 const로 선언하면 스크립트 변조가 될일 없다.
+        // 템플릿 리터럴은 여러줄로 표현할수 있다.
+        const template = `<div style="background:${backgroundcolor}">
+                            ${content}
+                          </div>`;
+        // const template = null;
+        document.write(template || `<div>default</div>`); // 템플릿이 널이면 default 값이 채워진다.
+    </script> 
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

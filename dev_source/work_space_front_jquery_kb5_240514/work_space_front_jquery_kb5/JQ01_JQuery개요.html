@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery 개요</title>
+</head>
+
+<body>
+    <h1>JQuery의 개요</h1>
+    <p> - 경량 JavaScript 라이브러리로 복잡한 JS코드를 단축표현 및 반복문법을 제공함</p>
+    <p> - 개발자가 편리하고 생산성 있도록 만들어주는 라이브러리이다. </p>
+
+    <h3>JQuery의 장점</h3>
+    <p> 1) DOM 관련 처리를 쉽게 할수 있음 -> 생산성, 편리성 증대</p>
+    <p> 2) Ajax 통신 또는 UI 이벤트를 쉽게 구현 가능 하다.</p>
+    <p> 3) 별도의 플러그인 없이 차트, 슬라이드쇼, 테이블들을 구현 가능 (하나 난 쓸래..)</p>
+
+    <h3>JQuery의 단점</h3>
+    <p> 1) 웹표준이 아니다. 2) 숙련도가 필요하다. 3) 웹 프론트의 복잡성 증가</p>
+    <hr><br>
+
+    <h3>JQuery 로드 방법</h3>
+    <!-- https://jquery.com/ -->
+    <!--https://code.jquery.com/jquery-3.7.1.js-->
+    <p> 1. 파일로 로드하는 방법(공식 홈페이지에서 다운로드 가능함)</p>
+    <script src="js/jquery-3.7.1.js"></script>
+
+    <p> 2. CDN (Contents Delivery Network)을 통해 인터넷 상에서 로드 하는 방법</p>
+    <!--https://releases.jquery.com/-->
+    
+    <p> 2.1 단순 CDN 로드하는 방법 </p>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <p>2.2 CDN 보안성을 강화해서 가져오는 방법, hash검사하는 방법</p>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <hr>
+
+    <h3>코드 실습부</h3>
+    <div id="div1" class="div_class">div1 영역입니다.</div>
+    <div id="div2" class="div_class">div2 영역입니다.</div>
+    <div id="div3" class="div_class">div3 영역입니다.</div>
+    <div id="div4" class="div_class">div4 영역입니다.</div>
+    <div id="div5" class="div_class">div5 영역입니다.</div> 
+
+    <script>
+        // 1. div id를 통해 객체를 가져오는 방법
+        // Javascript 문법
+        document.getElementById('div1').style.backgroundColor = 'orange';
+
+        // jQuery 문법
+        $('#div2').css('background-color', 'blue'); // css 쿼리식으로 사용 가능
+
+        // 2. div class를 통해 활용하는 방법
+        // Javascript - 반복문 필요!
+        var divArray = document.getElementsByClassName('div_class');
+        for(let i = 0; i < divArray.length; i++){
+            divArray[i].style.fontWeight = 'bold';
+        }
+
+        // jquery문법 = css query 스타일
+        $('.div_class').css('color','gray').css('font-style', 'italic');
+    </script>
+
+         
+    <h3>#(document).ready()</h3>
+    <p>  - HTML 페이지를 모두 로드하고 나서 ready 메소드를 실행하는 개념으로 document.onload 이벤트와 동일 </p>
+    <p>  - 필요성 : html script를 load할 경우 태그가 렌더링 되기 전에 호출되면 js가 동작하지 않기 때문에</p>
+    <p>  - ready 함수 호출을 통해 html 렌더링 이후 모두 로드 된 상태에서 js코드를 호출하기 위해 사용한다. </p>
+    <p>    -> 호출 순서를 가장 나중으로 컨트롤 하기 위해서</p>
+
+    <script>
+        // 1. 가장 기초적인 방법
+        //  - jQuery = $ 동일 표현
+        jQuery(document).ready(function(){
+            jQuery('#div6').css('background-color', 'green').css('color', 'red');
+        });
+
+        // 2. jQuery를 생략하고 $로 표현하는 방법
+        $(document).ready(function(){
+            $('#div7').css('background-color', 'blue').css('color', 'white');
+        });
+
+        // 3. document, ready 네이밍을 생략하는 방법 ★★★★★ = 관례적인 문법
+        $(function(){
+            $('#div8').css('background-color', 'orange').css('color', 'white');
+        });
+
+        // 4. ES6 화살표 표기법으로 변경
+        $(()=>{
+            $('#div9').css('background-color', 'green').css('color', 'white');
+        });
+    </script>
+
+
+    
+    <h3>코드 실습부-하단</h3>
+    <div id="div6" class="div_class">div6 영역입니다.</div>
+    <div id="div7" class="div_class">div7 영역입니다.</div>
+    <div id="div8" class="div_class">div8 영역입니다.</div>
+    <div id="div9" class="div_class">div9 영역입니다.</div>
+    <div id="div10" class="div_class">div10 영역입니다.</div> 
+
+    <br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
+</body>
+
+</html>

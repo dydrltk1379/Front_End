@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 조작1</title>
+    <script src="js/jquery-3.7.1.js"></script>
+    <style>
+        .class1 {
+            width: 200px;
+            line-height: 50px;
+            background-color: darkorange;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트1</h1>
+    <hr>
+    <h2>이벤트 객체(event) 속성 확인</h2>
+    <button id="test1"> 버튼 </button>
+    <div id="div1"></div>
+    <script>
+        $(function(){
+            $('#test1').click(function(event){
+                var html = '';
+                for(var key in event){
+                    html += key + ' : ' + event[key] + '<br>';
+                }
+                $('#div1').html(html);
+                console.log(event);
+            });
+        });
+    </script>
+    <hr><br>
+
+    
+    <h2>이벤트 연결</h2>
+    <p> - on()을 활용하여 객체와 이벤트 핸들러를 연결</p>
+    <p> - off()는 이벤트 핸들러 연결 해제</p>
+
+    <div class="class1" id="test2">기본 상태1</div>
+    <div class="class1" id="test3">기본 상태2</div>
+    <div class="class1" id="test4">이름을 출력하는 기능</div>
+    <div id="test5">결과 확인</div>
+    <script>
+        // on을 통해 이벤트를 추가하는 방법
+        $('#test2').on('mouseenter', function(event){
+            $(this).css('background-color', 'yellowgreen').text('mouseenter');
+        });
+
+        // on을 통해 동시에 이벤트를 여러개 추가 할수 있다.
+        $('#test3').on({
+            'mouseenter':function(e){
+                $(this).css('background-color', 'yellowgreen').text('mouseenter');
+            },
+            'mouseleave':function(e){
+                $(this).css('background-color', 'darkorange').text('mouseleave');
+            },
+            'click':function(e){
+                // 이벤트 제거하기
+                $(this).css('background-color', 'darkorange').text('이벤트 제거됨');
+                $(this).off('mouseenter').off('mouseleave').off('click');
+            },
+        });
+
+        // 고유메소드 이름을 통해 이벤트를 거는 방법 
+        $('#test4').mouseenter(function(e){
+            $(this).css('background-color', 'yellowgreen').text('mouseenter');
+        });
+        $('#test4').mouseleave(function(e){
+            $(this).css('background-color', 'darkorange').text('mouseleave');
+        });
+
+        // on메소드 활용시 파라메터를 넣는 방법
+        $('#test4').on('click',{name:'홍길동',age:31},function(e){
+            var str = '이름 : ' + e.data.name + ', 나이 : ' + e.data.age +'<br>';
+            $('#test5').html($('#test5').html() + str);
+        });
+
+    </script>
+    <hr><br>
+
+    <h3>one() : 한번만 이벤트를 동작시키는 방법 </h3>
+    <h1 id="test6" class="class1">클릭</h1>
+    <script>
+        $('#test6').one('click', function(e){
+            alert('이벤트 발생!');
+        });
+
+        // $('#test6').click(function(e){
+        //     alert('이벤트 발생')
+        //     $('#test6').off('click');
+        // });
+    </script>
+    <hr><br>
+
+
+</body>
+</html>
