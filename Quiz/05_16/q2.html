@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q2</title>
+</head>
+<body>
+    <script>
+        const promise = new Promise((resolve, reject)=>{
+            resolve('Promise를 시작합니다.<br>');
+        });
+        promise.then((msg)=>{
+            document.write(msg);
+            var a=Math.floor(Math.random()*10)+1;
+            var b=Math.floor(Math.random()*10)+1;
+            return [a,b]
+        }).then((msg)=>{
+            document.write('1 ==> 두수를 랜덤하게 생성하여 더한 후 리턴?<br>');
+            return [msg[0], msg[1]];
+        }).then((msg)=>{
+            let sum=msg[0]+msg[1];
+            document.write('2 ==>' +sum+'<br>');
+            return [sum, msg[0]*msg[1]];
+        }).then((msg)=>{
+            document.write('두 수를 랜덤하게 생성하여 곱한 값을 리턴<br>');
+            return msg;
+        }).then((msg)=>{
+            document.write('3 ==> ' + msg[0]+', '+msg[1] + '<br>');
+            return msg;
+        }).then((msg)=>{
+            document.write('두 수의 합은 ' + msg[0] + '<br>');
+            return msg;
+        }).then((msg)=>{
+            document.write('두 수의 곱은 ' + msg[1] + '<br>');       
+        }).catch((e)=>{
+            document.write('에러 발생함 -> 에러내용 출력')
+        });
+    </script>
+</body>
+</html>

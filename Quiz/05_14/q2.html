@@ -7,25 +7,30 @@
 </head>
 <body>
     <script>
+        let contact={
+            name : '없음',
+            phone : '없음',
+            email : '없음',
+            next_age : 0
+        };
+        function addContact3(name, phone, email, next_age){
+            contact.name = name;
+            contact.phone=phone;
+            contact.email = email;
+            contact.next_age = next_age+1;
 
-        function addContact3(contact){
-            if(!contact.email){
-                contact.email="이메일 없음";
-            }
-            if(!contact.next_age){
-                contact.next_age=0;
-            }else{
-                contact.next_age+=1;
-            }
-            /*
             for(let key in contact){
-                document.write(`${key}>> `+ contact[key]+ '<br>')
+                document.write(`${key}>> `+ contact[key] + '<br>');
             }
-            */
+            document.write('----------------------<br>');
+            email = contact.email+'@email.com'||'없음';
+            return {name, phone, email, next_age};
         }
-        addContact3({name : '지수', phone : '010-222-3333', email : 'hera', next_age : 100});
-        document.write('---------------------------<br>');
-        let{name2, tel, contact_email, next_age} = addContact3('지수', 'SKT 010-222-3333', 'hera', 100);
+        let {name2, tel, email, next_age} = addContact3('지수', '010-222-3333', 'hera', 100);
+        document.write('name2>> ' + name2 + '<br>');
+        document.write('tel>> ' + tel + '<br>');
+        document.write('email>> SKT ' + email + '<br>');
+        document.write('next_age>> ' + next_age + '<br>');
     </script>
 </body>
 </html>

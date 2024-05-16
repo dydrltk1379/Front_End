@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q4</title>
+</head>
+<body>
+    <script>
+        let key=[];
+        let myKey=[];
+        let cnt=0;
+        for(let i=0; i<1000; i++){
+            key[i]=Math.floor(Math.random()*4 + 1);
+            myKey[i]=Math.floor(Math.random()*4 + 1);
+        }
+        for(let i=0; i<1000; i++){
+            document.write(i+'>> ' + key[i] + ' ' + myKey[i] + '-->');
+            if(key[i]==myKey[i]){
+                document.write('정답<br>');
+                cnt++;
+            }else{
+                document.write('오답<br>');
+            }
+        }
+        document.write('TOEIC 점수 : '+cnt);
+    </script>
+</body>
+</html>

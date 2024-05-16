@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q3</title>
+</head>
+<body>
+    <script>
+        let obj1 ={
+            name : '박문수', age:29
+        };
+        let obj2 = {...obj1, email:'winner@email.com'};
+ 
+        document.write('obj1>> { name: '+obj1.name+', age: '+obj1.age+'<br>');
+        document.write('obj1>> { name: '+obj2.name+', age: '+obj2.age+', email: '+obj2.email+'<br>');
+        document.write('-----------------------<br>');
+        obj2.age=100;
+        document.write('obj1>> { name: '+obj1.name+', age: '+obj1.age+'<br>');
+        document.write('obj1>> { name: '+obj2.name+', age: '+obj2.age+', email: '+obj2.email+'<br>');
+        document.write(obj1==obj2);
+    </script>
+</body>
+</html>

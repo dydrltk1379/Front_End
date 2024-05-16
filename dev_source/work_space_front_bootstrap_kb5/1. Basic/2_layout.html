@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <h3 class="mt-2">Container</h3>
+    <div> - 컨테이너는 부트스트랩의 가장 기본적인 레이아웃 요소로 그래드, 정렬, 공간 분리시 활용</div>
+    <div> - 반응형 UI 자동으로 적용되어 있음으로 해상도 별로 크기 조절이 가능하다.</div>
+    <hr><br>
+
+    <div class="container text-bg-primary">
+        기본형 컨테이너이고, smaill 사이즈와 동일하다.
+    </div>
+    <hr><br>
+
+    <h3>fluid 옵션</h3>
+    <div class="container-fluid text-bg-primary">
+        fluid - 전체 화면사이즈와 동일하게 컨테이너 레이아웃 활용
+    </div>
+
+    <h5>Container 반응형 옵션</h5>
+    <p> - 컨테이너의 크기에 따라 종단점까지 도달할때 크기에 따라 확장되는 길이가 제한된다.</p>
+    <div>
+        <div class="container-sm border ">100% wide until small breakpoint</div>
+        <div class="container-md border ">100% wide until medium breakpoint</div>
+        <div class="container-lg border ">100% wide until large breakpoint</div>
+        <div class="container-xl border ">100% wide until extra large breakpoint</div>
+        <div class="container-xxl border ">100% wide until extra extra large breakpoint</div>
+    </div>
+    <hr>
+
+    <h3>Container 활용 예시</h3>
+    <!-- 레이아웃1-->
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-3 bg-primary" style="height: 150px;">일반영역입니다.</div>
+            <div class="col-3 bg-warning" style="height: 150px;">경고영역입니다.</div>
+        </div>
+    </div>
+
+    <!-- 레이아웃2-->
+    <div class="container">
+        <div class="row">
+            <div class="col-7 bg-primary" style="height: 150px;">일반영역입니다.</div>
+            <div class="col-5 bg-warning" style="height: 150px;">경고영역입니다.</div>
+        </div>
+    </div>
+    <hr><br>
+    
+</body>
+</html>

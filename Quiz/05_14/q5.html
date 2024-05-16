@@ -7,7 +7,31 @@
 </head>
 <body>
     <script>
-        
+        let shop = {
+            name : '에너자이자',
+            total_price : 5000,
+            discount_price : 4700,
+            one_price : 2350,
+            arrive_data : '내일(수)도착 보장',
+            rate : 50,
+            stack_money : 188,
+            thing: function(){
+                if(this.total_price > this.discount_price){
+                    document.write('할인을 하는 중입니다.<br>');
+                }
+            },
+            print: function(){
+                document.write('name>> ' + this.name + '<br>');
+                document.write('total_price>> ' + this.total_price + '<br>');
+                document.write('discount_price>> ' + this.discount_price + '<br>');
+                document.write('one_price>> ' + this.one_price + '<br>');
+                document.write('arrive_data>> ' + this.arrive_data + '<br>');
+                document.write('rate>> ' + this.rate + '<br>');
+                document.write('stack_money>> ' + this.stack_money + '<br>');
+            }
+        }
+        shop.thing();
+        shop.print();
     </script>
 </body>
 </html>

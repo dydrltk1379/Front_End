@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 - 고급</title>
+    <style>
+        p {
+            height: 250px;
+            width: 700px;
+            border: 1px solid black;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h2>Vue(React)에서 자주 사용하는 JavaScript ES6 + 8 문법 정리 (고급)</h2>
+    <br>
+
+    <h3>1. 프로미스(Promise)</h3>
+    <div>- 프로미스는 비동기 처리(ajax)을 편하게 처리 할 수 있도록 ES6 에 도입된 문법이다. </div>
+    <div>- 비동기 처리가 성공 할 때에는 resolve를 호출, 실패할 때에는 reject를 호출하도록 설계</div>
+    <div>- 처음 callback 함수에서 성공일 때는 resolve 함수와 연결, .chtch는 실패케이스로 reject과 연결됨 </div>
+    <div>- 이후 then을 통해서 비동기 작업이 성공했을때(resolve) 처리해야 할 일을 추가적으로 처리할수 있다. </div>
+    <div>- then은 then((msg)=>msg + '...')로 설계, msg는 이전 msg, return값은 다음 then으로 전달된다. </div>
+    <div>- then을 연쇄적으로 여러번 설계할수 있으며, then 내부의 return 값은 다음 메시지로 전달됨 </div>
+    <div>- https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise</div>
+    <br>
+    <script>
+        // promise 초기화 문법
+        const promise = new Promise((resolve, reject)=>{
+            // 비동기 처리 문장이 들어 갈곳
+            // ex) ajax 요청, 파싱 ... 시간이 걸리는 작업
+            let a = 1 + 1;
+
+            if(a == 2){
+                // 성공했을 경우
+                resolve('success!!');
+            } else{
+                // 실패했을 경우
+                reject('failed!');
+            }
+        });
+
+        // promise 실행하는 코드
+        promise.then((msg)=>{
+            // 비동기 처리가 완료되고, 처리 결과를 가지고 업데이트 하는 영역
+            // resolve가 호출되었을때 오는 성공패턴
+            document.write('결과값 : ' + msg);
+        }).catch((msg)=>{
+            // reject이나 error가 발생했을 경우 오는 영역
+            document.write('결과값 : ' + msg);
+        });
+    </script>
+    <hr><br>
+
+    <h3>2. 프로미스(Promise) chain 패턴</h3>
+    <div>- 동기가 되는 연속적인 처리를 하기 위해선 then을 여러개를 chain으로 붙여 활용하면 된다. </div>
+    <div>- Promise의 then은 chain으로 설계되어 있다. (chain은 자기 자신(this)을 return하는 패턴) </div>
+    <div>- then은 then((msg)=>msg + '...')로 설계, msg는 이전 msg, return값은 다음 then으로 전달된다. </div>
+    <div>- then chain 실행 도중 에러를 발생시키면 chain이 중지된다.  </div>
+    <div>- throw new Error('')를 통해 사용자 에러를 발생시켜 중지시켜도 된다. </div>
+    <div>- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch</div>
+    <br>
+
+    <button onclick="run();">3초 뒤에 실행되는 promise</button>
+    <p id="p1"></p>
+    <script>
+        count = 0;
+        element = document.getElementById('p1');
+        function run(){
+            const promise2 = new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    resolve('3000ms 이후 발생하는 메시지!');
+                }, 3000); // 3000ms 이후 실행되는 문장
+            });
+        
+            // 연속적인 비동기 작업을 처리하기 위해선 then chain으로 설계한다.
+            promise2.then((msg)=>{
+                console.log(msg);
+                element.innerHTML += 'then1, 이전 msg : ' + msg + '<br>';
+                return count++; // 리턴되는 값은 다음 then, msg 전달된다. 
+            }).then((msg)=>{
+                element.innerHTML += 'then2, 이전 msg : ' + msg + '<br>';
+                // throw new Error('에러 메시지!'); // 에러 발생시 catch로 전달됨
+                return count++; 
+            }).then((msg)=>{
+                element.innerHTML += 'then3, 이전 msg : ' + msg + '<br>';
+                return count++; // 2가 되지만 출력은 되지 않음!
+            }).catch((error) =>{
+                element.innerHTML += 'error : ' + error + '<br>'; // 에러 발생시 해당문구 출력
+            });
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. promise 기반 fetch 예제</h3>
+    <div> - fetch는 서버로부터 데이터를 가져오기 위한 ajax 처리를 위해 설계된 라이브러리이다. </div>
+    <div> - es6 이후로 개발되었으며, XMLHttpRequest 대체 기능으로 설계되었다. </div>
+    <div> - (필드에서는 fetch 라이브러리의 호환성 이슈로 인하여 jQuery-ajax나 axios를 주로 활용한다.) </div>
+    <div> - CORS(도메인 외부 리소스가져오기)와 HTTP Origin 헤더를 설정하는 등의 기능을 지원 한다. </div>
+    <div> - GET / POST / PUT / PATCH / DELETE 처리가 가능하다.  </div>
+    <div> - https://developer.mozilla.org/ko/docs/Web/API/Fetch_API </div>
+    <div> - fetch는 대표적인 promise 기반으로 설계 되었으며, promise 패턴처리가 가능하다.  </div>
+    <div> - https://www.kobis.or.kr/kobisopenapi/homepg/apiservice/searchServiceInfo.do?serviceId=searchWeeklyBoxOffice  </div>
+    <div> - 키값 : 4298055d882fbc5c120b654c1fa42815  </div>
+    <br>
+    url : <input type="text" id="url" size="80" value="http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json">
+    <br>
+    tagetDt(yyyymmdd) : <input type="text" id="tagetDt" value="20240511">
+    <button onclick="runFetch();">실행</button> <br>
+    <p id="print"></p>
+
+    <script>
+        // fetch(url, options)
+        // .then((response) => console.log("response:", response))
+        // .catch((error) => console.log("error:", error));
+        function runFetch(){
+            let url = document.getElementById('url').value;
+            url += '?key=' + '4298055d882fbc5c120b654c1fa42815';
+            url += '&targetDt=' + document.getElementById('tagetDt').value;
+            console.log(url);
+
+            fetch(url)
+            .then((response)=>{
+                console.log(response);
+                if(response.status != 200){ // 200이 아니면 error인 상황!
+                    throw new Error('Request Error!');
+                }
+                return response.json();
+            }).then((json)=>{
+                console.log(json);
+                const rankArray = json.boxOfficeResult.weeklyBoxOfficeList;
+                if(rankArray == null || rankArray.length == 0){
+                    throw new Error('json parse Error!');
+                }
+
+                let e = document.getElementById('print');
+                e.innerHTML = '';
+                rankArray.forEach((data) =>{
+                    let html = `<div>
+                                    ${data.rank} - ${data.movieNm},
+                                    일일 관객 : ${data.audiCnt}, 누적 관객 : ${data.audiAcc}
+                                </div>`; 
+                    e.innerHTML += html;
+                });
+            }).catch((error) =>{
+                alert(error);
+            });
+        }
+    </script>
+    <hr><br>
+
+    
+    <h3>3. async/await</h3>
+    <div>- async/await 문법은 ES8에 해당하는 문법으로서, promise를 쉽게 활용하도록 설계된 문법이다. </div>
+    <div>- 비동기 함수의 앞부분에 async를 선언하고 promise 실행시에는 await 키워드를 붙여준다.</div>
+    <div>- await가 붙은 함수는 함수가 모두 실행 될때까지 block되며, 모두 실행되면 다음 문장이 실행된다.</div>
+    <div>- https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function</div>
+
+    <button onclick="test1()">기존 Promise</button>
+    <button onclick="test2()">async/await</button>
+    <button onclick="test3()">동기화 시키지 않았을때</button>
+
+    <script>
+        function delay(ms){
+            return new Promise(resolve => {
+                setTimeout(()=>{
+                    alert(ms +'ms초가 지났습니다.');
+                    resolve();
+                }, ms);
+            });
+        }
+
+        // 기존 promise then() 구조로 여러개를 실행시켜 보기
+        function test1(){
+            delay(1000).then(()=>{
+                // 성공했을 경우 resolve로 호출되는 영역
+                return delay(1000);                
+            }).then(()=>{
+                return Promise.resolve('끝');
+            }).then((msg) =>{
+                alert(msg);
+            });
+        }
+
+        // 동일한 기능을 가지는 async/await 설계
+        // async를 사용하기 위해선 함수 앞에 반드시 async가 필요!
+        async function test2(){
+            await delay(1000);
+            await delay(1000);
+            const result = await Promise.resolve('끝');
+            alert(result);
+        }
+
+        // 동기화 안한 함수 -> 결과가 이상하게 동작한다! 실패!
+        function test3(){
+            delay(1000);
+            delay(1000);
+            const result = Promise.resolve('끝');
+            alert(result);
+        }
+    </script>
+    <hr><br>
+
+    <h3>4. async/await 기반 fetch 예제</h3>
+    <div>- fetch는 promise 기반으로 설계되어 있음으로 async/await로 전환하여도 활용할수 있다. </div>
+    <div>- 결과적으로 코드가 직관적으로 보이고, 코드 구성이 쉬워진다. </div>
+    <br>
+
+    url : <input type="text" id="url2" size="80" value="http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json">
+    <br>
+    tagetDt(yyyymmdd) : <input type="text" id="tagetDt2" value="20240511">
+    <button onclick="runAsyncAwait();">실행</button> <br>
+    <p id="print2"></p>
+    <script>
+        async function updateView(json){
+            let e = document.getElementById('print2');
+            let rankArray = json.boxOfficeResult.weeklyBoxOfficeList;
+            e.innerHTML = '';
+            rankArray.forEach((data)=>{
+                let html = `<div>
+                                ${data.rank} - ${data.movieNm}, 
+                                일일 관객 : ${data.audiCnt}, 누적 관객 : ${data.audiAcc} 
+                            </div>`;
+                e.innerHTML += html;
+            });
+        }
+
+        async function runAsyncAwait(){
+            let url = document.getElementById('url2').value;
+            url += '?key=' + '4298055d882fbc5c120b654c1fa42815'
+            url += '&targetDt=' + document.getElementById('tagetDt2').value;
+            try {
+                const response = await fetch(url);
+                console.log(response);
+                if(response.status != 200){
+                    alert('request error!');
+                    return;
+                }
+                const json = await response.json();
+                console.log(json);
+                const rankArray = json.boxOfficeResult.weeklyBoxOfficeList;
+                if(rankArray == null || rankArray.length == 0){
+                    alert('json parse Error!');
+                    return;
+                }
+               
+                await updateView(json);
+            } catch(e){
+                alert(e);
+            }
+        }
+    </script>
+
+
+    <h3>5. Proxy (중개자) </h3>
+    <div> - Proxy는 한 객체에 대한 기본 작업을 가로채고 재정의하는 프록시 객체를 만들수 있다.</div>
+    <div> - class나 Closures를 통해 객체를 설계할수 있지만, 이를 더 쉽게 설계하도록 도와준다. </div> 
+    <div> - Proxy는 객체의 속성 가져오기, 설정 및 정의와 같은 기본 객체 작업을 재정의할 수 있다.</div>
+    <div> - Proxy는 속성 액세스를 기록하고, 입력의 유효성을 검사하고, 형식을 지정하거나, 삭제하는 데 활용</div>
+    <br>
+    <script>
+        // 기본 예제
+        let obj = {name : '홍길동', age:20} // Proxy 관리가 되는 객체
+        const handler = {
+            get(obj, prop){
+                // return obj[prop]; // undefined가 출려되서 ui상 오류가 노출 됨!
+                return prop in obj ? obj[prop] : '없는 데이터!'; // null이면 '없는 데이터!' 출력된다.
+            },
+        }
+        const proxy = new Proxy(obj, handler);
+        document.write(proxy.name + '<br>'); // 홍길동
+        document.write(proxy.name2 + '<br>'); // 없는 데이터!
+        document.write(proxy.age + '<br>'); // 20
+        document.write(proxy.age2 + '<br>'); // 없는 데이터!
+        
+        // 복합 예제 - member 활용
+        const member = {
+            memberId: 'testId1234',
+            name:'홍길동',
+            pId: '900514-1234567',
+            age:30,
+            password:'testpassword1234',
+        }
+
+        const handler2 = {
+            // set의 경우는 입력값 제한을 걸수 있다.
+            set(obj, prop, value){
+                if(prop === 'age'){
+                    if(!Number.isInteger(value)){
+                        throw new TypeError('정수가 아닙니다.');
+                    }
+                    if(value < 0 || value > 200){
+                        throw new RangeError('나이 범위가 아닙니다.');
+                    }
+                }
+                if(prop === 'password'){
+                    if(value.length < 4){
+                        throw new Error('4글자 보다 적습니다.');
+                    }
+                }
+                obj[prop] = value;
+            },
+
+            // get은 외부로 데이터를 주지 않거나(private), 특정 처리가 필요할때 활용한다.
+            get(obj, prop, receiver){
+                if(prop == 'password'){
+                    return '*'.repeat(obj['password'].length);
+                }
+                if(prop == 'pId'){
+                    return obj['pId'].substr(0,8) + '*'.repeat(6);
+                }
+                if(prop in obj == false){
+                    throw new Error('데이터가 없습니다.');
+                }
+                // return obj[prop];
+                // Reflect 활용, 자동으로 get을 생성하여 전달된다.
+                return Reflect.get(...arguments);
+            }
+        }
+
+        const proxy2 = new Proxy(member, handler2);
+        document.write(proxy2.memberId + '<br>');
+        document.write(proxy2.password + '<br>');
+        document.write(proxy2.name + '<br>');
+        document.write(proxy2.age + '<br>');
+        document.write(proxy2.pId + '<br>');
+        // document.write(proxy2.name2 + '<br>'); // 데이터가 없습니다.
+        proxy2.age = 34;
+        // proxy2.age = -10; // RangeError
+        // proxy2.age = '10'; // TypeError
+        document.write(proxy2.age + '<br>');
+        // proxy2.password = '123'; // Error
+        proxy2.password = '1234';
+        document.write(proxy2.password + '<br>');
+    </script>
+    <hr><br>
+
+    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

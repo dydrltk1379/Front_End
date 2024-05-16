@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q1</title>
+</head>
+<body>
+    <script>
+        function run(){
+            const promise=new Promise((resolve, reject)=>{
+                resolve('Promise를 시작합니다.');
+            });
+
+            promise.then((msg)=>{
+                document.write(msg);
+                return ('1 ==> 너의 이름은?<br>');
+            }).then((msg)=>{
+                document.write(msg);
+                return('2 ==> 홍길동<br>');
+            }).then((msg)=>{
+                document.write(msg);
+                return('네가 가고 싶은 곳은?<br>');
+            }).then((msg)=>{
+                document.write(msg);
+                return('3 ==> 홍길동은 일본<br>');
+            }).then((msg)=>{
+                document.write(msg);
+                document.write('홍길동은 일본을 가기를 희망한다.<br>');
+            }).catch(e=>{
+                return ('에러방생함 -> 에러내용 출력<br>');
+            });
+        }
+        run();
+    </script>
+</body>
+</html>
