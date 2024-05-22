@@ -1,0 +1,70 @@
+
+# npm이란?
+- npm은 javascript(Node.js)의 -패키지 매니저-로 외부 종속성(Dependency, lib)을 관리한다.
+- 공개 된 node의 패키지를 저장소를 통해 자동으로 import하고, 패키지 별 -버전 관리-가 가능하다.
+- -package.json-에서 메타데이터와 파일의 종속성이 기록된다. (또한 사용자 편집이 가능한 파일)
+- package-lock.json과 npm-shrinkwrap.json는 추가적으로 종속성의 정확한 버전 및 의존성 트리를 관리
+- 버전 관리 비슷한 도구로는 -maven(spring)이나 gradle(springboot) 그리고 yarn(=대체 가능)-이 있다. xml베이스
+- 패키지 관리와 함께 node를 대신 실행시키는 명령을 할수 있다.
+- 패키지를 실행할때 start, build, test, eject 모드로 실행할수 있으며 각각 다른 명령이 실행
+- 참고 : npm은 Node Package Manager의 줄임말이 아니라고 한다. 그냥 npm(소문자)이란다.
+
+
+# npm 주요 명령어 정리
+
+npm -v
+# npm version의 약자로의 버전을 확인하는 명령어
+# 노드가 제대로 설치되어 있는지 확인하는 기초 명령어
+
+npm -h 
+# npm help의 약자로 명령어들의 모음을 볼수 있는 명령어
+
+
+npm init
+npm init -y
+# 새로운 프로젝트를 생성하는 명령어
+# package.json이 새로 생성되며, 콘솔에서도 정보를 입력할수 있다.
+# npm init -y로 실행하면 기본 설정값으로 package.json이 생성된다.
+# 아직 패키지가 설치되어 있지 않음으로 npm install이 추가로 필요!
+
+
+npm install  
+# package.json 기반으로 패키지를 설치하는 명령어
+# node 모듈을 지우고 프로젝트를 다시 설치할수도 있다. 
+# 혹은 git ignore인 상태에서 clone 이후 모듈이 없는 상태에서 다시 초기화 할때도 활용!
+
+
+npm install <package-name> 
+npm install <package-name> <package-name> <package-name>
+npm install -g <package-name> 
+# 추가적인 패키지를 설치하는 명령어, 여러개를 동시에 설치할수 있다.
+# 패키지는 npm 프로젝트 내에 로컬 영역으로 설치하는 것이 기본적이다.
+# -g 를 붙이는 경우 전역으로 패키지를 설치한다. 
+
+
+npm uninstall <package-name>
+npm uninstall -g <package-name> // 안 씀
+npm rm <package-name>
+npm remove <package-name>
+# 패키지를 삭제하는 명령어
+
+
+npm list
+npm ls
+# 설치한 모듈과 버전 정보의 리스트를 출력
+
+
+npm update
+npm update <package-name>
+# 설치한 모듈에 대한 버전 업데이트, 모듈명이 있으면 모듈만 업데이트
+
+npm rebuild
+# 문제가 생겼을때 다시 빌드하는 방법
+
+npm run <script-name>
+npm <script-name>
+# 사용자가 지정한 script를 다시 
+ex) npm start
+ex) npm run dev
+
+

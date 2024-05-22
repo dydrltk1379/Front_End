@@ -1,0 +1,25 @@
+npm init -y
+
+// 중복 설치되기에 관리 잘 할 것.
+npm install express 
+npm install lodash
+npm install ejs
+
+npm list
+
+npm rm lodash
+
+npm list
+
+# node_modules 폴더 및 package-lock.json 삭제
+
+npm install 
+
+# node_modules 폴더 및 package-lock.json 복원 확인
+
+# script 추가해보기
+  "start": "node ./index.js"
+
+# script 실행
+npm start
+npm run start
