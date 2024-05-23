@@ -17,4 +17,4 @@ const getContactResult = (req, res)=>{
     res.end(JSON.stringify(urlObj.query));
 }
 
-module.exports = {getContactPage, getTestResult};
+module.exports = {getContactPage, getContactResult};

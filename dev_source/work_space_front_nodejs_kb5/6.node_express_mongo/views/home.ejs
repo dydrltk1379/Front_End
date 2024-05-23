@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery-3.7.1.js" ></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Express + MongoDB 연동 예제입니다.</h2>
+
+        <% if(loginMember){ %>
+            <h3>로그인이 되어 있습니다. 
+                    <%=loginMember.membername%>(<%=loginMember.memberid%>)님 환영합니다!</h3>
+            
+        <%} %>
+
+        <a href="/home">1. Home</a><br>
+        <a href="/member_regist">2. 회원 가입</a><br>
+        <a href="/member_list">3. 회원 목록</a><br>
+        <a href="/login">4. 로그인</a><br>
+        <% if(loginMember){ %>
+            <a href="/logout">5. 로그아웃</a><br>
+        <%} %>
+        <br>
+
+        <img class="hero-image" src="/img/top-hero.jpg" alt="">
+    </div>
+</body>
+</html>

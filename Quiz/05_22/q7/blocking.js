@@ -1,7 +1,7 @@
 const { log } = require("console");
-const fs = requrie('fs');
+const fs = require("fs");
 
-const data2 = fs.readFile('eample.txt', (err, data)=>{
+const data2 = fs.readFile('example.txt', (err, data)=>{
     if(err){
         log('error');
     }

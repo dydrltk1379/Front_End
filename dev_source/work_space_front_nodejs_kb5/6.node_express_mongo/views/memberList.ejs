@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>회원 목록</h2>
+        <a href="/home">홈으로</a>
+        <br>
+        <table border="1" style="width: 800px;">
+            <tr>
+                <th>아이디</th>
+                <th>비밀번호</th>
+                <th>이름</th>
+                <th>나이</th>
+            </tr>
+            <% memberList.forEach(e => {%>
+                <tr>
+                    <th><%=e.memberid %></th>
+                    <th><%=e.password %></th>
+                    <th><%=e.membername %></th>
+                    <th><%=e.age %></th>
+                </tr>
+            <% });%>
+        </table>
+    </div>
+</body>
+</html>

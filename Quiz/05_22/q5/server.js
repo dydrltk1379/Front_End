@@ -5,18 +5,18 @@ const getContact = require('./getContact.js');
 const getHome = require('./getHome.js');
 
 const server = http.createServer((req, res)=>{
-    const {url, mothod} = req;
+    const {url, method} = req;
 
     if(url === '/' || url === '/index'){
         index(req, res);
-    } else if(url == '/get_page' && method == 'GET'){
-        getTest.getContact(req, res);
-    } else if(url.includes('/get_result') && method == 'GET'){
-        getTest.getContactResult(req, res);
-    } else if(url == '/post_page' && method == 'GET'){
-        postTest.getHomePage(req, res);
-    } else if(url.includes('/post_result') && method == 'GET'){
-        postTest.getHomeResult(req, res);
+    } else if(url == '/contact' && method == 'GET'){
+        getContact.getContactPage(req, res);
+    } else if(url.includes('/get_contact') && method == 'GET'){
+        getContact.getContactResult(req, res);
+    } else if(url == '/home' && method == 'GET'){
+        getHome.getHomePage(req, res);
+    } else if(url.includes('/get_home') && method == 'GET'){
+        getHome.getHomeResult(req, res);
     } else { 
         res.setHeader('Content-Type', 'text/html');
         res.end('<h1>Error!</h1>');

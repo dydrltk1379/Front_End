@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>처리 결과!</h2>
+         <!-- https://ejs.co/#docs/ -->
+         <%if(member){%>
+            id : <%=member.id%> <br>
+            pw : <%=member.pw%> <br>
+            name : <%=member.mname%> <br>
+            age : <%=member.age%> <br>
+        <%}%>
+        <%if(!member){%>
+            <h1>결과 값이 없습니다.</h1>
+        <%}%>
+    </div>
+</body>
+</html>

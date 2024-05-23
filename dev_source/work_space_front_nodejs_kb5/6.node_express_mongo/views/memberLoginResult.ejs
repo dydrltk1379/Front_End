@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <% if(result == true){ %>
+            <br>
+            <h2>로그인 되었습니다!</h2>
+            <br>
+            <a href="/" class="">홈으로 이동</a>
+            <script>
+                setTimeout(()=>{
+                    location.href = '/';
+                },5000)
+            </script>
+        <%} %>
+        <% if(result == false){ %>
+            <br>
+            <h2>로그인에 실패하였습니다.</h2>
+            <a href="/login" class="">로그인 페이지로 이동</a>
+        <%} %>
+    </div>
+</body>
+</html>

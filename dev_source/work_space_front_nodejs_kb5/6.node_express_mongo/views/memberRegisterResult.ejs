@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <% if(result == true){ %>
+            <br>
+            <h2>회원가입 확인</h2>
+            <br>
+            <a href="/">홈으로</a>
+            <br>
+            id : <%=member.memberid%><br> 
+            pw : <%=member.password%><br> 
+            name : <%=member.membername%><br> 
+            age : <%=member.age%><br>
+            <%} %>
+        <% if(result == false){ %>
+            <br>
+            <h2>회원 가입에 실패하였습니다.</h2>
+            <h2>원인 : <%=reason%></h2>
+            <a href="/member_regist">이전으로</a>
+        <%} %>
+
+    </div>
+</body>
+</html>
