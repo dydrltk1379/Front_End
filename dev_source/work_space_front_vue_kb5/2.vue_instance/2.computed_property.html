@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>instance</title>
+  <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <!--  -->
+  <h3>계산된 속성(Computed Property)</h3>
+  <div> - Computed Property는 일반 함수와 비슷한 표기법으로 선언할 수 있다.</div>
+  <div> - 계산된 속성은 일반 함수와 달리 여러번 호출되는 경우에도 한번만 호출된다. </div>
+  <div> - 한번만 호출되는 이유는 Caching을 활용하여 값을 자체적으로 저장한다.</div>
+  <div> - 최종적으로 여러번 호출이 되어야하는 경우에도 일반 메소드보다 성능이 좋아진다.</div>
+  
+  <div id="app">
+    1보다 큰수 : <input id="a" type="text" v-model.number="num" />
+    <br />
+    1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+    1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+    1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+  </div>
+  <script type="text/javascript">
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return { num: 0 };
+      },
+      computed: {
+        sum() {
+          console.log("## num : " + this.num);
+          var n = parseInt(this.num);
+          if (Number.isNaN(n)) return 0;
+          return (n * (n + 1)) / 2;
+        },
+      },
+    }).mount("#app");
+  </script>
+  <hr><br>
+
+  <h3>Computed Property - get,set 예제 </h3>
+  <div id="app2">
+    <input type="text" v-model.number="amt" /><br />
+    금액 : <span>{{amount}}원</span>
+  </div>
+  <script type="text/javascript">
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return { amt: 99999 };
+      },
+      computed: {
+        amount: {
+          get() {
+            var regexp = /\B(?=(\d{3})+(?!\d))/g;
+            return this.amt.toString().replace(regexp, ",");
+          },
+          set(amount) {
+            var amt = parseInt(amount.replace(/,/g, ""));
+            this.amt = Number.isNaN(amt) ? 0 : amt;
+          },
+        },
+      },
+    }).mount("#app2");
+  </script>
+</body>
+
+</html>

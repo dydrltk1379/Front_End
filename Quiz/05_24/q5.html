@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q5</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        Start Value : <input type="text" v-model.number="sVal"><br>
+        End Value : <input type="text" v-model.number="eVal">
+        <hr color="red">
+        Computed Sum : <span>{{csum}}</span><br>
+        Method Sum : <span>{{msum()}}</span><br>
+        Watched Sum : <span>{{wsum}}</span>
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            name:'app',
+            data(){
+                return{
+                    sVal:0,
+                    eVal:0,
+                };
+            },
+            computed:{
+                csum(){
+                    var s=parseInt(this.sVal);
+                    var e=parseInt(this.eVal);
+                    // if (Number.isNaN(s)||Number.isNaN(e)){
+                    //     return 0;
+                    // }
+                    return e*(e+1)/2 - s*(s+1)/2;
+                }
+            },
+            methods:{
+                msum(){
+                    var s=parseInt(this.sVal);
+                    var e=parseInt(this.eVal);
+                    // if (Number.isNaN(s)||Number.isNaN(e)){
+                    //     return 0;
+                    // }
+                    return e*(e+1)/2 - s*(s+1)/2;
+                }
+            },
+            watch:{
+                sVal(current,old){
+                    var s=Number(current);
+                    var e=Number(this.eval);
+                    // if (Number.isNaN(s)||Number.isNaN(e)){
+                    //     this.wsum=0;
+                    // }
+                    this.wsum=e*(e+1)/2 - s*(s+1)/2;
+                },
+                eVal(current,old){
+                    var s=Number(this.sVal);
+                    var e=Number(current);
+                    // if (isNaN(s)||isNaN(e)){
+                    //     this.wsum=0;
+                    // }
+                    this.wsum=e*(e+1)/2 - s*(s+1)/2;
+                },
+            }
+
+        }).mount('#app');
+    </script>
+</body>
+</html>

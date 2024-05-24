@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <h3>Vue란? 편하게 볼것(자주 사용하는 것만)</h3>
+    <div>- The Progressive JavaScript Framework (진보적인 JS 프레임워크)!</div>
+    <div>- SPA 프레임워크로 React의 라이벌, AngularJS의 비공식 후속 버전(개선 버전)</div>
+    <div>- Evan You로 고안됨, 구글 AngularJS를 가볍게 만들기 위해 시작된 프로젝트 </div>
+    <div>- 문법상 특징은 html의 틀을 크게 깨지 않는 수준으로도 활용 가능(레거시에서 활용 가능!)</div>
+    <div>- 다만 최근 트렌드에 맞춰 Component 기반으로 설계를 구성함으로 react와 닮아가고 있다.</div>
+    <div>- 프레임워크로 다양한 도구(라우팅, CLI, 디버깅 도구)등을 지원한다.</div>
+    <div>- pure html base 보다 세심한 UI/UX를 구현할수 있도록 설계 되어 있음</div>
+    <div>- https://ko.vuejs.org/guide/introduction.html - 잘 정리되어 있음</div>
+    <div>- https://ko.vuejs.org/guide/extras/rendering-mechanism - 랜더링 매커니즘(가상 dom)</div>
+    <br>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <h1 id="app">{{ message }}</h1> <!--real dom-->     
+    <script>
+        const { createApp, ref } = Vue // virtual dom
+        // createApp : 인스턴스 생성 영역
+        createApp({
+            setup() {
+                const message = ref('Hello vue world!')
+                // 아래 리턴 되는 값이 model, 해당 값이 리얼 dom에 연결 됨
+                return {
+                    message // 모델 값
+                }
+            }
+            // mount는 DOM과 VDOM간의 바인딩하는 의미
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

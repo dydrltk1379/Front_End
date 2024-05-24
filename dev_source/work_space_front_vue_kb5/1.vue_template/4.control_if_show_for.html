@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h3>1. Conditional Rendering (v-if, v-else, v-else-if, v-show) </h3>
+    <div> - 제어문의 조건문으로 조건이 일치할 경우 동작 </div>
+    <div> - v-if는 값이 없을때 보이지 않도록 하는 필터링 문으로도 많이 활용 </div>
+    <div> https://ko.vuejs.org/guide/essentials/conditional.html</div>
+    <br>
+
+    <div id="app">
+        <h3>일반 텍스트 출력</h3>
+        <!-- text가 null이 아니면 출력되는 문장 -->
+        text : <span v-if="text">{{text}}</span><br>
+        nullValue : <span v-if="nullValue">{{nullValue}}</span> <!-- 공백처리 테스트 필터링하기 좋은 코드 -->
+        <br>
+
+        잔고 : <input type="text" v-model="balance"><br>
+        회원님의 등급 : 
+        <span v-if="balance>=1000000">Gold</span>
+        <span v-else-if="balance>=500000">Silver</span>
+        <span v-else-if="balance>=200000">Bronze</span>
+        <span v-else>Basic</span>
+    </div>
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+            name: "App",
+            data() {
+                return {
+                text: 'Hello vue world!',
+                nullValue: null,
+                balance: 0
+            };
+            },
+        }).mount("#app");
+    </script>
+    <hr><br>
+
+    <h3>v-show</h3>
+    <div>- 조건에 맞으면 화면에 보여주는 디렉티브</div>
+    <div>- css나 display:none 등 활용범위가 넓음</div>
+    <br>
+
+    <div id="app2">
+        예금액 : <input type="text" v-model="amount">
+        <div v-show="amount == 0">입력값이 없습니다. 입력바랍니다.</div>
+        <div v-show="amount < 0">마이너스는 허용하지 않습니다.</div>
+        <div v-show="amount > 0">입력 값 : {{amount}}</div>
+    </div>
+
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+            data() {
+            return { amount: "0" };
+            },
+        }).mount("#app2");
+    </script>
+    <hr><br>
+
+    <h3>2. v-for (list Rendering)</h3>
+    <div> - 반복문으로 반복적인 list를 랜더링 하는 경우 자주 활용됨</div>
+    <div> - 반복문으로 생성된 문장은 가능하면 |key값|을 가지는 것이 유리하다고 한다.</div>
+    <div> - key값은 VDOM값으로 실제 DOM과 binding 되는 사상되는 식별자 활용된다.</div>
+    <div> - key값이 없어도 UI가 렌더링은 문제없으나 key가 없으면 vue에서 |update는 불가하다.|</div>
+    <div> - https://ko.vuejs.org/guide/essentials/list.html</div>
+    <div> - https://vuejs.org/style-guide/rules-essential.html#use-keyed-v-for</div>
+    <br>
+    <div id="app3">
+        <h4>단순 html로 출력하는 방법(key 없음)</h4>
+        <!-- 반복문은 li-->
+        <ul>
+            <li v-for="item in regions">{{item}}</li>
+        </ul>
+
+        <h4>select문</h4>
+        <select name="regions" id="regions">
+            <option disabled selected>지역을 선택하세요.</option>
+            <option v-for="(val, key) in regions" :value="key" :key="key">{{val}}</option>
+        </select>
+    </div>
+
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+            name: "App",
+            data() {
+                return {
+                regions: {
+                    A: "Asia",
+                    B: "America",
+                    C: "Europe",
+                    D: "Africa",
+                    E: "Oceania",
+                },
+            };
+            },
+        }).mount("#app3");
+    </script>
+    <hr><br>
+
+    <h3>테이블로 출력하는 예시</h3>
+    <style>
+    #list {
+        width: 600px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    #list td,
+    #list th {
+        border: 1px solid black;
+        text-align: center;
+    }
+    #list>thead>tr {
+        color: yellow;
+        background-color: purple;
+    }
+    </style>
+    <div id="app4">
+        <table id="list">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>전화번호</th>
+                </tr>
+            </thead>
+            <tbody id="contacts">
+                    <tr v-for="contact in contacts" :key="contact.no">
+                        <td>{{contact.no}}</td>
+                        <td>{{contact.name}}</td>
+                        <td>{{contact.tel}}</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+        name: "App",
+        data() {
+            return {
+            pageno: 1,
+            pagesize: 4,
+            totalcount: 100,
+            contacts: [
+                { no: 1011, name: "RM", tel: "010-3456-8299" },
+                { no: 1012, name: "정국", tel: "010-3456-8298" },
+                { no: 1013, name: "제이홉", tel: "010-3456-8297" },
+                { no: 1014, name: "슈가", tel: "010-3456-8296" },
+            ],
+            };
+        },
+        }).mount("#app4");
+    </script>
+    <hr><br>
+    <h3>테이블로 출력할때 index를 활용하는 예시</h3>
+    <div id="app5">
+        <table id="list">
+        <thead>
+            <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            </tr>
+        </thead>
+        <tbody id="contacts">
+            <template v-for="(contact, index) in contacts" :key="contact.no">
+            <tr>
+                <td>{{contact.no}}</td>
+                <td>{{contact.name}}</td>
+                <td>{{contact.tel}}</td>
+            </tr>
+            <tr class="divider" v-if="index % 4 === 3">
+                <td colspan="3">공백</td>
+            </tr>
+            </template>
+        </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+        name: "App",
+        data() {
+            return {
+            contacts: [
+                { no: 1011, name: "RM", tel: "010-3456-8299" },
+                { no: 1012, name: "정국", tel: "010-3456-8298" },
+                { no: 1013, name: "제이홉", tel: "010-3456-8297" },
+                { no: 1014, name: "슈가", tel: "010-3456-8296" },
+                { no: 1015, name: "진", tel: "010-3456-8295" },
+                { no: 1016, name: "뷔", tel: "010-3456-8294" },
+                { no: 1017, name: "지민", tel: "010-3456-8293" },
+            ],
+            };
+        },
+        }).mount("#app5");
+    </script>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

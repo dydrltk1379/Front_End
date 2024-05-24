@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h2> Template Syntax </h2>
+    <div>- Vue는 렌더링된 DOM을 바인딩할 수 있는 HTML 친화적인 템플릿 구문을 사용</div>
+    <div>- 작성된 템플릿 구문은 Vue app을 통해 이벤트 및 반응성 처리를 지원 </div>
+    <div>- 또한 |DOM의 변경을 최소한으로 수행|하기 위해 Virtual DOM으로 구성</div>
+    <div>- 개발자 입장에서는 DOM과 VDOM간의 동기 문제가 있을수 있음을 유의해야 한다.</div>
+    <div>- https://ko.vuejs.org/guide/essentials/template-syntax.html</div>
+    <hr><br>
+
+    <h3>1. Text Interpolation(보간법)</h3> <!--express 표현법과 비슷-->
+    <div>- 문법 : <code>{{ content }}</code> </div> <!-- db데이터 꺼내기 위한 방법(잘 쓰임) -->
+    <div> - 콧수엽(Mustache)문법, vue에서 생성된 동적인 문장을 출력하기 위해 활용 </div>
+    <br>
+    <div id="app">
+        <h3>message1 : {{message1}}</h3>
+        <h3>message1 : {{message2}}</h3>
+    </div>
+    <!-- script 코드는 반드시 아래에 선언해야 동작함 : (이유) 위의 코드가 랜더링되야 쓸 수 있기 때문 (app이 없음)-->
+    <script>
+        // model 데이터를 담는 객체의 별칭
+        var model = {
+            message1 : "Hello, Vue3!",
+            message2 : "안녕하세요, Vue3!",
+        };
+        var vm = Vue.createApp({
+            // Json 객체 선언, data : 보안적 코드
+            name : 'app',
+            data(){
+                return model;    
+            },
+        }).mount('#app'); // 안 써도 됨
+    </script>
+    <hr><br>
+
+    <h3>2. v-html, v-text directive, (Raw HTML) </h3>
+    <div> - Raw HTML의 문법을 활용하는 방법으로 속성 값으로 |바인딩|이 가능 </div>
+    <div> - v-html : innerHTML의 속성 값으로 |엘리먼트를 생성|할수 있음 </div>
+    <div> - v-text : innerTEXT의 속성 값으로 |순수 텍스트|만 삽입됨 </div>
+    <br>
+    <div id="app2">
+        Interporation : <span>{{message}}</span><br>
+        v-html : <span v-html="message">이곳의 문장은 출력되지 않습니다.</span><br>
+        v-html : <span v-text="message">이곳의 문장은 출력되지 않습니다.</span><br>
+    </div>
+    <script>
+        // model 데이터를 담는 객체의 별칭
+        var model = {
+            message : "<b>Hello, Vue3!</b>",
+        };
+        var vm = Vue.createApp({
+            // Json 객체 선언, data : 보안적 코드
+            name : 'app',
+            data(){
+                return model;    
+            },
+        }).mount('#app2'); // 안 써도 됨
+    </script>
+    <hr><br>
+
+    <h3>3. v-bind (Attribute Bindings) </h3>
+    <div> - vue에서 |속성 값을 바인딩| 하기 위해 활용되는 문법 </div>
+    <div> - 모든 속성값(id, class, type, value ...)이 바인딩 될수 있음 </div>
+    <div> - v-bind:value="~~~"와 같이 속성값 앞에 문법을 활용 </div>
+    <div> - Shorthand 문법지원 </div>
+    <div> - 1. bind 생략 후 ':'만 사용 </div>
+    <div> - 2. 속성값과 같은 이름 생략하여 ':width'만 사용 </div>
+    <br>
+
+    <div id="app3">
+        <!-- v-bing 정석문법, 나중에는 안 쓰게 된다.-->
+        <input type="text" v-bind:value="message"><br><br>
+        <!-- Shorthand 문법, ':'만 활용 - 바인드-->
+        <img :src="imagePath" :width><br>
+        <button :disabled="isButtonDisabled">Button</button>
+        <!-- objectOfAttrs 다수의 속성 값을 한번에 적용하는 문법-->
+        <div v-bind="objectOfAttrs">복합속성도 활용 가능</div>
+    </div>
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+            name: "App",
+            data() {
+                return {
+                    message: "v-bind 디렉티브",
+                    imagePath: "cat1.png",
+                    width: '200px',
+                    isButtonDisabled: true,
+                    objectOfAttrs: {
+                        id: 'container',
+                        class: 'wrapper',
+                        style: 'background-color:green'
+                    }
+                };
+            },
+        }).mount("#app3");
+    </script>
+    <hr><br>
+
+    <h3>4. JavaScript Expressions</h3>
+    <div> - JS 문법을 표현식으로 처리할수 있다. </div>
+    <div> - document.write('this!') this에 들어갈수 있는 문법만 적용 가능</div>
+    <div> - 순수 문자열, 삼항연산자, 함수 등이 사용 될 수 있다.</div><br>
+
+    <div id="app4">
+        {{number + 10}}<br>
+        {{null ? 'null 입니다.' : 'null 아닙니다.'}};<br>
+        {{null || '이곳은 출력되지 않습니다.'}};<br>
+        {{message.split('').reverse().join('')}};<br>
+        <div :id="`list-${id}`">테스트</div>
+        {{myFunc()}}
+    </div>
+    <script type="text/javascript">
+        var model = {
+            number: 5,
+            ok:true,
+            message:'Hello vue world!',
+            id:'test',
+            myFunc:()=>'myFunc Test!'
+        };
+        var vm = Vue.createApp({
+            name: "App",
+            data() {
+                return model;
+            },
+        }).mount("#app4");
+    </script>
+    <hr><br>
+    
+    
+</body>
+</html>

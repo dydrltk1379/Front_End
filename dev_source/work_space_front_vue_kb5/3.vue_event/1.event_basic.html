@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <!-- 인라인 핸들러보다는 메서드 핸들러로 사용해야 깔끔하다. -->
+    <h3>이벤트 처리</h3>
+    <div> - https://ko.vuejs.org/guide/essentials/event-handling.html</div>
+
+    <h3>1. 이벤트 처리 - 인라인 핸들러 방식</h3>
+    <div> - v-on을 활용하여 vue와 바인딩 된 객체 활용할수 있는 script를 생성하여 처리 </div>
+    <div> - 코드 관리가 잘되지 않음으로 가급적 사용 안하길 권장! </div>
+    <br>
+
+    <div id="app">
+        금액 : <input type="text" v-model.number="amount"><br>
+        <!-- 인라인 핸들러는 balance~amount는 가급적 쓰지마라 -->
+        <button v-on:click="balance += amount">입금</button>
+        <button v-on:click="balance -= amount">출금</button>
+
+        <h3>계좌 잔고 : {{balance}}</h3>
+    </div>
+
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+            name: "App",
+            data() {
+                return { amount: 0, balance: 0 };
+            },
+            }).mount("#app");
+    </script>
+    <hr><br>
+
+    <!-- 이런 패턴이 좋은 코드 -->
+    <h3>2. 이벤트 처리 - 메서드 핸들러</h3>
+    <div> - @를 통해 vue 내부의 메서드 핸들러와 연결하는 방식</div>
+    <div> - 긴 이벤트 처리에도 적합하고 vue 코드에서 이벤트 처리 코드를 작성 가능 </div>
+    <div> - 가급적 해당 방법을 사용하는 것을 권장, 사유는 코드 관리가 편해짐</div>
+    <br>
+    <div id="app2">
+        금액 : <input type="text" v-model.number="amount"><br>
+        <button @click="deposit">입금</button>
+        <button @click="withdraw">출금</button>
+        <br>    
+        <h3>계좌 잔고 : {{balance}}</h3>
+    </div>
+
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+            name: "App",
+            data() {
+                return { amount: 0, balance: 0 };
+            },
+            methods:{
+                deposit(e){
+                    console.log(e);
+                    let amt = this.amount; // this.amount : Vue.amount
+                    if(amt<=0){
+                        alert('0보다 큰 값을 입력해야 합니다.');
+                        return;
+                    }
+                    this.balance += amt;
+                },
+                withdraw(e){
+                    alert('withdraw');
+                    console.log(e);
+                    let amt = this.amount; // this.amount : Vue.amount
+                    if(amt<=0){
+                        alert('0보다 큰 값을 인출할 수 있습니다..');
+                    }else if(amt > this.balance){
+                        alert('잔액이 부족합니다.')
+                    }else{
+                        this.balance -= amt;
+                    }
+                },
+            }
+            }).mount("#app2");
+    </script>
+    <hr><br>  
+
+    <h3>이벤트 처리 - 핸들러2, input 이벤트</h3>
+
+    <div id="app3">
+        <!-- changeName 중요 -->
+        <input type="text" :value="name" @input = "changeName"> 
+        입력한 이름 : <span>{{name}}</span><br>
+
+
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            name:'app',
+            data(){
+                return {name: " "};
+            },
+            methods:{
+                // e를 쓰는 이유 : input에 있는 value를 가져오기 위해, this를 쓰면 Vue의 name을 가져온다.
+                changeName(e){
+                    // alert(e.target.value);
+                    this.name=e.target.value;
+                }
+            }
+        }).mount('#app3');
+    </script>
+
+
+</body>
+</html>

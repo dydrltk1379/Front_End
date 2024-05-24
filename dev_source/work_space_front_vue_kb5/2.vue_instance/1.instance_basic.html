@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>instance</title>
+  <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+
+<body>
+  <h3>instance</h3>
+  <div>- Vue클래스의 createApp() 메서드를 통해 생성된 vm 객체를 인스턴스라 한다.</div>
+  <br>
+
+  <div id="app">
+    <input id="a" type="text" v-model="name" />
+    <br />
+    입력하신 이름 : <span>{{name}}</span>
+  </div>
+  <script type="text/javascript">
+    // 아래 vm 인스턴스
+    var vm = Vue.createApp({
+      name: "App",
+      // 아래 data 영역이 template에 바인딩할 데이터를 넣는 부분으로 model 객체를 리턴함
+      data() {
+        // 아래 리턴값이 model 값
+        return { name: "" };
+      },
+    }).mount("#app");
+  </script>
+  <hr><br>
+
+
+  <h3>변수 이름에 '$'나 '_' 사용 금지</h3>
+  <div>- $, _를 활용하는 경우 속성명에 적용할수 없음으로 vue가 제대로 동작하지 않음</div>
+
+  <div id="app2">
+    <input id="a" type="text" v-model="$name" />
+    <br />
+    입력하신 이름 : <span>{{$name}}</span>
+  </div>
+  <script type="text/javascript">
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return { $name: "" };
+      },
+    }).mount("#app2");
+  </script>
+  <hr><br>
+</body>
+
+</html>
