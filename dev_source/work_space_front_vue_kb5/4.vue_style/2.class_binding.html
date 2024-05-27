@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h3>v-bind 기반 class 연동 문법</h3>
+    <div> - ':class'를 활용하여 미리 정의된 class를 지정할수 있다. </div>
+    <div> - vue에서 가장 보편적으로 css를 적용하는 방법이다. </div>
+    <br>
+    <style>
+        .buttonColor {background-color: aqua;color: black;}
+        .buttonLayout {text-align: center; width: 120px;}
+        .staticBorder  {border: blue dashed 3px;}
+    </style>
+
+    <div id="app">
+        <button class="staticBorder" :class="myColor">텍스트 버튼</button>
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            name:'app',
+            data(){
+                return {
+                    myColor:'buttonColor buttonLayout',
+                };
+            },
+        }).mount("#app");
+    </script>
+    <br><br>
+
+    <h3>v-bind 기반 class를 여러개로 적용하는 방법</h3>
+    <div> - :class 속성에 []리스트를 통해 여러 속성을 한번에 적용할수 있다. </div>
+    <style>
+        .buttonColor {background-color: aqua;color: black;}
+        .buttonLayout {text-align: center; width: 120px;}
+        .staticBorder  {border: blue dashed 3px;}
+    </style>
+    <div id="app2">
+        <button class="staticBorder" :class="[myColor, myLayout]">테스트 버튼</button>
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            name:'app',
+            data(){
+                return {
+                    myColor:'buttonColor',
+                    myLayout:'buttonLayout',
+                };
+            },
+
+        }).mount('#app2');
+    </script>
+    <br><br>
+
+    <h3>삼항 연산자</h3>
+    <div> - 삼항 연산자를 통해 레이아웃을 속성을 여러 레이아웃으로 대체할수 있다. </div>
+    <div> - 삼항연산자 대신 &&를 통해 단축해서도 표현할수 있다. </div>
+    <br>
+    <style>
+        .buttonColor {background-color: aqua; color: black; }
+        .buttonLayout { text-align: center; width: 150px; }
+        .buttonShadow {box-shadow: 5px 5px #333}
+        .staticBorder  {border: blue dashed 3px;}
+    </style>
+    <div id="app3">
+        <input type="checkbox" v-model="isMyLayout">레이아웃 적용 여부 <br>
+        <button class="staticBorder" :class="[
+            myColor, 
+            isMyLayout ? myLayout : '', 
+            isMyLayout && myShadow, 
+
+        ]">테스트 버튼</button>
+    </div>
+    <script type="text/javascript">
+        var vm = Vue.createApp({
+            name: "App",
+            data() {
+                return {
+                    myColor: "buttonColor",
+                    myLayout: "buttonLayout",
+                    myShadow: "buttonShadow",
+                    isMyLayout: false,
+                };
+            },
+        }).mount("#app3");
+    </script>
+    <hr><br>
+
+    <h3>v-model기반 양방향 레이아웃 적용</h3>
+    <style>
+        .bColor { background-color: aqua; color: black; }
+        .bLayout {text-align: center; width: 120px;}
+        .bBorder {border: blue dashed 3px;}
+    </style>
+    <div id="app4">
+        <button :class="{bColor:setColor, bLayout:setAlign, bBorder:setBorder}">버튼1</button>
+        <div>
+            <input type="checkbox" v-model="setColor" value="true">색상<br>
+            <input type="checkbox" v-model="setAlign" value="true">정렬, 크기<br>
+            <input type="checkbox" v-model="setBorder" value="true">테두리 선<br>
+        </div>
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            name:app,
+            data(){ // 클로징 기법
+                return{
+                    setColor:false, setAlign:false, setBorder:false, // value보다 우선순위 높음
+                };
+            }
+        }).mount('#app4');
+    </script>
+</body>
+</html>

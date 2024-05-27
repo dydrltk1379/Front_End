@@ -7,7 +7,9 @@
     <script type="text/javascript" src="https://unpkg.com/vue"></script>
 </head>
 <body>
-    <!-- 인라인 핸들러보다는 메서드 핸들러로 사용해야 깔끔하다. -->
+    <!-- 인라인 핸들러보다는 메서드 핸들러로 사용해야 깔끔하다. 제일 중요 
+        onclick, onchanged
+    -->
     <h3>이벤트 처리</h3>
     <div> - https://ko.vuejs.org/guide/essentials/event-handling.html</div>
 
@@ -34,7 +36,7 @@
             }).mount("#app");
     </script>
     <hr><br>
-
+    <!-- :, @ - 뷰에서 사용하는 핸들러 -->
     <!-- 이런 패턴이 좋은 코드 -->
     <h3>2. 이벤트 처리 - 메서드 핸들러</h3>
     <div> - @를 통해 vue 내부의 메서드 핸들러와 연결하는 방식</div>
@@ -56,7 +58,7 @@
                 return { amount: 0, balance: 0 };
             },
             methods:{
-                deposit(e){
+                deposit(e){ // 콜백(이벤트 핸들러) 
                     console.log(e);
                     let amt = this.amount; // this.amount : Vue.amount
                     if(amt<=0){

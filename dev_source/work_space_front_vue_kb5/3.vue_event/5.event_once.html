@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>click - once</title>
+  </head>
+  <body>
+    <h3>click - once</h3>
+    <div>- once를 활용하면 한번 이벤트가 발생하고 더이상 이벤트가 발생하지 않는다.</div>
+    <br>
+    <div id="app">
+      금액 : <input type="text" v-model.number="amount" /><br />
+      <button @click="balance += parseInt(amount)">입금</button>
+      <button @click="balance -= parseInt(amount)">인출</button>
+      <button @click.once="balance += 10000">계좌 개설 이벤트</button>
+      <br />
+      <h3>계좌 잔고 : {{balance}}</h3>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: "App",
+        data() {
+          return { amount: 0, balance: 0 };
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

@@ -15,7 +15,7 @@
 
     <div id="app">
         <h3>일반 텍스트 출력</h3>
-        <!-- text가 null이 아니면 출력되는 문장 -->
+        <!-- text가 null이 아니면 출력되는 문장 : 리스트가 없을 떄  -->
         text : <span v-if="text">{{text}}</span><br>
         nullValue : <span v-if="nullValue">{{nullValue}}</span> <!-- 공백처리 테스트 필터링하기 좋은 코드 -->
         <br>
@@ -65,7 +65,7 @@
     <h3>2. v-for (list Rendering)</h3>
     <div> - 반복문으로 반복적인 list를 랜더링 하는 경우 자주 활용됨</div>
     <div> - 반복문으로 생성된 문장은 가능하면 |key값|을 가지는 것이 유리하다고 한다.</div>
-    <div> - key값은 VDOM값으로 실제 DOM과 binding 되는 사상되는 식별자 활용된다.</div>
+    <div> - **key값은 VDOM값으로 실제 DOM과 binding 되는 사상되는 식별자 활용된다.</div>
     <div> - key값이 없어도 UI가 렌더링은 문제없으나 key가 없으면 vue에서 |update는 불가하다.|</div>
     <div> - https://ko.vuejs.org/guide/essentials/list.html</div>
     <div> - https://vuejs.org/style-guide/rules-essential.html#use-keyed-v-for</div>

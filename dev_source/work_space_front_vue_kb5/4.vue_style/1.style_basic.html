@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>style</title>
+</head>
+
+<body>
+  <!-- 안 씀-->
+  <h3>기본적인 class 기반 css 적용 방법</h3>
+  <style>
+    .test {
+      background-color: yellow;
+      border: double 4px gray;
+    }
+
+    .over {
+      background-color: aqua;
+      width: 300px;
+      height: 100px;
+    }
+  </style>
+
+  <div style="background-color: orange;" class="test over"></div>
+  <hr><br>
+
+  <h3>v-bind 기반 css 속성 적용 방법</h3>
+  <div>- style 속성에 js에서 생성한 css 속성을 적용하는 방법</div>
+
+  <hr><br>
+  <div id="app">
+    <button id="a" :style="style1" @mouseover.stop="overEvent" 
+    @mouseout.stop="outEvent">테스트</button>
+  </div>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return {
+          style1: { backgroundColor: "white", color: "black" },
+        };
+      },
+      methods: {
+        overEvent() {
+          this.style1.backgroundColor = "purple";
+          this.style1.color = "yellow";
+        },
+        outEvent() {
+          this.style1.backgroundColor = "aqua";
+          this.style1.color = "black";
+        },
+      },
+    }).mount("#app");
+  </script>
+  <hr><br>
+
+  <h3>v-bind 기반 여러 속성을 한번에 적용하는 방법</h3>
+  
+  <div id="app2">
+    <button id="btn1" :style="[ myColor, myLayout ]">버튼1</button>
+  </div>
+  <script type="text/javascript">
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return {
+          myColor: { backgroundColor: "purple", color: "yellow" },
+          myLayout: { width: "150px", height: "80px", textAlign: "center" },
+        };
+      },
+    }).mount("#app2");
+  </script>
+
+</body>
+
+</html>

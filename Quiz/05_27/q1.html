@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q1</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+    <style>
+        #outer{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: absolute;
+        }
+        #inner{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="outer" @click="outerClick">
+            <div id="inner" @click="innerClick"></div>
+        </div>
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            name:'app',
+            methods:{
+                outerClick(e){
+                    alert('하늘색 바깥쪽을 클릭하셨군요.');
+                    e.stopPropagation();
+                },
+                innerClick(e){
+                    alert('노란색 안쪽을 클릭하셨군요');
+                    e.stopPropagation();
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

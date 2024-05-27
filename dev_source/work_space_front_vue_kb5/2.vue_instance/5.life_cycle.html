@@ -10,14 +10,19 @@
       onload == onMounted
       form 자체를 update를 하면 웹페이에서 변화가 감지되어 갱신한다.
     -->
-    <h3>Life-Cycle</h3>
+    <h3>Life-Cycle</h3><!-- ** -->
     <div> - vue는 자체적인 life-cycle을 가진다.</div>
     <div> - 가장 중요한 life-cycle은 mounted(onMounted)이다.</div>
     <div> - mounted 상태 이후에 user가 원하는 UI를 다시 구성하는 것이 일반적이다. </div>
     <div> - 다음으로는 updated를 감지하여 변화를 모니터링 하는 것도 자주 활용된다. </div>
     <div> - https://ko.vuejs.org/guide/essentials/lifecycle.html</div>
     <hr><br>
-    
+    <!--
+      onMounted : 랜더링 후 끝난 후 데이터를 조작할 수 있는 상태
+      onUpdated : 업데이트 된 데이터를 조작
+      onUnmounted : 해제된 상태 
+      
+    -->
     <div id="app">
       1보다 큰수 : <input id="a" type="text" v-model.number="num" />
       <br />

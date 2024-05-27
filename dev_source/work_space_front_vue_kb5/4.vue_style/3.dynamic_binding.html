@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h3>computed 기반 css 적용 방법</h3>
+    <div> - v-model로 적용된 변수값에 따라 computed 메서드를 기반으로 처리할수 있다. </div>
+    <div> - 이때의 장점은 메소드로 호출할때 대비 계산량이 줄어든다. </div>
+    <br>
+    <style>
+        .score {border: solid 1px black;}
+        .warning {background-color: skyblue; color: purple;}
+        .warnimage { width: 18px;height: 18px; top: 5px; position: relative;}
+    </style>
+    <div id="app">
+        <div>1부터 100까지만 입력 가능합니다.</div>
+        <div>
+            점수 : <input type="text" class="score" v-model="score" :class="info">
+            <img src="https://contactsvc.bmaster.kro.kr/img/error.png" 
+                v-if="info.warning" class="warnimage" title="1부터 100까지 입력하세요.">
+        </div>
+    </div>
+    <script>
+        var vm = Vue.createApp({
+            name:app,
+            data(){
+                return{
+                    score : 50,
+                };
+            },
+            computed:{
+                info(){
+                    // window.alert('!!');
+                    return {
+                        warning : this.score < 1 || this.score > 100, // boolean
+                    };
+                }
+            },
+        }).mount('#app');
+    </script>
+</body>
+</html>

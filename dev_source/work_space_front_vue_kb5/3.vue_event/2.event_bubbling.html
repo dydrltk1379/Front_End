@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>event_bubbling</title>
+    <style>
+      #outer {
+        width: 200px;
+        height: 200px;
+        border: solid 2px black;
+        background-color: aqua;
+        position: absolute;
+        top: 100px;
+        left: 50px;
+        padding: 10px 10px 10px 10px;
+      }
+      #inner {
+        width: 100px;
+        height: 100px;
+        border: solid 2px black;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+        <h3>버블링 이슈</h3>
+        <div> - innerClick를 클릭하면 outerClick 영역의 이벤트도 같이 동작하는 이슈</div>
+        <div id="outer" @click="outerClick"> <!-- 부모 -->
+          <div id="inner" @click="innerClick">innerClick</div><!-- 자식 -->
+          outerClick
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script type="text/javascript">
+      var vm = Vue.createApp({
+        name: "App",
+        methods: {
+          outerClick(e) {
+            window.alert('### OUTER CLICK');
+            console.log("### OUTER CLICK");
+            console.log("Event Phase : ", e.eventPhase);
+            console.log("Current Target : ", e.currentTarget);
+            console.log("Target : ", e.target);
+          },
+          innerClick(e) {
+            window.alert('### INNER CLICK');
+            console.log("### INNER CLICK");
+            console.log("Event Phase : ", e.eventPhase);
+            console.log("Current Target : ", e.currentTarget);
+            console.log("Target : ", e.target);
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
