@@ -13,7 +13,7 @@
     <div>https://deep-wide-studio.tistory.com/96</div>
     <div>https://www.lgcns.com/blog/cns-tech/cloud/48514/</div>
     <div>https://ko.vuejs.org/api/sfc-spec.html</div>
-    <hr /><br>
+    <hr/><br>
 
     <ul>
       <CheckboxItem />
