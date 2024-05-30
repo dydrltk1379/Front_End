@@ -16,14 +16,15 @@ const cnt=ref(0);
 const money=ref(0);
 const oMoney=ref(0);
 const cMoney=ref(0);
-const onClick=(e)=>{
-    
+const comp=ref(0);
+const onClick=()=>{
+    comp.value = cnt * money * 2;
 }
 
-watch([cnt, money], ([currentCnt, currentMoney], [oldCnt, oldMoney])=>{
-    oMoney.value=oldMoney*oldCnt;
-    cMoney.value=currentMoney*currentCnt;
-})
-const diffMoney=oMoney.value-cMoney.value;
-
+watch(comp, (current, old)=>{
+    oMoney.value=old;
+    cMoney.value=current;
+    diffMoney.value = Math.abs(oMoney.value - cMoney.value);
+}
+    
 </script>
