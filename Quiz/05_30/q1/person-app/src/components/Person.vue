@@ -1,5 +1,13 @@
 <template>
-
+    <div>
+        name : <br> <input type="text" v-model="name" class="form-control mt-2" @change="ChangeName"><br>
+        x : <br><input type="text" v-model.number="x" class="form-control mt-2" @change="ChangeX"><br>
+        y : <br><input type="text" v-model.number="y" class="form-control mt-2" @change="ChangeY"><br>
+        <hr>
+        name : <span class="badge text-bg-danger p-3">{{ name }}</span><br>
+        x : <span class="badge text-bg-primary p-3">{{ x }}</span><br>
+        y : <span class="badge text-bg-info p-3">{{ y }}</span><br>
+    </div>
 </template>
 
 <script>
