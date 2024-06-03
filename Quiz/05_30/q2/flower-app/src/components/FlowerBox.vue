@@ -17,5 +17,6 @@ const cnt=ref(0);
 const result = ref(0);
 watch([money, cnt], ([currentM, currentC],[oldM, oldC])=>{
     result.value = currentM * currentC * 2;
+    flower=flwoerName;
 });
 </script>

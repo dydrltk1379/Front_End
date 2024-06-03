@@ -1,29 +1,39 @@
 <template>
     <div>
-        요트 수량 : <input type="text" v-model.number="cnt"><br>
-        요트 가격 : <input type="text" v-model.number="money"><br>
-        <button @click="onCick">요트 주문 가격 비교</button><br>
-        요트 이전 계산 주문 가격 : {{ oMoney }}원<br>
-        요트 현재 계산 주문 가격 : {{ cMoney }}원<br>
-        가격 차이 : {{ diffMoney }}원<br>
+        요트 수량 : <input type="number" v-model.number="state.cnt"> <br>
+        요트 가격 : <input type="number" v-model.number="state.x"> <br>
+        <button @click="displayInfo">요트 주문 가격 비교</button>
+        <div v-if="state.infoDisplayed">
+            <div>
+                <p>요트 이전 주문 가격 : {{ state.prevPrice }}</p>
+            </div>
+            <div>
+                <p>요트 현재 주문 가격 : {{ state.currentPrice }}</p>
+            </div>
+            <div>
+                <p>가격 차이 : {{ state.price }}</p>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
-import {ref, watch} from 'vue'
+import { reactive } from 'vue';
 
-const cnt=ref(0);
-const money=ref(0);
-const oMoney=ref(0);
-const cMoney=ref(0);
-const onClick=(e)=>{
-    
-}
+const state = reactive({
+    cnt: 0,
+    x: 0,
+    prevPrice: 0,
+    currentPrice: 0,
+    price: 0,
+    infoDisplayed: false
+});
 
-watch([cnt, money], ([currentCnt, currentMoney], [oldCnt, oldMoney])=>{
-    oMoney.value=oldMoney*oldCnt;
-    cMoney.value=currentMoney*currentCnt;
-})
-const diffMoney=oMoney.value-cMoney.value;
+const displayInfo = () => {
+    state.prevPrice = state.currentPrice;
+    state.currentPrice = state.cnt * state.x;
+    state.price = state.currentPrice - state.prevPrice;
+    state.infoDisplayed = true;
+};
 
 </script>
