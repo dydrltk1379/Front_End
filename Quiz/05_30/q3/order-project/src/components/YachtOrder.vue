@@ -20,6 +20,7 @@
 <script setup>
 import { reactive } from 'vue';
 
+
 const state = reactive({
     cnt: 0,
     x: 0,
@@ -35,5 +36,22 @@ const displayInfo = () => {
     state.price = state.currentPrice - state.prevPrice;
     state.infoDisplayed = true;
 };
+
+
+const cnt=ref(0);
+const money=ref(0);
+const oMoney=ref(0);
+const cMoney=ref(0);
+const comp=ref(0);
+const onClick=()=>{
+    comp.value = cnt * money * 2;
+}
+
+watch(comp, (current, old)=>{
+    oMoney.value=old;
+    cMoney.value=current;
+    diffMoney.value = Math.abs(oMoney.value - cMoney.value);
+}
+    
 
 </script>
