@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e0627ab3-11bf-4020-a73a-188c186cf3d3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../.idea/Front_End.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start1/src/bin/q4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/.idea/work_space_java_kb5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/01_MyFirstProject/01_MyFirstProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/02_Variable/02_Variable.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/03_Operator/03_Operator.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/04_ControlStatement/04_ControlStatement.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/05_Array/05_Array.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../dev_source/work_space_java_kb5/javakb5/javakb5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0603-basic-KB01-VueJS(vue-router)-박인용-240610.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../0604-basic-KB01-VueJS(axios)-박인용_20240610.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README copy.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_1_basic/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_1_basic/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/components/Loading.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/components/Loading.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/pages/AddTodo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/pages/AddTodo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/pages/EditTodo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/pages/EditTodo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/pages/TodoItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/pages/TodoItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/pages/TodoList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/pages/TodoList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/stores/todoList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/stores/todoList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/stores/todoList2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/10.vue_pinia/vue_pinia_2_todolist/src/stores/todoList2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/21.vue_bootstrap/vue_bootstrap_1_basic/src/pages/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/7.vue_composition_api/vue_comp_5_todo2-setup/src/components/TodoList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/7.vue_composition_api/vue_comp_5_todo2-setup/src/components/TodoList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/7.vue_composition_api/vue_comp_5_todo2-setup/src/components/TodoListItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/7.vue_composition_api/vue_comp_5_todo2-setup/src/components/TodoListItem.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/8.vue_route/vue_router_1_basic/src/pages/MemberInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/8.vue_route/vue_router_1_basic/src/pages/MemberInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/8.vue_route/vue_router_1_basic/src/pages/Members.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../dev_source/work_space_front_vue_kb5/8.vue_route/vue_router_1_basic/src/pages/Members.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/assets/vue.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/pages/AsyncBox.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/pages/AxiosBox.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/pages/PostBox.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../vite.config.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2i8I8gTwwzqPaddceXOhhk2atpC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.q3 (1).executor": "Run",
+    "Application.q3 (2).executor": "Run",
+    "Application.q3 (3).executor": "Run",
+    "Application.q3 (4).executor": "Run",
+    "Application.q3.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Front_End/Quiz/06_21",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Front_End/Quiz/06_20/start1/src/Main.java",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "vue.rearranger.settings.migration": "true",
+    "애플리케이션.bin.q3.executor": "Run",
+    "애플리케이션.q3 (1).executor": "Run",
+    "애플리케이션.q3 (2).executor": "Run",
+    "애플리케이션.q3 (5).executor": "Run",
+    "애플리케이션.q3.executor": "Run",
+    "애플리케이션.q4.executor": "Run"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Front_End\Quiz\06_20\start1\src" />
+      <recent name="C:\Front_End\Quiz\06_20\q1\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="애플리케이션.q4">
+    <configuration name="bin.q3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bin.q3" />
+      <module name="start1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="q3 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="q3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="q3 (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="q3" />
+      <module name="start1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="q3 (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="q3" />
+      <module name="start" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="q3 (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="q3" />
+      <module name="start1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="q3" type="Application" factoryName="Application" temporary="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="q3" />
+      <module name="start1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="q3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.q3" />
+      <module name="start1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="q4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bin.q4" />
+      <module name="start1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="애플리케이션.q4" />
+        <item itemvalue="애플리케이션.bin.q3" />
+        <item itemvalue="애플리케이션.q3 (2)" />
+        <item itemvalue="애플리케이션.q3 (1)" />
+        <item itemvalue="애플리케이션.q3" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e0627ab3-11bf-4020-a73a-188c186cf3d3" name="Changes" comment="" />
+      <created>1718865619436</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718865619436</updated>
+      <workItem from="1718865620476" duration="1360000" />
+      <workItem from="1718867001537" duration="2542000" />
+      <workItem from="1718871259916" duration="1056000" />
+      <workItem from="1718934824951" duration="36000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/start/src/Main.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/start1/src/bin/q3.java</url>
+          <line>2</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

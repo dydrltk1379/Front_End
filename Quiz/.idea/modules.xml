@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/06_20/06_20.iml" filepath="$PROJECT_DIR$/06_20/06_20.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_21/06_21.iml" filepath="$PROJECT_DIR$/06_21/06_21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_25/06_25.iml" filepath="$PROJECT_DIR$/06_25/06_25.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_26/06_26.iml" filepath="$PROJECT_DIR$/06_26/06_26.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06_27/06_27.iml" filepath="$PROJECT_DIR$/06_27/06_27.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_01/07_01.iml" filepath="$PROJECT_DIR$/07_01/07_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_02/07_02.iml" filepath="$PROJECT_DIR$/07_02/07_02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/07_03/07_03.iml" filepath="$PROJECT_DIR$/07_03/07_03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practice/Practice.iml" filepath="$PROJECT_DIR$/Practice/Practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Quiz.iml" filepath="$PROJECT_DIR$/.idea/Quiz.iml" />
+    </modules>
+  </component>
+</project>
