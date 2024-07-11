@@ -56,9 +56,9 @@ export const useTodoListStore = defineStore("todoList1", {
                 if (response.data.status === "success") {
                     this.todoList.push({ id: response.data.item.id, todo, desc, done: false })
                     successCallback();
-                  } else {
+                } else {
                     alert('Todo 추가 실패 : ' + response.data.message);
-                  }
+                }
                 this.isLoading = false;
             } catch(error) {
                 alert('에러발생 :' + error);
@@ -78,9 +78,9 @@ export const useTodoListStore = defineStore("todoList1", {
                     let index = this.todoList.findIndex((todo) => todo.id === id);
                     this.todoList[index] = { id, todo, desc, done };
                     successCallback();
-                  } else {
+                } else {
                     alert('Todo 변경 실패 : ' + response.data.message);
-                  }
+                }
                 this.isLoading = false;
             } catch(error) {
                 alert('에러발생 :' + error);
@@ -94,9 +94,9 @@ export const useTodoListStore = defineStore("todoList1", {
                 if (response.data.status === "success") {
                     let index = this.todoList.findIndex((todo) => todo.id === id);
                     this.todoList.splice(index, 1);
-                  } else {
+                } else {
                     alert('Todo 삭제 실패 : ' + response.data.message);
-                  }
+                }
                 this.isLoading = false;
             } catch(error) {
                 alert('에러발생 :' + error);
@@ -110,9 +110,9 @@ export const useTodoListStore = defineStore("todoList1", {
                 if (response.data.status === "success") {
                     let index = this.todoList.findIndex((todo) => todo.id === id);
                     this.todoList[index].done = !this.todoList[index].done;
-                  } else {
+                } else {
                     alert('Todo 완료 변경 실패 : ' + response.data.message);
-                  }
+                }
                 this.isLoading = false;
             } catch(error) {
                 alert('에러발생 :' + error);

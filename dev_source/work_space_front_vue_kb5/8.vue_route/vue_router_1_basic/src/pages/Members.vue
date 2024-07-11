@@ -6,7 +6,7 @@
             <div class="row">
                 <div v-for="m in members" :key="m.id"
                  class="col-6 col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <router-link :to="'/members/'+m.id">
+                    <router-link :to="'/members/'+m.id"> <!-- router-link : 클릭시 :to 이동 -->
                         <img class="img-thumbnail"
                             style="width:90px; height:110px;"
                             :src="m.photo" :title="m.name" /><br/>

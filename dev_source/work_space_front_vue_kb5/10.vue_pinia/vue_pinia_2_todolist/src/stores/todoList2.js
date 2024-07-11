@@ -42,10 +42,10 @@ export const useTodoListStore = defineStore("todoList2", () => {
             if (response.data.status === "success") {
                 state.todoList.push({ id: response.data.item.id, todo, desc, done: false })
                 successCallback();
-              } else {
+            } else {
                 alert('Todo 추가 실패 : ' + response.data.message);
-              }
-              state.isLoading = false;
+            }
+            state.isLoading = false;
         } catch(error) {
             alert('에러발생 :' + error);
             state.isLoading = false;
@@ -82,10 +82,10 @@ export const useTodoListStore = defineStore("todoList2", () => {
             if (response.data.status === "success") {
                 let index = state.todoList.findIndex((todo) => todo.id === id);
                 state.todoList.splice(index, 1);
-              } else {
+            } else {
                 alert('Todo 삭제 실패 : ' + response.data.message);
-              }
-              state.isLoading = false;
+            }
+            state.isLoading = false;
         } catch(error) {
             alert('에러발생 :' + error);
             state.isLoading = false;
