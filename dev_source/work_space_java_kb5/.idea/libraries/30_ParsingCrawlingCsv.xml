@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="30_ParsingCrawlingCsv">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/javakb5/30_ParsingCrawlingCsv" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/javakb5/30_ParsingCrawlingCsv/src" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/javakb5/30_ParsingCrawlingCsv" recursive="false" />
+  </library>
+</component>
