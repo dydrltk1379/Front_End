@@ -15,6 +15,8 @@
       <module fileurl="file://$PROJECT_DIR$/javakb5/14_Thread/14_Thread.iml" filepath="$PROJECT_DIR$/javakb5/14_Thread/14_Thread.iml" />
       <module fileurl="file://$PROJECT_DIR$/javakb5/15_LambdaStream/15_LambdaStream.iml" filepath="$PROJECT_DIR$/javakb5/15_LambdaStream/15_LambdaStream.iml" />
       <module fileurl="file://$PROJECT_DIR$/javakb5/16.Network/16.Network.iml" filepath="$PROJECT_DIR$/javakb5/16.Network/16.Network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javakb5/30_ParsingCrawlingCsv/30_ParsingCrawlingCsv.iml" filepath="$PROJECT_DIR$/javakb5/30_ParsingCrawlingCsv/30_ParsingCrawlingCsv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javakb5/31_JDBC_Basic/31_JDBC_Basic.iml" filepath="$PROJECT_DIR$/javakb5/31_JDBC_Basic/31_JDBC_Basic.iml" />
       <module fileurl="file://$PROJECT_DIR$/javakb5/javakb5.iml" filepath="$PROJECT_DIR$/javakb5/javakb5.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/work_space_java_kb5.iml" filepath="$PROJECT_DIR$/.idea/work_space_java_kb5.iml" />
     </modules>

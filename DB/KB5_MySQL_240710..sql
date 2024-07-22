@@ -370,4 +370,391 @@ DELETE FROM tbl_cons_foreign_key_user WHERE user_id = 'test1'; -- 외래키 제�
 -- DROP 옵션
 -- CASCADE : A개체를 변경/삭제할때, A개체를 참조하고 있는 모든 개체들이 변경/삭제된다.
 -- RESTRICT : A개체를 변경/삭제할때, A개체를 참조하고 있는 개체가 존재하면 A개체에 대한 명령(변경/삭제)이 취소된다. 
-DROP TAB...
+DROP TABLE tbl_cons_foreign_key_user CASCADE;
+DROP TABLE tbl_cons_foreign_key_order CASCADE;
+
+-- delete 제약 실험 시작부
+CREATE TABLE tbl_cons_foreign_key_user(
+    user_no    INT UNIQUE NOT NULL,
+    user_id    VARCHAR(20) PRIMARY KEY,
+    user_pw    VARCHAR(20) NOT NULL,
+    user_name  VARCHAR(20),
+    user_age   VARCHAR(6),
+    user_phone VARCHAR(20)
+);
+
+CREATE TABLE tbl_cons_foreign_key_order( -- 주문 정보
+    order_no       INT PRIMARY KEY,
+    product_name   VARCHAR(20) NOT NULL,
+    product_price  INT NOT NULL,
+    user_no        INT,
+ -- FOREIGN KEY(user_no) REFERENCES tbl_cons_foreign_key_user(user_no)
+ --	FOREIGN KEY(user_no) REFERENCES tbl_cons_foreign_key_user(user_no) ON DELETE SET NULL
+  FOREIGN KEY(user_no) REFERENCES tbl_cons_foreign_key_user(user_no) ON DELETE CASCADE
+);
+
+INSERT INTO tbl_cons_foreign_key_user VALUES(1,'test11','1234','김길동','23','010-5633-3121');
+INSERT INTO tbl_cons_foreign_key_user VALUES(2,'test22','1234','박길동','33','010-2233-3121');
+
+INSERT INTO tbl_cons_foreign_key_order VALUES(100, '아이폰13', '999', 1);
+INSERT INTO tbl_cons_foreign_key_order VALUES(101, '아이폰13 프로', '1330', 2);
+
+SELECT * FROM tbl_cons_foreign_key_user;
+SELECT * FROM tbl_cons_foreign_key_order;
+
+DELETE FROM tbl_cons_foreign_key_user WHERE user_no = 1;
+-- ON DELETE RESTRICTED(없을 때) : 제약으로 인해 child record가 삭제되지 않음 
+-- ON DELETE SET NULL : user_no가 null로 채워진다.
+-- ON DELETE CASCADE : 참조된 id가 있었던 주문정보가 같이 삭제된다.
+
+
+-- check 제약 : 정해진 범위의 값을 확인하는 제약  ★★★★
+DROP TABLE tbl_user_check;
+CREATE TABLE tbl_user_check(
+	user_name VARCHAR(30),
+    age INT CHECK(age > 19 and age < 40), -- MZ세대만!, 컬럼레벨 제약
+	gender VARCHAR(2),
+    -- 테이블 레벨 제약
+    CHECK(gender in('남','여')), -- 반드시 남과 여로만 데이터를 받고 싶을때
+    CHECK(user_name not in('홍길동')) -- 포함되면 안되는 키워드
+);
+
+INSERT INTO tbl_user_check values('홍길동', 30, '남'); -- 안됨! 이름이 홍길동이라서
+INSERT INTO tbl_user_check values('박길동', 8, '남'); -- 안됨! 나이제한으로 안된다.
+INSERT INTO tbl_user_check values('박길동', 30, '남자'); -- 안됨! 남,여가 아니어서
+INSERT INTO tbl_user_check values('박길동', 30, '남'); -- 된다
+INSERT INTO tbl_user_check values('박길순', 31, '여'); -- 된다.
+SELECT * FROM tbl_user_check;
+
+
+-- DEFAULT : 해당 컬럼에 입력되는 값이 없는 경우 설정된 초기 값으로 값을 저장하는 제약 ★★★★★
+--			 NULL로 초기화하는 경우는 NULL로 입력됨으로 주의
+
+
+DROP TABLE user_default;
+CREATE TABLE user_default(
+	user_no INT PRIMARY KEY,
+    user_id VARCHAR(20) DEFAULT 'TEST',
+	nser_pwd VARCHAR(20), 
+    nser_name VARCHAR(20) DEFAULT '', -- 공백과 null은 다름
+    user_age INT DEFAULT 0, -- 0살로 초기화
+    create_date datetime DEFAULT now() -- 오늘 지금 날짜로 초기화
+);
+
+INSERT INTO user_default (user_no) values(0); -- insert문에서 명시한 컬럼 외의 값들은 default로 초기화됨
+INSERT INTO user_default values(1, null, null, null, null, null); -- null로 입력하면 default가 활용되지 않는다!
+INSERT INTO user_default values(2, default, default, default, default, default); -- default로 입력하는 경우 default 제약이 있으면 default 값으로 초기화
+SELECT * FROM user_default;
+
+
+-- AUTO_INCREMENT : 고유 번호를 생성하는 문법으로 특정 값을 1부터 자동으로 1씩 증가 시킴  ★★★★★
+-- PK 설정시 'XXX_NO BIGINT PRIMARY KEY AUTO_INCREMENT'가 숙어처럼 활용됨
+--          -> DB 만병통치약!
+--          -> 성능, 편리성, 동시성, 용량, 순번유지 등등
+DROP TABLE user_auto_increment;
+CREATE TABLE user_auto_increment(
+	user_no BIGINT PRIMARY KEY AUTO_INCREMENT, -- ★★★★★
+	user_id VARCHAR(20) DEFAULT 'TEST',
+	user_pwd VARCHAR(30),
+	user_name VARCHAR(30) DEFAULT '-'
+);
+
+INSERT INTO user_auto_increment values(null, null, null, null);  -- 된다.
+INSERT INTO user_auto_increment values(0, null, null, null); -- 0으로 입력되지 않는다. 자동 증감!
+INSERT INTO user_auto_increment values(100, null, null, null); -- 100은 100으로 입력된다.
+INSERT INTO user_auto_increment values(default, null, null, null); -- 101로 증감
+ALTER TABLE user_auto_increment AUTO_INCREMENT = 300;
+INSERT INTO user_auto_increment values(default, null, null, null); -- 300
+INSERT INTO user_auto_increment values(default, null, null, null); -- 301
+INSERT INTO user_auto_increment values(default, null, null, null); -- 302
+select * from user_auto_increment;
+
+
+-- table 생성시 초기화 구문 (as 구문)
+desc employee;
+select * from employee;
+
+-- 서브쿼리로 테이블 생성하는 방법
+CREATE TABLE employee_copy
+AS SELECT emp_id, emp_name, salary, dept_title, job_name
+   FROM employee
+   LEFT JOIN department ON (dept_code = dept_id)
+   LEFT JOIN job USING(job_code);
+   
+SELECT emp_id, emp_name, salary, dept_title, job_name
+   FROM employee
+   LEFT JOIN department ON (dept_code = dept_id)
+   LEFT JOIN job USING(job_code);
+   
+SELECT * FROM employee_copy;
+
+--------------------------------- 제약조건 끝! -----------------------------------
+
+
+------------------------------ ALTER / DROP ------------------------------------
+-- ALTER : 테이블이나 각종 제약사항들 등의 Object를 수정하는 명령어 ★★
+-- 테이블 수정(컬럼명 수정, 컬럼 추가, 컬럼 삭제) 제약사항 추가,수정,삭제,기타 객체들도 변경 가능
+
+
+-- 사용자가 가진 제약을 확인하는 방법
+SELECT * FROM Information_schema.table_constraints;
+SELECT * FROM Information_schema.table_constraints where table_schema = 'multi';
+
+
+DROP TABLE tbl_alter_test;
+
+CREATE TABLE tbl_alter_test(
+   user_no INT PRIMARY KEY,
+   user_id VARCHAR(20),
+   user_name VARCHAR(20)
+);
+
+SELECT * FROM tbl_alter_test;
+desc tbl_alter_test;
+
+INSERT INTO tbl_alter_test VALUES('1','test_id1','홍길동');
+INSERT INTO tbl_alter_test VALUES('2','test_id2','김길동');
+INSERT INTO tbl_alter_test VALUES('3','test_id3','최길동');
+
+-- 컬럼 추가하기 (주소 정보)
+ALTER TABLE tbl_alter_test ADD(user_addr VARCHAR(100));
+-- alter는 commit이 없어도 바로 동작이 가능함! -> 적용하면 rollback 불가
+
+INSERT INTO tbl_alter_test VALUES('4','test_id4','최길동','서울시 강남구');
+
+-- 컬럼 추가하기 (제약사항 + default 값)
+ALTER TABLE tbl_alter_test ADD(user_pw VARCHAR(50) DEFAULT 1234 NOT NULL);
+
+-- 제약사항 추가하기
+ALTER TABLE tbl_alter_test ADD CONSTRAINT uq_user_id UNIQUE(user_id);
+-- 만일 이미 unique하지 않은 경우는 실패!
+
+-- 제약사항 삭제하기
+ALTER TABLE tbl_alter_test DROP CONSTRAINT uq_user_id;
+
+-- 제약 확인하는 방법 2가지
+-- 1. desc
+DESC tbl_alter_test;
+
+-- 2. table_constraints에서 찾기 -- 이름 확인 가능!
+SELECT * FROM information_schema.table_constraints WHERE table_name = 'tbl_alter_test';
+
+
+-- 제약 삭제 추가 - PK
+-- alter table TBL_ALTER_TEST drop constraint PRIMARY; -- 안된다!!
+ALTER TABLE tbl_alter_test DROP PRIMARY KEY;
+-- alter table TBL_ALTER_TEST drop foreign key ~~ ;
+
+-- 컬럼명 수정하기
+ALTER TABLE tbl_alter_test RENAME COLUMN user_addr TO user_address;
+DESC tbl_alter_test;
+
+-- 컬럼 타입 수정하기
+alter table tbl_alter_test MODIFY user_name VARCHAR(100);
+
+-- 컬럼을 한번에 수정하기, 이름, 제약, 타입 한번에 수정 가능
+alter table tbl_alter_test CHANGE user_name user_name2 VARCHAR(1000) NOT NULL DEFAULT '홍길동';
+
+-- 테이블 이름 변경하기
+RENAME TABLE tbl_alter_test TO tbl_alter_test222;
+RENAME TABLE tbl_alter_test222 TO tbl_alter_test;
+
+
+-- drop 명령어
+-- - table과 제약사항 등 모든 객체를 제거하는 명령
+DROP TABLE if exists tbl_alter_test; -- 에러 방지용
+DROP TABLE tbl_alter_test;
+
+
+-- 자동생성으로 만든 쿼리 
+ALTER TABLE `multi`.`tbl_alter_test` 
+ADD COLUMN `user_pwd` VARCHAR(45) NULL AFTER `user_addr`;
+
+--------------------------------- ALTER / DROP 끝 ---------------------------------------
+
+
+--------------------------- DML - INSERT UPDATE DELETE -------------------------------
+
+-- INSERT 문
+-- - 테이블에 한 행(ROW)의 데이터 셋을 추가하는 명령어
+-- - 한 번에 한 행을 삽입하는게 일반적
+
+-- INSERT 생성 방법 2가지
+-- 1. INTO - VALUES set활용
+--  INSERT INTO '테이블명'(컬럼명1,컬럼명1,컬럼명3 ... ) VALUES(값1,값2,값3 ...); 
+-- 2. 컬럼을 생략하는 방법
+--  INSERT INTO '테이블명' VALUES(값1,값2,값3 ... 컬럼의 끝값 까지); 
+--  -> ※ 주의점 : Table의 생성 순서대로 넣어야하고, 제약사항 검토 필요
+
+SELECT * FROM department;
+DESC department;
+
+-- dept_id, dept_title, location_id
+INSERT INTO department(dept_id, dept_title, location_id) VALUES ('D0', '개발팀', 'L7'); -- 가장 이상적이고 표준적인 INSERT문
+INSERT INTO department VALUES ('F0', '운영팀', 'L7'); -- 컬럼명을 생략하는 경우
+INSERT INTO department VALUES ('F0', 'Devops팀'); -- 컬럼명을 생략하는 경우 테이블 컬럼과 갯수가 다르면 에러!
+INSERT INTO department VALUES ('F1', 'Devops팀', default); -- null이나 default을 통해 갯수를 맞춰야 에러발생하지 않음
+INSERT INTO department(dept_id, dept_title) values ('E0', '개발팀'); -- 생략할 경우에는 컬럼명을 기입하는게 좋다.
+
+-- insert를 수행하는 경우 물리 DB 완전히 저장하기 위해선 commit이 필요!!
+commit;
+
+
+-- 직원정보 insert 해보기
+SELECT * FROM employee;
+DESC employee;
+
+
+INSERT INTO employee
+	(emp_id, emp_name, emp_no, email, phone,
+	 dept_code, job_code, sal_level, salary, bonus,
+	 manager_id, hire_date, ent_date, ent_yn)
+VALUES
+	(223, '민지','041212-4121222', 'minji@multi.com', '01012345678',
+	 'D5', 'J5', 'S5', 3000000, 0.1,
+	 200, '2020-07-01', null, 'N');
+
+
+-- INSERT로 대량 데이터 한번에 삽입하기
+-- - INSERT문을 여러번 명령하는 것보다 더 빠르게 한번에 INSERT를 실행할수 있다.
+-- - 단, 중간에 들갈수 없는 데이터가 있는 경우 INSERT가 전체가 에러난다.
+-- - 그런 경우를 방지하기 위해 IGNORE 키워드를 같이 활용한다.
+select * from employee;
+
+INSERT INTO employee (emp_id, emp_name, emp_no, email)
+VALUES (900, '홍길동', '901123-1231237', 'test@email.com'),
+	   (901, '박길동', '901124-1231237', 'test@email.com'),
+       (902, '최길동', '901125-1231237', 'test@email.com');
+       
+-- 안전하게 대량으로 INSERT 문장
+
+INSERT IGNORE INTO employee (emp_id, emp_name, emp_no, email)
+VALUES (903, '임길동', '901122-1231237', 'test@email.com'),
+	   (901, '박길동', '901124-1231237', 'test@email.com'), -- emp_id 중복
+       (904, '혼길동', '901128-1231237', 'test@email.com');
+
+
+-- 1. 서브쿼리를 통해 TABLE 복사하는 방법
+DROP TABLE tbl_insert_test;
+
+CREATE TABLE tbl_insert_test
+AS SELECT emp_id, emp_name, dept_title
+FROM employee JOIN department ON dept_code = dept_id;
+
+
+SELECT * FROM tbl_insert_test;
+INSERT INTO tbl_insert_test VALUES('245', '홍길동', '개발부');
+
+
+-- 2. INSERT를 통해 서브 쿼리로 삽입하는 방법
+DROP TABLE tbl_insert_test;
+CREATE TABLE tbl_insert_test
+AS SELECT emp_id, emp_name, dept_title
+FROM employee JOIN department ON dept_code = dept_id
+WHERE 1=0; -- TABLE만 만드는 구문
+
+SELECT * FROM tbl_insert_test;
+
+INSERT INTO tbl_insert_test 
+(SELECT emp_id, emp_name, dept_title FROM employee JOIN department ON dept_code = dept_id);
+
+-- WHERE절로 D5 조직인 사람만 INSERT 하기
+INSERT INTO tbl_insert_test 
+(SELECT emp_id, emp_name, dept_title 
+	FROM employee JOIN department ON dept_code = dept_id
+    WHERE dept_code = 'D5');
+
+
+-- UPDATE
+--  - 행의 한개 또는 다수의 데이터를 수정하는 명령어
+--  - UPDATE '테이블명' SET '컬럼명1'='업데이트 값', '컬럼명2'='업데이트 값' WHERE user_id = 'test01'; 
+--  - SET 절 없으면 문법 오류 발생, WHERE 절이 없으면 모든 데이터가 업데이트
+
+DROP TABLE tbl_dept_test;
+CREATE TABLE tbl_dept_test AS SELECT * FROM department;
+
+SELECT * FROM tbl_dept_test;
+DESC tbl_dept_test;
+
+-- 광범위한 업데이트를 해제하는 명령어 
+set sql_safe_updates = 0; 
+
+-- WHERE절이 없는 업데이트문 = 모든 행을 수정하는 명령
+UPDATE tbl_dept_test SET location_id = 'L7';
+
+-- WHERE절이 있는 업데이트문 = 실용적
+-- 단일행 업데이트문
+UPDATE tbl_dept_test SET location_id = 'L7' WHERE dept_id = 'D6'; -- WHERE에는 PK로 변경 하는것이 바람직
+UPDATE tbl_dept_test SET location_id = 'L7' WHERE dept_title = '총무부';
+
+-- 다중행 업데이트문
+UPDATE tbl_dept_test SET dept_title = '국내영업부' WHERE dept_title LIKE '%영업%';
+
+
+-- ORDER BY + LIMIT절
+-- -> 상위 몇개만 업데이트 하기
+UPDATE tbl_dept_test SET dept_title = '전략기획팀' ORDER BY dept_id LIMIT 3;
+UPDATE tbl_dept_test SET dept_title = '전략기획팀' LIMIT 4; --  ORDER BY 생략한 구문, 안전하진 않다.
+
+-- UPDATE 서브쿼리 절
+-- 국내 영업부의 로케이션을 총무부의 로케이션으로 변경하는 쿼리
+SELECT location_id FROM tbl_dept_test WHERE dept_title = '총무부';
+
+-- 주의점 : update의 set 서브쿼리 절은 한번더 감싸야 활용 가능하다. 
+--        -> 서브쿼리의 서브쿼리 생성 필요!
+UPDATE tbl_dept_test 
+SET location_id = 
+	(SELECT * FROM (SELECT location_id FROM tbl_dept_test WHERE dept_title = '총무부') as a) 
+WHERE dept_title like '%국내영업부%';
+
+
+
+-- DELETE : 조건에 맞는 행을 삭제하는 명령
+-- DELETE FROM '테이블명' WHERE dept_id = 'D1';  
+-- ※ 주의 DELETE 시 WHERE 없으면 데이터 전체 삭제
+
+DROP TABLE tbl_dept_test;
+CREATE TABLE tbl_dept_test AS SELECT * FROM department;
+SELECT * FROM tbl_dept_test;
+
+-- 전체행을 삭제하는 DELETE문 -> DROP과 비슷한 효과
+DELETE FROM tbl_dept_test;
+
+-- 단일행 삭제
+DELETE FROM tbl_dept_test WHERE dept_id = 'D1';
+
+-- 단중행 삭제
+DELETE FROM tbl_dept_test WHERE dept_title like '%영업%';
+
+-- 삭제시에 외래키에 대한 제약을 무시하는 명령어
+SET foreign_key_checks = 0; -- 제약 풀고
+DELETE FROM tbl_dept_test WHERE dept_id LIKE 'D%';
+SET foreign_key_checks = 1; -- 외래키 제약 다시 설정
+
+-- ORDER BY + LIMIT;
+DELETE FROM tbl_dept_test
+ORDER BY dept_id LIMIT 5;
+
+
+-- TRUNCATE : DELETE 보다 빠른 삭제 명령어, 단 복원이 되지 않는 명령어
+DROP TABLE tbl_dept_test;
+CREATE TABLE tbl_dept_test AS SELECT * FROM department;
+SELECT * FROM tbl_dept_test;
+
+TRUNCATE TABLE TBL_DEPT_TEST;
+ROLLBACK;
+
+------------------------ DML - INSERT UPDATE DELETE  끝------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-package com.multi.com.multi.ex05.typecasting;
+package com.multi.ex05.typecasting;
 
 public class TypeCasting {
     // TypeCasting이란? type간의 형을 변환하는 방법, ex) int -> long, int -> double
