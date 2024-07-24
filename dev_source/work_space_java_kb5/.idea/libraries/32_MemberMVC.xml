@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="32_MemberMVC">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/javakb5/32_MemberMVC" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/javakb5/32_MemberMVC/src" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/javakb5/32_MemberMVC" recursive="false" />
+  </library>
+</component>
