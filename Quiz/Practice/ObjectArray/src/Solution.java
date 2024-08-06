@@ -5,6 +5,7 @@ class Solution {
         for(int i=0; i<n; i++){
             board[0]=i;
             queen(n, 1);
+
         }
 
         return answer;
