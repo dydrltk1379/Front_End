@@ -1,12 +1,11 @@
 package com.multi.rest.content.service;
 
-import java.util.List;
-
+import com.multi.rest.content.model.mapper.CatMapper;
+import com.multi.rest.content.model.vo.Cat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.multi.rest.content.model.mapper.CatMapper;
-import com.multi.rest.content.model.vo.Cat;
+import java.util.List;
 
 @Service
 public class CatService {
@@ -19,7 +18,7 @@ public class CatService {
 	}
 
 	public List<Cat> selectByName(String name) {
-		return 	mapper.selectByName(name);
+		return mapper.selectByName(name);
 	}
 
 	public Cat selectById(int id) {

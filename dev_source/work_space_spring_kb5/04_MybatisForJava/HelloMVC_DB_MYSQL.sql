@@ -63,11 +63,11 @@ SELECT * FROM MYBATIS.MEMBER;
 
 
 CREATE TABLE mybatis.board (
-    bno             BIGINT AUTO_INCREMENT,
-    mno             BIGINT,
-	title           VARCHAR(200),
-	content         VARCHAR(3000),
-	type            VARCHAR(100),
+    bno               BIGINT AUTO_INCREMENT,
+    mno               BIGINT,
+	title             VARCHAR(200),
+	content           VARCHAR(3000),
+	type              VARCHAR(100),
 	original_filename VARCHAR(100),
 	renamed_filename VARCHAR(100),
 	readcount       INT DEFAULT 0,
@@ -135,11 +135,10 @@ COMMIT;
 SELECT * FROM board;
 
 -- ----------------------------------------------------------------
-------------------------- REPLY 관련 테이블 -------------------------
-------------------------------------------------------------------
+-- ----------------------- REPLY 관련 테이블 -------------------------
+-- ----------------------------------------------------------------
 
-
-CREATE TABLE MYBATIS.REPLY(
+CREATE TABLE mybatis.reply(
   rno BIGINT PRIMARY KEY AUTO_INCREMENT,
   bno BIGINT,
   mno BIGINT,
@@ -150,7 +149,6 @@ CREATE TABLE MYBATIS.REPLY(
   FOREIGN KEY (bno) REFERENCES BOARD(bno),
   FOREIGN KEY (mno) REFERENCES MEMBER(mno)
 );
-
 
 
 INSERT INTO reply VALUES(0, 1, 1, '안녕하세요.', DEFAULT, DEFAULT, DEFAULT);

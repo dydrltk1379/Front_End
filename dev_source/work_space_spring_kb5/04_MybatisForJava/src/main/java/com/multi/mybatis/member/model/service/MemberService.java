@@ -1,19 +1,18 @@
 package com.multi.mybatis.member.model.service;
 
-import static com.multi.mybatis.common.SqlSessionTemplate.getSession;
-
-import java.util.List;
-
+import com.multi.mybatis.member.model.dao.MemberDao;
+import com.multi.mybatis.member.model.vo.Member;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.multi.mybatis.member.model.dao.MemberDao;
-import com.multi.mybatis.member.model.vo.Member;
+import java.util.List;
 
+import static com.multi.mybatis.common.SqlSessionTemplate.getSession;
 
 public class MemberService {
 	private MemberDao dao = new MemberDao();
+
 	private static final Logger logger = LogManager.getLogger(MemberService.class);
 	
 	public long getMemberCount() {

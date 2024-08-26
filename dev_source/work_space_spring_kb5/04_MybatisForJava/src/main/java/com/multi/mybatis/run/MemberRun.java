@@ -1,10 +1,10 @@
 package com.multi.mybatis.run;
 
-import java.util.List;
-import java.util.Random;
-
 import com.multi.mybatis.member.model.service.MemberService;
 import com.multi.mybatis.member.model.vo.Member;
+
+import java.util.List;
+import java.util.Random;
 
 public class MemberRun {
 

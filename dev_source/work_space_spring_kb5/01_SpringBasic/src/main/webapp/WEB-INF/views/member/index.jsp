@@ -41,7 +41,7 @@
 			</button>
 		</div>
 		<div class="list-group">
-			<button type="button" onclick="location='${path}/member/rest/test';"
+			<button type="button" onclick="location='${path}/member/rest/testid123';"
 					class="list-group-item list-group-item-action">
 				path 기반(URL)으로 파라미터 처리
 			</button>

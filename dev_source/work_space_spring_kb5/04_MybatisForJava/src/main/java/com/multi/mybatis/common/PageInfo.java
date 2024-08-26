@@ -12,7 +12,7 @@ public class PageInfo {
 	/**
 	 * @param currentPage 현재 페이지
 	 * @param pageLimit 한 페이지에 보여질 페이지의 수 
-	 * @param listCount 전체 리스트의 수
+	 * @param listCount 전체 리스트(게시글)의 수
 	 * @param listLimit 한 페이지에 표시될 리스트(게시글)의 수
 	 */
 	public PageInfo(int currentPage, int pageLimit, int listCount, int listLimit) {
@@ -114,6 +114,5 @@ public class PageInfo {
 
 	public int getOffset(){
 		return (getCurrentPage() - 1) * getListLimit();
-
 	}
 }

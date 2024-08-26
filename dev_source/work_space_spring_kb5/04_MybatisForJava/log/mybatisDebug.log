@@ -1,0 +1,285 @@
+[DEBUG] 2024-08-19 14:27:30.017 [main] ibatis.logging.LogFactory  - Logging initialized using 'class org.apache.ibatis.logging.log4j2.Log4j2Impl' adapter. - 
+[DEBUG] 2024-08-19 14:27:30.025 [main] datasource.pooled.PooledDataSource  - PooledDataSource forcefully closed/removed all connections. - 
+[DEBUG] 2024-08-19 14:27:30.025 [main] datasource.pooled.PooledDataSource  - PooledDataSource forcefully closed/removed all connections. - 
+[DEBUG] 2024-08-19 14:27:30.026 [main] datasource.pooled.PooledDataSource  - PooledDataSource forcefully closed/removed all connections. - 
+[DEBUG] 2024-08-19 14:27:30.026 [main] datasource.pooled.PooledDataSource  - PooledDataSource forcefully closed/removed all connections. - 
+[DEBUG] 2024-08-19 14:27:30.129 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.572 [main] datasource.pooled.PooledDataSource  - Created connection 1826747905. - 
+[DEBUG] 2024-08-19 14:27:30.572 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.576 [main] boardMapper.selectBoardList  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date FROM board b JOIN member m on(b.mno = m.mno) WHERE b.status = 'Y' ORDER BY b.bno DESC - 
+[DEBUG] 2024-08-19 14:27:30.619 [main] boardMapper.selectBoardList  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.682 [main] boardMapper.selectBoardList  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date - 
+[TRACE] 2024-08-19 14:27:30.685 [main] boardMapper.selectBoardList  - <==        Row: 48, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.687 [main] boardMapper.selectBoardList  - <==        Row: 47, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.688 [main] boardMapper.selectBoardList  - <==        Row: 46, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.688 [main] boardMapper.selectBoardList  - <==        Row: 45, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.689 [main] boardMapper.selectBoardList  - <==        Row: 44, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.690 [main] boardMapper.selectBoardList  - <==        Row: 43, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.690 [main] boardMapper.selectBoardList  - <==        Row: 42, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.691 [main] boardMapper.selectBoardList  - <==        Row: 41, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.692 [main] boardMapper.selectBoardList  - <==        Row: 40, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.693 [main] boardMapper.selectBoardList  - <==        Row: 39, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.693 [main] boardMapper.selectBoardList  - <==        Row: 38, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.694 [main] boardMapper.selectBoardList  - <==        Row: 37, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.695 [main] boardMapper.selectBoardList  - <==        Row: 36, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.695 [main] boardMapper.selectBoardList  - <==        Row: 35, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.696 [main] boardMapper.selectBoardList  - <==        Row: 34, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.697 [main] boardMapper.selectBoardList  - <==        Row: 33, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.701 [main] boardMapper.selectBoardList  - <==        Row: 32, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.701 [main] boardMapper.selectBoardList  - <==        Row: 31, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.702 [main] boardMapper.selectBoardList  - <==        Row: 30, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.702 [main] boardMapper.selectBoardList  - <==        Row: 29, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.703 [main] boardMapper.selectBoardList  - <==        Row: 28, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.706 [main] boardMapper.selectBoardList  - <==        Row: 27, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.707 [main] boardMapper.selectBoardList  - <==        Row: 26, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.707 [main] boardMapper.selectBoardList  - <==        Row: 25, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.708 [main] boardMapper.selectBoardList  - <==        Row: 24, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.708 [main] boardMapper.selectBoardList  - <==        Row: 23, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.709 [main] boardMapper.selectBoardList  - <==        Row: 22, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.709 [main] boardMapper.selectBoardList  - <==        Row: 21, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.710 [main] boardMapper.selectBoardList  - <==        Row: 20, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.710 [main] boardMapper.selectBoardList  - <==        Row: 19, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.711 [main] boardMapper.selectBoardList  - <==        Row: 18, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.711 [main] boardMapper.selectBoardList  - <==        Row: 17, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.712 [main] boardMapper.selectBoardList  - <==        Row: 16, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.713 [main] boardMapper.selectBoardList  - <==        Row: 15, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.713 [main] boardMapper.selectBoardList  - <==        Row: 14, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.714 [main] boardMapper.selectBoardList  - <==        Row: 13, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.714 [main] boardMapper.selectBoardList  - <==        Row: 12, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.715 [main] boardMapper.selectBoardList  - <==        Row: 11, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.715 [main] boardMapper.selectBoardList  - <==        Row: 10, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.716 [main] boardMapper.selectBoardList  - <==        Row: 9, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.716 [main] boardMapper.selectBoardList  - <==        Row: 8, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.717 [main] boardMapper.selectBoardList  - <==        Row: 7, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.718 [main] boardMapper.selectBoardList  - <==        Row: 6, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.718 [main] boardMapper.selectBoardList  - <==        Row: 5, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.719 [main] boardMapper.selectBoardList  - <==        Row: 4, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.719 [main] boardMapper.selectBoardList  - <==        Row: 3, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.720 [main] boardMapper.selectBoardList  - <==        Row: 2, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.720 [main] boardMapper.selectBoardList  - <==        Row: 1, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.721 [main] boardMapper.selectBoardList  - <==      Total: 48 - 
+[DEBUG] 2024-08-19 14:27:30.722 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.723 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.724 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.739 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.739 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.739 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.740 [main] boardMapper.selectBoardList  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date FROM board b JOIN member m on(b.mno = m.mno) WHERE b.status = 'Y' AND m.id LIKE '%admin%' ORDER BY b.bno DESC - 
+[DEBUG] 2024-08-19 14:27:30.741 [main] boardMapper.selectBoardList  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.746 [main] boardMapper.selectBoardList  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date - 
+[TRACE] 2024-08-19 14:27:30.746 [main] boardMapper.selectBoardList  - <==        Row: 48, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.747 [main] boardMapper.selectBoardList  - <==        Row: 47, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.748 [main] boardMapper.selectBoardList  - <==        Row: 46, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.748 [main] boardMapper.selectBoardList  - <==        Row: 45, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.748 [main] boardMapper.selectBoardList  - <==        Row: 44, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.749 [main] boardMapper.selectBoardList  - <==        Row: 43, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.749 [main] boardMapper.selectBoardList  - <==        Row: 42, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.750 [main] boardMapper.selectBoardList  - <==        Row: 41, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.750 [main] boardMapper.selectBoardList  - <==        Row: 40, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.751 [main] boardMapper.selectBoardList  - <==        Row: 39, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.751 [main] boardMapper.selectBoardList  - <==        Row: 38, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.751 [main] boardMapper.selectBoardList  - <==        Row: 37, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.752 [main] boardMapper.selectBoardList  - <==        Row: 36, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.752 [main] boardMapper.selectBoardList  - <==        Row: 35, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.752 [main] boardMapper.selectBoardList  - <==        Row: 34, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.753 [main] boardMapper.selectBoardList  - <==        Row: 33, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.753 [main] boardMapper.selectBoardList  - <==        Row: 32, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.753 [main] boardMapper.selectBoardList  - <==        Row: 31, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.754 [main] boardMapper.selectBoardList  - <==        Row: 30, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.754 [main] boardMapper.selectBoardList  - <==        Row: 29, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.754 [main] boardMapper.selectBoardList  - <==        Row: 28, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.755 [main] boardMapper.selectBoardList  - <==        Row: 27, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.755 [main] boardMapper.selectBoardList  - <==        Row: 26, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.756 [main] boardMapper.selectBoardList  - <==        Row: 25, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.756 [main] boardMapper.selectBoardList  - <==        Row: 24, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.756 [main] boardMapper.selectBoardList  - <==        Row: 23, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.757 [main] boardMapper.selectBoardList  - <==        Row: 22, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.757 [main] boardMapper.selectBoardList  - <==        Row: 21, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.757 [main] boardMapper.selectBoardList  - <==        Row: 20, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.758 [main] boardMapper.selectBoardList  - <==        Row: 19, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.758 [main] boardMapper.selectBoardList  - <==        Row: 18, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.758 [main] boardMapper.selectBoardList  - <==        Row: 17, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.758 [main] boardMapper.selectBoardList  - <==        Row: 16, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.759 [main] boardMapper.selectBoardList  - <==        Row: 15, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.759 [main] boardMapper.selectBoardList  - <==        Row: 14, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.759 [main] boardMapper.selectBoardList  - <==        Row: 13, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.760 [main] boardMapper.selectBoardList  - <==        Row: 12, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.760 [main] boardMapper.selectBoardList  - <==        Row: 11, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.760 [main] boardMapper.selectBoardList  - <==        Row: 10, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.760 [main] boardMapper.selectBoardList  - <==        Row: 9, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.761 [main] boardMapper.selectBoardList  - <==        Row: 8, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.761 [main] boardMapper.selectBoardList  - <==        Row: 7, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.761 [main] boardMapper.selectBoardList  - <==        Row: 6, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.761 [main] boardMapper.selectBoardList  - <==        Row: 5, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.762 [main] boardMapper.selectBoardList  - <==        Row: 4, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.762 [main] boardMapper.selectBoardList  - <==        Row: 3, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.762 [main] boardMapper.selectBoardList  - <==        Row: 2, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.763 [main] boardMapper.selectBoardList  - <==        Row: 1, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.763 [main] boardMapper.selectBoardList  - <==      Total: 48 - 
+[DEBUG] 2024-08-19 14:27:30.763 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.764 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.764 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.766 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.766 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.766 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.767 [main] boardMapper.selectBoardList  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date FROM board b JOIN member m on(b.mno = m.mno) WHERE b.status = 'Y' AND b.title LIKE '%아이폰%' ORDER BY b.bno DESC - 
+[DEBUG] 2024-08-19 14:27:30.768 [main] boardMapper.selectBoardList  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.770 [main] boardMapper.selectBoardList  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date - 
+[TRACE] 2024-08-19 14:27:30.770 [main] boardMapper.selectBoardList  - <==        Row: 47, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.771 [main] boardMapper.selectBoardList  - <==        Row: 43, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.772 [main] boardMapper.selectBoardList  - <==        Row: 39, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.772 [main] boardMapper.selectBoardList  - <==        Row: 35, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.772 [main] boardMapper.selectBoardList  - <==        Row: 31, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.772 [main] boardMapper.selectBoardList  - <==        Row: 27, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.772 [main] boardMapper.selectBoardList  - <==        Row: 23, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.774 [main] boardMapper.selectBoardList  - <==        Row: 19, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.774 [main] boardMapper.selectBoardList  - <==        Row: 15, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.774 [main] boardMapper.selectBoardList  - <==        Row: 11, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.775 [main] boardMapper.selectBoardList  - <==        Row: 7, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.775 [main] boardMapper.selectBoardList  - <==        Row: 3, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.775 [main] boardMapper.selectBoardList  - <==      Total: 12 - 
+[DEBUG] 2024-08-19 14:27:30.776 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.776 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.776 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.777 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.777 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.777 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.778 [main] boardMapper.selectBoardList  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date FROM board b JOIN member m on(b.mno = m.mno) WHERE b.status = 'Y' AND b.content LIKE '%갤럭시%' ORDER BY b.bno DESC - 
+[DEBUG] 2024-08-19 14:27:30.779 [main] boardMapper.selectBoardList  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.781 [main] boardMapper.selectBoardList  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date - 
+[TRACE] 2024-08-19 14:27:30.781 [main] boardMapper.selectBoardList  - <==        Row: 48, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.781 [main] boardMapper.selectBoardList  - <==        Row: 44, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.782 [main] boardMapper.selectBoardList  - <==        Row: 40, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.782 [main] boardMapper.selectBoardList  - <==        Row: 36, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.782 [main] boardMapper.selectBoardList  - <==        Row: 32, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.783 [main] boardMapper.selectBoardList  - <==        Row: 28, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.783 [main] boardMapper.selectBoardList  - <==        Row: 24, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.783 [main] boardMapper.selectBoardList  - <==        Row: 20, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.783 [main] boardMapper.selectBoardList  - <==        Row: 16, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.783 [main] boardMapper.selectBoardList  - <==        Row: 12, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.784 [main] boardMapper.selectBoardList  - <==        Row: 8, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.784 [main] boardMapper.selectBoardList  - <==        Row: 4, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.784 [main] boardMapper.selectBoardList  - <==      Total: 12 - 
+[DEBUG] 2024-08-19 14:27:30.784 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.785 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.785 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.788 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.788 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.788 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.789 [main] boardMapper.selectBoardList  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date FROM board b JOIN member m on(b.mno = m.mno) WHERE b.status = 'Y' AND b.title LIKE '%구매%' AND b.content LIKE '%맥북%' ORDER BY b.bno DESC - 
+[DEBUG] 2024-08-19 14:27:30.789 [main] boardMapper.selectBoardList  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.790 [main] boardMapper.selectBoardList  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date - 
+[TRACE] 2024-08-19 14:27:30.790 [main] boardMapper.selectBoardList  - <==        Row: 45, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.791 [main] boardMapper.selectBoardList  - <==        Row: 37, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.791 [main] boardMapper.selectBoardList  - <==        Row: 29, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.791 [main] boardMapper.selectBoardList  - <==        Row: 21, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.791 [main] boardMapper.selectBoardList  - <==        Row: 13, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.792 [main] boardMapper.selectBoardList  - <==        Row: 5, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.792 [main] boardMapper.selectBoardList  - <==      Total: 6 - 
+[DEBUG] 2024-08-19 14:27:30.792 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.793 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.793 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.793 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.794 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.794 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.795 [main] boardMapper.selectBoardCount  - ==>  Preparing: SELECT COUNT(*) FROM board b JOIN member m ON(b.mno = m.mno) WHERE b.status = 'Y' - 
+[DEBUG] 2024-08-19 14:27:30.795 [main] boardMapper.selectBoardCount  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.797 [main] boardMapper.selectBoardCount  - <==    Columns: COUNT(*) - 
+[TRACE] 2024-08-19 14:27:30.797 [main] boardMapper.selectBoardCount  - <==        Row: 48 - 
+[DEBUG] 2024-08-19 14:27:30.798 [main] boardMapper.selectBoardCount  - <==      Total: 1 - 
+[DEBUG] 2024-08-19 14:27:30.798 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.799 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.799 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.815 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.815 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.815 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.815 [main] boardMapper.selectBoardListForPage  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date FROM board b JOIN member m ON(b.mno = m.mno) WHERE b.status = 'Y' ORDER BY b.bno DESC LIMIT 10 OFFSET 10 - 
+[DEBUG] 2024-08-19 14:27:30.816 [main] boardMapper.selectBoardListForPage  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.818 [main] boardMapper.selectBoardListForPage  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date - 
+[TRACE] 2024-08-19 14:27:30.818 [main] boardMapper.selectBoardListForPage  - <==        Row: 38, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.819 [main] boardMapper.selectBoardListForPage  - <==        Row: 37, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.819 [main] boardMapper.selectBoardListForPage  - <==        Row: 36, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.820 [main] boardMapper.selectBoardListForPage  - <==        Row: 35, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.820 [main] boardMapper.selectBoardListForPage  - <==        Row: 34, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.820 [main] boardMapper.selectBoardListForPage  - <==        Row: 33, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.820 [main] boardMapper.selectBoardListForPage  - <==        Row: 32, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.821 [main] boardMapper.selectBoardListForPage  - <==        Row: 31, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.821 [main] boardMapper.selectBoardListForPage  - <==        Row: 30, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.821 [main] boardMapper.selectBoardListForPage  - <==        Row: 29, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.821 [main] boardMapper.selectBoardListForPage  - <==      Total: 10 - 
+[DEBUG] 2024-08-19 14:27:30.821 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.822 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.822 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.823 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.823 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.823 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.824 [main] boardMapper.selectBoardCount  - ==>  Preparing: SELECT COUNT(*) FROM board b JOIN member m ON(b.mno = m.mno) WHERE b.status = 'Y' AND b.title LIKE '%갤럭시%' - 
+[DEBUG] 2024-08-19 14:27:30.825 [main] boardMapper.selectBoardCount  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.826 [main] boardMapper.selectBoardCount  - <==    Columns: COUNT(*) - 
+[TRACE] 2024-08-19 14:27:30.826 [main] boardMapper.selectBoardCount  - <==        Row: 12 - 
+[DEBUG] 2024-08-19 14:27:30.827 [main] boardMapper.selectBoardCount  - <==      Total: 1 - 
+[DEBUG] 2024-08-19 14:27:30.827 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.828 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.828 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.829 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.829 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.829 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.829 [main] boardMapper.selectBoardListForPage  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date FROM board b JOIN member m ON(b.mno = m.mno) WHERE b.status = 'Y' AND b.title LIKE '%갤럭시%' ORDER BY b.bno DESC LIMIT 10 OFFSET 0 - 
+[DEBUG] 2024-08-19 14:27:30.830 [main] boardMapper.selectBoardListForPage  - ==> Parameters:  - 
+[TRACE] 2024-08-19 14:27:30.831 [main] boardMapper.selectBoardListForPage  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date - 
+[TRACE] 2024-08-19 14:27:30.832 [main] boardMapper.selectBoardListForPage  - <==        Row: 48, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.832 [main] boardMapper.selectBoardListForPage  - <==        Row: 44, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.832 [main] boardMapper.selectBoardListForPage  - <==        Row: 40, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.833 [main] boardMapper.selectBoardListForPage  - <==        Row: 36, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.833 [main] boardMapper.selectBoardListForPage  - <==        Row: 32, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.836 [main] boardMapper.selectBoardListForPage  - <==        Row: 28, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.837 [main] boardMapper.selectBoardListForPage  - <==        Row: 24, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.838 [main] boardMapper.selectBoardListForPage  - <==        Row: 20, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B2, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.838 [main] boardMapper.selectBoardListForPage  - <==        Row: 16, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.838 [main] boardMapper.selectBoardListForPage  - <==        Row: 12, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.838 [main] boardMapper.selectBoardListForPage  - <==      Total: 10 - 
+[DEBUG] 2024-08-19 14:27:30.838 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.839 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.839 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.841 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.841 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.842 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.842 [main] boardMapper.selectBoardCountByTypeFilters  - ==>  Preparing: SELECT COUNT(*) FROM board WHERE status = 'Y' AND type IN ( ? , ? ) ORDER BY bno DESC - 
+[DEBUG] 2024-08-19 14:27:30.843 [main] boardMapper.selectBoardCountByTypeFilters  - ==> Parameters: B1(String), B2(String) - 
+[TRACE] 2024-08-19 14:27:30.845 [main] boardMapper.selectBoardCountByTypeFilters  - <==    Columns: COUNT(*) - 
+[TRACE] 2024-08-19 14:27:30.845 [main] boardMapper.selectBoardCountByTypeFilters  - <==        Row: 48 - 
+[DEBUG] 2024-08-19 14:27:30.845 [main] boardMapper.selectBoardCountByTypeFilters  - <==      Total: 1 - 
+[DEBUG] 2024-08-19 14:27:30.845 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.846 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.846 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.846 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.846 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.847 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.847 [main] boardMapper.selectBoardListByTypeFilters  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date FROM board b JOIN member m ON(b.mno = m.mno) WHERE b.status = 'Y' AND b.type IN ( ? , ? ) - 
+[DEBUG] 2024-08-19 14:27:30.848 [main] boardMapper.selectBoardListByTypeFilters  - ==> Parameters: B1(String), B2(String) - 
+[TRACE] 2024-08-19 14:27:30.850 [main] boardMapper.selectBoardListByTypeFilters  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date - 
+[TRACE] 2024-08-19 14:27:30.850 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 1, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.851 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 2, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.851 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 3, [판매] 아이폰 팔아요., admin, 0, 아이폰13 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.852 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 4, [판매] 갤럭시 팔아요., admin, 0, 갤럭시 플립3 팝니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.852 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 5, [구매] 애플 노트북 삽니다., admin, 0, 맥북 게임용으로 삽니다. 이거 게임 잘돌아가나요?, B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.852 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 6, [구매] 삼성 노트북 삽니다., admin, 0, 삼성 노트북 삽니다. 아이폰 개발하려 삽니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.852 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 7, [구매] 아이폰 삽니다., admin, 0, 아이폰3사요. 30만원에 네고합니다. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.853 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 8, [구매] 갤럭시 삽니다., admin, 0, 갤럭시 삽니다. 아무 기종이나 상관없어요. , B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.853 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 9, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.853 [main] boardMapper.selectBoardListByTypeFilters  - <==        Row: 10, [판매] 삼성 노트북 팔아요., admin, 0, 삼성 노트북 팝니다. 터치 됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.853 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.854 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.854 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 
+[DEBUG] 2024-08-19 14:27:30.855 [main] transaction.jdbc.JdbcTransaction  - Opening JDBC Connection - 
+[DEBUG] 2024-08-19 14:27:30.855 [main] datasource.pooled.PooledDataSource  - Checked out connection 1826747905 from pool. - 
+[DEBUG] 2024-08-19 14:27:30.855 [main] transaction.jdbc.JdbcTransaction  - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.856 [main] boardMapper.selectBoardByNo  - ==>  Preparing: SELECT b.bno, b.title, m.id, b.readcount, b.content, b.type, b.create_date, b.modify_date, r.rno as r_rno, r.bno as r_bno, r.content as r_content, m2.id as r_id, r.create_date as r_create_date, r.modify_date as r_modify_date FROM board b JOIN member m ON(b.mno = m.mno) LEFT OUTER JOIN reply r ON(b.bno = r.bno) LEFT OUTER JOIN member m2 ON(R.mno = m2.mno) WHERE b.status = 'Y' AND b.bno = ? - 
+[DEBUG] 2024-08-19 14:27:30.856 [main] boardMapper.selectBoardByNo  - ==> Parameters: 1(Integer) - 
+[TRACE] 2024-08-19 14:27:30.863 [main] boardMapper.selectBoardByNo  - <==    Columns: bno, title, id, readcount, content, type, create_date, modify_date, r_rno, r_bno, r_content, r_id, r_create_date, r_modify_date - 
+[TRACE] 2024-08-19 14:27:30.864 [main] boardMapper.selectBoardByNo  - <==        Row: 1, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47, 1, 1, 안녕하세요., admin, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[TRACE] 2024-08-19 14:27:30.866 [main] boardMapper.selectBoardByNo  - <==        Row: 1, [판매] 애플 노트북 팔아요., admin, 0, 노트북 맥북 최신입니다. 게임하시면 안됩니다., B1, 2024-08-13 15:12:47, 2024-08-13 15:12:47, 2, 1, 반갑습니다., admin, 2024-08-13 15:12:47, 2024-08-13 15:12:47 - 
+[DEBUG] 2024-08-19 14:27:30.867 [main] boardMapper.selectBoardByNo  - <==      Total: 2 - 
+[DEBUG] 2024-08-19 14:27:30.867 [main] transaction.jdbc.JdbcTransaction  - Resetting autocommit to true on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.868 [main] transaction.jdbc.JdbcTransaction  - Closing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6ce1f601] - 
+[DEBUG] 2024-08-19 14:27:30.868 [main] datasource.pooled.PooledDataSource  - Returned connection 1826747905 to pool. - 

@@ -1,4 +1,4 @@
-package com.multi.mvc.multi.vo;
+package com.multi.mvc.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

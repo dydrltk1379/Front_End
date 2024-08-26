@@ -1,5 +1,7 @@
 package com.multi.rest.content.model.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,7 +21,7 @@ public class Cat {
 	}
 
 	public Cat(int id, String name, String info, String eyeColor, String hairLength, String features, String color,
-			String weight, Date createDate) {
+               String weight, Date createDate) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -104,6 +106,8 @@ public class Cat {
 	}
 
 	// Version1 - REST를 JAVA 객체로 당겨올쓸꺼
+	// @JsonFormat : jackson에서 Json을 만들때 정하는 포멧
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	public Date getCreateDate() {
 		return createDate;
 	}

@@ -1,9 +1,9 @@
 package com.multi.mybatis.member.model.dao;
 
-import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
 import com.multi.mybatis.member.model.vo.Member;
+import org.apache.ibatis.session.SqlSession;
+
+import java.util.List;
 
 public class MemberDao {
     public long getMemberCount(SqlSession session) {

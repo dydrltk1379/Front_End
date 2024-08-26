@@ -33,14 +33,14 @@
         <result property="modifyDate" column="modify_date"/>
     </resultMap>
 
-    <!--쿼리 태그-->
-    <!-- resultType : 리턴되는 결과의 Type -->
+    <!-- 쿼리 태그 -->
+    <!-- resultType : 리턴되는 결과의 type-->
     <select id="selectCount" resultType="long">
-        SELECT * FROM member
+       SELECT COUNT(*) FROM member
     </select>
 
     <!-- sql 태그 : 쿼리의 일부를 미리 작성하여 아래 쿼리 태그에 주입하는 방법-->
-    <!-- select 문과 where문에서도 활용되며 필드에서 정말 자주 볼수 있는 문장-->
+    <!-- select문과 where문에서도 활용되며 필드에서 정말 자주 볼수 있는 문장-->
     <!-- ※ 쿼리의 가독성이 떨어짐으로 숙련되지 않은 경우 활용 비권장!-->
     <sql id="selectAllSQL">
         SELECT
@@ -49,23 +49,19 @@
             status, enroll_date, modify_date
         FROM member
     </sql>
-
     <sql id="selectAllSQL2">
         SELECT * FROM ${tableName}
-
     </sql>
-    <!-- #{talbeName} : #(EL 표현법, 싱글쿼테이션을 자동으로 추가한다. 쿼리 보안적으로 안전) -->
 
     <!-- 멤버의 전체 가져오는 쿼리, 필드에서는 컬럼명 명시가 FM -->
     <!-- 객체를 리턴값을 값으로 받을때는 두가지 패턴 존재 -->
     <!-- 1. 컬럼명과 DB명칭이 일치하는 경우 = reulstMap이 존재하지 않을때, 객체패키지명이나 별명사용 -->
     <!--     -> resultType에서 객체명이나 별명 명시하면 끝난다. -->
-    <!--    <select id="selectAll" resultType="Member"> -->
+    <!-- 	<select id="selectAll" resultType="Member"> -->
     <!-- 2. 일치하지 않아 resultMap이 존재할때 -->
     <!--     -> resultMap으로 resultMap의 이름 명시 -->
     <select id="selectAll" resultMap="memberResultMap">
-        <!-- <include refid="selectAllSQL"/> -->
-
+<!--        <include refid="selectAllSQL"/>-->
         SELECT
             mno, id, password, role, name,
             age, phone, email, address, hobby,
@@ -80,24 +76,24 @@
     <!-- 1. #{인자} : type에 따라 ''(코테이션) 처리를 자동으로 지원하는 방법 ★★★ -->
     <!-- 2. ${인자} : 텍스트가 그냥 주입되는 방법, 자동처리가 필요 없을때 사용! ★ -->
     <select id="selectMember" resultMap="memberResultMap" parameterType="string">
-        <!-- <include refid="selectAllSQL"/> -->
+        <!--        <include refid="selectAllSQL"/>-->
         <include refid="selectAllSQL2">
             <property name="tableName" value="member"/>
         </include>
         WHERE id = #{id}
     </select>
 
-    <select id="selectMemberByParam" resultMap="memberResultMap" parameterType="Member">
-<!--        SELECT * FROM MEMBER-->
-<!--        WHERE NAME LIKE "%${name}%" AND <![CDATA[age <= #{age}]]>-->
 
+    <select id="selectMemberByParam" resultMap="memberResultMap" parameterType="member">
+<!--        SELECT * FROM MEMBER-->
+<!--        WHERE name LIKE '%${name}%' AND age <![CDATA[AGE <= #{age}]]>-->
         SELECT * FROM MEMBER
         WHERE name LIKE CONCAT('%',#{name},'%') AND <![CDATA[age <= #{age}]]>
     </select>
 
 
     <!-- Insert문 -->
-    <insert id="insertMember" parameterType="Member">
+    <insert id="insertMember" parameterType="member">
         INSERT INTO MEMBER (
             mno, id, password, role, name,
             phone, email, address, hobby, status,
@@ -110,7 +106,7 @@
     </insert>
 
     <!-- Update 문 -->
-    <update id="updateMember" parameterType="Member">
+    <update id="updateMember" parameterType="member">
         UPDATE MEMBER
         SET
             name=#{name},

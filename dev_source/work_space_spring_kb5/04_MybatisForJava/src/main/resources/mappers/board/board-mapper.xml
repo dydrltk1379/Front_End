@@ -39,12 +39,41 @@
     <resultMap type="com.multi.mybatis.board.model.vo.Reply" id="boardReplyResultMap">
         <result property="rno" column="rno"/>
         <result property="bno" column="bno"/>
-        <!--        <result property="mno" column="mno"/>-->
+<!--        <result property="mno" column="mno"/>-->
         <result property="id" column="id"/>
         <result property="content" column="content"/>
         <result property="createDate" column="create_date"/>
         <result property="modifyDate" column="modify_date"/>
     </resultMap>
+
+
+
+    <!-- 게시글 상세보기 -->
+    <!--  - board 정보와 reply정보(=컬랙션)를 한번에 객체로 맵핑 시키는 방법 -->
+    <!--  extends : 상속을 통해 부모의 맵핑정보를 자식이 사용하는 문법 -->
+    <resultMap type="Board" id="boardDetailResultMap" extends="boardListResultMap">
+        <!-- 		<result property="no" 			column="NO"/> -->
+        <!-- 		<result property="title" 		column="TITLE"/> -->
+        <!-- 		<result property="id" 			column="ID"/> -->
+        <!-- 		<result property="readcount" 	column="READCOUNT"/> -->
+        <!-- 		<result property="content" 		column="CONTENT"/> -->
+        <!-- 		<result property="type" 		column="TYPE"/> -->
+        <!-- 		<result property="createDate" 	column="CREATE_DATE"/> -->
+        <!-- 		<result property="modifyDate" 	column="MODIFY_DATE"/> -->
+
+        <!-- Reply List를 추가 하는 법 -->
+        <!-- property : 멤버변수 명 -->
+        <!-- javaType : 컬랙션 명칭 -->
+        <!-- resultMap : 맵핑할 맵 -->
+        <!-- columnPrefix : 컬럼명이 겹칠 경우 접두어로 설정하는 문구 반드시 as 처리 필요-->
+        <collection property="replies"
+                    javaType="arrayList"
+                    resultMap="boardReplyResultMap"
+                    columnPrefix="r_"
+        />
+    </resultMap>
+
+
 
     <!-- SELECT문 시작! -->
     <!-- 1. SELECT문에서 Writer, Title, Content를 조회할수 있는 동적쿼리 실습 -->
@@ -54,11 +83,11 @@
     <!-- ※주의점 : AND절과 OR절이 있으면 우선순위 문제가 발생할수 있음! -->
     <select id="selectBoardList" parameterType="map" resultMap="boardListResultMap">
         SELECT
-            b.bno, b.title, m.id,  b.readcount,
+            b.bno, b.title, m.id, b.readcount,
             b.content, b.type, b.create_date, b.modify_date
         FROM board b
         JOIN member m on(b.mno = m.mno)
-<!--        WHERE 1=1-->
+<!--        WHERE 1=1 -->
         WHERE b.status = 'Y'
         <if test="title != null">
             AND b.title LIKE '%${title}%'
@@ -72,10 +101,11 @@
         ORDER BY b.bno DESC
     </select>
 
-    <!-- 1.2 <where>절로 동적쿼리는 만드는 방법 ★★★ - 잘 안씀 -->
+
+    <!-- 1.2 <where>절로 동적쿼리는 만드는 방법 ★★★ -->
     <select id="selectBoardList2" parameterType="map" resultMap="boardListResultMap">
         SELECT
-        b.bno, b.title, m.id,  b.readcount,
+        b.bno, b.title, m.id, b.readcount,
         b.content, b.type, b.create_date, b.modify_date
         FROM board b
         JOIN member m ON(b.mno = m.mno)
@@ -96,7 +126,7 @@
         ORDER BY b.bno DESC
     </select>
 
-    <!-- 1.3 <trim> 다중 <if>문을 통한 문법 - where절의 원형 - 잘 안 씀 -->
+    <!-- 1.3 <trim> 다중 <if>문을 통한 문법 - where절의 원형 -->
     <select id="selectBoardList3" parameterType="map" resultMap="boardListResultMap">
         SELECT
         b.bno, b.title, m.id,  b.readcount,
@@ -123,33 +153,32 @@
         ORDER BY b.bno DESC
     </select>
 
+
     <!-- page 처리 위한 count 세는 동적쿼리 -->
-    <select id="selectBoardCount" parameterType="map" resultType="int">
+    <select id="selectBoardCount" parameterType="com.multi.mybatis.board.model.vo.BoardForm" resultType="int">
         SELECT
             COUNT(*)
         FROM board b
         JOIN member m ON(b.mno = m.mno)
         WHERE b.status = 'Y'
-        <where>
-            <if test="id != null">
-                AND m.id LIKE '%${id}%'
-            </if>
-            <if test="title != null">
-                AND b.title LIKE '%${title}%'
-            </if>
-            <if test="content != null">
-                AND b.content LIKE '%${content}%'
-            </if>
-            AND b.status = 'Y'
-        </where>
+        <if test="title != null">
+            AND b.title LIKE '%${title}%'
+        </if>
+        <if test="content != null">
+            AND b.content LIKE '%${content}%'
+        </if>
+        <if test="writer != null">
+            AND m.id LIKE '%${writer}%'
+        </if>
     </select>
+
 
     <!-- page list를 반환하는 쿼리 -->
     <select id="selectBoardListForPage" parameterType="com.multi.mybatis.board.model.vo.BoardForm"
-            resultType="int">
+            resultType="Board">
         SELECT
-        b.bno, b.title, m.id, b.readcount,
-        b.content, b.type, b.create_date, b.modify_date
+            b.bno, b.title, m.id, b.readcount,
+            b.content, b.type, b.create_date, b.modify_date
         FROM board b
         JOIN member m ON(b.mno = m.mno)
         WHERE b.status = 'Y'
@@ -163,9 +192,10 @@
             AND m.id LIKE '%${writer}%'
         </if>
         ORDER BY b.bno DESC
-        <!-- pageInfo.getListsLimit)        pageInfo.getOffset()-->
+        <!--   pageInfo.getLitLimit()      pageInfo.getOffset()   -->
         LIMIT ${pageInfo.listLimit} OFFSET ${pageInfo.offset}
     </select>
+
 
     <!-- 1.4 <choose>, <when>, <otherwise>  -->
     <!--  - ※ 주의 : 반드시 where절이 앞에 있어야 한다.  -->
@@ -196,7 +226,8 @@
     <!-- 2. 반복문을 통한 동적 쿼리 생성법 -->
     <!-- type 컬럼 : 게시글의 종류를 의미 (ex: B1:일반글, B2:공지, B3:비밀글, B4:질문 ... ) -->
     <!-- 사용처 : 카데고리 선택하는 기능을 만들때 사용함,
-           ex) 브랜드 선택 : 나이키, 아디다스 ... 20개 중 10개 선택 -->
+            ex) 브랜드 선택 : 나이키, 아디다스 ... 20개 중 10개 선택 -->
+
     <select id="selectBoardListByTypeFilters" parameterType="map" resultMap="boardListResultMap">
         SELECT
             b.bno, b.title,  m.id, b.readcount, b.content,
@@ -204,7 +235,7 @@
         FROM board b
         JOIN member m ON(b.mno = m.mno)
         WHERE b.status = 'Y'
-        <!--       AND B.TYPE IN ('B1','B2','B3') : 반복할 구문의 원본 -->
+        <!-- 		AND B.TYPE IN ('B1','B2','B3') : 반복할 구문의 원본 -->
         <!-- foreach 문법 설명 -->
         <!-- collection : 필터값을 뽑아올 객체의 이름, 사용자가 지정한 컬랙션의 이름 -->
         <!-- index : for문의 순서를 표시할 문자, 0부터 시작 (옵션) -->
@@ -213,20 +244,39 @@
         <!-- separator : 반복문의 중간에 삽입 될 문자(구분자) (옵션) -->
         <!-- close : 반복문의 끝에 삽입 될 문자(옵션) -->
         <if test="filterList != null">
-            <!-- ('B1','B2','B3') -->
+<!--         ('B1','B2','B3')-->
             AND b.type IN
-            <foreach item="item" collection="filterList" index="1" open="(" close=")" separator=",">
+            <foreach item="item" collection="filterList" index="i"
+                                        open="(" close=")" separator=",">
                 #{item}
-<!--                index를 출력할 때 : $(i)-->
+<!--             index를 출력할때는 ${i}로 가능하다.-->
             </foreach>
         </if>
     </select>
+
+
+    <!-- TYPE으로 필터링 된 글의 갯수 가져오는 방법 -->
+    <select id="selectBoardCountByTypeFilters" parameterType="map" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM board
+        WHERE status = 'Y'
+        <if test="filterList != null">
+            AND type IN
+            <foreach collection="filterList" index="i" item="filterKey" open="(" separator="," close=")" >
+                #{filterKey}
+                <!-- #{i} : 인덱스 출력하는 기법 -->
+            </foreach>
+        </if>
+        ORDER BY bno DESC
+    </select>
+
 
     <!-- 3. 복잡한 JOIN문 사용하는 방법 - 게시글 + 리플리스트 상세 조회하는 방법 -->
     <!-- 리플의 갯수대로 게시물 정보를 조회함으로 게시물이 길면 성능적으로 문제가 발생할수 있다. -->
     <select id="selectBoardByNo" parameterType="int" resultMap="boardDetailResultMap">
         SELECT
-        <!-- 게시글 조회 시작 -->
+            <!-- 게시글 조회 시작 -->
             b.bno,
             b.title,
             m.id,
@@ -244,7 +294,7 @@
             m2.id as r_id,
             r.create_date as r_create_date,
             r.modify_date as r_modify_date
-        <!-- 리플 끝 -->
+            <!-- 리플 끝 -->
         FROM board b
         JOIN member m ON(b.mno = m.mno)
         LEFT OUTER JOIN reply r ON(b.bno = r.bno)
@@ -254,28 +304,4 @@
     </select>
 
 
-    <!-- 게시글 상세보기 -->
-    <!--  - board 정보와 reply정보(=컬랙션)를 한번에 객체로 맵핑 시키는 방법 -->
-    <!--  extends : 상속을 통해 부모의 맵핑정보를 자식이 사용하는 문법 -->
-    <resultMap type="Board" id="boardDetailResultMap" extends="boardListResultMap">
-        <!--       <result property="no"        column="NO"/> -->
-        <!--       <result property="title"      column="TITLE"/> -->
-        <!--       <result property="id"        column="ID"/> -->
-        <!--       <result property="readcount"   column="READCOUNT"/> -->
-        <!--       <result property="content"        column="CONTENT"/> -->
-        <!--       <result property="type"       column="TYPE"/> -->
-        <!--       <result property="createDate"  column="CREATE_DATE"/> -->
-        <!--       <result property="modifyDate"  column="MODIFY_DATE"/> -->
-
-        <!-- Reply List를 추가 하는 법 -->
-        <!-- property : 멤버변수 명 -->
-        <!-- javaType : 컬랙션 명칭 -->
-        <!-- resultMap : 맵핑할 맵 -->
-        <!-- columnPrefix : 컬럼명이 겹칠 경우 접두어로 설정하는 문구 반드시 as 처리 필요-->
-        <collection property="replies"
-                    javaType="arrayList"
-                    resultMap="boardReplyResultMap"
-                    columnPrefix="r_"
-        />
-    </resultMap>
 </mapper>

@@ -9,6 +9,7 @@
 
 <!-- 설정부의 root -->
 <configuration>
+
 	<!-- DB 정보를 가져오기 위한 properties의 경로 설정 -->
 	<properties resource="driver.properties"/>	
 	

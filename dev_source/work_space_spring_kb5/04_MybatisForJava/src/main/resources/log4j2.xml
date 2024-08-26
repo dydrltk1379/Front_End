@@ -33,6 +33,7 @@
 		<!-- 일반적인 로그 정책을 셋팅 -->
 		<!-- 일반적으로 보여줄 Level 셋팅 -->
 		<!-- OFF < FATAL < ERROR < WARN < INFO < DEBUG < TRACE < ALL -->
+		<!-- 오래된 버전 -->
 		<Root level="OFF">
 			<AppenderRef ref="DEBUG_GROUP" />
 		</Root>

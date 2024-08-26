@@ -1,15 +1,15 @@
-package com.multi.mybatis.board.model.dao;
+package com.multi.mybatis.run;
+
+import com.multi.mybatis.board.model.service.BoardService;
+import com.multi.mybatis.board.model.vo.Board;
+import com.multi.mybatis.board.model.vo.BoardForm;
+import com.multi.mybatis.board.model.vo.Reply;
+import com.multi.mybatis.common.PageInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.multi.mybatis.board.model.service.BoardService;
-import com.multi.mybatis.board.model.vo.Board;
-import com.multi.mybatis.board.model.vo.Reply;
-import com.multi.mybatis.board.model.vo.BoardForm;
-import com.multi.mybatis.common.PageInfo;
 
 public class BoardRun {
 	public static void main(String[] args) {
