@@ -1,8 +1,8 @@
-package com.multi.basic.member.model.service;
+package com.multi.mvc.member.model.service;
 
 import java.util.List;
 
-import com.multi.basic.member.model.dto.MemberDTO;
+import com.multi.mvc.member.model.dto.MemberDTO;
 
 public interface MemberService {
 	// 회원가입

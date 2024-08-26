@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/01_MyFirstProject/01_MyFirstProject.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/01_MyFirstProject/01_MyFirstProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/02_Variable/02_Variable.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/02_Variable/02_Variable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/03_Operator/03_Operator.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/03_Operator/03_Operator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/04_ControlStatement/04_ControlStatement.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/04_ControlStatement/04_ControlStatement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/05_Array/05_Array.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/05_Array/05_Array.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/06_Object/06_Object.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/06_Object/06_Object.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/07_ObjectArray/07_ObjectArray.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/07_ObjectArray/07_ObjectArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/08_Inherit/08_Inherit.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/08_Inherit/08_Inherit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/09_Polymorphism/09_Polymorphism.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/09_Polymorphism/09_Polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/10_Library/10_Library.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/10_Library/10_Library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/11_GenericCollections/11_GenericCollections.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/11_GenericCollections/11_GenericCollections.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/12_Exception/12_Exception.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/12_Exception/12_Exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/13_IO/13_IO.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/13_IO/13_IO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/14_Thread/14_Thread.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/14_Thread/14_Thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/15_LambdaStream/15_LambdaStream.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/15_LambdaStream/15_LambdaStream.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/16.Network/16.Network.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/16.Network/16.Network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/17_DesignPattern/17_DesignPattern.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/17_DesignPattern/17_DesignPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/21_CodingTest/21_CodingTest.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/21_CodingTest/21_CodingTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/30_ParsingCrawlingCsv/30_ParsingCrawlingCsv.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/30_ParsingCrawlingCsv/30_ParsingCrawlingCsv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/31_JDBC_Basic/31_JDBC_Basic.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/31_JDBC_Basic/31_JDBC_Basic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/32_MemberMVC/32_MemberMVC.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/32_MemberMVC/32_MemberMVC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/javakb5/40_MongoDB/40_MongoDB.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/javakb5/40_MongoDB/40_MongoDB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dev_source.iml" filepath="$PROJECT_DIR$/.idea/dev_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/apache-tomcat-9.0.91/webapps/docs/docs.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/apache-tomcat-9.0.91/webapps/docs/docs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/apache-tomcat-10.1.26/webapps/docs/docs1.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/apache-tomcat-10.1.26/webapps/docs/docs1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/apache-tomcat-10.1.26/webapps/examples/examples.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/apache-tomcat-10.1.26/webapps/examples/examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_space_java_kb5/apache-tomcat-9.0.91/webapps/examples/examples1.iml" filepath="$PROJECT_DIR$/work_space_java_kb5/apache-tomcat-9.0.91/webapps/examples/examples1.iml" />
+    </modules>
+  </component>
+</project>

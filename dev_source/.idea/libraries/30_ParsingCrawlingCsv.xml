@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="30_ParsingCrawlingCsv">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/work_space_java_kb5/javakb5/30_ParsingCrawlingCsv/json-simple-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/work_space_java_kb5/javakb5/30_ParsingCrawlingCsv/jsoup-1.18.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

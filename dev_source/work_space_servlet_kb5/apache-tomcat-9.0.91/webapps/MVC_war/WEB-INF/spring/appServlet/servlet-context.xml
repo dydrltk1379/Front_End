@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	<!-- DispatcherServlet 설정을 시작하는 곳 -->
+	<!-- DispatcherServlet은 주로 MVC 구조 중에 Controller, View 처리시 필요한 설정을 수행한다.
+         일반적인 설정은 보통 root-context를 통해 수행하는 것이 보편적 -->
+
+	<!-- 스프링 어노테이션을 사용하겠다는 의미로 절대로 건들면 안된다. -->
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- 프로젝트에 관련된 리소스(xml)파일을 로드하는 부분 -->
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" /> <!-- *(하위 파일), ** : 리소스 안에 있는 모든 것 -->
+
+	<!-- "경로의 길이를 줄여 편하게 사용 : /WEB-INF/views/home.jsp" -> home -->
+	<!-- ViewResolver를 선언하는 xml부, 컨트롤러의 일반 메소드의 리턴값을 view name으로 자동으로 처리해주는 기능 -->
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" /> <!-- 뷰나 jsp-->
+	</beans:bean>
+
+	<!-- 어노테이션을 자동으로 scan하는 명령, 만일 없으면 어노테이션 사용이 불가능 -->
+	<!-- ex) @Controller라는 어노테이션을 찾으면 자동으로 싱글톤(Singleton)으로 객체를 생성하고 관리 bean -->
+	<context:component-scan base-package="com.multi.mvc" /> <!--패키지 명 바꿀 때 이 부분(어노테이션)도 바꿔야 함 -->
+
+
+</beans:beans>

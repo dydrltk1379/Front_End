@@ -26,8 +26,7 @@ public class DeleteCookieSetvlet extends HttpServlet{
 		}
 		
 		resp.setContentType("text/html;charset=utf-8");
-		resp.getWriter().append("<script> alert('쿠키가 삭제되었습니다.'); "
-				+ "location.href='" + req.getContextPath()+ "' </script>");
+		resp.getWriter().append("<script> alert('쿠키가 삭제되었습니다.'); " + "location.href='").append(req.getContextPath()).append("' </script>");
 	}
 
 }

@@ -1,5 +1,4 @@
-package com.multi.el;
-
+package com.multi.el_jstl;
 
 public class Member {
 	private String name;

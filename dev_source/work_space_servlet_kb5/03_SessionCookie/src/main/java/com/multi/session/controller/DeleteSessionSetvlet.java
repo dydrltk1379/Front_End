@@ -15,8 +15,8 @@ public class DeleteSessionSetvlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 세션 삭제하는 방법
-//		req.getSession().removeAttribute("SESSION_ID");
-		req.getSession().invalidate();
+//		req.getSession().removeAttribute("SESSION_ID"); // 하나씩 삭제됨
+		req.getSession().invalidate(); // 한번에 모두 삭제됨(이걸 사용)
 		
 		resp.setContentType("text/html;charset=utf-8");
 		resp.getWriter().append("<script> alert('세션이 삭제되었습니다.'); "
