@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.multi.mvc.rest.model.mapper.CatMapper">
+<!-- 	<select id="selectAll" resultType="Animal" parameterType="string"> -->
+<!-- 		SELECT * FROM ${tableName} -->
+<!-- 	</select> -->
+
+	<select id="selectAll" resultType="com.multi.mvc.rest.model.vo.Cat" >
+		SELECT * FROM cat
+	</select>
+	
+	<select id="selectByName" resultType="com.multi.mvc.rest.model.vo.Cat" parameterType="string" >
+		SELECT * FROM CAT WHERE NAME LIKE '%${name}%'
+	</select>
+	
+	<select id="selectById" resultType="com.multi.mvc.rest.model.vo.Cat" parameterType="int" >
+		SELECT * FROM cat WHERE ID = #{id}
+	</select>
+	
+	
+	<select id="selectMostRecent" resultType="com.multi.mvc.rest.model.vo.Cat"  >
+		SELECT * FROM cat WHERE ID = (SELECT @@IDENTITY)
+	</select>
+	
+	
+	<insert id="insertCat" parameterType="com.multi.mvc.rest.model.vo.Cat">
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			SELECT @@IDENTITY AS ID
+		</selectKey>
+		INSERT INTO cat (ID, NAME,INFO,EYECOLOR,HAIRLENGTH,FEATURES,COLOR,WEIGHT,CREATEDATE)
+		VALUES(0,#{name},#{info},#{eyeColor},#{hairLength},#{features},#{color},#{weight},CURRENT_TIMESTAMP)
+	</insert>
+	
+	<update id="updateCat" parameterType="com.multi.mvc.rest.model.vo.Cat">
+		UPDATE cat SET
+			name=#{name},
+			info=#{info},
+			eyecolor=#{eyeColor},
+			hairlength=#{hairLength},
+			features=#{features},
+			color=#{color},
+			weight=#{weight},
+			createdate = CURRENT_TIMESTAMP
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteCat" parameterType="int">
+		DELETE FROM cat WHERE id = #{id}
+	</delete>
+	
+</mapper>
