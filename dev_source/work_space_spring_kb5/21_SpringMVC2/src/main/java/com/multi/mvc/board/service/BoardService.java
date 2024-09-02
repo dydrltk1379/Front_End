@@ -23,7 +23,6 @@ public class BoardService{
 
     public Board getBoard(long bno) {
         return mapper.selectByBno(bno);
-
     }
 
     public Board write(Board board) {
