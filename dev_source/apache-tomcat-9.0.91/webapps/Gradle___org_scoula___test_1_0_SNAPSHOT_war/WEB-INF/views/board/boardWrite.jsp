@@ -19,7 +19,9 @@
 		<table id="tbl-board">
 			<tr>
 				<th>제목</th>
-				<td><input type="text" name="title" class="input-text"></td>
+				<td>
+					<input type="text" name="title" class="input-text">
+				</td>
 			</tr>
 			<tr>
 				<th>작성자</th>
@@ -30,7 +32,7 @@
 			<tr>
 				<th>내용</th>
 				<td>
-					<textarea name="content" rows="15" cols="80"></textarea>
+					<textarea name="content" rows="20" cols="80"></textarea>
 				</td>
 			</tr>
 			<tr>

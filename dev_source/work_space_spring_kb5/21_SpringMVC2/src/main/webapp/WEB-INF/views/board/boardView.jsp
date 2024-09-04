@@ -11,7 +11,7 @@
 
 <section id="board-write-container">
 	<h2 align="center">게시글 상세조회</h2>
-	
+
 	<table id="tbl-board">
 		<tr>
 			<th>글번호</th>
@@ -25,16 +25,13 @@
 			<th>작성자</th>
 			<td>${board.writer}</td>
 		</tr>
-		</tr>
 		<tr>
 			<th>작성 시간</th>
-			<td>${board.createDate} </td>
+			<td>${board.createDate}</td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td>
-				<textarea rows="20" cols="80" readonly>${board.content}</textarea>
-			</td>
+			<td><textarea rows="20" cols="80" readonly>${board.content}</textarea></td>
 		</tr>
 		<tr>
 			<th colspan="2">

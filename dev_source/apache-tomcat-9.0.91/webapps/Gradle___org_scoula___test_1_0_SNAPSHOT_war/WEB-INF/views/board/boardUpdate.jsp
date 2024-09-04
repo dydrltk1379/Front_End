@@ -12,35 +12,32 @@
 
 <section id="board-write-container">
 	<h2 align="center">게시글 수정</h2>
-	
-	<!-- enctype="multipart/form-data" : 파일 첨부를 할수 있는 html 옵션  -->
 	<form action="${path}/board/update" method="post">
 		<input type="hidden" name="bno" value="${board.bno}">
-	
-		<table id="tbl-board">
-			<tr>
-				<th>제목</th>
-				<td><input type="text" name="title" class="input-text" value="${board.title}"></td>
-			</tr>
-			<tr>
-				<th>작성자</th>
-				<td>
-					<input type="text" name="memberId" value="${board.writer}" readonly class="input-text">
-				</td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td>
-					<textarea name="content" rows="15" cols="80">${board.content}</textarea>
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2">
-					<button type="submit">수정</button>
-					<input type="button" onclick="location.replace('${path}/board/list')" value="목록으로">
-				</th>
-			</tr>
-		</table>
+		<tr>
+			<th>제목</th>
+			<td>
+				<input type="text" name="title" class="input-text" value="${board.title}">
+			</td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<td>
+				<input type="text" name="writer" value="${board.writer}">
+			</td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>
+				<textarea name="content" rows="20" cols="80">${board.content}</textarea>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2">
+				<button type="submit">수정</button>
+				<input type="button" onclick="location='${path}/board/list'" value="목록으로">
+			</th>
+		</tr>
 	</form>
 </section>
 

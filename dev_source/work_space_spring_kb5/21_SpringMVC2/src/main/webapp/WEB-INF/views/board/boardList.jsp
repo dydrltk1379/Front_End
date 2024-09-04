@@ -23,20 +23,17 @@
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>
-				<th>작성일</th>
+				<th>작성일<th>
 			</tr>
-				<c:forEach var="item" items="${list}">
-					<tr>
-						<td>${item.bno}</td>
-						<td>
-							<a href="${path}/board/view?bno=${item.bno}">
-								${item.title}
-							</a>
-						</td>
-						<td>${item.writer}</td>
-						<td>${item.createDate}</td>
-					</tr>
-				</c:forEach>
+<%--			${list}--%>
+			<c:forEach var="item" items="${list}">
+				<tr>
+					<td>${item.bno}</td>
+					<td><a href="${path}/board/view?bno=${item.bno}">${item.title}</a>  </td>
+					<td>${item.writer}</td>
+					<td>${item.createDate}</td>
+				</tr>
+			</c:forEach>
 		</table>
 		<!-- 게시판 목록 끝 -->
 	</div>

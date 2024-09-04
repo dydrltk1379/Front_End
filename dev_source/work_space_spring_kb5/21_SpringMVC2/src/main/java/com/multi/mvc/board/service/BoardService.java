@@ -23,15 +23,13 @@ public class BoardService{
 
     public Board getBoard(long bno) {
         return mapper.selectByBno(bno);
+
     }
 
     public Board write(Board board) {
         int result = mapper.insertBoard(board);
-        if(result > 0){
-            return mapper.selectByBno(board.getBno());
-        }else{
-            return null;
-        }
+        System.out.println("@@ : " + board);
+        return getBoard(board.getBno());
     }
 
     public Board update(Board board) {
@@ -52,5 +50,4 @@ public class BoardService{
             return null;
         }
     }
-
 }

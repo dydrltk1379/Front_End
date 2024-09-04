@@ -22,6 +22,7 @@ public class BoardController {
     @Setter(onMethod_ = @Autowired)
     private BoardService service;
 
+    // /board/list
     @GetMapping("/list")
     public String list(Model model) {
         List<Board> list = service.getAllList();
@@ -30,23 +31,22 @@ public class BoardController {
     }
 
     @GetMapping("/view")
-    public String viewBard(Model model, long bno){
+    public String view(Model model, long bno) {
         Board board = service.getBoard(bno);
         model.addAttribute("board", board);
         return "board/boardView";
     }
 
-
+    // /board/write
     @GetMapping("/write")
     public String writePage(){
         return "board/boardWrite";
     }
 
     @PostMapping("/write")
-    public String write(Board board) {
-        System.out.println("@@@" + board);
+    public String write(Model model, Board board) {
         Board result = service.write(board);
-        if (result == null) {
+        if(result == null){
             return "redirect:/board/list";
         }
         return "redirect:/board/view?bno=" + result.getBno();
@@ -55,9 +55,6 @@ public class BoardController {
     @GetMapping("/update")
     public String update(@RequestParam("bno") long bno, Model model) {
         Board board = service.getBoard(bno);
-        if(board == null){
-            return "redirect:/board/list";
-        }
         model.addAttribute("board", board);
         return "board/boardUpdate";
     }
@@ -65,7 +62,7 @@ public class BoardController {
     @PostMapping("/update")
     public String update(Board board) {
         Board result = service.update(board);
-        if(board == null){
+        if(result == null){
             return "redirect:/board/list";
         }
         return "redirect:/board/view?bno=" + result.getBno();

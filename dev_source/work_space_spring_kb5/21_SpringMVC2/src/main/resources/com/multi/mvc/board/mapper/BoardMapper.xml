@@ -3,37 +3,39 @@
 
 <mapper namespace="com.multi.mvc.board.mapper.BoardMapper">
 
-	<select id="selectAll" resultType="com.multi.mvc.board.vo.Board">
+
+	<select id="selectAll" resultType="com.multi.mvc.board.vo.Board" >
 		select * from board order by bno desc
 	</select>
-	
+
 	<select id="boardCount" resultType="long">
 		select count(*) from board
 	</select>
-	
-	<select id="selectByBno" parameterType="long" resultType="com.multi.mvc.board.vo.Board">
+
+	<select id="selectByBno" resultType="com.multi.mvc.board.vo.Board"
+			parameterType="long">
 		select * from board where bno = #{bno}
 	</select>
-	
-	<!-- 게시판 insert용, selectKey(insert 이후의 key를 받아오는 쿼리문) 추가한 버전 -->
-	<insert id="insertBoard" parameterType="com.multi.mvc.board.vo.Board">
+
+	<insert id="insertBoard">
 		<selectKey keyProperty="bno" resultType="long" order="AFTER">
 			select last_insert_id() as bno;
 		</selectKey>
-		insert into board (bno, title, content, writer)
-			values(default, #{title}, #{content}, #{writer})
+		INSERT INTO board
+			(bno, title, content, writer, create_date, modify_date)
+		VALUES
+			(default, #{title}, #{content}, #{writer}, now(), default);
 	</insert>
-	
+
 	<update id="updateBoard" parameterType="com.multi.mvc.board.vo.Board">
 		update board set
 			 title=#{title}, content=#{content}, modify_date = current_timestamp
 		where bno = #{bno}
 	</update>
-	
+
 	<update id="deleteBoard" parameterType="long">
 		delete from board where bno = #{bno}
 	</update>
-	
 
 </mapper>
 
